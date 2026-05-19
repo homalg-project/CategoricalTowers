@@ -46,7 +46,14 @@ DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproduc
 DeclareAttribute( "Cardinality",
         IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "Cardinality", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], IsBigInt );
+CapJitAddTypeSignature( "Cardinality", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( input_types[1].category ) );
+    
+    return ObjectDatumType( input_types[1].category );
+    
+end );
 
 #! @Description
 #!  The list associated to a skeletal finite set, i.e.,
@@ -59,13 +66,20 @@ DeclareAttribute( "AsList",
 CapJitAddTypeSignature( "AsList", [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], CapJitDataTypeOfListOf( IsBigInt ) );
 
 #! @Description
-#!  The lazy array of images between skeletal finite sets.
+#!  The list of images between skeletal finite sets.
 #! @Arguments phi
-#! @Returns a lazy array
+#! @Returns a list
 DeclareAttribute( "AsList",
         IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory );
 
-CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ], CapJitDataTypeOfListOf( IsBigInt ) );
+CapJitAddTypeSignature( "AsList", [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
+  function ( input_types )
+    
+    Assert( 0, IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( input_types[1].category ) );
+    
+    return MorphismDatumType( input_types[1].category );
+    
+end );
 
 ####################################
 #

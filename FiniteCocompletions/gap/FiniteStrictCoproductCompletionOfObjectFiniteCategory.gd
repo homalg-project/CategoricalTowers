@@ -47,11 +47,11 @@ DeclareAttribute( "FiniteStrictCoproductCompletionOfObjectFiniteCategory",
 #! @InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory
 #! @InsertChunk FiniteStrictCoproductCompletionOfObjectFiniteCategory_poset
 
-CapJitAddTypeSignature( "FiniteStrictCoproductCompletionOfObjectFiniteCategory", [ IsCapCategory ], function ( input_types )
-    
-    return CapJitDataTypeOfCategory( FiniteStrictCoproductCompletionOfObjectFiniteCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "FiniteStrictCoproductCompletionOfObjectFiniteCategory", [ IsCapCategory ], function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( FiniteStrictCoproductCompletionOfObjectFiniteCategory( input_types[1].category ) );
+#    
+#end );
 
 ####################################
 #
@@ -64,13 +64,11 @@ DeclareAttribute( "PairOfIntAndList",
         IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
 CapJitAddTypeSignature( "PairOfIntAndList", [ IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
- function ( input_types )
+  function ( input_types )
     
     Assert( 0, IsFiniteStrictCoproductCompletionOfObjectFiniteCategory( input_types[1].category ) );
     
-    return CapJitDataTypeOfNTupleOf( 2,
-                   IsBigInt,
-                   CapJitDataTypeOfListOf( IsBigInt ) );
+    return ObjectDatumType( input_types[1].category );
     
 end );
 
@@ -79,13 +77,11 @@ DeclareAttribute( "PairOfLists",
         IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
 CapJitAddTypeSignature( "PairOfLists", [ IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
- function ( input_types )
+  function ( input_types )
     
     Assert( 0, IsFiniteStrictCoproductCompletionOfObjectFiniteCategory( input_types[1].category ) );
     
-    return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( IsBigInt ),
-                   CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( UnderlyingCategory( input_types[1].category ) ) ) );
+    return MorphismDatumType( input_types[1].category );
     
 end );
 
@@ -110,12 +106,7 @@ end );
 DeclareAttribute( "NumberOfObjectsOfUnderlyingCategory",
         IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
-CapJitAddTypeSignature( "NumberOfObjectsOfUnderlyingCategory", [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
-  function ( input_types )
-    
-    return IsBigInt;
-
-end );
+CapJitAddTypeSignature( "NumberOfObjectsOfUnderlyingCategory", [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ], IsBigInt );
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );

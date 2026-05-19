@@ -45,12 +45,12 @@ DeclareCategory( "IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClos
 DeclareAttribute( "UnderlyingCategory",
         IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
 
-CapJitAddTypeSignature( "UnderlyingCategory", [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
-  function ( input_types )
-    
-    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
-    
-end );
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
+#  function ( input_types )
+#    
+#    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+#    
+#end );
 
 ####################################
 #
