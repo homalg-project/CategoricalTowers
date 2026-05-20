@@ -69,6 +69,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     UCm!.compiler_hints :=
       rec( category_attribute_names :=
            [ "UnderlyingCategory",
+             "SetOfObjectsOfUnderlyingCategory",
              "NumberOfObjectsOfUnderlyingCategory",
              ],
            );
@@ -80,6 +81,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     
     l := Length( objectsC );
     
+    SetSetOfObjectsOfUnderlyingCategory( UCm, objectsC );
     SetNumberOfObjectsOfUnderlyingCategory( UCm, l );
     
     SetIsCocartesianCategory( UCm, true );
@@ -209,7 +211,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -332,7 +334,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -426,7 +428,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         C := UnderlyingCategory( UCm );
         
-        objectsC := SetOfObjects( C );
+        objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
         
         l := NumberOfObjectsOfUnderlyingCategory( UCm );
         
@@ -486,7 +488,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -511,7 +513,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -662,7 +664,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -714,7 +716,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -781,7 +783,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             C := UnderlyingCategory( UCm );
             
-            objectsC := SetOfObjects( C );
+            objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
             
             l := NumberOfObjectsOfUnderlyingCategory( UCm );
             
@@ -866,7 +868,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             Yoneda := EmbeddingOfUnderlyingCategoryData( UCm )[2];
             
-            representables := List( SetOfObjects( C ), Yoneda[1] );
+            representables := List( SetOfObjectsOfUnderlyingCategory( UCm ), Yoneda[1] );
             
             joins := AllCoproducts( UCm, representables );
             
@@ -905,7 +907,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     
     C := UnderlyingCategory( UCm );
     
-    objectsC := SetOfObjects( C );
+    objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
     
     l := NumberOfObjectsOfUnderlyingCategory( UCm );
     
@@ -1057,7 +1059,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
         
         C := UnderlyingCategory( UCm );
         
-        objectsC := SetOfObjects( C );
+        objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
         
         l := NumberOfObjectsOfUnderlyingCategory( UCm );
         
@@ -1076,7 +1078,7 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOf
         
         C := UnderlyingCategory( UCm );
         
-        objectsC := SetOfObjects( C );
+        objectsC := SetOfObjectsOfUnderlyingCategory( UCm );
         
         l := NumberOfObjectsOfUnderlyingCategory( UCm );
         
