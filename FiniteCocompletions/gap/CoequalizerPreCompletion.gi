@@ -5,7 +5,7 @@
 #
 
 ##
-InstallMethod( CoequalizerCompletion,
+InstallMethod( CoequalizerPreCompletion,
         "for a CAP category",
         [ IsCapCategory and IsCocartesianCategory ],
         
@@ -16,19 +16,19 @@ InstallMethod( CoequalizerCompletion,
           ParallelPairs, CoequalizerPairs, congruence_func,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
-          CoequalizerCompletion;
+          CoequalizerPreCompletion;
     
     if not MissingOperationsForConstructivenessOfCategory( C, "IsCocartesianCategory" ) = [ ] then
         Error( "the given category `C` must be algorithmically cocartesian\n" );
     fi;
     
     ##
-    name := Concatenation( "CoequalizerCompletion( ", Name( C ), " )" );
+    name := Concatenation( "CoequalizerPreCompletion( ", Name( C ), " )" );
     
     ##
-    category_filter := IsCoequalizerCompletion;
-    category_object_filter := IsObjectInCoequalizerCompletion;
-    category_morphism_filter := IsMorphismInCoequalizerCompletion;
+    category_filter := IsCoequalizerPreCompletion;
+    category_object_filter := IsObjectInCoequalizerPreCompletion;
+    category_morphism_filter := IsMorphismInCoequalizerPreCompletion;
     
     ##
     object_datum_type :=
@@ -41,14 +41,14 @@ InstallMethod( CoequalizerCompletion,
                       CapJitDataTypeOfMorphismOfCategory( C ) ) );
     
     object_constructor :=
-      function( CoequalizerCompletion, pair_of_pairs )
+      function( CoequalizerPreCompletion, pair_of_pairs )
         
-        return CreateCapCategoryObjectWithAttributes( CoequalizerCompletion,
+        return CreateCapCategoryObjectWithAttributes( CoequalizerPreCompletion,
                        PairOfObjectsAndPairOfParallelMorphisms, pair_of_pairs );
         
     end;
     
-    object_datum := { CoequalizerCompletion, o } -> PairOfObjectsAndPairOfParallelMorphisms( o );
+    object_datum := { CoequalizerPreCompletion, o } -> PairOfObjectsAndPairOfParallelMorphisms( o );
     
     ##
     morphism_datum_type :=
@@ -57,16 +57,16 @@ InstallMethod( CoequalizerCompletion,
               CapJitDataTypeOfMorphismOfCategory( C ) );
     
     morphism_constructor :=
-      function( CoequalizerCompletion, source, pair_of_morphisms, target )
+      function( CoequalizerPreCompletion, source, pair_of_morphisms, target )
         
-        return CreateCapCategoryMorphismWithAttributes( CoequalizerCompletion,
+        return CreateCapCategoryMorphismWithAttributes( CoequalizerPreCompletion,
                        source,
                        target,
                        DefiningPairOfMorphismBetweenCoequalizerPairs, pair_of_morphisms );
         
     end;
     
-    morphism_datum := { CoequalizerCompletion, m } -> DefiningPairOfMorphismBetweenCoequalizerPairs( m );
+    morphism_datum := { CoequalizerPreCompletion, m } -> DefiningPairOfMorphismBetweenCoequalizerPairs( m );
     
     ## building the categorical tower:
     
@@ -227,10 +227,10 @@ InstallMethod( CoequalizerCompletion,
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
-      function( CoequalizerCompletion, pair_of_pairs )
+      function( CoequalizerPreCompletion, pair_of_pairs )
         local CoequalizerPairs, ParallelPairs;
         
-        CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
+        CoequalizerPairs := ModelingCategory( CoequalizerPreCompletion );
         
         ParallelPairs := AmbientCategory( CoequalizerPairs );
         
@@ -242,10 +242,10 @@ InstallMethod( CoequalizerCompletion,
     
     ## from the object in the modeling category to the raw object data
     modeling_tower_object_datum :=
-      function( CoequalizerCompletion, obj )
+      function( CoequalizerPreCompletion, obj )
         local CoequalizerPairs, ParallelPairs;
         
-        CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
+        CoequalizerPairs := ModelingCategory( CoequalizerPreCompletion );
         
         ParallelPairs := AmbientCategory( CoequalizerPairs );
         
@@ -257,10 +257,10 @@ InstallMethod( CoequalizerCompletion,
     
     ## from the raw morphism data to the morphism in the modeling category
     modeling_tower_morphism_constructor :=
-      function( CoequalizerCompletion, source, pair, target )
+      function( CoequalizerPreCompletion, source, pair, target )
         local CoequalizerPairs, ParallelPairs;
         
-        CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
+        CoequalizerPairs := ModelingCategory( CoequalizerPreCompletion );
         
         ParallelPairs := AmbientCategory( CoequalizerPairs );
         
@@ -276,10 +276,10 @@ InstallMethod( CoequalizerCompletion,
     
     ## from the morphism in the modeling category to the raw morphism data
     modeling_tower_morphism_datum :=
-      function( CoequalizerCompletion, mor )
+      function( CoequalizerPreCompletion, mor )
         local CoequalizerPairs, ParallelPairs;
         
-        CoequalizerPairs := ModelingCategory( CoequalizerCompletion );
+        CoequalizerPairs := ModelingCategory( CoequalizerPreCompletion );
         
         ParallelPairs := AmbientCategory( CoequalizerPairs );
         
@@ -290,7 +290,7 @@ InstallMethod( CoequalizerCompletion,
     end;
     
     ##
-    CoequalizerCompletion :=
+    CoequalizerPreCompletion :=
       ReinterpretationOfCategory( CoequalizerPairs,
               rec( name := name,
                    category_filter := category_filter,
@@ -309,9 +309,9 @@ InstallMethod( CoequalizerCompletion,
                    only_primitive_operations := true )
               : FinalizeCategory := false );
     
-    SetUnderlyingCategory( CoequalizerCompletion, C );
+    SetUnderlyingCategory( CoequalizerPreCompletion, C );
     
-    Append( CoequalizerCompletion!.compiler_hints.category_attribute_names,
+    Append( CoequalizerPreCompletion!.compiler_hints.category_attribute_names,
             [ "UnderlyingCategory",
               ] );
     
@@ -319,16 +319,16 @@ InstallMethod( CoequalizerCompletion,
         
     fi;
     
-    Finalize( CoequalizerCompletion );
+    Finalize( CoequalizerPreCompletion );
     
-    return CoequalizerCompletion;
+    return CoequalizerPreCompletion;
     
 end );
 
 ##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         "for a coequalizer completion category",
-        [ IsCoequalizerCompletion ],
+        [ IsCoequalizerPreCompletion ],
         
   function( Coeq )
     local C, embedding_on_objects, embedding_on_morphisms;
@@ -380,7 +380,7 @@ end );
 ##
 InstallMethod( EmbeddingOfUnderlyingCategory,
         "for a coequalizer completion category",
-        [ IsCoequalizerCompletion ],
+        [ IsCoequalizerPreCompletion ],
         
   function( Coeq )
     local data, Y;
@@ -400,7 +400,7 @@ end );
 ##
 InstallMethod( \.,
         "for a coequalizer completion category and a positive integer",
-        [ IsCoequalizerCompletion, IsPosInt ],
+        [ IsCoequalizerPreCompletion, IsPosInt ],
         
   function( Coeq, string_as_int )
     local name, C, Y, Yc;
@@ -413,12 +413,12 @@ InstallMethod( \.,
     
     Yc := Y( C.(name) );
     
-    if IsObjectInCoequalizerCompletion( Yc ) then
+    if IsObjectInCoequalizerPreCompletion( Yc ) then
         
         #TODO: is this true?
         #SetIsProjective( Yc, true );
         
-    elif IsMorphismInCoequalizerCompletion( Yc ) then
+    elif IsMorphismInCoequalizerPreCompletion( Yc ) then
         
         if CanCompute( Coeq, "IsMonomorphism" ) then
             IsMonomorphism( Yc );
@@ -451,7 +451,7 @@ end );
 ##
 InstallMethod( \.,
         "for an object in a category of coequalizer pairs and a positive integer",
-        [ IsObjectInCoequalizerCompletion, IsPosInt ],
+        [ IsObjectInCoequalizerPreCompletion, IsPosInt ],
         
   function ( obj, string_as_int )
     local pair, name;
@@ -477,7 +477,7 @@ end );
 ##
 InstallMethod( \.,
         "for a morphism in a category of coequalizer pairs and a positive integer",
-        [ IsMorphismInCoequalizerCompletion, IsPosInt ],
+        [ IsMorphismInCoequalizerPreCompletion, IsPosInt ],
         
   function ( mor, string_as_int )
     local datum, name;
@@ -505,31 +505,31 @@ end );
 ##
 InstallMethod( Display,
         "for an object in the category of coequalizer pairs of a category",
-        [ IsObjectInCoequalizerCompletion ],
+        [ IsObjectInCoequalizerPreCompletion ],
         
   function ( parallel_pair )
-    local CoequalizerCompletion;
+    local CoequalizerPreCompletion;
     
-    CoequalizerCompletion := CapCategory( parallel_pair );
+    CoequalizerPreCompletion := CapCategory( parallel_pair );
     
-    Display( ModelingObject( CoequalizerCompletion, parallel_pair ) );
+    Display( ModelingObject( CoequalizerPreCompletion, parallel_pair ) );
     
-    Print( "\nAn object in ", Name( CoequalizerCompletion ), " given by the above data\n" );
+    Print( "\nAn object in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
     
 end );
 
 ##
 InstallMethod( Display,
         "for a morphism in the category of coequalizer pairs of a category",
-        [ IsMorphismInCoequalizerCompletion ],
+        [ IsMorphismInCoequalizerPreCompletion ],
         
   function ( parallel_pair_morphism )
-    local CoequalizerCompletion;
+    local CoequalizerPreCompletion;
     
-    CoequalizerCompletion := CapCategory( parallel_pair_morphism );
+    CoequalizerPreCompletion := CapCategory( parallel_pair_morphism );
     
-    Display( ModelingMorphism( CoequalizerCompletion, parallel_pair_morphism ) );
+    Display( ModelingMorphism( CoequalizerPreCompletion, parallel_pair_morphism ) );
     
-    Print( "\nA morphism in ", Name( CoequalizerCompletion ), " given by the above data\n" );
+    Print( "\nA morphism in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
     
 end );

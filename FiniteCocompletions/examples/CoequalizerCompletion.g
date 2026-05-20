@@ -1,4 +1,4 @@
-#! @BeginChunk CoequalizerCompletion
+#! @BeginChunk CoequalizerPreCompletion
 
 #! @Example
 LoadPackage( "FunctorCategories" );
@@ -42,8 +42,8 @@ str := CellAsEvaluatableString( UC.sS, [ "L", "UC", "L.AS", "L.VS", "L.sS" ] );
 #!         ObjectConstructor( UC, [ L.VS ] ) )"
 EvalString( str ) = UC.sS;
 #! true
-A := CoequalizerCompletion( UC );
-#! CoequalizerCompletion( AdditiveClosure( Algebroid( Q, FreeCategory(
+A := CoequalizerPreCompletion( UC );
+#! CoequalizerPreCompletion( AdditiveClosure( Algebroid( Q, FreeCategory(
 #! RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -61,29 +61,29 @@ A.tS * A.m2 = A.w2 * A.tT;
 A.tS * A.m3 = A.w3 * A.tT;
 #! true
 S := ObjectConstructor( A, Pair( Pair( UC.VS, UC.AS ), Pair( UC.sS, UC.tS ) ) );
-#! <An object in CoequalizerCompletion( AdditiveClosure(
+#! <An object in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
 T := ObjectConstructor( A, Pair( Pair( UC.VT, UC.AT ), Pair( UC.sT, UC.tT ) ) );
-#! <An object in CoequalizerCompletion( AdditiveClosure(
+#! <An object in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
 mor1 := MorphismConstructor( A, S, Pair( UC.m1, UC.w1 ), T );
-#! <A morphism in CoequalizerCompletion( AdditiveClosure(
+#! <A morphism in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #!  / relations ) )>
 mor2 := MorphismConstructor( A, S, Pair( UC.m2, UC.w2 ), T );
-#! <A morphism in CoequalizerCompletion( AdditiveClosure(
+#! <A morphism in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #!  / relations ) )>
 mor3 := MorphismConstructor( A, S, Pair( UC.m3, UC.w3 ), T );
-#! <A morphism in CoequalizerCompletion( AdditiveClosure(
+#! <A morphism in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -95,7 +95,7 @@ IsWellDefined( mor2 );
 IsWellDefined( mor3 );
 #! true
 coeq := Coequalizer( [ mor1, mor2, mor3 ] );
-#! <An object in CoequalizerCompletion( AdditiveClosure(
+#! <An object in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,m1:VS->VT,w1:AS->AT,
 #!   m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) ) / relations ) )>
@@ -159,13 +159,13 @@ Display( coeq );
 #! / relations ) ) )
 #! given by the above data
 #! 
-#! An object in CoequalizerCompletion(
+#! An object in CoequalizerPreCompletion(
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
 proj := ProjectionOntoCoequalizer( [ mor1, mor2, mor3 ] );
-#! <An epimorphism in CoequalizerCompletion( AdditiveClosure(
+#! <An epimorphism in CoequalizerPreCompletion( AdditiveClosure(
 #!  Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #!  [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!   m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
@@ -208,7 +208,7 @@ Display( proj );
 #! / relations ) ) )
 #! given by the above data
 #! 
-#! A morphism in CoequalizerCompletion(
+#! A morphism in CoequalizerPreCompletion(
 #! AdditiveClosure( Algebroid( Q, FreeCategory( RightQuiver( "q(VS,AS,VT,AT)
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )

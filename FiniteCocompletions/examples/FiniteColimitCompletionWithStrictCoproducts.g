@@ -23,7 +23,7 @@ C_hat := FiniteColimitCompletionWithStrictCoproducts( C );
 #! FiniteColimitCompletionWithStrictCoproducts(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )
 ModelingCategory( C_hat );
-#! CoequalizerCompletion( FiniteStrictCoproductCompletion(
+#! CoequalizerPreCompletion( FiniteStrictCoproductCompletion(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) )
 Display( C_hat );
 #! A CAP category with name

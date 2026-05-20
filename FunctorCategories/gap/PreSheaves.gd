@@ -153,7 +153,7 @@ end );
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
-#!  the ambient category <C>CoequalizerCompletion</C>( <C>FiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#!  the ambient category <C>CoequalizerPreCompletion</C>( <C>FiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfSourceCategory",
