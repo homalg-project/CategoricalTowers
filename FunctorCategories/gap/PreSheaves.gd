@@ -260,6 +260,50 @@ DeclareOperationWithCache( "PreSheavesOfFpEnrichedCategory",
 
 CapJitAddTypeSignature( "PreSheavesOfFpEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategoryOfFpEnrichedCategory );
 
+## Helper functions used to populate a presheaf category with operations after construction.
+## Each installs a coherent group of CAP operations into PSh.
+
+## Installs IsLiftableAlongMonomorphism, IsColiftableAlongEpimorphism,
+## MorphismBetweenDirectSumsWithGivenDirectSums, and
+## MultiplyWithElementOfCommutativeSemiringForMorphisms whenever the
+## range category supports the corresponding operation.
+DeclareGlobalFunction( "ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY" );
+
+## Returns the opposite category of an fp-enriched category B.
+DeclareGlobalFunction( "OppositeOfFpEnrichedCategory" );
+
+## Installs IsWellDefinedForMorphisms, IsWellDefinedForObjects (B-type-specific),
+## IsEqualForObjects, IsEqualForMorphisms, and IsCongruentForMorphisms.
+## The second argument `relations` contains the defining relations of the source
+## category B (or `fail` when B has no nontrivial relations).
+DeclareGlobalFunction( "ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY" );
+
+## Installs EpimorphismFromSomeProjectiveObject (and sets
+## IsAbelianCategoryWithEnoughProjectives) when the range category is
+## SkeletalFinSets, CategoryOfRows, CategoryOfColumns, or MatrixCategory.
+DeclareGlobalFunction( "ADD_PROJECTIVE_STRUCTURE_TO_PRESHEAF_CATEGORY" );
+
+## Installs ExponentialOnObjects, ExponentialOnMorphismsWithGivenExponentials,
+## and (when the range category is SkeletalFinSets) the Cartesian
+## evaluation/coevaluation morphisms.
+DeclareGlobalFunction( "ADD_CARTESIAN_CLOSED_STRUCTURE_TO_PRESHEAF_CATEGORY" );
+
+## Installs SubobjectClassifier, TruthMorphismOfTrueWithGivenObjects, and
+## ClassifyingMorphismOfSubobject.
+DeclareGlobalFunction( "ADD_SUBOBJECT_CLASSIFIER_TO_PRESHEAF_CATEGORY" );
+
+## Installs TensorUnit and TensorProductOnObjects for a presheaf category
+## whose range category is monoidal and whose source category is a linear
+## closure of another category.
+DeclareGlobalFunction( "ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY" );
+
+## Installs the full projective/injective structure (EpimorphismFromProjectiveCoverObject,
+## MonomorphismIntoInjectiveEnvelopeObject, ProjectiveLift, InjectiveColift,
+## IndecomposableProjectiveObjects, IndecomposableInjectiveObjects) for presheaf
+## categories whose source category is an admissible (co)algebroid and whose range
+## category is MatrixCategory or CategoryOfRows.
+DeclareGlobalFunction( "ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY" );
+
 DeclareOperation( "CreatePreSheafByValues", [ IsPreSheafCategory, IsList, IsList ] );
 
 DeclareOperation( "CreatePreSheafByFunctions", [ IsPreSheafCategory, IsFunction, IsFunction ] );

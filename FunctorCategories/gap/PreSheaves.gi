@@ -301,6 +301,1036 @@ InstallMethod( CreatePreSheafMorphism,
 end );
 
 ##
+InstallGlobalFunction( OppositeOfFpEnrichedCategory,
+  function ( B )
+    
+    if IsFpCategory( B ) then
+        return OppositeFpCategory( B : FinalizeCategory := true );
+    elif IsPathCategory( B ) then
+        return OppositePathCategory( B : FinalizeCategory := true );
+    elif IsQuotientOfPathCategory( B ) then
+        return OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
+    elif IsCategoryFromNerveData( B ) then
+        return OppositeCategoryFromNerveData( B : FinalizeCategory := true );
+    elif IsCategoryFromDataTables( B ) then
+        return OppositeCategoryFromDataTables( B : FinalizeCategory := true );
+    elif WasCreatedAsOppositeCategory( B ) then
+        return OppositeCategory( B );
+    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
+        return OppositeFiniteCategory( B : FinalizeCategory := true );
+    elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
+        return OppositeAlgebroid( B : FinalizeCategory := true );
+    else
+        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
+    fi;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    local B, D;
+    
+    B := Source( PSh );
+    D := Target( PSh );
+
+    AddIsEqualForObjects( PSh,
+      function ( PSh, F, G )
+        local B, D, objects, generating_morphisms;
+        
+        B := Source( PSh );
+        D := Target( PSh );
+        
+        objects := SetOfObjects( B );
+        generating_morphisms := SetOfGeneratingMorphisms( B );
+        
+        return ForAll( objects, o -> IsEqualForObjects( D, F( o ), G( o ) ) ) and
+               ForAll( generating_morphisms, m -> IsEqualForMorphisms( D, F( m ), G( m ) ) );
+        
+    end );
+    
+    AddIsEqualForMorphisms( PSh,
+      function ( PSh, eta, epsilon )
+        local B, D, objects;
+        
+        B := Source( PSh );
+        D := Target( PSh );
+        
+        objects := SetOfObjects( B );
+        
+        return ForAll( objects, o -> IsEqualForMorphisms( D, eta( o ), epsilon( o ) ) );
+        
+    end );
+    
+    if CanCompute( D, "IsLiftableAlongMonomorphism" ) then
+        
+        ##
+        AddIsLiftableAlongMonomorphism( PSh,
+          function ( PSh, eta, rho )
+            local D;
+            
+            D := Target( PSh );
+            
+            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( D, eta( object ), rho( object ) ) );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( D, "IsColiftableAlongEpimorphism" ) then
+        
+        ##
+        AddIsColiftableAlongEpimorphism( PSh,
+          function ( PSh, eta, rho )
+            local D;
+            
+            D := Target( PSh );
+            
+            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( D, eta( object ), rho( object ) ) );
+            
+        end );
+        
+    fi;
+    
+    ## this code should become obsolete with following feature request:
+    ## https://github.com/homalg-project/CAP_project/issues/801
+    if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
+        
+        ##
+        AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
+          function ( PSh, S, diagram_S, M, diagram_T, T )
+            local S_o_vals, T_o_vals, natural_transformation_on_objects;
+            
+            S_o_vals := ValuesOfPreSheaf( S )[1];
+            T_o_vals := ValuesOfPreSheaf( T )[1];
+            
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
+                
+                return MorphismBetweenDirectSumsWithGivenDirectSums(
+                               D,
+                               S_o_vals[objB_index],
+                               List( diagram_S, Si -> ValuesOfPreSheaf( Si )[1][objB_index] ),
+                               List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
+                               List( diagram_T, Ti -> ValuesOfPreSheaf( Ti )[1][objB_index] ),
+                               T_o_vals[objB_index] );
+                
+            end;
+            
+            return CreatePreSheafMorphismByFunction( PSh, S, natural_transformation_on_objects, T );
+            
+        end );
+        
+    fi;
+    
+    if CanCompute( D, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
+        
+        ##
+        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( PSh,
+          function ( PSh, r, eta )
+            local D, eta_o_vals, natural_transformation_on_objects;
+            
+            D := Target( PSh );
+            
+            eta_o_vals := ValuesOnAllObjects( eta );
+            
+            natural_transformation_on_objects :=
+              function ( source, objB_index, range )
+                
+                return MultiplyWithElementOfCommutativeSemiringForMorphisms( D, r, eta_o_vals[objB_index] );
+                
+            end;
+            
+            return CreatePreSheafMorphismByFunction( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
+            
+        end );
+        
+    fi;
+    
+    if not ( HasIsThinCategory( B ) and IsThinCategory( B ) and IsIntervalCategory( D ) ) then
+        
+        AddIsCongruentForMorphisms( PSh,
+          function ( PSh, eta, epsilon )
+            local B, D, objects;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            
+            return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
+            
+        end );
+        
+    fi;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    local B, D, B_op, kq, A, relations;
+    
+    B := Source( PSh );
+    D := Target( PSh );
+    B_op := OppositeOfSource( PSh );
+    
+    if IsFpCategory( B ) then
+        kq := UnderlyingQuiverAlgebra( B_op );
+        relations := RelationsOfFpCategory( B_op );
+        A := kq;
+        if IsQuotientOfPathAlgebra( A ) then
+            A := PathAlgebra( A );
+        fi;
+        relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
+    elif IsQuotientOfPathCategory( B ) then
+        relations := DefiningRelations( B_op );
+    elif IsAlgebroid( B ) then
+        relations := RelationsOfAlgebroid( B_op );
+        relations := List( relations, UnderlyingQuiverAlgebraElement );
+    else
+        relations := fail;
+    fi;
+    
+    AddIsWellDefinedForMorphisms( PSh,
+      function ( PSh, eta )
+        local B, D, objects, generating_morphisms, F, G;
+        
+        B := Source( PSh );
+        D := Target( PSh );
+        
+        objects := SetOfObjects( B );
+        generating_morphisms := SetOfGeneratingMorphisms( B );
+        
+        F := Source( eta );
+        G := Target( eta );
+        
+        return ForAll( objects, o -> IsWellDefinedForMorphisms( D, eta( o ) ) ) and
+          #          F(t(m)) --F(m)-> F(s(m))
+          #             |                |
+          #  eta_{t(m)} |                | eta_{s(m)}
+          #             v                v
+          #          G(t(m)) --G(m)-> G(s(m))
+          ForAll( generating_morphisms,
+                  function ( m )
+                     return IsEqualForObjects( D, Target( F( m ) ), Source( eta( Source( m ) ) ) ) and
+                       IsEqualForObjects( D, Target( eta( Target( m ) ) ), Source( G( m ) ) ) and
+                       IsEqualForMorphisms( D,
+                               PreCompose( D, F( m ), eta( Source( m ) ) ),
+                               PreCompose( D, eta( Target( m ) ), G( m ) ) );
+                 end );
+        
+    end );
+    
+    if IsFpCategory( B ) then
+        
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            F := UnderlyingCapTwoCategoryCell( F );
+            
+            return ForAll( relations, m -> IsCongruentForMorphisms( D, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
+            
+        end );
+        
+    elif IsPathCategory( B ) then
+        
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            return true;
+            
+        end );
+        
+    elif IsQuotientOfPathCategory( B ) then
+        
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+
+            F := ValuesOfPreSheaf( F );
+            
+            F := CapFunctor( AmbientCategory( OppositeOfSource( PSh ) ), F[1], F[2], Target( PSh ) );
+            
+            return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
+            
+        end );
+        
+    elif IsAlgebroid( B ) then
+        
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            F := UnderlyingCapTwoCategoryCell( F );
+            
+            return ForAll( relations, m -> IsZeroForMorphisms( D, ApplyToQuiverAlgebraElement( F, m ) ) );
+            
+        end );
+        
+    elif IsAlgebroidFromDataTables( B ) then
+
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms, pairs;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            pairs := IndicesPairsOfCompatibleMorphisms( UnderlyingQuiver( B ) );
+            
+            return ForAll( pairs, p -> IsCongruentForMorphisms( D,
+                                                F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
+                                                PostCompose( D, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
+            
+        end );
+        
+    elif IsCategoryFromNerveData( B ) or
+      IsCategoryFromDataTables( B ) then
+        
+        AddIsWellDefinedForObjects( PSh,
+          function ( PSh, F )
+            local B, D, objects, generating_morphisms, relations, on_mors, is_equal;
+            
+            B := Source( PSh );
+            D := Target( PSh );
+            
+            objects := SetOfObjects( B );
+            generating_morphisms := SetOfGeneratingMorphisms( B );
+            
+            if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
+                return false;
+            elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
+                return false;
+            fi;
+            
+            relations := RelationsAmongGeneratingMorphisms( B );
+            
+            on_mors := ValuesOfPreSheaf( F )[2];
+            
+            is_equal :=
+              function( pair )
+                
+                if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
+                    Error( "both lists in the relation are empty\n" );
+                elif IsEmpty( pair[2] ) then
+                    return IsOne( PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
+                elif IsEmpty( pair[1] ) then
+                    return IsOne( PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                fi;
+                
+                return IsCongruentForMorphisms( D,
+                               PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
+                               PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
+                
+            end;
+            
+            return ForAll( relations, is_equal );
+            
+        end );
+        
+    fi;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_PROJECTIVE_STRUCTURE_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    
+    if HasIsAbelianCategory( PSh ) and IsAbelianCategory( PSh ) then
+        SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+    fi;
+    
+    ##
+    AddEpimorphismFromSomeProjectiveObject( PSh,
+      function( PSh, F )
+        
+        return MorphismFromCoproductOfRepresentables( PSh,
+                       CoveringListOfRepresentables( Target( PSh ), PSh, F ),
+                       F );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_CARTESIAN_CLOSED_STRUCTURE_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    local B, D;
+    
+    B := Source( PSh );
+    D := Target( PSh );
+    
+    ##
+    AddExponentialOnObjects ( PSh,
+      function ( PSh, F, G )
+        local B, objs, Yoneda, mors, presheaf_on_objects, presheaf_on_morphisms;
+        
+        B := Source( PSh );
+        
+        objs := SetOfObjects( B );
+        
+        ## the Yoneda embedding: B ↪ PSh( B )
+        Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
+        
+        presheaf_on_objects :=
+          function ( objB_index )
+            
+            ## the output lives by construction in the range category of the homomorphism structure of the presheaf category,
+            ## but should live in the range category D of the presheaf category (necessitating requirement (1) above):
+            return HomomorphismStructureOnObjects( PSh,
+                           DirectProduct( PSh,
+                                   [ Yoneda[1]( objs[objB_index] ),
+                                     F ] ),
+                           G );
+            
+        end;
+        
+        mors := SetOfGeneratingMorphisms( B );
+        
+        presheaf_on_morphisms :=
+          function ( new_source, morB_index, new_range )
+            local mor;
+            
+            mor := mors[morB_index];
+            
+            return HomomorphismStructureOnMorphismsWithGivenObjects( PSh,
+                           new_source,
+                           DirectProductFunctorial( PSh,
+                                   [ Yoneda[2]( Yoneda[1]( Source( mor ) ), mor, Yoneda[1]( Target( mor ) ) ),
+                                     IdentityMorphism( PSh, F ) ] ),
+                           IdentityMorphism( PSh, G ),
+                           new_range );
+            
+        end;
+        
+        return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
+        
+    end );
+    
+    ##
+    AddExponentialOnMorphismsWithGivenExponentials( PSh,
+      function( PSh, source, eta, rho, range )
+        local B, objs, Yoneda, presheaf_morphism_on_objects;
+        
+        B := Source( PSh );
+        
+        objs := SetOfObjects( B );
+        
+        ## the Yoneda embedding: B ↪ PSh( B )
+        Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
+        
+        presheaf_morphism_on_objects :=
+          function ( source, objB_index, range )
+            
+            return HomomorphismStructureOnMorphismsWithGivenObjects( PSh,
+                           source,
+                           DirectProductFunctorial( PSh,
+                                   [ IdentityMorphism( PSh, Yoneda[1]( objs[objB_index] ) ),
+                                     eta ] ),
+                           rho,
+                           range );
+            
+        end;
+        
+        return CreatePreSheafMorphismByFunction( PSh, source, presheaf_morphism_on_objects, range );
+        
+    end );
+    
+    ## the following code requires (2) that the range category D of the presheaf category coincides with the category SkeletalFinSets:
+    if IsSkeletalCategoryOfFiniteSets( D ) and
+       ## and requires (3) that the range category D of the presheaf category must coincide with
+       ## the range category of the homomorphism structure of the source category B of the presheaf category
+       IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( B ) ) then
+        
+        ## G^F × F → G
+        AddCartesianLeftEvaluationMorphismWithGivenSource( PSh,
+          function( PSh, F, G, exp )
+            local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
+            
+            B := Source( PSh );
+            sFinSets := Target( PSh );
+            
+            objs := SetOfObjects( B );
+            
+            ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the presheaf category,
+            ## and once as the distinguished object of the homomorphism structure of the presheaf category itself, which both coincide by the above assumption:
+            T := DistinguishedObjectOfHomomorphismStructure( B );
+            
+            ## the Yoneda embedding: B ↪ PSh( B )
+            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
+            
+            presheaf_morphism_on_objects :=
+              function ( source, objB_index, range )
+                local b, expFG, expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, ev_b;
+                
+                b := objs[objB_index];
+                
+                ## source = G^F(b) × F(b)
+                ## range  = G(b)
+                
+                ## G^F := Hom(Y(-) × F, G) ∈ Obj(C):
+                expFG := ExponentialOnObjects( PSh, F, G );
+                
+                ## G^F(b) := Hom(Y(b) × F, G) ∈ Obj(C):
+                expFG_b := ValuesOfPreSheaf( expFG )[1][objB_index];
+                
+                ## Fb := F(b) ∈ Obj(C):
+                Fb := ValuesOfPreSheaf( F )[1][objB_index];
+                
+                ## G^F(b) × F(b) ↠ G^F(b) ∈ Mor(C):
+                prj1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets,
+                                [ expFG_b, Fb ],
+                                1,
+                                source );
+                
+                ## G^F(b) × F(b) ↠ F(b) ∈ Mor(C):
+                prj2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets,
+                                [ expFG_b, Fb ],
+                                2,
+                                source );
+                
+                ## Hom(b, b) is an object in the range category of the homomorphism structure of the source category B of the presheaf category,
+                ## which is required below to be an object in the range category sFinSets of the presheaf category (necessitating requirement (3) above):
+                hom_bb := HomomorphismStructureOnObjects( B, b, b );
+                
+                ## id_b ∈ Y(b)(b) := Hom(b, b) ∈ Mor(B):
+                id_b := IdentityMorphism( B, b );
+                
+                ## interpreted as 1 → Hom(b, b) ∈ Mor( RangeCategoryOfHomomorphismStructure( B ) ) = Mor(C):
+                i_b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( B,
+                               T, ## the distinguished object of the homomorphism structure of the source category B of the presheaf category
+                               id_b,
+                               hom_bb );
+                
+                ## ev_b: G^F(b) × F(b) → G(b), i = (t, f) ↦ ev_b(i), where G^F(b) := Hom(y(b) × F, G):
+                ev_b :=
+                  function( i )
+                    local ii, t, f, id_b_f, theta, theta_b;
+                    
+                    ## this function assumes that the range category sFinSets of the presheaf category is the category SkeletalFinSets (necessitating requirement (2) above):
+                    
+                    ## the input is an integer i interpreted as an element of the skeletal finite set G^F(b) × F(b),
+                    ## i.e., it corresponds to a pair (t, f) ∈ G^F(b) × F(b), the entries of which we will construct below:
+                    
+                    ## interpret the integer i as a morphsim 1 → G^F(b) × F(b):
+                    ii := MorphismConstructor( sFinSets,
+                                  T, ## T plays here the role of the terminal object of the range category sFinSets of the presheaf category
+                                  [ i ],
+                                  source );
+                    
+                    ## the 1st projection 1 → G^F(b) ∈ Mor(C) corresponds to the 1st entry t ∈ G^F(b) of the pair (t, f):
+                    t := PreCompose( sFinSets,
+                                 ii,
+                                 prj1 );
+                    
+                    ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
+                    theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
+                                     DirectProduct( PSh,
+                                             [ Yoneda[1]( b ),
+                                               F ] ),
+                                     G,
+                                     ## here we need that the range category sFinSets of the presheaf category coincides with
+                                     ## the range category of the homomorphism structure of the presheaf category (see requirement (1) above):
+                                     t );
+                    
+                    ## the 2nd projection 1 → F(b) corresponds to the 2nd entry f ∈ F(b) of the pair (theta, f):
+                    f := PreCompose( sFinSets,
+                                 ii,
+                                 prj2 );
+                    
+                    ## Hom(b, b), T, and i_b must all live in sFinSets (necessitating requirement (3) above):
+                    
+                    ## the pair (id_b, f) interpreted as 1 → Hom(b, b) × F(b) ∈ Mor(C):
+                    id_b_f := UniversalMorphismIntoDirectProduct( sFinSets,
+                                      [ hom_bb, Fb ],
+                                      T,
+                                      [ i_b, f ] );
+                    
+                    ## theta_b: Y(b)(b) × F(b) → G(b) ∈ Mor(C)
+                    theta_b := theta( b );
+                    
+                    ## 1 → Hom(b, b) × F(b) → G(b) ∈ Mor(C)
+                    return PreCompose( sFinSets,
+                                   id_b_f,
+                                   theta_b )(0);
+                    
+                end;
+                
+                ## ev_b: G^F(b) × F(b) → G(b)
+                return MorphismConstructor( sFinSets,
+                               source,
+                               List( source, ev_b ),
+                               range );
+                
+            end;
+            
+            return CreatePreSheafMorphismByFunction( PSh, exp, presheaf_morphism_on_objects, G );
+            
+        end );
+        
+        ## F → (G × F)^F
+        AddCartesianLeftCoevaluationMorphismWithGivenRange( PSh,
+          function( PSh, F, G, exp )
+            local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
+            
+            B := Source( PSh );
+            sFinSets := Target( PSh );
+            
+            objs := SetOfObjects( B );
+            
+            ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the presheaf category,
+            ## and once as the distinguished object of the homomorphism structure of the presheaf category itself, which both coincide by the above assumption:
+            T := DistinguishedObjectOfHomomorphismStructure( B );
+            
+            ## the Yoneda embedding: B ↪ PSh( B )
+            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
+            
+            presheaf_morphism_on_objects :=
+              function ( source, objB_index, range )
+                local b, Yb, YbxF, GxF, coev_b;
+                
+                b := objs[objB_index];
+                
+                ## source = G(b)
+                ## range  = ((G × F)^F)(b)
+                
+                Yb := Yoneda[1]( b );
+                
+                YbxF := DirectProduct( PSh, [ Yb, F ] );
+                GxF := DirectProduct( PSh, [ G, F ] );
+                
+                ## coev_b: G(b) → ((G × F)^F)(b), f ↦ coev_b(f), where ((G × F)^F)(b) := Hom(Y(b) × F, G × F):
+                coev_b :=
+                  function( f ) ## ∈ G(b)
+                    local component, coev_b_f;
+                    
+                    ## this function assumes that the range category of the homomorphism structure of
+                    ## the presheaf category is the category SkeletalFinSets (necessitating requirement (2) above):
+                    
+                    component :=
+                      function( b_ )
+                        local phis, Gphis, images, factor1;
+                        
+                        phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b', b)
+                                      phi -> ## φ ∈ Hom_B(b', b) as a natural number
+                                      InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
+                                              b_,
+                                              b,
+                                              MorphismConstructor( sFinSets, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
+                                              ) ); ## φ: b' → b
+                        
+                        Gphis := List( phis,
+                                       phi -> G( phi ) ); ## G(φ): G(b) → G(b')
+                        
+                        images := List( Gphis,
+                                        Gphi -> Gphi( f ) ); ## G(φ)(f) ∈ G(b')
+                        
+                        ## Y(b)(b') = Hom_B(b', b) → G(b'), (φ: b' → b) ↦ (G(φ)(f): G(b) → G(b'))
+                        factor1 := MorphismConstructor( sFinSets,
+                                           Yb( b_ ),
+                                           images,
+                                           G( b_ ) );
+                        
+                        ## (Y(b) × F)(b') = Y(b)(b') × F(b') → G(b') × F(b') = (G × F)(b')
+                        return DirectProductOnMorphisms( sFinSets,
+                                       factor1,
+                                       IdentityMorphism( sFinSets, F( b_ ) ) );
+                        
+                    end;
+                    
+                    ## coev_b_f: (Y(b) × F) → G × F
+                    coev_b_f := CreatePreSheafMorphismByValues( PSh,
+                                        YbxF,
+                                        List( objs, b_ -> component( b_ ) ),
+                                        GxF );
+                    
+                    ## 1 → Hom(Y(b) × F, G × F)
+                    return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, coev_b_f ) )[1 + 0];
+                    
+                end;
+                
+                ## coev_b: G(b) → ((G × F)^F)(b)
+                return MorphismConstructor( sFinSets,
+                               source,
+                               List( source, coev_b ),
+                               range );
+                
+            end;
+            
+            return CreatePreSheafMorphismByFunction( PSh, G, presheaf_morphism_on_objects, exp );
+            
+        end );
+        
+    fi;
+    
+end );
+
+##
+InstallGlobalFunction( ADD_SUBOBJECT_CLASSIFIER_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    
+    AddSubobjectClassifier( PSh,
+      function ( PSh )
+        local Sieves;
+        
+        Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( Source( PSh ) );
+        
+        ## the sieves presheaf
+        return CreatePreSheafByValues( PSh, Sieves[1][1], Sieves[1][2] );
+        
+    end );
+    
+    AddTruthMorphismOfTrueWithGivenObjects( PSh,
+      function ( PSh, T, Omega )
+        local Sieves;
+        
+        Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( Source( PSh ) );
+        
+        ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
+        return CreatePreSheafMorphismByValues( PSh,
+                       CreatePreSheafByValues( PSh, Sieves[2][1], Sieves[2][2] ), ## constant presheaf
+                       Sieves[4], ## maximal sieve
+                       Omega );
+        
+    end );
+    
+    AddClassifyingMorphismOfSubobject( PSh,
+      function ( PSh, iota )
+        
+        return SievesOfPathsToTruth( PSh, iota );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    
+    AddTensorUnit( PSh,
+      function ( PSh )
+        local D, I, presheaf_on_objects, id_I, presheaf_on_morphisms;
+        
+        D := Target( PSh );
+        
+        I := TensorUnit( D );
+        
+        presheaf_on_objects := objB_index -> I;
+        
+        id_I := IdentityMorphism( D, TensorUnit( D ) );
+        
+        presheaf_on_morphisms := { new_source, morB_index, new_range } -> id_I;
+        
+        return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
+        
+    end );
+    
+    AddTensorProductOnObjects( PSh,
+      function ( PSh, F, G )
+        local D, F_o_vals, G_o_vals, presheaf_on_objects, F_m_vals, G_m_vals, presheaf_on_morphisms;
+        
+        D := Target( PSh );
+        
+        F_o_vals := ValuesOfPreSheaf( F )[1];
+        G_o_vals := ValuesOfPreSheaf( G )[1];
+        
+        presheaf_on_objects := objB_index -> TensorProductOnObjects( D, F_o_vals[objB_index], G_o_vals[objB_index] );
+        
+        F_m_vals := ValuesOfPreSheaf( F )[2];
+        G_m_vals := ValuesOfPreSheaf( G )[2];
+        
+        presheaf_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( D, F_m_vals[morB_index], G_m_vals[morB_index] );
+        
+        return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
+        
+    end );
+    
+end );
+
+##
+InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
+  function ( PSh )
+    local B, auxiliary_indices;
+    
+    B := Source( PSh );
+    
+    SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
+    
+    SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
+    
+    auxiliary_indices :=
+        List( SetOfObjects( B ),
+          u -> List( SetOfObjects( B ),
+            v -> List( BasisOfExternalHom( B, u, v ),
+              function ( b )
+                if IsEqualToIdentityMorphism( b ) then
+                  return [];
+                else
+                  return List( DecompositionOfMorphismInAlgebroid( b )[1][2], g -> SafeUniquePosition( SetOfGeneratingMorphisms( B ), g ) );
+                fi;
+              end ) ) );
+    
+    AddEpimorphismFromProjectiveCoverObject( PSh,
+      function( PSh, F )
+        local D, dec, objs, sum, epi;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if HasEpimorphismFromProjectiveCoverObject( F ) then
+            return EpimorphismFromProjectiveCoverObject( F );
+        fi;
+        
+        D := Target( PSh );
+        
+        dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
+        
+        objs := List( dec, Source );
+        
+        sum := DirectSum( PSh, objs );
+        
+        epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, sum );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, sum ) ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetEpimorphismFromProjectiveCoverObject( F, epi );
+        
+        return epi;
+        
+    end );
+    
+    AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
+      function( PSh, F )
+        local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
+            return MonomorphismIntoInjectiveEnvelopeObject( F );
+        fi;
+        
+        B := Source( PSh );
+        
+        coPSh := CoPreSheaves( B, Target( PSh ) );
+        
+        NL := NakayamaLeftAdjointData( coPSh )[1];
+        
+        NR := NakayamaRightAdjointData( PSh );
+        
+        NR_on_objs := NR[1];
+        
+        NR_on_mors := NR[2];
+        
+        mono_coPSh := MonomorphismIntoInjectiveEnvelopeObject( coPSh, NL( F ) );
+        
+        mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
+        
+        #% CAP_JIT_DROP_NEXT_STATEMENT
+        SetMonomorphismIntoInjectiveEnvelopeObject( F, mono );
+        
+        return mono;
+        
+    end );
+    
+    #  rad(P) >--> P -->> top(P)
+    #              |
+    #              | eta
+    #              v
+    #  G ------->> F
+    #     epi
+    #
+    #  computes a morphism from P to G which lifts eta along epi
+    #
+    
+    AddProjectiveLift( PSh,
+      function ( PSh, eta, epi )
+        local A, D, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
+        
+        A := Source( PSh );
+        D := Target( PSh );
+        
+        vals_eta := ValuesOnAllObjects( eta );
+        vals_epi := ValuesOnAllObjects( epi );
+        
+        N := Length( vals_eta );
+        
+        P := Source( eta );
+        G := Source( epi );
+        
+        tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
+        vals_tP := ValuesOnAllObjects( tP );
+        
+        gens := List( vals_tP, m -> PreInverseForMorphisms( D, m ) );
+        ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( D, [ p, q, PreInverseForMorphisms( D, r ) ] ) );
+        
+        vals_P := ValuesOfPreSheaf( P );
+        vals_G := ValuesOfPreSheaf( G );
+        
+        mu := List( [ 1 .. N ], i -> Concatenation(
+                List( [ 1 .. N ], j ->
+                  List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
+                    PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
+        
+        nu := List( [ 1 .. N ], i -> Concatenation(
+                List( [ 1 .. N ], j ->
+                  List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
+                    PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
+        
+        delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Target( vals_tP[j] ) ) ) ) );
+        
+        ells := ListN( [ 1 .. N ], delta, mu, nu, { i, diagram, m, n } ->
+                  PreCompose( D, PreInverseForMorphisms( D, UniversalMorphismFromDirectSum( D, diagram, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( D, diagram, vals_G[1][i], n ) ) );
+        
+        return CreatePreSheafMorphismByValues( PSh, P, ells, G );
+        
+    end );
+    
+    #         mono
+    #     F >-----> G
+    #     |
+    # eta |
+    #     v
+    #     I
+    #
+    AddInjectiveColift( PSh,
+      function ( PSh, mono, eta )
+        local B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
+              mono_coPSh, eta_coPSh, colift_coPSh;
+        
+        B := Source( PSh );
+        
+        coPSh := CoPreSheaves( B, Target( PSh ) );
+        
+        NL := NakayamaLeftAdjointData( coPSh );
+        
+        NL_on_objs := NL[1];
+        
+        NL_on_mors := NL[2];
+        
+        NR := NakayamaRightAdjointData( PSh );
+        
+        NR_on_objs := NR[1];
+        
+        NR_on_mors := NR[2];
+        
+        mono_coPSh := NL_on_mors( NL_on_objs( Source( mono ) ), mono, NL_on_objs( Target( mono ) ) );
+        
+        eta_coPSh := NL_on_mors( NL_on_objs( Source( eta ) ), eta, NL_on_objs( Target( eta ) ) );
+        
+        colift_coPSh := InjectiveColift( coPSh, mono_coPSh, eta_coPSh );
+        
+        return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Target( colift_coPSh ) ) );
+        
+    end );
+    
+    AddIndecomposableProjectiveObjects( PSh,
+      function ( PSh )
+        local B;
+        
+        B := Source( PSh );
+        
+        return List( SetOfObjects( B ), YonedaEmbeddingDataOfSourceCategory( PSh )[1] );
+        
+    end );
+    
+    AddIndecomposableInjectiveObjects( PSh,
+      function( PSh )
+        local B, coPSh;
+        
+        B := Source( PSh );
+        
+        coPSh := CoPreSheaves( B, Target( PSh ) );
+        
+        return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
+        
+    end );
+    
+end );
+
+##
 InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
@@ -313,11 +1343,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
-          is_computable, B_op, kq, A, relations,
+          is_computable, B_op,
           create_func_bool, create_func_object, create_func_morphism,
           list_of_operations, list_of_operations_to_always_install_primitively, list_of_operations_to_install,
           skip, commutative_semiring, properties, supports_empty_limits, prop, option_record,
-          PSh, H, auxiliary_indices;
+          PSh, H;
     
     ##
     name := "PreSheaves( ";
@@ -375,38 +1405,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
     ##
-    if IsFpCategory( B ) then
-        B_op := OppositeFpCategory( B : FinalizeCategory := true );
-        kq := UnderlyingQuiverAlgebra( B_op );
-        relations := RelationsOfFpCategory( B_op );
-        A := kq;
-        if IsQuotientOfPathAlgebra( A ) then
-            A := PathAlgebra( A );
-        fi;
-        relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
-    elif IsPathCategory( B ) then
-        B_op := OppositePathCategory( B : FinalizeCategory := true );
-    elif IsQuotientOfPathCategory( B ) then
-        B_op := OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
-        relations := DefiningRelations( B_op );
-    elif IsCategoryFromNerveData( B ) then
-        B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
-    elif IsCategoryFromDataTables( B ) then
-        B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-    elif WasCreatedAsOppositeCategory( B ) then
-        B_op := OppositeCategory( B );
-    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
-        B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsAlgebroid( B ) then
-        B_op := OppositeAlgebroid( B : FinalizeCategory := true );
-        kq := UnderlyingQuiverAlgebra( B_op );
-        relations := RelationsOfAlgebroid( B_op );
-        relations := List( relations, UnderlyingQuiverAlgebraElement );
-    elif IsAlgebroidFromDataTables( B ) then
-        B_op := OppositeAlgebroid( B : FinalizeCategory := true );
-    else
-        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
-    fi;
+    B_op := OppositeOfFpEnrichedCategory( B );
     
     ##
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
@@ -418,8 +1417,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         create_func_bool :=
           function ( name, PSh )
-            return
-              """
+            return """
               function( input_arguments... )
                 local L;
                 
@@ -459,8 +1457,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         if name in [ "TerminalObject", "InitialObject", "ZeroObject" ] then
             
-            return ## a constructor for universal objects: TerminalObject
-              ReplacedStringViaRecord(
+            ## a constructor for universal objects: TerminalObject
+            return ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, objD, morD, presheaf_on_objects, presheaf_on_morphisms;
@@ -483,8 +1481,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif name in [ "FiberProduct", "Pushout" ] then
             
-            return ## a constructor for universal objects: FiberProduct
-              ReplacedStringViaRecord(
+            ## a constructor for universal objects: FiberProduct
+            return ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
@@ -530,8 +1528,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif name in [ "Equalizer", "Coequalizer" ] then
             
-            return ## a constructor for universal objects: Equalizer
-              ReplacedStringViaRecord(
+            ## a constructor for universal objects: Equalizer
+            return ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, object, etas, presheaf_on_objects, mors, presheaf_on_morphisms;
@@ -578,8 +1576,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif name in [ "DirectProduct", "Coproduct", "DirectSum" ] then
             
-            return ## a constructor for universal objects: DirectSum
-              ReplacedStringViaRecord(
+            ## a constructor for universal objects: DirectSum
+            return ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, Fs, presheaf_on_objects, presheaf_on_morphisms;
@@ -607,8 +1605,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
         elif name in [ "KernelObject", "CokernelObject", "ImageObject", "CoimageObject" ] then
             
-            return ## a constructor for universal objects: KernelObject
-              ReplacedStringViaRecord(
+            ## a constructor for universal objects: KernelObject
+            return ReplacedStringViaRecord(
               """
               function ( input_arguments... )
                 local D, i_arg, eta, presheaf_on_objects, mors, presheaf_on_morphisms;
@@ -664,8 +1662,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         info := CAP_INTERNAL_METHOD_NAME_RECORD.(name);
         
-        return
-          ReplacedStringViaRecord(
+        return ReplacedStringViaRecord(
           """
           function ( input_arguments... )
             local D, i_arg, natural_transformation_on_objects;
@@ -763,12 +1760,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     list_of_operations_to_install := Difference( list_of_operations_to_install, skip );
     
-    if HasCommutativeSemiringOfLinearCategory( D ) then
-        commutative_semiring := CommutativeSemiringOfLinearCategory( D );
-    else
-        commutative_semiring := fail;
-    fi;
-    
     properties := [ "IsEnrichedOverCommutativeRegularSemigroup",
                     "IsAbCategory",
                     "IsLinearCategoryOverCommutativeRing",
@@ -864,8 +1855,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
            create_func_morphism := create_func_morphism,
            );
     
-    if not commutative_semiring = fail then
-        option_record.commutative_semiring_of_linear_category := commutative_semiring;
+    if HasCommutativeSemiringOfLinearCategory( D ) then
+        option_record.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( D );
     fi;
     
     PSh := CategoryConstructor( option_record );
@@ -905,90 +1896,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if CanCompute( D, "IsLiftableAlongMonomorphism" ) then
-        
-        ##
-        AddIsLiftableAlongMonomorphism( PSh,
-          function ( PSh, eta, rho )
-            local D;
-            
-            D := Target( PSh );
-            
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( D, eta( object ), rho( object ) ) );
-            
-        end );
-        
-    fi;
-    
-    if CanCompute( D, "IsColiftableAlongEpimorphism" ) then
-        
-        ##
-        AddIsColiftableAlongEpimorphism( PSh,
-          function ( PSh, eta, rho )
-            local D;
-            
-            D := Target( PSh );
-            
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( D, eta( object ), rho( object ) ) );
-            
-        end );
-        
-    fi;
-    
-    ## this code should become obsolete with following feature request:
-    ## https://github.com/homalg-project/CAP_project/issues/801
-    if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then
-        
-        ##
-        AddMorphismBetweenDirectSumsWithGivenDirectSums( PSh,
-          function ( PSh, S, diagram_S, M, diagram_T, T )
-            local S_o_vals, T_o_vals, natural_transformation_on_objects;
-            
-            S_o_vals := ValuesOfPreSheaf( S )[1];
-            T_o_vals := ValuesOfPreSheaf( T )[1];
-            
-            natural_transformation_on_objects :=
-              function ( source, objB_index, range )
-                
-                return MorphismBetweenDirectSumsWithGivenDirectSums(
-                               D,
-                               S_o_vals[objB_index],
-                               List( diagram_S, Si -> ValuesOfPreSheaf( Si )[1][objB_index] ),
-                               List( M, row -> List( row, m -> ValuesOnAllObjects( m )[objB_index] ) ),
-                               List( diagram_T, Ti -> ValuesOfPreSheaf( Ti )[1][objB_index] ),
-                               T_o_vals[objB_index] );
-                
-            end;
-            
-            return CreatePreSheafMorphismByFunction( PSh, S, natural_transformation_on_objects, T );
-            
-        end );
-        
-    fi;
-    
-    if CanCompute( D, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
-        
-        ##
-        AddMultiplyWithElementOfCommutativeSemiringForMorphisms( PSh,
-          function ( PSh, r, eta )
-            local D, eta_o_vals, natural_transformation_on_objects;
-            
-            D := Target( PSh );
-            
-            eta_o_vals := ValuesOnAllObjects( eta );
-            
-            natural_transformation_on_objects :=
-              function ( source, objB_index, range )
-                
-                return MultiplyWithElementOfCommutativeSemiringForMorphisms( D, r, eta_o_vals[objB_index] );
-                
-            end;
-            
-            return CreatePreSheafMorphismByFunction( PSh, Source( eta ), natural_transformation_on_objects, Target( eta ) );
-            
-        end );
-        
-    fi;
+    ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY( PSh );
     
     if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsPathCategory( B ) or
@@ -998,275 +1906,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        (HasIsFiniteCategory and IsFiniteCategory)( B ) or
        ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
        IsAlgebroidFromDataTables( B ) then
-        
-        AddIsWellDefinedForMorphisms( PSh,
-          function ( PSh, eta )
-            local B, D, objects, generating_morphisms, F, G;
-            
-            B := Source( PSh );
-            D := Target( PSh );
-            
-            objects := SetOfObjects( B );
-            generating_morphisms := SetOfGeneratingMorphisms( B );
-            
-            F := Source( eta );
-            G := Target( eta );
-            
-            return
-              ForAll( objects, o -> IsWellDefinedForMorphisms( D, eta( o ) ) ) and
-              #          F(t(m)) --F(m)-> F(s(m))
-              #             |                |
-              #  eta_{t(m)} |                | eta_{s(m)}
-              #             v                v
-              #          G(t(m)) --G(m)-> G(s(m))
-              ForAll( generating_morphisms,
-                      function ( m )
-                         return
-                           IsEqualForObjects( D, Target( F( m ) ), Source( eta( Source( m ) ) ) ) and
-                           IsEqualForObjects( D, Target( eta( Target( m ) ) ), Source( G( m ) ) ) and
-                           IsEqualForMorphisms( D,
-                                   PreCompose( D, F( m ), eta( Source( m ) ) ),
-                                   PreCompose( D, eta( Target( m ) ), G( m ) ) );
-                     end );
-            
-        end );
-        
-        if IsFpCategory( B ) then
-            
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-                
-                F := UnderlyingCapTwoCategoryCell( F );
-                
-                return ForAll( relations, m -> IsCongruentForMorphisms( D, ApplyToQuiverAlgebraElement( F, m[1] ), ApplyToQuiverAlgebraElement( F, m[2] ) ) );
-                
-            end );
-            
-        elif IsPathCategory( B ) then
-            
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-                
-                return true;
-                
-            end );
-            
-        elif IsQuotientOfPathCategory( B ) then
-            
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-
-                F := ValuesOfPreSheaf( F );
-                
-                F := CapFunctor( AmbientCategory( OppositeOfSource( PSh ) ), F[1], F[2], Target( PSh ) );
-                
-                return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
-                
-            end );
-            
-        elif IsAlgebroid( B ) then
-            
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-                
-                F := UnderlyingCapTwoCategoryCell( F );
-                
-                return ForAll( relations, m -> IsZeroForMorphisms( D, ApplyToQuiverAlgebraElement( F, m ) ) );
-                
-            end );
-            
-        elif IsAlgebroidFromDataTables( B ) then
-
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms, pairs;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-                
-                pairs := IndicesPairsOfCompatibleMorphisms( UnderlyingQuiver( B ) );
-                
-                return ForAll( pairs, p -> IsCongruentForMorphisms( D,
-                                                    F( PreCompose( B, generating_morphisms[p[1]], generating_morphisms[p[2]] ) ),
-                                                    PostCompose( D, F( generating_morphisms[p[1]] ), F( generating_morphisms[p[2]] ) ) ) );
-                
-            end );
-            
-        elif IsCategoryFromNerveData( B ) or
-          IsCategoryFromDataTables( B ) then
-            
-            AddIsWellDefinedForObjects( PSh,
-              function ( PSh, F )
-                local B, D, objects, generating_morphisms, relations, on_mors, is_equal;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                generating_morphisms := SetOfGeneratingMorphisms( B );
-                
-                if not ForAll( objects, o -> IsWellDefinedForObjects( D, F( o ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsWellDefinedForMorphisms( D, F( m ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Target( m ) ), Source( F( m ) ) ) ) then
-                    return false;
-                elif not ForAll( generating_morphisms, m -> IsEqualForObjects( D, F( Source( m ) ), Target( F( m ) ) ) ) then
-                    return false;
-                fi;
-                
-                relations := RelationsAmongGeneratingMorphisms( B );
-                
-                on_mors := ValuesOfPreSheaf( F )[2];
-                
-                is_equal :=
-                  function( pair )
-                    
-                    if IsEmpty( pair[1] ) and IsEmpty( pair[2] ) then
-                        Error( "both lists in the relation are empty\n" );
-                    elif IsEmpty( pair[2] ) then
-                        return IsOne( PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ) );
-                    elif IsEmpty( pair[1] ) then
-                        return IsOne( PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
-                    fi;
-                    
-                    return IsCongruentForMorphisms( D,
-                                   PreComposeList( D, List( Reversed( pair[1] ), i -> on_mors[1 + i] ) ),
-                                   PreComposeList( D, List( Reversed( pair[2] ), i -> on_mors[1 + i] ) ) );
-                    
-                end;
-                
-                return ForAll( relations, is_equal );
-                
-            end );
-            
-        fi;
-        
-        AddIsEqualForObjects( PSh,
-          function ( PSh, F, G )
-            local B, D, objects, generating_morphisms;
-            
-            B := Source( PSh );
-            D := Target( PSh );
-            
-            objects := SetOfObjects( B );
-            generating_morphisms := SetOfGeneratingMorphisms( B );
-            
-            return ForAll( objects, o -> IsEqualForObjects( D, F( o ), G( o ) ) ) and
-                   ForAll( generating_morphisms, m -> IsEqualForMorphisms( D, F( m ), G( m ) ) );
-            
-        end );
-        
-        AddIsEqualForMorphisms( PSh,
-          function ( PSh, eta, epsilon )
-            local B, D, objects;
-            
-            B := Source( PSh );
-            D := Target( PSh );
-            
-            objects := SetOfObjects( B );
-            
-            return ForAll( objects, o -> IsEqualForMorphisms( D, eta( o ), epsilon( o ) ) );
-            
-        end );
-        
-        if not ( HasIsThinCategory( B ) and IsThinCategory( B ) and IsIntervalCategory( D ) ) then
-            
-            AddIsCongruentForMorphisms( PSh,
-              function ( PSh, eta, epsilon )
-                local B, D, objects;
-                
-                B := Source( PSh );
-                D := Target( PSh );
-                
-                objects := SetOfObjects( B );
-                
-                return ForAll( objects, o -> IsCongruentForMorphisms( D, eta( o ), epsilon( o ) ) );
-                
-            end );
-            
-        fi;
+      
+      ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
     
@@ -1592,19 +2233,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryOfColumns( D ) or
        IsMatrixCategory( D ) then
         
-        if HasIsAbelianCategory( PSh ) and IsAbelianCategory( PSh ) then
-            SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
-        fi;
-        
-        ##
-        AddEpimorphismFromSomeProjectiveObject( PSh,
-          function( PSh, F )
-            
-            return MorphismFromCoproductOfRepresentables( PSh,
-                           CoveringListOfRepresentables( D, PSh, F ),
-                           F );
-            
-        end );
+        ADD_PROJECTIVE_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
     
@@ -1615,308 +2244,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        ( MissingOperationsForConstructivenessOfCategory( D, "IsElementaryTopos" ) = [ ] or
          MissingOperationsForConstructivenessOfCategory( D, "IsHeytingAlgebroid" ) = [ ] ) then
         
-        ##
-        AddExponentialOnObjects ( PSh,
-          function ( PSh, F, G )
-            local B, objs, Yoneda, mors, presheaf_on_objects, presheaf_on_morphisms;
-            
-            B := Source( PSh );
-            
-            objs := SetOfObjects( B );
-            
-            ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
-            
-            presheaf_on_objects :=
-              function ( objB_index )
-                
-                ## the output lives by construction in the range category of the homomorphism structure of the presheaf category,
-                ## but should live in the range category D of the presheaf category (necessitating requirement (1) above):
-                return HomomorphismStructureOnObjects( PSh,
-                               DirectProduct( PSh,
-                                       [ Yoneda[1]( objs[objB_index] ),
-                                         F ] ),
-                               G );
-                
-            end;
-            
-            mors := SetOfGeneratingMorphisms( B );
-            
-            presheaf_on_morphisms :=
-              function ( new_source, morB_index, new_range )
-                local mor;
-                
-                mor := mors[morB_index];
-                
-                return HomomorphismStructureOnMorphismsWithGivenObjects( PSh,
-                               new_source,
-                               DirectProductFunctorial( PSh,
-                                       [ Yoneda[2]( Yoneda[1]( Source( mor ) ), mor, Yoneda[1]( Target( mor ) ) ),
-                                         IdentityMorphism( PSh, F ) ] ),
-                               IdentityMorphism( PSh, G ),
-                               new_range );
-                
-            end;
-            
-            return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
-            
-        end );
-        
-        ##
-        AddExponentialOnMorphismsWithGivenExponentials( PSh,
-          function( PSh, source, eta, rho, range )
-            local B, objs, Yoneda, presheaf_morphism_on_objects;
-            
-            B := Source( PSh );
-            
-            objs := SetOfObjects( B );
-            
-            ## the Yoneda embedding: B ↪ PSh( B )
-            Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
-            
-            presheaf_morphism_on_objects :=
-              function ( source, objB_index, range )
-                
-                return HomomorphismStructureOnMorphismsWithGivenObjects( PSh,
-                               source,
-                               DirectProductFunctorial( PSh,
-                                       [ IdentityMorphism( PSh, Yoneda[1]( objs[objB_index] ) ),
-                                         eta ] ),
-                               rho,
-                               range );
-                
-            end;
-            
-            return CreatePreSheafMorphismByFunction( PSh, source, presheaf_morphism_on_objects, range );
-            
-        end );
-        
-        ## the following code requires (2) that the range category D of the presheaf category coincides with the category SkeletalFinSets:
-        if IsSkeletalCategoryOfFiniteSets( D ) and
-           ## and requires (3) that the range category D of the presheaf category must coincide with
-           ## the range category of the homomorphism structure of the source category B of the presheaf category
-           IsIdenticalObj( D, RangeCategoryOfHomomorphismStructure( B ) ) then
-            
-            ## G^F × F → G
-            AddCartesianLeftEvaluationMorphismWithGivenSource( PSh,
-              function( PSh, F, G, exp )
-                local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
-                
-                B := Source( PSh );
-                sFinSets := Target( PSh );
-                
-                objs := SetOfObjects( B );
-                
-                ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the presheaf category,
-                ## and once as the distinguished object of the homomorphism structure of the presheaf category itself, which both coincide by the above assumption:
-                T := DistinguishedObjectOfHomomorphismStructure( B );
-                
-                ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
-                
-                presheaf_morphism_on_objects :=
-                  function ( source, objB_index, range )
-                    local b, expFG, expFG_b, Fb, prj1, prj2, id_b, i_b, hom_bb, ev_b;
-                    
-                    b := objs[objB_index];
-                    
-                    ## source = G^F(b) × F(b)
-                    ## range  = G(b)
-                    
-                    ## G^F := Hom(Y(-) × F, G) ∈ Obj(C):
-                    expFG := ExponentialOnObjects( PSh, F, G );
-                    
-                    ## G^F(b) := Hom(Y(b) × F, G) ∈ Obj(C):
-                    expFG_b := ValuesOfPreSheaf( expFG )[1][objB_index];
-                    
-                    ## Fb := F(b) ∈ Obj(C):
-                    Fb := ValuesOfPreSheaf( F )[1][objB_index];
-                    
-                    ## G^F(b) × F(b) ↠ G^F(b) ∈ Mor(C):
-                    prj1 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets,
-                                    [ expFG_b, Fb ],
-                                    1,
-                                    source );
-                    
-                    ## G^F(b) × F(b) ↠ F(b) ∈ Mor(C):
-                    prj2 := ProjectionInFactorOfDirectProductWithGivenDirectProduct( sFinSets,
-                                    [ expFG_b, Fb ],
-                                    2,
-                                    source );
-                    
-                    ## Hom(b, b) is an object in the range category of the homomorphism structure of the source category B of the presheaf category,
-                    ## which is required below to be an object in the range category sFinSets of the presheaf category (necessitating requirement (3) above):
-                    hom_bb := HomomorphismStructureOnObjects( B, b, b );
-                    
-                    ## id_b ∈ Y(b)(b) := Hom(b, b) ∈ Mor(B):
-                    id_b := IdentityMorphism( B, b );
-                    
-                    ## interpreted as 1 → Hom(b, b) ∈ Mor( RangeCategoryOfHomomorphismStructure( B ) ) = Mor(C):
-                    i_b := InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructureWithGivenObjects( B,
-                                   T, ## the distinguished object of the homomorphism structure of the source category B of the presheaf category
-                                   id_b,
-                                   hom_bb );
-                    
-                    ## ev_b: G^F(b) × F(b) → G(b), i = (t, f) ↦ ev_b(i), where G^F(b) := Hom(y(b) × F, G):
-                    ev_b :=
-                      function( i )
-                        local ii, t, f, id_b_f, theta, theta_b;
-                        
-                        ## this function assumes that the range category sFinSets of the presheaf category is the category SkeletalFinSets (necessitating requirement (2) above):
-                        
-                        ## the input is an integer i interpreted as an element of the skeletal finite set G^F(b) × F(b),
-                        ## i.e., it corresponds to a pair (t, f) ∈ G^F(b) × F(b), the entries of which we will construct below:
-                        
-                        ## interpret the integer i as a morphsim 1 → G^F(b) × F(b):
-                        ii := MorphismConstructor( sFinSets,
-                                      T, ## T plays here the role of the terminal object of the range category sFinSets of the presheaf category
-                                      [ i ],
-                                      source );
-                        
-                        ## the 1st projection 1 → G^F(b) ∈ Mor(C) corresponds to the 1st entry t ∈ G^F(b) of the pair (t, f):
-                        t := PreCompose( sFinSets,
-                                     ii,
-                                     prj1 );
-                        
-                        ## reinterpret t: 1 → G^F(b) := Hom(Y(b) × F, G) ∈ Mor(C) as a natural transformation theta: Y(b) × F → G;
-                        theta := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( PSh,
-                                         DirectProduct( PSh,
-                                                 [ Yoneda[1]( b ),
-                                                   F ] ),
-                                         G,
-                                         ## here we need that the range category sFinSets of the presheaf category coincides with
-                                         ## the range category of the homomorphism structure of the presheaf category (see requirement (1) above):
-                                         t );
-                        
-                        ## the 2nd projection 1 → F(b) corresponds to the 2nd entry f ∈ F(b) of the pair (theta, f):
-                        f := PreCompose( sFinSets,
-                                     ii,
-                                     prj2 );
-                        
-                        ## Hom(b, b), T, and i_b must all live in sFinSets (necessitating requirement (3) above):
-                        
-                        ## the pair (id_b, f) interpreted as 1 → Hom(b, b) × F(b) ∈ Mor(C):
-                        id_b_f := UniversalMorphismIntoDirectProduct( sFinSets,
-                                          [ hom_bb, Fb ],
-                                          T,
-                                          [ i_b, f ] );
-                        
-                        ## theta_b: Y(b)(b) × F(b) → G(b) ∈ Mor(C)
-                        theta_b := theta( b );
-                        
-                        ## 1 → Hom(b, b) × F(b) → G(b) ∈ Mor(C)
-                        return PreCompose( sFinSets,
-                                       id_b_f,
-                                       theta_b )(0);
-                        
-                    end;
-                    
-                    ## ev_b: G^F(b) × F(b) → G(b)
-                    return MorphismConstructor( sFinSets,
-                                   source,
-                                   List( source, ev_b ),
-                                   range );
-                    
-                end;
-                
-                return CreatePreSheafMorphismByFunction( PSh, exp, presheaf_morphism_on_objects, G );
-                
-            end );
-            
-            ## F → (G × F)^F
-            AddCartesianLeftCoevaluationMorphismWithGivenRange( PSh,
-              function( PSh, F, G, exp )
-                local B, sFinSets, objs, T, Yoneda, presheaf_morphism_on_objects;
-                
-                B := Source( PSh );
-                sFinSets := Target( PSh );
-                
-                objs := SetOfObjects( B );
-                
-                ## T will be used below once as the distinguished object of the homomorphism structure of the source category B of the presheaf category,
-                ## and once as the distinguished object of the homomorphism structure of the presheaf category itself, which both coincide by the above assumption:
-                T := DistinguishedObjectOfHomomorphismStructure( B );
-                
-                ## the Yoneda embedding: B ↪ PSh( B )
-                Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh );
-                
-                presheaf_morphism_on_objects :=
-                  function ( source, objB_index, range )
-                    local b, Yb, YbxF, GxF, coev_b;
-                    
-                    b := objs[objB_index];
-                    
-                    ## source = G(b)
-                    ## range  = ((G × F)^F)(b)
-                    
-                    Yb := Yoneda[1]( b );
-                    
-                    YbxF := DirectProduct( PSh, [ Yb, F ] );
-                    GxF := DirectProduct( PSh, [ G, F ] );
-                    
-                    ## coev_b: G(b) → ((G × F)^F)(b), f ↦ coev_b(f), where ((G × F)^F)(b) := Hom(Y(b) × F, G × F):
-                    coev_b :=
-                      function( f ) ## ∈ G(b)
-                        local component, coev_b_f;
-                        
-                        ## this function assumes that the range category of the homomorphism structure of
-                        ## the presheaf category is the category SkeletalFinSets (necessitating requirement (2) above):
-                        
-                        component :=
-                          function( b_ )
-                            local phis, Gphis, images, factor1;
-                            
-                            phis := List( Yb( b_ ), ## Y(b)(b') = Hom_B(b', b)
-                                          phi -> ## φ ∈ Hom_B(b', b) as a natural number
-                                          InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( B,
-                                                  b_,
-                                                  b,
-                                                  MorphismConstructor( sFinSets, T, [ phi ], Yb( b_ ) ) ## φ: 1 → Hom_B(b', b)
-                                                  ) ); ## φ: b' → b
-                            
-                            Gphis := List( phis,
-                                           phi -> G( phi ) ); ## G(φ): G(b) → G(b')
-                            
-                            images := List( Gphis,
-                                            Gphi -> Gphi( f ) ); ## G(φ)(f) ∈ G(b')
-                            
-                            ## Y(b)(b') = Hom_B(b', b) → G(b'), (φ: b' → b) ↦ (G(φ)(f): G(b) → G(b'))
-                            factor1 := MorphismConstructor( sFinSets,
-                                               Yb( b_ ),
-                                               images,
-                                               G( b_ ) );
-                            
-                            ## (Y(b) × F)(b') = Y(b)(b') × F(b') → G(b') × F(b') = (G × F)(b')
-                            return DirectProductOnMorphisms( sFinSets,
-                                           factor1,
-                                           IdentityMorphism( sFinSets, F( b_ ) ) );
-                            
-                        end;
-                        
-                        ## coev_b_f: (Y(b) × F) → G × F
-                        coev_b_f := CreatePreSheafMorphismByValues( PSh,
-                                            YbxF,
-                                            List( objs, b_ -> component( b_ ) ),
-                                            GxF );
-                        
-                        ## 1 → Hom(Y(b) × F, G × F)
-                        return AsList( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( PSh, coev_b_f ) )[1 + 0];
-                        
-                    end;
-                    
-                    ## coev_b: G(b) → ((G × F)^F)(b)
-                    return MorphismConstructor( sFinSets,
-                                   source,
-                                   List( source, coev_b ),
-                                   range );
-                    
-                end;
-                
-                return CreatePreSheafMorphismByFunction( PSh, G, presheaf_morphism_on_objects, exp );
-                
-            end );
-            
-        fi;
+        ADD_CARTESIAN_CLOSED_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
     
@@ -1924,82 +2252,17 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsIdenticalObj( RangeCategoryOfHomomorphismStructure( B ), D ) and
        CanCompute( D, "SubobjectClassifier" ) then
         
-        AddSubobjectClassifier( PSh,
-          function ( PSh )
-            local Sieves;
-            
-            Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( Source( PSh ) );
-            
-            ## the sieves presheaf
-            return CreatePreSheafByValues( PSh, Sieves[1][1], Sieves[1][2] );
-            
-        end );
-        
-        AddTruthMorphismOfTrueWithGivenObjects( PSh,
-          function ( PSh, T, Omega )
-            local Sieves;
-            
-            Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( Source( PSh ) );
-            
-            ## T → Sieves, c ↦ ( T(c) = {*} → Sieves(c), * ↦ maximal_sieve(c) := Hom(-, c) )
-            return CreatePreSheafMorphismByValues( PSh,
-                           CreatePreSheafByValues( PSh, Sieves[2][1], Sieves[2][2] ), ## constant presheaf
-                           Sieves[4], ## maximal sieve
-                           Omega );
-            
-        end );
-        
-        AddClassifyingMorphismOfSubobject( PSh,
-          function ( PSh, iota )
-            
-            return SievesOfPathsToTruth( PSh, iota );
-            
-        end );
+        ADD_SUBOBJECT_CLASSIFIER_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
     
     if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
        HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
         
-        AddTensorUnit( PSh,
-          function ( PSh )
-            local D, I, presheaf_on_objects, id_I, presheaf_on_morphisms;
-            
-            D := Target( PSh );
-            
-            I := TensorUnit( D );
-            
-            presheaf_on_objects := objB_index -> I;
-            
-            id_I := IdentityMorphism( D, TensorUnit( D ) );
-            
-            presheaf_on_morphisms := { new_source, morB_index, new_range } -> id_I;
-            
-            return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
-            
-        end );
-        
-        AddTensorProductOnObjects( PSh,
-          function ( PSh, F, G )
-            local D, F_o_vals, G_o_vals, presheaf_on_objects, F_m_vals, G_m_vals, presheaf_on_morphisms;
-            
-            D := Target( PSh );
-            
-            F_o_vals := ValuesOfPreSheaf( F )[1];
-            G_o_vals := ValuesOfPreSheaf( G )[1];
-            
-            presheaf_on_objects := objB_index -> TensorProductOnObjects( D, F_o_vals[objB_index], G_o_vals[objB_index] );
-            
-            F_m_vals := ValuesOfPreSheaf( F )[2];
-            G_m_vals := ValuesOfPreSheaf( G )[2];
-            
-            presheaf_on_morphisms := { new_source, morB_index, new_range } -> TensorProductOnMorphisms( D, F_m_vals[morB_index], G_m_vals[morB_index] );
-            
-            return CreatePreSheafByFunctions( PSh, presheaf_on_objects, presheaf_on_morphisms );
-            
-        end );
+        ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
+
     
     if HasRangeCategoryOfHomomorphismStructure( B ) then
         
@@ -2019,198 +2282,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( D ) ) and
           ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
             ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
-      
-      SetIsAbelianCategoryWithEnoughProjectives( PSh, true );
-      
-      SetIsAbelianCategoryWithEnoughInjectives( PSh, true );
-      
-      AddEpimorphismFromProjectiveCoverObject( PSh,
-        function( PSh, F )
-          local D, dec, objs, sum, epi;
-          
-          #% CAP_JIT_DROP_NEXT_STATEMENT
-          if HasEpimorphismFromProjectiveCoverObject( F ) then
-              return EpimorphismFromProjectiveCoverObject( F );
-          fi;
-          
-          D := Target( PSh );
-          
-          dec := ProjectiveCoverObjectDataOfPreSheaf( PSh, F );
-          
-          objs := List( dec, Source );
-          
-          sum := DirectSum( PSh, objs );
-          
-          epi := UniversalMorphismFromDirectSumWithGivenDirectSum( PSh, objs, F, dec, sum );
-          
-          #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetProjectiveCoverObjectDataOfPreSheaf( D, List( [ 1 .. Length( objs ) ], i -> InjectionOfCofactorOfDirectSumWithGivenDirectSum( PSh, objs, i, sum ) ) );
-          
-          #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetEpimorphismFromProjectiveCoverObject( F, epi );
-          
-          return epi;
-          
-      end );
-      
-      AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
-        function( PSh, F )
-          local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
-          
-          #% CAP_JIT_DROP_NEXT_STATEMENT
-          if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
-              return MonomorphismIntoInjectiveEnvelopeObject( F );
-          fi;
-          
-          B := Source( PSh );
-          
-          coPSh := CoPreSheaves( B, Target( PSh ) );
-          
-          NL := NakayamaLeftAdjointData( coPSh )[1];
-          
-          NR := NakayamaRightAdjointData( PSh );
-          
-          NR_on_objs := NR[1];
-          
-          NR_on_mors := NR[2];
-          
-          mono_coPSh := MonomorphismIntoInjectiveEnvelopeObject( coPSh, NL( F ) );
-          
-          mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
-          
-          #% CAP_JIT_DROP_NEXT_STATEMENT
-          SetMonomorphismIntoInjectiveEnvelopeObject( F, mono );
-          
-          return mono;
-          
-      end );
-      
-      #  rad(P) >--> P -->> top(P)
-      #              |
-      #              | eta
-      #              v
-      #  G ------->> F
-      #     epi
-      #
-      #  computes a morphism from P to G which lifts eta along epi
-      #
-      
-      auxiliary_indices :=
-          List( SetOfObjects( B ),
-            u -> List( SetOfObjects( B ),
-              v -> List( BasisOfExternalHom( B, u, v ),
-                function ( b )
-                  if IsEqualToIdentityMorphism( b ) then
-                    return [];
-                  else
-                    return List( DecompositionOfMorphismInAlgebroid( b )[1][2], g -> SafeUniquePosition( SetOfGeneratingMorphisms( B ), g ) );
-                  fi;
-                end ) ) );
-      
-      AddProjectiveLift( PSh,
-        function ( PSh, eta, epi )
-          local A, D, vals_eta, vals_epi, N, P, G, tP, vals_tP, gens, ells, vals_P, vals_G, mu, nu, delta;
-          
-          A := Source( PSh );
-          D := Target( PSh );
-          
-          vals_eta := ValuesOnAllObjects( eta );
-          vals_epi := ValuesOnAllObjects( epi );
-          
-          N := Length( vals_eta );
-          
-          P := Source( eta );
-          G := Source( epi );
-          
-          tP := CokernelProjection( PSh, RadicalInclusionOfPreSheaf( PSh, P ) );
-          vals_tP := ValuesOnAllObjects( tP );
-          
-          gens := List( vals_tP, m -> PreInverseForMorphisms( D, m ) );
-          ells := ListN( gens, vals_eta, vals_epi, { p, q, r } -> PreComposeList( D, [ p, q, PreInverseForMorphisms( D, r ) ] ) );
-          
-          vals_P := ValuesOfPreSheaf( P );
-          vals_G := ValuesOfPreSheaf( G );
-          
-          mu := List( [ 1 .. N ], i -> Concatenation(
-                  List( [ 1 .. N ], j ->
-                    List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                      PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
-          
-          nu := List( [ 1 .. N ], i -> Concatenation(
-                  List( [ 1 .. N ], j ->
-                    List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                      PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
-          
-          delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Target( vals_tP[j] ) ) ) ) );
-          
-          ells := ListN( [ 1 .. N ], delta, mu, nu, { i, diagram, m, n } ->
-                    PreCompose( D, PreInverseForMorphisms( D, UniversalMorphismFromDirectSum( D, diagram, vals_P[1][i], m ) ), UniversalMorphismFromDirectSum( D, diagram, vals_G[1][i], n ) ) );
-          
-          return CreatePreSheafMorphismByValues( PSh, P, ells, G );
-          
-      end );
-      
-      #         mono
-      #     F >-----> G
-      #     |
-      # eta |
-      #     v
-      #     I
-      #
-      AddInjectiveColift( PSh,
-        function ( PSh, mono, eta )
-          local B, coPSh, NL, NL_on_objs, NL_on_mors, NR, NR_on_objs, NR_on_mors,
-                mono_coPSh, eta_coPSh, colift_coPSh;
-          
-          B := Source( PSh );
-          
-          coPSh := CoPreSheaves( B, Target( PSh ) );
-          
-          NL := NakayamaLeftAdjointData( coPSh );
-          
-          NL_on_objs := NL[1];
-          
-          NL_on_mors := NL[2];
-          
-          NR := NakayamaRightAdjointData( PSh );
-          
-          NR_on_objs := NR[1];
-          
-          NR_on_mors := NR[2];
-          
-          mono_coPSh := NL_on_mors( NL_on_objs( Source( mono ) ), mono, NL_on_objs( Target( mono ) ) );
-          
-          eta_coPSh := NL_on_mors( NL_on_objs( Source( eta ) ), eta, NL_on_objs( Target( eta ) ) );
-          
-          colift_coPSh := InjectiveColift( coPSh, mono_coPSh, eta_coPSh );
-          
-          return  NR_on_mors( NR_on_objs( Source( colift_coPSh ) ), colift_coPSh, NR_on_objs( Target( colift_coPSh ) ) );
-          
-      end );
-      
-      AddIndecomposableProjectiveObjects( PSh,
-        function ( PSh )
-          local B;
-          
-          B := Source( PSh );
-          
-          return List( SetOfObjects( B ), YonedaEmbeddingDataOfSourceCategory( PSh )[1] );
-          
-      end );
-      
-      AddIndecomposableInjectiveObjects( PSh,
-        function( PSh )
-          local B, coPSh;
-          
-          B := Source( PSh );
-          
-          coPSh := CoPreSheaves( B, Target( PSh ) );
-          
-          return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
-          
-      end );
-      
+        
+        ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
+        
     fi;
+
     
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     
@@ -2230,6 +2306,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
         elif IsAlgebroid( B ) then
+            
+            commutative_semiring := CommutativeSemiringOfLinearCategory( D );
             
             if IsCategoryOfRows( D ) and
                IsHomalgRing( commutative_semiring ) and
