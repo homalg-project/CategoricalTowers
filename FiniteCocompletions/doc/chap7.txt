@@ -33,7 +33,7 @@
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YGiven  the  presheaf  category  [3XPSh[103X=[10XPreSheaves[110X(  [23XC[123X,  [23XV[123X ), return the ambient
-  category                                              [10XCoequalizerCompletion[110X(
+  category                                           [10XCoequalizerPreCompletion[110X(
   [10XAssociatedFiniteStrictCoproductCompletionOfSourceCategory[110X( [3XPSh[103X ) ).[133X
   
   

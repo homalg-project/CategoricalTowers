@@ -11,16 +11,16 @@
   [2XCategoryOfColimitQuiversOfUnderlyingCategory[102X, for IsFiniteColimitCompletionWithStrictCoproducts 9.1-5 
   [2XCategoryOfPreSheavesOfUnderlyingCategory[102X, for IsCategoryOfColimitQuivers 7.2-2 
       for IsFiniteColimitCompletionWithStrictCoproducts 9.2-2 
-  [2XCoequalizerCompletion[102X, for IsCapCategory 8.2-1 
+  [2XCoequalizerPreCompletion[102X, for IsCapCategory 8.2-1 
   [2XDefiningPairOfColimitQuiver[102X, for IsObjectInCategoryOfColimitQuivers 7.1-3 
   [2XDefiningPairOfColimitQuiverMorphism[102X, for IsMorphismInCategoryOfColimitQuivers 7.1-4 
-  [2XDefiningPairOfMorphismBetweenCoequalizerPairs[102X, for IsMorphismInCoequalizerCompletion 8.1-2 
+  [2XDefiningPairOfMorphismBetweenCoequalizerPairs[102X, for IsMorphismInCoequalizerPreCompletion 8.1-2 
       for IsMorphismInFiniteColimitCompletionWithStrictCoproducts 9.1-4 
   [2XDefiningPairOfMorphismBetweenParallelPairs[102X, for IsMorphismInPairOfParallelArrowsCategory 6.2-2 
   [2XEmbeddingOfUnderlyingCategory[102X, for IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure 13.2-2 
       for IsAdditiveClosureCategory 10.1-1 
       for IsCategoryOfColimitQuivers 7.1-2 
-      for IsCoequalizerCompletion 8.1-4 
+      for IsCoequalizerPreCompletion 8.1-4 
       for IsCoFreydCategory 12.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-4 
       for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-5 
@@ -47,7 +47,7 @@
   [2XIsCategoryOfColimitQuivers[102X, for IsCapCategory 7.3-1 
   [2XIsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X, for IsCapCategoryCell 13.3-2 
   [2XIsCellInCategoryOfColimitQuivers[102X, for IsCapCategoryCell 7.3-2 
-  [2XIsCellInCoequalizerCompletion[102X, for IsCapCategoryCell 8.3-2 
+  [2XIsCellInCoequalizerPreCompletion[102X, for IsCapCategoryCell 8.3-2 
   [2XIsCellInFiniteColimitCompletionWithStrictCoproducts[102X, for IsCapCategoryCell 9.3-2 
   [2XIsCellInFiniteStrictCoproductCompletion[102X, for IsCapCategoryCell 1.3-2 
   [2XIsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCapCategoryCell 3.3-2 
@@ -55,7 +55,7 @@
   [2XIsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapCategoryCell 4.3-2 
   [2XIsCellInPairOfParallelArrowsCategory[102X, for IsCapCategoryCell 6.4-2 
   [2XIsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X, for IsCapCategoryCell 5.3-2 
-  [2XIsCoequalizerCompletion[102X, for IsCapCategory 8.3-1 
+  [2XIsCoequalizerPreCompletion[102X, for IsCapCategory 8.3-1 
   [2XIsFiniteColimitCompletionWithStrictCoproducts[102X, for IsCapCategory 9.3-1 
   [2XIsFiniteStrictCoproductCompletion[102X, for IsCapCategory 1.3-1 
   [2XIsFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCapCategory 3.3-1 
@@ -63,7 +63,7 @@
   [2XIsFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapCategory 4.3-1 
   [2XIsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X, for IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryMorphism 13.3-4 
   [2XIsMorphismInCategoryOfColimitQuivers[102X, for IsCellInCategoryOfColimitQuivers andIsCapCategoryMorphism 7.3-4 
-  [2XIsMorphismInCoequalizerCompletion[102X, for IsCellInCoequalizerCompletion and IsCapCategoryMorphism 8.3-4 
+  [2XIsMorphismInCoequalizerPreCompletion[102X, for IsCellInCoequalizerPreCompletion and IsCapCategoryMorphism 8.3-4 
   [2XIsMorphismInFiniteColimitCompletionWithStrictCoproducts[102X, for IsCellInFiniteColimitCompletionWithStrictCoproducts and IsCapCategoryMorphism 9.3-4 
   [2XIsMorphismInFiniteStrictCoproductCompletion[102X, for IsCellInFiniteStrictCoproductCompletion and IsCapCategoryMorphism 1.3-4 
   [2XIsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryMorphism 3.3-4 
@@ -73,7 +73,7 @@
   [2XIsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X, for IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryMorphism 5.3-4 
   [2XIsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure[102X, for IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryObject 13.3-3 
   [2XIsObjectInCategoryOfColimitQuivers[102X, for IsCellInCategoryOfColimitQuivers andIsCapCategoryObject 7.3-3 
-  [2XIsObjectInCoequalizerCompletion[102X, for IsCellInCoequalizerCompletion and IsCapCategoryObject 8.3-3 
+  [2XIsObjectInCoequalizerPreCompletion[102X, for IsCellInCoequalizerPreCompletion and IsCapCategoryObject 8.3-3 
   [2XIsObjectInFiniteColimitCompletionWithStrictCoproducts[102X, for IsCellInFiniteColimitCompletionWithStrictCoproducts and IsCapCategoryObject 9.3-3 
   [2XIsObjectInFiniteStrictCoproductCompletion[102X, for IsCellInFiniteStrictCoproductCompletion and IsCapCategoryObject 1.3-3 
   [2XIsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryObject 3.3-3 
@@ -90,7 +90,7 @@
   [2XPairOfLists[102X, for IsMorphismInFiniteStrictCoproductCompletion 1.1-2 
       for IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-2 
       for IsMorphismInFiniteStrictProductCompletion 2.1-2 
-  [2XPairOfObjectsAndPairOfParallelMorphisms[102X, for IsObjectInCoequalizerCompletion 8.1-1 
+  [2XPairOfObjectsAndPairOfParallelMorphisms[102X, for IsObjectInCoequalizerPreCompletion 8.1-1 
       for IsObjectInFiniteColimitCompletionWithStrictCoproducts 9.1-3 
       for IsObjectInPairOfParallelArrowsCategory 6.2-1 
   [2XPairOfParallelArrowsCategory[102X, for IsCapCategory 6.3-1 
@@ -102,7 +102,7 @@
   [2XTensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure[102X, for IsCapCategoryObject, IsCapCategoryObject 14.1-1 
   [2XUnderlyingCategory[102X, for IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure 13.1-1 
       for IsCategoryOfColimitQuivers 7.1-1 
-      for IsCoequalizerCompletion 8.1-3 
+      for IsCoequalizerPreCompletion 8.1-3 
       for IsFiniteColimitCompletionWithStrictCoproducts 9.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-3 
       for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-3 

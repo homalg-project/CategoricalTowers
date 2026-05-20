@@ -79,7 +79,7 @@
 <h5>9.1-2 FiniteStrictCoproductCompletionOfUnderlyingCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FiniteStrictCoproductCompletionOfUnderlyingCategory</code>( <var class="Arg">C_hat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the coproduct completion <span class="SimpleMath">\(UC :=\)</span> <code class="code">FiniteStrictCoproductCompletion</code>( <span class="SimpleMath">\(C\)</span> ) of the underlying category <span class="SimpleMath">\(C\)</span>, where <var class="Arg">C_hat</var> := <code class="code">FiniteColimitCompletionWithStrictCoproducts</code>( <span class="SimpleMath">\(C\)</span> ) <span class="SimpleMath">\(\simeq\)</span> <code class="code">CoequalizerCompletion</code>( <span class="SimpleMath">\(UC\)</span> ).</p>
+<p>Return the coproduct completion <span class="SimpleMath">\(UC :=\)</span> <code class="code">FiniteStrictCoproductCompletion</code>( <span class="SimpleMath">\(C\)</span> ) of the underlying category <span class="SimpleMath">\(C\)</span>, where <var class="Arg">C_hat</var> := <code class="code">FiniteColimitCompletionWithStrictCoproducts</code>( <span class="SimpleMath">\(C\)</span> ) <span class="SimpleMath">\(\simeq\)</span> <code class="code">CoequalizerPreCompletion</code>( <span class="SimpleMath">\(UC\)</span> ).</p>
 
 <p><a id="X7AA7CB2581910604" name="X7AA7CB2581910604"></a></p>
 
@@ -135,7 +135,7 @@ PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) )
 FiniteColimitCompletionWithStrictCoproducts(
 PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModelingCategory( C_hat );</span>
-CoequalizerCompletion( FiniteStrictCoproductCompletion(
+CoequalizerPreCompletion( FiniteStrictCoproductCompletion(
 PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( C_hat );</span>
 A CAP category with name
