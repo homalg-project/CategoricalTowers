@@ -95,7 +95,7 @@ DeclareAttribute( "DefiningPairOfColimitQuiverMorphism",
 
 #! @Description
 #!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return
-#!  the ambient category <C>CoequalizerCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
+#!  the ambient category <C>CoequalizerPreCompletion</C>( <C>AssociatedFiniteStrictCoproductCompletionOfSourceCategory</C>( <A>PSh</A> ) ).
 #! @Arguments PSh
 #! @Returns a &CAP; category
 DeclareAttribute( "FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory",

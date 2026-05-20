@@ -56,7 +56,7 @@ DeclareAttribute( "UnderlyingCategory",
 #!  Return the coproduct completion $UC :=$ <C>FiniteStrictCoproductCompletion</C>( $C$ )
 #!  of the underlying category $C$, where
 #!  <A>C_hat</A> := <C>FiniteColimitCompletionWithStrictCoproducts</C>( $C$ ) $\simeq$
-#!  <C>CoequalizerCompletion</C>( $UC$ ).
+#!  <C>CoequalizerPreCompletion</C>( $UC$ ).
 #! @Arguments C_hat
 DeclareAttribute( "FiniteStrictCoproductCompletionOfUnderlyingCategory",
         IsFiniteColimitCompletionWithStrictCoproducts );

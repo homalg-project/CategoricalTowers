@@ -23,7 +23,7 @@ ReadPackage( "FiniteCocompletions", "gap/SkeletalFinSets.gd" );
 ReadPackage( "FiniteCocompletions", "gap/PairOfParallelArrowsCategory.gd" );
 
 ##
-ReadPackage( "FiniteCocompletions", "gap/CoequalizerCompletion.gd" );
+ReadPackage( "FiniteCocompletions", "gap/CoequalizerPreCompletion.gd" );
 
 ##
 ReadPackage( "FiniteCocompletions", "gap/CategoryOfColimitQuivers.gd" );

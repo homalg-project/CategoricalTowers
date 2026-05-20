@@ -22,7 +22,7 @@ InstallMethod( FiniteColimitCompletionWithStrictCoproducts,
     
     UC := EnrichmentSpecificFiniteStrictCoproductCompletion( C : FinalizeCategory := true );
     
-    CoequalizerPairs := CoequalizerCompletion( UC : FinalizeCategory := true );
+    CoequalizerPairs := CoequalizerPreCompletion( UC : FinalizeCategory := true );
     
     ##
     name := Concatenation( "FiniteColimitCompletionWithStrictCoproducts( ", Name( C ), " )" );

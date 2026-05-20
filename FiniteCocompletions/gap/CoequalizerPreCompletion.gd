@@ -14,23 +14,23 @@
 
 #! @Description
 #!  The &GAP; category of coequalizer completions of categories.
-DeclareCategory( "IsCoequalizerCompletion",
+DeclareCategory( "IsCoequalizerPreCompletion",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in the coequalizer completion of a category.
-DeclareCategory( "IsCellInCoequalizerCompletion",
+DeclareCategory( "IsCellInCoequalizerPreCompletion",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in the coequalizer completion of a category.
-DeclareCategory( "IsObjectInCoequalizerCompletion",
-        IsCellInCoequalizerCompletion and IsCapCategoryObject  );
+DeclareCategory( "IsObjectInCoequalizerPreCompletion",
+        IsCellInCoequalizerPreCompletion and IsCapCategoryObject  );
 
 #! @Description
 #!  The &GAP; category of morphisms in the coequalizer completion of a category.
-DeclareCategory( "IsMorphismInCoequalizerCompletion",
-        IsCellInCoequalizerCompletion and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInCoequalizerPreCompletion",
+        IsCellInCoequalizerPreCompletion and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -40,12 +40,12 @@ DeclareCategory( "IsMorphismInCoequalizerCompletion",
 
 #! @Arguments quiver
 DeclareAttribute( "PairOfObjectsAndPairOfParallelMorphisms",
-        IsObjectInCoequalizerCompletion );
+        IsObjectInCoequalizerPreCompletion );
 
-#CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInCoequalizerCompletion ],
+#CapJitAddTypeSignature( "PairOfObjectsAndPairOfParallelMorphisms", [ IsObjectInCoequalizerPreCompletion ],
 #  function ( input_types )
 #    
-#    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
+#    Assert( 0, IsCoequalizerPreCompletion( input_types[1].category ) );
 #    
 #    return ObjectDatumType( input_types[1].category );
 #    
@@ -53,12 +53,12 @@ DeclareAttribute( "PairOfObjectsAndPairOfParallelMorphisms",
 
 #! @Arguments quiver_morphism
 DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
-        IsMorphismInCoequalizerCompletion );
+        IsMorphismInCoequalizerPreCompletion );
 
-#CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInCoequalizerCompletion ],
+#CapJitAddTypeSignature( "DefiningPairOfMorphismBetweenCoequalizerPairs", [ IsMorphismInCoequalizerPreCompletion ],
 #  function ( input_types )
 #    
-#    Assert( 0, IsCoequalizerCompletion( input_types[1].category ) );
+#    Assert( 0, IsCoequalizerPreCompletion( input_types[1].category ) );
 #    
 #    return MorphismDatumType( input_types[1].category );
 #    
@@ -66,12 +66,12 @@ DeclareAttribute( "DefiningPairOfMorphismBetweenCoequalizerPairs",
 
 #! @Description
 #!  Return the category $C$ underlying the category
-#!  <A>CoeqC</A> := <C>CoequalizerCompletion</C>( $C$ ).
+#!  <A>CoeqC</A> := <C>CoequalizerPreCompletion</C>( $C$ ).
 #! @Arguments CoeqC
 DeclareAttribute( "UnderlyingCategory",
-        IsCoequalizerCompletion );
+        IsCoequalizerPreCompletion );
 
-#CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoequalizerCompletion ],
+#CapJitAddTypeSignature( "UnderlyingCategory", [ IsCoequalizerPreCompletion ],
 #  function ( input_types )
 #    
 #    return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
@@ -79,7 +79,7 @@ DeclareAttribute( "UnderlyingCategory",
 #end );
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
-        IsCoequalizerCompletion );
+        IsCoequalizerPreCompletion );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying
@@ -87,7 +87,7 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 #! @Arguments UC
 #! @Returns a &CAP; functor
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
-        IsCoequalizerCompletion );
+        IsCoequalizerPreCompletion );
 
 ####################################
 #
@@ -98,6 +98,6 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 #! @Description
 #!  Return the finite coequalizer completion of the coartesian category <A>cat</A>.
 #! @Arguments cat
-DeclareAttribute( "CoequalizerCompletion",
+DeclareAttribute( "CoequalizerPreCompletion",
         IsCapCategory );
-#! @InsertChunk CoequalizerCompletion
+#! @InsertChunk CoequalizerPreCompletion
