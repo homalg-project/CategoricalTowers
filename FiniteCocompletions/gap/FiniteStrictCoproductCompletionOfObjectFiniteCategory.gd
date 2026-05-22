@@ -96,7 +96,21 @@ CapJitAddTypeSignature( "UnderlyingCategory", [ IsFiniteStrictCoproductCompletio
   function ( input_types )
     
     return CapJitDataTypeOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
+end );
 
+#! @Description
+#!  Return the set of objects in the object-finite category $C$ underlying the finite coproduct completion
+#!  category <A>UC</A><C> := FiniteStrictCoproductCompletionOfObjectFiniteCategory(</C> $C$ <C>)</C>).
+#! @Arguments UC
+DeclareAttribute( "SetOfObjectsOfUnderlyingCategory",
+        IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );
+
+CapJitAddTypeSignature( "SetOfObjectsOfUnderlyingCategory", [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) );
+    
 end );
 
 #! @Description
