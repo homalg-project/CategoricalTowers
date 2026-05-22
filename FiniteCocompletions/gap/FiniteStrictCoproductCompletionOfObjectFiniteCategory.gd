@@ -109,7 +109,7 @@ DeclareAttribute( "SetOfObjectsOfUnderlyingCategory",
 CapJitAddTypeSignature( "SetOfObjectsOfUnderlyingCategory", [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
   function ( input_types )
     
-    return CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) );
+    return CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( UnderlyingCategory( input_types[1].category ) ) );
     
 end );
 
