@@ -23,7 +23,7 @@
       for IsCoequalizerPreCompletion 8.1-4 
       for IsCoFreydCategory 12.1-1 
       for IsFiniteStrictCoproductCompletion 1.1-4 
-      for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-5 
+      for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-6 
       for IsFiniteStrictProductCompletion 2.1-4 
       for IsFreeDistributiveCategoryWithStrictProductAndCoproducts 4.2-2 
       for IsFreydCategory 11.1-1 
@@ -31,7 +31,7 @@
   [2XExtendFunctorToAbelianClosure[102X, for IsCapFunctor 13.2-3 
   [2XExtendFunctorToCoFreydCategory[102X, for IsCapFunctor 12.1-2 
   [2XExtendFunctorToFiniteStrictCoproductCompletion[102X, for IsCapFunctor 1.1-5 
-  [2XExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCapFunctor 3.1-6 
+  [2XExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategory[102X, for IsCapFunctor 3.1-7 
   [2XExtendFunctorToFiniteStrictProductCompletion[102X, for IsCapFunctor 2.1-5 
   [2XExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts[102X, for IsCapFunctor 4.2-3 
   [2XExtendFunctorToFreydCategory[102X, for IsCapFunctor 11.1-2 
@@ -83,7 +83,7 @@
   [2XIsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X, for IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryObject 5.3-3 
   [2XIsPairOfParallelArrowsCategory[102X, for IsCapCategory 6.4-1 
   [2XIsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X, for IsCapCategory 5.3-1 
-  [2XNumberOfObjectsOfUnderlyingCategory[102X, for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-4 
+  [2XNumberOfObjectsOfUnderlyingCategory[102X, for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-5 
   [2XPairOfIntAndList[102X, for IsObjectInFiniteStrictCoproductCompletion 1.1-1 
       for IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-1 
       for IsObjectInFiniteStrictProductCompletion 2.1-1 
@@ -95,6 +95,7 @@
       for IsObjectInPairOfParallelArrowsCategory 6.2-1 
   [2XPairOfParallelArrowsCategory[102X, for IsCapCategory 6.3-1 
   [2XQuiverOfCategoryOfQuivers[102X 6.1-1 
+  [2XSetOfObjectsOfUnderlyingCategory[102X, for IsFiniteStrictCoproductCompletionOfObjectFiniteCategory 3.1-4 
   [2XSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory[102X 5.2-1 
   [2XSkeletalFinSetsAsFreeElementaryToposOfInitialCategory[102X 5.2-2 
   [2XTensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure[102X, for IsCapCategoryMorphism, IsCapCategoryObject 14.1-3 
