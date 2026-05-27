@@ -547,7 +547,7 @@ BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SO
     
     mor_func := { s, m, r } -> AsSubcategoryCell( T, Yoneda_data[2]( UnderlyingCell( s ), m, UnderlyingCell( r ) ) );
     
-    data := AdditiveFunctorByTwoFunctionsData( B, T, obj_func , mor_func : full_functor := true, values_on_objects := [ SetOfObjects( B ), SetOfKnownObjects( T ) ] );
+    data := AdditiveFunctorDataFromValuesOnBasisMorphisms( B, T, obj_func , mor_func : is_full := true, known_values_on_objects := [ SetOfObjects( B ), SetOfKnownObjects( T ) ] );
     
     Y := CapFunctor( "Yoneda isomorphism", B, T );
     AddObjectFunction( Y, data[1] );

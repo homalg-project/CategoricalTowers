@@ -46,7 +46,6 @@ jobs:
           cp ./CategoricalTowers/dev/ci_gaprc /home/gap/.gap/gaprc
           git clone --depth 1 -vv https://github.com/homalg-project/homalg_project.git
           git clone --depth 1 -vv https://github.com/homalg-project/CAP_project.git
-          git clone --depth 1 -vv https://github.com/homalg-project/HigherHomologicalAlgebra.git
           git clone --depth 1 -vv https://github.com/homalg-project/QPA2.git
           git clone --depth 1 -vv https://github.com/homalg-project/FinSetsForCAP.git
           git clone --depth 1 -vv https://github.com/homalg-project/ArangoDBInterface.git
@@ -62,7 +61,6 @@ jobs:
           if [ -d "CAP_project/CartesianCategories" ]; then make -C "CAP_project/CartesianCategories" doc; fi
           if [ -d "CAP_project/AdditiveClosuresForCAP" ]; then make -C "CAP_project/AdditiveClosuresForCAP" doc; fi
           if [ -d "CAP_project/FreydCategoriesForCAP" ]; then make -C "CAP_project/FreydCategoriesForCAP" doc; fi
-          if [ -d "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" ]; then make -C "HigherHomologicalAlgebra/ToolsForHigherHomologicalAlgebra" doc; fi
           if [ -d "homalg_project/homalg" ]; then make -C "homalg_project/homalg" doc; fi
           if [ -d "homalg_project/Modules" ]; then make -C "homalg_project/Modules" doc; fi
           if [ -d "CategoricalTowers/ToolsForCategoricalTowers" ]; then make -C "CategoricalTowers/ToolsForCategoricalTowers" doc; fi
@@ -72,7 +70,6 @@ jobs:
           tar cf /tmp/deps.tar --exclude='.git' \
             homalg_project/ \
             CAP_project/ \
-            HigherHomologicalAlgebra/ \
             QPA2/ \
             FinSetsForCAP/ \
             ArangoDBInterface/ \
