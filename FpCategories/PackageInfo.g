@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FpCategories",
 Subtitle := "Finitely presented categories by generating quivers and relations",
-Version := "2026.05-01",
-Date := "2026-05-10",
+Version := "2026.05-02",
+Date := "2026-05-27",
 License := "GPL-2.0-or-later",
 
 
