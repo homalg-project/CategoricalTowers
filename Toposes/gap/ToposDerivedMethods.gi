@@ -1736,6 +1736,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
   InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism,
   [ [ MorphismsOfExternalHom, 1, RangeCategoryOfHomomorphismStructure ],
     [ IsCongruentForMorphisms, 2, RangeCategoryOfHomomorphismStructure ],
+    [ DistinguishedObjectOfHomomorphismStructure, 1 ],
     [ MorphismsOfExternalHom, 1 ] ],
   function( cat, a, b, iota )
     local H, mors_H, pos;
@@ -1743,7 +1744,7 @@ AddFinalDerivationBundle( "adding the homomorphism structure using MorphismsOfEx
     H := RangeCategoryOfHomomorphismStructure( cat );
     
     # 1_H -> Hom( a, b )
-    mors_H := MorphismsOfExternalHom( H, Source( iota ), Target( iota ) );
+    mors_H := MorphismsOfExternalHom( H, DistinguishedObjectOfHomomorphismStructure( cat ), Target( iota ) );
     
     pos := SafeUniquePositionProperty( mors_H, mor -> IsCongruentForMorphisms( H, mor, iota ) );
     
