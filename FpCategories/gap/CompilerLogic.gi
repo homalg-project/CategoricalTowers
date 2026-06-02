@@ -63,6 +63,16 @@ CapJitAddLogicTemplate(
     )
 );
 
+## needed by PrecompileCategoryFromDataTables.
+## which cannot ReadPackage( "FinSetsForCAP", "gap/CompilerLogic.gi" );
+CapJitAddLogicTemplate(
+    rec(
+        variable_names := [ ],
+        src_template := "1 + 0",
+        dst_template := "1",
+    )
+);
+
 CapJitAddLogicTemplate(
     rec(
         variable_names := [ "list", "from1", "to1", "from2", "to2" ],

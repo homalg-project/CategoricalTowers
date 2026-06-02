@@ -10,6 +10,14 @@
 @Section Attributes
 @Section GAP categories
 
+@Chapter Finite categories from data tables
+
+@Section Properties
+@Section Attributes
+@Section Operations
+@Section Constructors
+@Section GAP categories
+
 @Chapter Tools
 
 @Section Properties
@@ -17,4 +25,7 @@
 @Section Operations
 
 @Chapter Precompilation
+@Section PrecompileCategoryFromNerveData
 @InsertChunk PrecompileCategoryFromNerveData
+@Section PrecompileCategoryFromDataTables
+@InsertChunk PrecompileCategoryFromDataTables

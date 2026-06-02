@@ -140,3 +140,25 @@ DeclareOperation( "NaturalTransformation",
 #! @Group NaturalTransformation
 DeclareOperation( "NaturalTransformation",
         [ IsCapFunctor, IsList, IsCapFunctor ] );
+
+####################################
+#
+#! @Section Tools for categories
+#
+####################################
+
+DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsString" );
+
+DeclareGlobalFunction( "DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "IndicesOfGeneratingMorphismsAsString" );
+
+DeclareGlobalFunction( "IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "DecompositionIndicesOfAllMorphismsAsString" );
+
+DeclareGlobalFunction( "DecompositionIndicesOfAllMorphismsAsENHANCED_SYNTAX_TREE" );
+
+DeclareGlobalFunction( "DataTablesAsString" );
+
+DeclareGlobalFunction( "DataTablesAsENHANCED_SYNTAX_TREE" );

@@ -1,7 +1,7 @@
 #! @BeginChunk CategoryFromDataTables
 
 #! @Example
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpCategories", false );
 #! true
 Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
