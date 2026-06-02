@@ -8,10 +8,11 @@ Delta1 := SimplicialCategoryTruncatedInDegree( 1 );
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( Delta1 );
 #! 7
-mors := SetOfMorphisms( Delta1 );
+mors := SetOfMorphisms( Delta1 );;
+ViewObj( mors );
 #! [ [id(C0)]:(C0) → (C0), [id]:(C1) → (C0), [s]:(C0) → (C1), [t]:(C0) → (C1),
 #!   [id(C1)]:(C1) → (C1), [id⋅s]:(C1) → (C1), [id⋅t]:(C1) → (C1) ]
-List( mors, DecompositionOfMorphismInCategory );
+ViewObj( List( mors, DecompositionOfMorphismInCategory ) );
 #! [ [  ], [ [id]:(C1) → (C0) ], [ [s]:(C0) → (C1) ], [ [t]:(C0) → (C1) ],
 #!   [  ], [ [id]:(C1) → (C0), [s]:(C0) → (C1) ],
 #!   [ [id]:(C1) → (C0), [t]:(C0) → (C1) ] ]
@@ -20,18 +21,19 @@ C := CategoryFromDataTables( Delta1 );
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ]
 Size( C );
 #! 7
-morsC := SetOfMorphisms( C );
+morsC := SetOfMorphisms( C );;
+ViewObj( morsC );
 #! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
 #!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
-List( morsC, DecompositionOfMorphismInCategory );
+ViewObj( List( morsC, DecompositionOfMorphismInCategory ) );
 #! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
 #!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
 #!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
 NerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );
 #! true
-IndicesOfGeneratingMorphisms( C );
+ViewObj( IndicesOfGeneratingMorphisms( C ) );
 #! [ 1, 2, 3 ]
-SetOfGeneratingMorphisms( C );
+ViewObj( SetOfGeneratingMorphisms( C ) );
 #! [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ]
 Display( C );
 #! A CAP category with name
@@ -146,16 +148,14 @@ Display( HomStructure( tau, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }
 Display( HomStructure( idC1, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
-mors := SetOfMorphisms( C );
+mors := SetOfMorphisms( C );;
+ViewObj( mors );
 #! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
 #!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
-List( mors, OppositeMorphismInOppositeCategoryFromDataTables );
+ViewObj( List( mors, OppositeMorphismInOppositeCategoryFromDataTables ) );
 #! [ (C0)-[(C0)]->(C0), (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0),
 #! (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ]
-mors;
-#! [ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),
-#!   (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ]
-List( mors, DecompositionOfMorphismInCategory );
+ViewObj( List( mors, DecompositionOfMorphismInCategory ) );
 #! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
 #!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
 #!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
@@ -165,14 +165,15 @@ C_op := OppositeCategoryFromDataTables( C );
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );
 #! true
-IndicesOfGeneratingMorphisms( C_op );
+ViewObj( IndicesOfGeneratingMorphisms( C_op ) );
 #! [ 3, 1, 2 ]
-SetOfGeneratingMorphisms( C_op );
+ViewObj( SetOfGeneratingMorphisms( C_op ) );
 #! [ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ]
-mors_op := SetOfMorphisms( C_op );
+mors_op := SetOfMorphisms( C_op );;
+ViewObj( mors_op );
 #! [ (C0)-[(C0)]->(C0), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0), (C0)-[(id)]->(C1),
 #!   (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ]
-List( mors_op, DecompositionOfMorphismInCategory );
+ViewObj( List( mors_op, DecompositionOfMorphismInCategory ) );
 #! [ [  ], [ (C1)-[(s)]->(C0) ], [ (C1)-[(t)]->(C0) ], [ (C0)-[(id)]->(C1) ],
 #!   [  ], [ (C1)-[(s)]->(C0), (C0)-[(id)]->(C1) ],
 #!   [ (C1)-[(t)]->(C0), (C0)-[(id)]->(C1) ] ]

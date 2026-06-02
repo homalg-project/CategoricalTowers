@@ -430,8 +430,8 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( CreateObject,
-        "for a category from data tables and an integer",
-        [ IsCategoryFromDataTables, IsInt ],
+        "for a category from data tables and a big integer",
+        [ IsCategoryFromDataTables, IsBigInt ],
         
   function( C, o )
     
@@ -441,8 +441,8 @@ end );
 
 ##
 InstallMethod( \/,
-        "for an integer and a category from data tables",
-        [ IsInt, IsCategoryFromDataTables ],
+        "for a big integer and a category from data tables",
+        [ IsBigInt, IsCategoryFromDataTables ],
         
   function( o, C )
     
@@ -452,8 +452,8 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateMorphism,
-        "for a category from data tables, two objects therein, and an integer",
-        [ IsCategoryFromDataTables, IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+        "for a category from data tables, two objects therein, and a big integer",
+        [ IsCategoryFromDataTables, IsObjectInCategoryFromDataTables, IsBigInt, IsObjectInCategoryFromDataTables ],
         
   function( C, source, m, range )
     
@@ -466,8 +466,8 @@ end );
 
 ##
 InstallMethod( CreateMorphism,
-        "for two objects in a category from data tables and an integer",
-        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ],
+        "for two objects in a category from data tables and a big integer",
+        [ IsObjectInCategoryFromDataTables, IsBigInt, IsObjectInCategoryFromDataTables ],
         
   function( source, m, range )
     
@@ -477,8 +477,8 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( CreateMorphism,
-        "for a category from data tables and an integer",
-        [ IsCategoryFromDataTables, IsInt ],
+        "for a category from data tables and a big integer",
+        [ IsCategoryFromDataTables, IsBigInt ],
         
   function( C, m )
     local data_tables, s, t;
@@ -496,14 +496,12 @@ InstallMethodForCompilerForCAP( CreateMorphism,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category from data tables and a positive integer",
-        [ IsCategoryFromDataTables, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a category from data tables",
+        [ IsString, IsCategoryFromDataTables ],
         
-  function( C, string_as_int )
-    local name, labels;
-    
-    name := NameRNam( string_as_int );
+  function( name, C )
+    local labels;
     
     labels := C!.labels;
     
@@ -518,6 +516,10 @@ InstallMethod( \.,
     Error( "no object or morphism of name ", name, "\n" );
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryFromDataTables );
+# =#
 
 ##
 InstallOtherMethod( CategoryFromNerveData,
@@ -573,7 +575,7 @@ InstallOtherMethod( DecompositionIndicesOfMorphism,
     s := IndexOfObject( Source( mor ) );
     t := IndexOfObject( Target( mor ) );
     
-    return DecompositionIndicesOfAllMorphisms( C )[1 + t, 1 + s][1 + HomStructure( mor )(0)];
+    return DecompositionIndicesOfAllMorphisms( C )[1 + t][1 + s][1 + HomStructure( mor )(0)];
     
 end );
 
@@ -631,11 +633,13 @@ InstallMethod( OppositeMorphismInOppositeCategoryFromDataTables,
         [ IsMorphismInCategoryFromDataTables ],
         
   function( mor )
-    local C;
+    local C, C_op;
     
     C := CapCategory( mor );
     
-    return OppositeMorphismInOppositeCategoryFromDataTables( OppositeCategoryFromDataTables( C ), C, mor );
+    C_op := OppositeCategoryFromDataTables( C );
+    
+    return CallFuncListAtRuntime( OppositeMorphismInOppositeCategoryFromDataTables, [ C_op, C, mor ] );
     
 end );
 
@@ -764,7 +768,7 @@ InstallMethod( PrintObj,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category from data tables",
         [ IsObjectInCategoryFromDataTables ],
         
@@ -775,7 +779,7 @@ InstallMethod( Display,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category from data tables",
         [ IsMorphismInCategoryFromDataTables ],
         

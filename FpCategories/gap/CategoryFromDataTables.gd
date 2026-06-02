@@ -28,13 +28,13 @@ DeclareCategory( "IsCellInCategoryFromDataTables",
 #!  The &GAP; category of objects in a category from data tables.
 #! @Arguments object
 DeclareCategory( "IsObjectInCategoryFromDataTables",
-        IsCellInCategoryFromDataTables and IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInCategoryFromDataTables ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a category from data tables.
 #! @Arguments morphism
 DeclareCategory( "IsMorphismInCategoryFromDataTables",
-        IsCellInCategoryFromDataTables and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCategoryFromDataTables ) );
 
 ####################################
 #
@@ -190,7 +190,7 @@ DeclareAttribute( "CategoryFromDataTables",
 #! @Arguments C, o
 #! @Returns a &CAP; category
 DeclareOperation( "CreateObject",
-        [ IsCategoryFromDataTables, IsInt ] );
+        [ IsCategoryFromDataTables, IsBigInt ] );
 
 #! @Description
 #!  Construct the <A>m</A>-th morphism <A>source</A>$\to$<A>range</A>
@@ -199,12 +199,12 @@ DeclareOperation( "CreateObject",
 #! @Returns a &CAP; category
 #! @Group CreateMorphism
 DeclareOperation( "CreateMorphism",
-        [ IsCategoryFromDataTables, IsInt ] );
+        [ IsCategoryFromDataTables, IsBigInt ] );
 
 #! @Arguments source, m, range
 #! @Group CreateMorphism
 DeclareOperation( "CreateMorphism",
-        [ IsObjectInCategoryFromDataTables, IsInt, IsObjectInCategoryFromDataTables ] );
+        [ IsObjectInCategoryFromDataTables, IsBigInt, IsObjectInCategoryFromDataTables ] );
 
 DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsCategoryFromDataTables, IsList, IsCapCategory ] );

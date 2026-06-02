@@ -595,7 +595,7 @@ InstallMethodForCompilerForCAP( CreateObject,
                        [ o ],
                        C0 );
     
-    return ObjectConstructor( C, obj_map );
+    return CallFuncListAtRuntime( ObjectConstructor, [ C, obj_map ] );
     
 end );
 
@@ -629,10 +629,7 @@ InstallMethodForCompilerForCAP( CreateMorphism,
                        [ m ],
                        C1 );
     
-    return MorphismConstructor( C,
-                   source,
-                   mor_map,
-                   range );
+    return CallFuncListAtRuntime( MorphismConstructor, [ C, source, mor_map, range ] );
     
 end );
 
@@ -836,7 +833,7 @@ InstallMethod( DataTablesOfCategory,
     
     V := RangeCategoryOfHomomorphismStructure( C );
     
-    T := DistinguishedObjectOfHomomorphismStructure( C );
+    T := CallFuncListAtRuntime( DistinguishedObjectOfHomomorphismStructure, [ C ] );
     
     nerve_data := NerveData( C );
     
@@ -858,10 +855,10 @@ InstallMethod( DataTablesOfCategory,
             return -1;
         fi;
         
-        return MorphismDatum( C,
-                       PreCompose( C,
+        return CallFuncListAtRuntime( MorphismDatum, [ C,
+                       CallFuncListAtRuntime( PreCompose, [ C,
                                CreateMorphism( C, i ),
-                               CreateMorphism( C, j ) ) )( 0 );
+                               CreateMorphism( C, j ) ] ) ] )( 0 );
         
     end;
     
@@ -874,9 +871,9 @@ InstallMethod( DataTablesOfCategory,
       function( i, j )
         
         return ObjectDatum( V,
-                       HomomorphismStructureOnObjects( C,
+                       CallFuncListAtRuntime( HomomorphismStructureOnObjects, [ C,
                                CreateObject( C, i ),
-                               CreateObject( C, j ) ) );
+                               CreateObject( C, j ) ] ) );
         
     end;
     
@@ -889,9 +886,9 @@ InstallMethod( DataTablesOfCategory,
       function( i, j )
         
         return MorphismDatum( V,
-                       HomomorphismStructureOnMorphisms( C,
+                       CallFuncListAtRuntime( HomomorphismStructureOnMorphisms, [ C,
                                CreateMorphism( C, i ),
-                               CreateMorphism( C, j ) ) );
+                               CreateMorphism( C, j ) ] ) );
         
     end;
     
@@ -904,8 +901,8 @@ InstallMethod( DataTablesOfCategory,
       function( i )
         
         return MorphismDatum( V,
-                       InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( C,
-                               CreateMorphism( C, i ) ) );
+                       CallFuncListAtRuntime( InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure, [ C,
+                               CreateMorphism( C, i ) ] ) );
         
     end;
     
@@ -916,15 +913,15 @@ InstallMethod( DataTablesOfCategory,
     elimination :=
       function( i, j, k )
         
-        return MorphismDatum( C,
-                       InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( C,
+        return CallFuncListAtRuntime( MorphismDatum, [ C,
+                       CallFuncListAtRuntime( InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism, [ C,
                                CreateObject( C, i ),
                                CreateObject( C, j ),
                                MorphismConstructor( V,
                                        T,
                                        [ k ],
                                        ObjectConstructor( V,
-                                               hom_on_objs( i, j ) ) ) ) )( 0 );
+                                               hom_on_objs( i, j ) ) ) ] ) ] )( 0 );
         
     end;
     
