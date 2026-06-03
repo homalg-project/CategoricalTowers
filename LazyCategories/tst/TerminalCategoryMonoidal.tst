@@ -69,9 +69,10 @@ gap> MonoidalCategoriesTest( L, opposite_primitive, a, z, z, beta, alpha );;
 
 gap> a := "a" / T / L;;
 gap> l := [ "b" / T / L, "c" / T / L, "d" / T / L ];;
+gap> M := [ 3, 2, 4 ];;
 
-gap> AdditiveMonoidalCategoriesTest( L, opposite_primitive, a, l );;
-gap> AdditiveMonoidalCategoriesTest( L, opposite, a, l );;
+gap> AdditiveMonoidalCategoriesTest( L, opposite_primitive, a, l, M );;
+gap> AdditiveMonoidalCategoriesTest( L, opposite, a, l, M );;
 
 ##############################################
 # BraidedMonoidalCategoriesTest
