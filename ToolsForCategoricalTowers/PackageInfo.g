@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "ToolsForCategoricalTowers",
 Subtitle := "Tools for CategoricalTowers",
-Version := "2026.05-04",
-Date := "2026-05-11",
-Date := "2026-05-11",
+Version := "2026.06-01",
+Date := "2026-06-03",
+Date := "2026-06-03",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -71,8 +71,8 @@ Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [
                    [ "CAP", ">= 2026.05-02" ],
-                   [ "MonoidalCategories", ">= 2026.05-01" ],
-                   [ "CartesianCategories", ">= 2026.05-01" ],
+                   [ "MonoidalCategories", ">= 2026.06-01" ],
+                   [ "CartesianCategories", ">= 2026.06-01" ],
                    [ "ToolsForHomalg", ">= 2026.04-01" ],
                    ],
   SuggestedOtherPackages := [
