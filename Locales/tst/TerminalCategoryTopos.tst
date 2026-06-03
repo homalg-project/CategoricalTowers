@@ -72,9 +72,10 @@ gap> CocartesianCategoriesTest( T, opposite_primitive, a, z, z, beta, alpha );;
 
 gap> a := "a" / T;;
 gap> L := [ "b" / T, "c" / T, "d" / T ];;
+gap> M := [ 3, 2, 4 ];;
 
-gap> DistributiveCartesianCategoriesTest( T, opposite, a, L );;
-gap> DistributiveCartesianCategoriesTest( T, opposite_primitive, a, L );;
+gap> DistributiveCartesianCategoriesTest( T, opposite, a, L, M );;
+gap> DistributiveCartesianCategoriesTest( T, opposite_primitive, a, L, M );;
 
 ##############################################
 # CodistributiveCocartesianCategoriesTest
@@ -82,9 +83,10 @@ gap> DistributiveCartesianCategoriesTest( T, opposite_primitive, a, L );;
 
 gap> a := "a" / T;;
 gap> L := [ "b" / T, "c" / T, "d" / T ];;
+gap> M := [ 3, 2, 4 ];;
 
-gap> CodistributiveCocartesianCategoriesTest( T, opposite, a, L );;
-gap> CodistributiveCocartesianCategoriesTest( T, opposite_primitive, a, L );;
+gap> CodistributiveCocartesianCategoriesTest( T, opposite, a, L, M );;
+gap> CodistributiveCocartesianCategoriesTest( T, opposite_primitive, a, L, M );;
 
 ##############################################
 # BraidedCartesianCategoriesTest

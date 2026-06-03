@@ -14,7 +14,7 @@ IsTerminalCategory( T );
 Display( T );
 #! A CAP category with name PreSheaves( InitialCategory( ), InitialCategory( ) ):
 #! 
-#! 127 primitive operations were used to derive 654 operations for this category \
+#! 127 primitive operations were used to derive 662 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
