@@ -1,6 +1,366 @@
   
-  [1X9 [33X[0;0YLinear closures of path categories and their quotients[133X[101X
+  [1X9 [33X[0;0YCategory of finitely presented associative unital algebras[133X[101X
   
   
-  [1X9.1 [33X[0;0YConstructors[133X[101X
+  [1X9.1 [33X[0;0YAttributes[133X[101X
+  
+  [1X9.1-1 UnderlyingCategoryOfMatrices[101X
+  
+  [33X[1;0Y[29X[2XUnderlyingCategoryOfMatrices[102X( [3XFpAlg_k[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
+  The output is an underlying category of [23Xk[123X-matrices.[133X
+  
+  [1X9.1-2 CoefficientsRing[101X
+  
+  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3XFpAlg_k[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe input is a category of finitely presented associative unital [23Xk[123X-algebras.
+  The output is the underlying commutative ring [23Xk[123X of coefficients.[133X
+  
+  [1X9.1-3 CoefficientsRing[101X
+  
+  [33X[1;0Y[29X[2XCoefficientsRing[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
+  is the underlying commutative ring [23Xk[123X of coefficients.[133X
+  
+  [1X9.1-4 DefiningSeptupleOfFinitelyPresentedAlgebra[101X
+  
+  [33X[1;0Y[29X[2XDefiningSeptupleOfFinitelyPresentedAlgebra[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [1X9.1-5 ListOfImages[101X
+  
+  [33X[1;0Y[29X[2XListOfImages[102X( [3Xfp_algebra_morphism[103X ) [32X attribute[133X
+  
+  [1X9.1-6 NrGenerators[101X
+  
+  [33X[1;0Y[29X[2XNrGenerators[102X( [3Xfp_algebra[103X ) [32X operation[133X
+  
+  [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
+  the number of generators.[133X
+  
+  [1X9.1-7 Generators[101X
+  
+  [33X[1;0Y[29X[2XGenerators[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
+  the  list  of  generators  of  the underlying finitely presented associative
+  unital algebra.[133X
+  
+  [1X9.1-8 AssociatedLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XAssociatedLinearClosureOfPathCategory[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
+  is  the corresponding ambient free [23Xk[123X-algebra as a [23Xk[123X-linear closure of a path
+  category of loops on a single vertex.[133X
+  
+  [1X9.1-9 DefiningRelations[101X
+  
+  [33X[1;0Y[29X[2XDefiningRelations[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe input is a finitely presented associative unital algebra. The output its
+  list of defining relations.[133X
+  
+  [1X9.1-10 GroebnerBasisOfDefiningRelations[101X
+  
+  [33X[1;0Y[29X[2XGroebnerBasisOfDefiningRelations[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
+  the Gröbner basis of its list of defining relations.[133X
+  
+  [1X9.1-11 AssociatedQuotientCategoryOfLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
+  is  the  corresponding  underlying  finitely  presented  associative  unital
+  [23Xk[123X-algebra as a quotient of a [23Xk[123X-linear closure of a path category of loops on
+  a single vertex.[133X
+  
+  [1X9.1-12 Dimension[101X
+  
+  [33X[1;0Y[29X[2XDimension[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is a finitely presented associative unital [23Xk[123X-algebra. The output
+  its [23Xk[123X-dimension.[133X
+  
+  [1X9.1-13 AmbientAlgebra[101X
+  
+  [33X[1;0Y[29X[2XAmbientAlgebra[102X( [3Xfp_algebra[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input is a finitely presented associative unital algebra. The output is
+  the corresponding ambient free algebra.[133X
+  
+  
+  [1X9.2 [33X[0;0YConstructors[133X[101X
+  
+  [1X9.2-1 CategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xlin_cat[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a  [23Xk[123X-linear category [3Xlin_cat[103X of [23Xk[123X-modules. The output is the
+  category of finitely presented associative unital algebras over [23Xk[123X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X# CI_SINGLE_JOB_ID:CategoryOfFpAlgebras[128X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgRingOfIntegersInSingular( 2 );[127X[104X
+    [4X[28XGF(2)[128X[104X
+    [4X[25Xgap>[125X [27XAlg_F := CategoryOfFpAlgebras( F );[127X[104X
+    [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( Alg_F );[127X[104X
+    [4X[28XA CAP category with name CategoryOfFpAlgebras( GF(2) ):[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X31 primitive operations were used to derive 151 operations for this category \[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsBicartesianCategory[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
+    [4X[28X* IsSymmetricMonoidalCategory[128X[104X
+    [4X[25Xgap>[125X [27XT := TerminalObject( Alg_F );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( T );[127X[104X
+    [4X[28XGF(2) / [ 1*id(o) ][128X[104X
+    [4X[25Xgap>[125X [27Xiota := UniversalMorphismFromInitialObject( T );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XI := Source( iota );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( I );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
+    [4X[28XGF(2) / [ 1*id(o) ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XK := TensorUnit( Alg_F );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( K );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XK = I;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq1 := FinQuiver( "q(o)[x:o->o,y:o->o]" );[127X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" )[128X[104X
+    [4X[25Xgap>[125X [27XP1 := PathCategory( q1 );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XL1 := F[P1];[127X[104X
+    [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xone := L1.id_o;;[127X[104X
+    [4X[25Xgap>[125X [27Xx := L1.x;;[127X[104X
+    [4X[25Xgap>[125X [27Xy := L1.y;;[127X[104X
+    [4X[25Xgap>[125X [27Xrelations1 := [ x^2-x,  y^3-y,  x*y-y*(x+one) ];[127X[104X
+    [4X[28X[ 1*x^2 + 1*x:(o) → (o), 1*y^3 + 1*y:(o) → (o),\[128X[104X
+    [4X[28X  1*y⋅x + 1*x⋅y + 1*y:(o) → (o) ][128X[104X
+    [4X[25Xgap>[125X [27XQ1 := L1 / relations1;[127X[104X
+    [4X[28XGF(2)-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o,y:o→o]" ) ) ) / \[128X[104X
+    [4X[28X[ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XDimension( Q1 );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XAQ1 := AssociatedAlgebroid( Q1 );[127X[104X
+    [4X[28XAlgebra( GF(2), FreeCategory( RightQuiver( "q(o)[x:o->o,y:o->o]" ) ) ) / \[128X[104X
+    [4X[28Xrelations[128X[104X
+    [4X[25Xgap>[125X [27XDimension( AQ1 );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XA1 := Q1 / Alg_F;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XA1 = ( L1 / Alg_F ) / relations1;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A1 );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A1 );[127X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27Xunit1 := UniversalMorphismFromInitialObject( A1 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( unit1 );[127X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[  ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27Xcounit1 := Counit( A1, [ 1, 0 ] );[127X[104X
+    [4X[28X<A split epimorphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( counit1 );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[ 1*id(o), 0 ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, \[128X[104X
+    [4X[28X1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( counit1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xo := A1.id_o;[127X[104X
+    [4X[28X1*id(o):(o) → (o)[128X[104X
+    [4X[25Xgap>[125X [27Xx := A1.x;[127X[104X
+    [4X[28X1*x:(o) → (o)[128X[104X
+    [4X[25Xgap>[125X [27Xy := A1.y;[127X[104X
+    [4X[28X1*y:(o) → (o)[128X[104X
+    [4X[25Xgap>[125X [27Xcomult1 := Comultiplication( A1,[127X[104X
+    [4X[25X>[125X [27X                   [ [ [ o, x ], [ x, o ], [ o, o ], [ y^2, y^2 ] ],[127X[104X
+    [4X[25X>[125X [27X                     [ [ o, y ], [ y, o + y^2 ] ] ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( comult1 );[127X[104X
+    [4X[28XGF(2)<a1,a2,a3,a4> / [ 1*a1^2 + 1*a1, 1*a2^3 + 1*a2, 1*a2⋅a1 + 1*a1⋅a2 + 1*a2, ... ][128X[104X
+    [4X[28X ^[128X[104X
+    [4X[28X |[128X[104X
+    [4X[28X[ 1*a2^2⋅a4^2 + 1*a1 + 1*a3 + 1*id(o), 1*a2⋅a4^2 + 1*a2 + 1*a4 ][128X[104X
+    [4X[28X |[128X[104X
+    [4X[28XGF(2)<x,y> / [ 1*x^2 + 1*x, 1*y^3 + 1*y, 1*y⋅x + 1*x⋅y + 1*y ][128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( comult1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xq2 := FinQuiver( "q(o)[x:o->o,y:o->o,z:o->o,t:o->o]" );[127X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" )[128X[104X
+    [4X[25Xgap>[125X [27XP2 := PathCategory( q2 );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27XL2 := F[P2];[127X[104X
+    [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XQ2 := L2 / [ L2.x+L2.y+L2.t+L2.tt-L2.id_o, L2.xx-L2.x, L2.yy-L2.y, L2.xy, L2.yx,[127X[104X
+    [4X[25X>[125X [27X             L2.zz-L2.t-L2.tt, L2.zz-L2.ttt, L2.zt-L2.ttz, L2.zt+L2.ztt-L2.z,[127X[104X
+    [4X[25X>[125X [27X             L2.xt+L2.yt, L2.tx+L2.ty ];[127X[104X
+    [4X[28XGF(2)-LinearClosure( PathCategory( \[128X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o,y:o→o,z:o→o,t:o→o]" ) ) ) / \[128X[104X
+    [4X[28X[ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, 1*y^2 + 1*y, ... ][128X[104X
+    [4X[25Xgap>[125X [27XA2 := Q2 / Alg_F;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A2 );[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( A2 );[127X[104X
+    [4X[28XGF(2)<x,y,z,t> / [ 1*t^2 + 1*x + 1*y + 1*t + 1*id(o), 1*x^2 + 1*x, \[128X[104X
+    [4X[28X1*y^2 + 1*y, ... ][128X[104X
+    [4X[25Xgap>[125X [27XA12 := TensorProduct( A1, A2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A12 );[127X[104X
+    [4X[28X36[128X[104X
+    [4X[25Xgap>[125X [27Xbeta := Braiding( A1, A2 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xbeta_i := BraidingInverse( A1, A2 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha := AssociatorLeftToRight( A1, A2, A1 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xalpha_i := AssociatorRightToLeft( A1, A2, A1 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XA1xA2 := DirectProduct( A1, A2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A1xA2 );[127X[104X
+    [4X[28X12[128X[104X
+    [4X[25Xgap>[125X [27Xdiagram := [ A1, A2 ];[127X[104X
+    [4X[28X[ <An object in CategoryOfFpAlgebras( GF(2) )>,[128X[104X
+    [4X[28X  <An object in CategoryOfFpAlgebras( GF(2) )> ][128X[104X
+    [4X[25Xgap>[125X [27Xpr1 := ProjectionInFactorOfDirectProduct( diagram, 1 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xpr2 := ProjectionInFactorOfDirectProduct( diagram, 2 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xu := UniversalMorphismIntoDirectProduct( [ pr1, pr2 ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( u );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xv := TensorProduct( pr1, pr2 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XA1uA2 := Coproduct( A1, A2 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xi1 := InjectionOfCofactorOfCoproduct( diagram, 1 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xi2 := InjectionOfCofactorOfCoproduct( diagram, 2 );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xw := UniversalMorphismFromCoproduct( [ i1, i2 ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( w );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xcart_fact := LeftCartesianDistributivityFactoring( A1, [ A1, A2 ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xcocart_expand := LeftCocartesianCodistributivityExpanding( A1, [ A1, A2 ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+  [4X[32X[104X
+  
+  [1X9.2-2 CategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XCategoryOfFpAlgebras[102X( [3Xk[103X ) [32X attribute[133X
+  
+  [33X[0;0YThe  input  is  a commutative ring [3Xk[103X. The output is the category of finitely
+  presented associative unital algebras over [23Xk[123X.[133X
+  
+  [33X[0;0YThe  category  of  (finitely  presented)  algebras is not codistributive. An
+  example   was  suggested  by  a  referee  in  the  paper  the  paper  titled
+  "Distributivity  ot  coproducts over products" by B. A. Davey and H. Werner,
+  Algebra Universalis, 12 (1981) 387-394.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "Algebroids", false );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XF := HomalgRingOfIntegers( 2 );[127X[104X
+    [4X[28XGF(2)[128X[104X
+    [4X[25Xgap>[125X [27XAlg_F := CategoryOfFpAlgebras( F );[127X[104X
+    [4X[28XCategoryOfFpAlgebras( GF(2) )[128X[104X
+    [4X[25Xgap>[125X [27XF0 := InitialObject( Alg_F );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( F0 );[127X[104X
+    [4X[28XGF(2) / [  ][128X[104X
+    [4X[25Xgap>[125X [27XA := DirectProduct( F0, F0 );[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A );[127X[104X
+    [4X[28X2[128X[104X
+    [4X[25Xgap>[125X [27XB := F0;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XC := F0;[127X[104X
+    [4X[28X<An object in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27Xeta := LeftCocartesianCodistributivityExpanding( A, [ B, C ] );[127X[104X
+    [4X[28X<A morphism in CategoryOfFpAlgebras( GF(2) )>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( eta );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDimension( Source( eta ) );[127X[104X
+    [4X[28Xinfinity[128X[104X
+    [4X[25Xgap>[125X [27XDimension( Target( eta ) );[127X[104X
+    [4X[28X4[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X9.3 [33X[0;0YOperations[133X[101X
+  
+  [1X9.3-1 EvaluateFpAlgebraMorphism[101X
+  
+  [33X[1;0Y[29X[2XEvaluateFpAlgebraMorphism[102X( [3XFpAlg_k[103X, [3Xfp_algebra_morphism[103X, [3XV[103X, [3Xobj[103X, [3Xlist_of_morphisms[103X ) [32X operation[133X
+  
+  [1X9.3-2 Counit[101X
+  
+  [33X[1;0Y[29X[2XCounit[102X( [3Xfp_algebra[103X, [3Xlist[103X ) [32X operation[133X
+  
+  [1X9.3-3 Comultiplication[101X
+  
+  [33X[1;0Y[29X[2XComultiplication[102X( [3Xfp_algebra[103X, [3Xlist[103X ) [32X operation[133X
+  
+  [1X9.3-4 AssociatedFunctorOfLinearClosuresOfPathCategoriesData[101X
+  
+  [33X[1;0Y[29X[2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X( [3XFpAlg_k[103X, [3Xfp_algebra_morphism[103X ) [32X operation[133X
+  
+  
+  [1X9.4 [33X[0;0YGAP categories[133X[101X
+  
+  [1X9.4-1 IsCategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryOfFpAlgebras[102X( [3Xcategory[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  categories  of finitely presented associative unital
+  algebras.[133X
+  
+  [1X9.4-2 IsObjectInCategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCategoryOfFpAlgebras[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of finitely presented associative unital algebras.[133X
+  
+  [1X9.4-3 IsMorphismInCategoryOfFpAlgebras[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCategoryOfFpAlgebras[102X( [3Xmorphism[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  [5XGAP[105X  category  of  morphisms  of  finitely presented associative unital
+  algebras.[133X
   
