@@ -1446,11 +1446,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true and
        HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        if IsFpCategory( C ) and IsSkeletalCategoryOfFiniteSets( H ) then
-            
-            #ADD_FUNCTIONS_FOR_FiniteStrictCoproductCompletionOfFpCategoryPrecompiled( UC );
-            
-        elif IsCategoryFromDataTables( C ) and IsSkeletalCategoryOfFiniteSets( H ) then
+        if IsCategoryFromDataTables( C ) and IsSkeletalCategoryOfFiniteSets( H ) then
             
             ADD_FUNCTIONS_FOR_FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled( UC );
             

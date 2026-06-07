@@ -632,7 +632,7 @@ BindGlobal( "FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled"
     local sFinSets;
     sFinSets := SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true,
         overhead := true );
-    return FiniteStrictCoproductCompletion( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets,
+    return FiniteStrictCoproductCompletion( CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets,
             FinalizeCategory := true ) : FinalizeCategory := true ) );
 end;
         
