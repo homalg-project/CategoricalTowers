@@ -1184,3 +1184,130 @@ InstallMethod( NaturalTransformation,
     return eta;
     
 end );
+
+##
+InstallGlobalFunction( DefiningTripleOfUnderlyingQuiverAsString,
+  function( defining_triple_of_underlying_quiver )
+    local string;
+    
+    string := Concatenation( Concatenation(
+                      [ "Triple( ", String( defining_triple_of_underlying_quiver[1] ), ", ", String( defining_triple_of_underlying_quiver[2] ), ", " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( defining_triple_of_underlying_quiver[3], pair ->
+                              Concatenation( "Pair( ", String( pair[1] ), ", ", String( pair[2] ), " )" ) ), ", " ) ],
+                      [ " ], { } -> CapJitDataTypeOfListOf( IsInt ) ) )" ] ) );
+    
+    Assert( 0, EvalString( string ) = defining_triple_of_underlying_quiver );
+    
+    return string;
+    
+end );
+
+##
+InstallGlobalFunction( DefiningTripleOfUnderlyingQuiverAsENHANCED_SYNTAX_TREE,
+  function( defining_triple_of_underlying_quiver )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> defining_triple_of_underlying_quiver ).bindings.BINDING_RETURN_VALUE",
+                   rec( defining_triple_of_underlying_quiver := DefiningTripleOfUnderlyingQuiverAsString( defining_triple_of_underlying_quiver ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( IndicesOfGeneratingMorphismsAsString,
+  function( indices_of_generating_morphisms )
+    local string;
+    
+    string := Concatenation( "CapJitTypedExpression( ", String( indices_of_generating_morphisms ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" );
+    
+    Assert( 0, EvalString( string ) = indices_of_generating_morphisms );
+    
+    return string;
+    
+end );
+
+##
+InstallGlobalFunction( IndicesOfGeneratingMorphismsAsENHANCED_SYNTAX_TREE,
+  function( indices_of_generating_morphisms )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> indices_of_generating_morphisms ).bindings.BINDING_RETURN_VALUE",
+                   rec( indices_of_generating_morphisms := IndicesOfGeneratingMorphismsAsString( indices_of_generating_morphisms ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( DecompositionIndicesOfAllMorphismsAsString,
+  function( decomposition_of_all_morphisms )
+    local string;
+    
+    string := Concatenation( [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( decomposition_of_all_morphisms, s ->
+                      Concatenation( "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( s, t ->
+                              Concatenation( "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( t, mor_st ->
+                                   Concatenation( "CapJitTypedExpression( ", String( mor_st ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                                      " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) )" ) ), ", " ),
+                              " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) )" ) ), ", " ),
+                      " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) ) )" ] );
+    
+    Assert( 0, EvalString( string ) = decomposition_of_all_morphisms );
+    
+    return string;
+    
+end );
+
+##
+InstallGlobalFunction( DecompositionIndicesOfAllMorphismsAsENHANCED_SYNTAX_TREE,
+  function( decomposition_of_all_morphisms )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> decomposition_of_all_morphisms ).bindings.BINDING_RETURN_VALUE",
+                   rec( decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsAsString( decomposition_of_all_morphisms ) ) );
+    
+end );
+
+##
+InstallGlobalFunction( DataTablesAsString,
+  function( data_tables )
+    local string;
+    
+    string := Concatenation( Concatenation(
+                      [ "Pair( Pair( ", String( data_tables[1][1] ), ", ", String( data_tables[1][2] ), " ), ", ],
+                      [ "NTuple( 8, " ],
+                      [ "CapJitTypedExpression( ", String( data_tables[2][1] ), ", { } -> CapJitDataTypeOfListOf( IsInt ) ), " ],
+                      [ "CapJitTypedExpression( ", String( data_tables[2][2] ), ", { } -> CapJitDataTypeOfListOf( IsInt ) ), " ],
+                      [ "CapJitTypedExpression( ", String( data_tables[2][3] ), ", { } -> CapJitDataTypeOfListOf( IsInt ) ), " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( data_tables[2][4], pre ->
+                              Concatenation( "CapJitTypedExpression( ", String( pre ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                        " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ), " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( data_tables[2][5], s ->
+                              Concatenation( "CapJitTypedExpression( ", String( s ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                        " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ), " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( data_tables[2][6], pre ->
+                              Concatenation( "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( pre, post ->
+                                      Concatenation( "CapJitTypedExpression( ", String( post ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                                      " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) )" ) ), ", " ),
+                        " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) ), " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( data_tables[2][7], mor ->
+                              Concatenation( "CapJitTypedExpression( ", String( mor ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                        " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ), " ],
+                      [ "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( data_tables[2][8], s ->
+                              Concatenation( "CapJitTypedExpression( [ ", JoinStringsWithSeparator( List( s, t ->
+                                      Concatenation( "CapJitTypedExpression( ", String( t ), ", { } -> CapJitDataTypeOfListOf( IsInt ) )" ) ), ", " ),
+                                      " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) )" ) ), ", " ),
+                        " ], { } -> CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( CapJitDataTypeOfListOf( IsInt ) ) ) )" ],
+                      [ " ) )" ] ) );
+    
+    Assert( 0, EvalString( string ) = data_tables );
+    
+    return string;
+    
+end );
+
+##
+InstallGlobalFunction( DataTablesAsENHANCED_SYNTAX_TREE,
+  function( data_tables )
+    
+    return ReplacedStringViaRecord(
+                   "ENHANCED_SYNTAX_TREE( x -> data_tables ).bindings.BINDING_RETURN_VALUE",
+                   rec( data_tables := DataTablesAsString( data_tables ) ) );
+    
+end );

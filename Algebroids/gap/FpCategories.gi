@@ -267,6 +267,25 @@ InstallMethod( DataTablesOfCategory,
 end );
 
 ##
+InstallMethod( CategoryFromDataTables,
+        "for a f.p. category",
+        [ IsFpCategory ],
+        
+  function( C )
+    
+    return CategoryFromDataTables(
+                   rec( name := Name( C ),
+                        range_of_HomStructure := RangeCategoryOfHomomorphismStructure( C ),
+                        data_tables := DataTablesOfCategory( C ),
+                        indices_of_generating_morphisms := IndicesOfGeneratingMorphismsFromHomStructure( C ),
+                        decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
+                        relations := RelationsAmongGeneratingMorphisms( C ),
+                        labels := [ List( SetOfObjects( C ), Label ), List( SetOfGeneratingMorphisms( C ), Label ) ],
+                        properties := ListKnownCategoricalProperties( C ) ) );
+    
+end );
+
+##
 InstallMethod( AssociatedFreeCategory,
         "for a path category",
         [ IsPathCategory ],

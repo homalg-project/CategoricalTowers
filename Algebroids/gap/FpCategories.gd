@@ -477,3 +477,10 @@ DeclareOperation( "MorphismInFpCategory",
 #! @Arguments path, A
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "\/", [ IsPath, IsFpCategory ] );
+
+#! @Description
+#!  Returns the <C>CategoryFromDataTables</C> of the f.p. category <A>C</A>.
+#! @Arguments C
+#! @Returns a &CAP; category
+DeclareAttribute( "CategoryFromDataTables",
+        IsFpCategory );

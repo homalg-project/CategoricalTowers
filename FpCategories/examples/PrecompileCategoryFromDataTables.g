@@ -4,20 +4,20 @@
 
 #! #@if ValueOption( "no_precompiled_code" ) <> true
 
-LoadPackage( "Algebroids", false );
+LoadPackage( "FpCategories", false );
 #! true
 LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 #! true
-ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
+ReadPackageOnce( "FpCategories", "gap/CompilerLogic.gi" );
 #! true
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true ); return CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) ); end;;
 
-given_arguments := [ RightQuiver( "q(a,b)[m:a->b]" ) ];;
+given_arguments := [ FinQuiver( "q(a,b)[m:a->b]" ) ];;
 compiled_category_name := "CategoryFromDataTablesPrecompiled";;
-package_name := "Algebroids";;
+package_name := "FpCategories";;
 
 CapJitPrecompileCategoryAndCompareResult(
     category_constructor,
@@ -27,13 +27,13 @@ CapJitPrecompileCategoryAndCompareResult(
         : operations := "primitive" );;
 
 CategoryFromDataTablesPrecompiled( given_arguments[1] );
-#! FreeCategory( RightQuiver( "q(a,b)[m:a->b]" ) )
+#! PathCategory( FinQuiver( "q(a,b)[m:a→b]" ) )
 
-CategoryFromDataTables( FreeCategory( given_arguments[1] ) )!.precompiled_functions_added;
+CategoryFromDataTables( PathCategory( given_arguments[1] ) )!.precompiled_functions_added;
 #! true
 
 #! #@fi
-
+# @drop_example_in_Julia
 #! @EndExample
 
 #! @EndChunk
