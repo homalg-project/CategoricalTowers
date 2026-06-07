@@ -1,274 +1,294 @@
   
-  [1X3 [33X[0;0YTools[133X[101X
+  [1X3 [33X[0;0YFinite categories from data tables[133X[101X
   
   
   [1X3.1 [33X[0;0YAttributes[133X[101X
   
-  [1X3.1-1 Size[101X
+  [1X3.1-1 DataTables[101X
+  
+  [33X[1;0Y[29X[2XDataTables[102X( [3XC[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
+  
+  [33X[0;0YThe  data  tables  used  to  create the category [3XC[103X. It might differ from the
+  [21Xnormalized[121X output of [10XDataTablesOfCategory[110X( [3XC[103X ).[133X
+  
+  [1X3.1-2 Size[101X
   
   [33X[1;0Y[29X[2XSize[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya nonnegative integer[133X
   
-  [33X[0;0YReturn the number of morphisms in the finite category [3XC[103X.[133X
+  [33X[0;0YThe number of morphisms in the category [3XC[103X created from data tables.[133X
   
+  [1X3.1-3 OppositeCategoryFromDataTables[101X
   
-  [1X3.2 [33X[0;0YOperations[133X[101X
-  
-  [1X3.2-1 DefiningTripleOfUnderlyingQuiver[101X
-  
-  [33X[1;0Y[29X[2XDefiningTripleOfUnderlyingQuiver[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya pair[133X
-  
-  [33X[0;0YThe defining triple of the quiver underlying the finitely presented category
-  [3XC[103X.[133X
-  
-  [1X3.2-2 DataTablesOfCategory[101X
-  
-  [33X[1;0Y[29X[2XDataTablesOfCategory[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
-  
-  [33X[0;0YThe data tables of the category [3XC[103X.[133X
-  
-  [1X3.2-3 NerveTruncatedInDegree2Data[101X
-  
-  [33X[1;0Y[29X[2XNerveTruncatedInDegree2Data[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya pair consisting of a triple and an 8-tuple[133X
-  
-  [33X[0;0YThe nerve data of the category [3XC[103X.[133X
-  
-  [1X3.2-4 NerveTruncatedInDegree2AsFunctor[101X
-  
-  [33X[1;0Y[29X[2XNerveTruncatedInDegree2AsFunctor[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
-  
-  [33X[0;0YThe  input  is  a finitely presented category [3XC[103X equipped with a homomorphism
-  structure  with  values  in  the skeletal category [10XSkeletalFinSets[110X of finite
-  sets.  The  output is the nerve of [3XB[103X truncated in degree [23X2[123X, as a presheaf on
-  [10XSimplicialCategoryTruncatedInDegree[110X([23X2[123X) with values in [10XSkeletalFinSets[110X.[133X
-  
-  [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
-  [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
-    [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XPerform( DefiningRelations( Delta2 ), Display );[127X[104X
-    [4X[28X[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
-    [4X[28X[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
-    [4X[28X[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ][128X[104X
-    [4X[28X[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ][128X[104X
-    [4X[28X[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ][128X[104X
-    [4X[28X[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ][128X[104X
-    [4X[28X[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ][128X[104X
-    [4X[28X[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ][128X[104X
-    [4X[28X[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
-    [4X[28X31[128X[104X
-    [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2AsFunctor( Delta2 );[127X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,[128X[104X
-    [4X[28X                      is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )[128X[104X
-    [4X[28X/ [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[25Xgap>[125X [27XDelta2op := SourceOfFunctor( N );[127X[104X
-    [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta_op(C0,C1,C2)[id:C0→C1,s:C1→C0,t:C1→C0,[128X[104X
-    [4X[28X                      is:C1→C2,it:C1→C2,ps:C2→C1,pt:C2→C1,mu:C2→C1]" ) )[128X[104X
-    [4X[28X/ [ id⋅s = id(C0), id⋅t = id(C0), is⋅ps = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C0 );[127X[104X
-    [4X[28X|3|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C0 ) );[127X[104X
-    [4X[28X{ 0, 1, 2 }[128X[104X
-    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C1 );[127X[104X
-    [4X[28X|31|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C1 ) );[127X[104X
-    [4X[28X{ 0,..., 30 }[128X[104X
-    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.C2 );[127X[104X
-    [4X[28X|393|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.C2 ) );[127X[104X
-    [4X[28X{ 0,..., 392 }[128X[104X
-    [4X[25Xgap>[125X [27XApplyFunctor( N, Delta2op.id );[127X[104X
-    [4X[28X|3| → |31|[128X[104X
-    [4X[25Xgap>[125X [27XDisplay( ApplyFunctor( N, Delta2op.id ) );[127X[104X
-    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
-  [4X[32X[104X
-  
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
-    [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
-    [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XN := NerveTruncatedInDegree2( Delta2 );[127X[104X
-    [4X[28X<An object in PreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                  is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets )>[128X[104X
-    [4X[25Xgap>[125X [27XIntCat := CategoryOfInternalCategories([127X[104X
-    [4X[25X>[125X [27X                  RangeCategoryOfHomomorphismStructure( Delta2 ) );[127X[104X
-    [4X[28XFullSubcategoryByObjectMembershipFunction([128X[104X
-    [4X[28XPreSheaves( PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ], SkeletalFinSets ),[128X[104X
-    [4X[28XObjectMembershipFunction )[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
-  [4X[32X[104X
-  
-  [1X3.2-5 IndicesOfGeneratingMorphismsFromHomStructure[101X
-  
-  [33X[1;0Y[29X[2XIndicesOfGeneratingMorphismsFromHomStructure[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya list of integers[133X
-  
-  [33X[0;0YThe normalized indices of the generating morphisms of the finite category [3XC[103X.[133X
-  
-  [1X3.2-6 OppositeFiniteCategory[101X
-  
-  [33X[1;0Y[29X[2XOppositeFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOppositeCategoryFromDataTables[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
-  [33X[0;0YThe opposite category of a finite category [3XC[103X.[133X
+  [33X[0;0YThe opposite category of the category [3XC[103X defined by nerve data.[133X
   
-  [1X3.2-7 YonedaFibrationAsNaturalTransformation[101X
   
-  [33X[1;0Y[29X[2XYonedaFibrationAsNaturalTransformation[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
+  [1X3.2 [33X[0;0YConstructors[133X[101X
   
-  [33X[0;0YThe  input  is  a  finitely  presented  category  [3XB[103X. The output is a natural
-  morphism.  Its  source  is  the  functor  [23XB \to H, c \mapsto \sqcup_{a\in B}
-  \mathrm{Hom}(a,c),  \psi  \mapsto  \sqcup_{a\in B} \mathrm{Hom}(a,\psi)[123X. Its
-  targe  is  the  constant  functor  of  [23X0[123X-cells  [23XB \to H, c \mapsto B_0, \psi
-  \mapsto \mathrm{id}_{B_0}[123X.[133X
+  [1X3.2-1 CategoryFromDataTables[101X
   
-  [1X3.2-8 YonedaProjectionAsNaturalEpimorphism[101X
+  [33X[1;0Y[29X[2XCategoryFromDataTables[102X( [3Xinput_record[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
-  [33X[1;0Y[29X[2XYonedaProjectionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
+  [33X[0;0YConstruct  an enriched finite category out of the [3Xinput_record[103X consisting of
+  values to the keys:[133X
   
-  [33X[0;0YThe  input  is  a  finitely  presented  category  [3XB[103X. The output is a natural
-  epimorphism.  Its source is the functor [23XB \to H, c \mapsto \sqcup_{a,b\in B}
-  \mathrm{Hom}(a,b)  \times  \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B}
-  \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)[123X. Its target is the functor
-  [23XB   \to  H,  c  \mapsto  \sqcup_{a\in  B}  \mathrm{Hom}(a,c),  \psi  \mapsto
-  \sqcup_{a\in B} \mathrm{Hom}(a,\psi)[123X.[133X
+  [30X    [33X[0;6Yname[133X
   
-  [1X3.2-9 YonedaCompositionAsNaturalEpimorphism[101X
+  [30X    [33X[0;6Ynerve_data[133X
   
-  [33X[1;0Y[29X[2XYonedaCompositionAsNaturalEpimorphism[102X( [3XB[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
+  [30X    [33X[0;6Yindices_of_generating_morphisms[133X
   
-  [33X[0;0YThe  input  is  a  finitely  presented  category  [3XB[103X. The output is a natural
-  epimorphism.  Its source is the functor [23XB \to H, c \mapsto \sqcup_{a,b\in B}
-  \mathrm{Hom}(a,b)  \times  \mathrm{Hom}(b,c), \psi \mapsto \sqcup_{a,b\in B}
-  \mathrm{Hom}(1_a,1_b) \times \mathrm{Hom}(b,\psi)[123X. Its target is the functor
-  [23XB   \to  H,  c  \mapsto  \sqcup_{a\in  B}  \mathrm{Hom}(a,c),  \psi  \mapsto
-  \sqcup_{a\in B} \mathrm{Hom}(a,\psi)[123X.[133X
+  [30X    [33X[0;6Yrelations[133X
   
-  [33X[0;0YWe   compute   the  Yoneda  composition  natural  epimorphism  of  the  full
-  subcategory of the simplicial category [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
+  [30X    [33X[0;6Ylabels[133X
   
-  [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XDelta2 := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
-    [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XPerform( DefiningRelations( Delta2 ), Display );[127X[104X
-    [4X[28X[ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
-    [4X[28X[ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ][128X[104X
-    [4X[28X[ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ pt⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ is⋅id:(C2) → (C0), it⋅id:(C2) → (C0) ][128X[104X
-    [4X[28X[ pt⋅is:(C1) → (C1), id⋅t:(C1) → (C1) ][128X[104X
-    [4X[28X[ ps⋅it:(C1) → (C1), id⋅s:(C1) → (C1) ][128X[104X
-    [4X[28X[ s⋅pt:(C0) → (C2), t⋅ps:(C0) → (C2) ][128X[104X
-    [4X[28X[ s⋅mu:(C0) → (C2), s⋅ps:(C0) → (C2) ][128X[104X
-    [4X[28X[ t⋅mu:(C0) → (C2), t⋅pt:(C0) → (C2) ][128X[104X
-    [4X[28X[ mu⋅is:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[28X[ mu⋅it:(C1) → (C1), id(C1):(C1) → (C1) ][128X[104X
-    [4X[25Xgap>[125X [27XSize( Delta2 );[127X[104X
-    [4X[28X31[128X[104X
-    [4X[25Xgap>[125X [27XYmu := YonedaCompositionAsNaturalEpimorphism( Delta2 );[127X[104X
-    [4X[28XNatural transformation from[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[28X->[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[25Xgap>[125X [27XYp := YonedaProjectionAsNaturalEpimorphism( Delta2 );[127X[104X
-    [4X[28XNatural transformation from[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[28X->[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[25Xgap>[125X [27XYs := YonedaFibrationAsNaturalTransformation( Delta2 );[127X[104X
-    [4X[28XNatural transformation from[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-    [4X[28X->[128X[104X
-    [4X[28XFunctor from PathCategory( FinQuiver([128X[104X
-    [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
-    [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
-    [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
-    [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
-  [4X[32X[104X
-  
-  [1X3.2-10 NaturalTransformation[101X
-  
-  [33X[1;0Y[29X[2XNaturalTransformation[102X( [3Xeta[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
-  [33X[1;0Y[29X[2XNaturalTransformation[102X( [3XF[103X, [3Xeta[103X, [3XG[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
-  
-  [33X[0;0YConstruct,   using   the   record   (or  list)  of  images  [3Xeta[103X,  a  natural
-  transformation from the functor [3XF[103X to the parallel functor [3XG[103X.[133X
-  
-  [1X3.2-11 QuiverStringOfDigraph[101X
-  
-  [33X[1;0Y[29X[2XQuiverStringOfDigraph[102X( [3XD[103X, [3Xname_of_quiver[103X, [3Xprefix_of_name_of_morphisms[103X ) [32X operation[133X
-  [6XReturns:[106X  [33X[0;10Ya string[133X
-  
-  [33X[0;0YReturn  a string encoding the underlying quiver of the digraph [3XD[103X. The string
-  [3Xname_of_quiver[103X  will  be  the  name  of  the  underlying  quiver. The string
-  [3Xprefix_of_name_of_morphisms[103X will be the prefix of the name all morphisms.[133X
+  [30X    [33X[0;6Yproperties[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FpCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := "q(1,2,3,4)[m_1_2:1->2,m_1_3:1->3,m_2_4:2->4,m_3_4:3->4]";;[127X[104X
-    [4X[25Xgap>[125X [27XF := PathCategory( FinQuiver( q ) );[127X[104X
-    [4X[28XPathCategory( FinQuiver([128X[104X
-    [4X[28X"q(1,2,3,4)[m_1_2:1→2,m_1_3:1→3,m_2_4:2→4,m_3_4:3→4]" ) )[128X[104X
-    [4X[25Xgap>[125X [27Xdigraph := DigraphReflexiveTransitiveReduction([127X[104X
-    [4X[25X>[125X [27X                   Digraph( SetOfObjects( F ), IsHomSetInhabited ) );[127X[104X
-    [4X[28X<immutable digraph with 4 vertices, 4 edges>[128X[104X
-    [4X[25Xgap>[125X [27XQuiverStringOfDigraph( digraph, "q", "m" ) = q;[127X[104X
+    [4X[25Xgap>[125X [27XDelta1 := SimplicialCategoryTruncatedInDegree( 1 );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ][128X[104X
+    [4X[25Xgap>[125X [27XSize( Delta1 );[127X[104X
+    [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27Xmors := SetOfMorphisms( Delta1 );;[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( mors );[127X[104X
+    [4X[28X[ [id(C0)]:(C0) → (C0), [id]:(C1) → (C0), [s]:(C0) → (C1), [t]:(C0) → (C1),[128X[104X
+    [4X[28X  [id(C1)]:(C1) → (C1), [id⋅s]:(C1) → (C1), [id⋅t]:(C1) → (C1) ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( List( mors, DecompositionOfMorphismInCategory ) );[127X[104X
+    [4X[28X[ [  ], [ [id]:(C1) → (C0) ], [ [s]:(C0) → (C1) ], [ [t]:(C0) → (C1) ],[128X[104X
+    [4X[28X  [  ], [ [id]:(C1) → (C0), [s]:(C0) → (C1) ],[128X[104X
+    [4X[28X  [ [id]:(C1) → (C0), [t]:(C0) → (C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XC := CategoryFromDataTables( Delta1 );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ][128X[104X
+    [4X[25Xgap>[125X [27XSize( C );[127X[104X
+    [4X[28X7[128X[104X
+    [4X[25Xgap>[125X [27XmorsC := SetOfMorphisms( C );;[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( morsC );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( List( morsC, DecompositionOfMorphismInCategory ) );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XNerveTruncatedInDegree2Data( C ) = NerveTruncatedInDegree2Data( Delta1 );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( IndicesOfGeneratingMorphisms( C ) );[127X[104X
+    [4X[28X[ 1, 2, 3 ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( SetOfGeneratingMorphisms( C ) );[127X[104X
+    [4X[28X[ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XDisplay( C );[127X[104X
+    [4X[28XA CAP category with name[128X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ]:[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X19 primitive operations were used to derive 55 operations for this category[128X[104X
+    [4X[28Xwhich algorithmically[128X[104X
+    [4X[28X* IsCategoryWithDecidableColifts[128X[104X
+    [4X[28X* IsCategoryWithDecidableLifts[128X[104X
+    [4X[28X* IsFiniteCategory[128X[104X
+    [4X[28X* IsEquippedWithHomomorphismStructure[128X[104X
+    [4X[25Xgap>[125X [27XC0 := CreateObject( C, 0 );[127X[104X
+    [4X[28X<(C0)>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( C0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XC1 := 1 / C;[127X[104X
+    [4X[28X<(C1)>[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( C1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( 2 / C );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XidC0 := CreateMorphism( C0, 0, C0 );[127X[104X
+    [4X[28X(C0)-[(C0)]->(C0)[128X[104X
+    [4X[25Xgap>[125X [27XCreateMorphism( C, 0 ) = idC0;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( idC0 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xid := CreateMorphism( C, 1 );[127X[104X
+    [4X[28X(C1)-[(id)]->(C0)[128X[104X
+    [4X[25Xgap>[125X [27Xs := CreateMorphism( C, 2 );[127X[104X
+    [4X[28X(C0)-[(s)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27Xt := CreateMorphism( C, 3 );[127X[104X
+    [4X[28X(C0)-[(t)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitMonomorphism( s );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitMonomorphism( t );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( s );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( t );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsSplitEpimorphism( id );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( id );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XidC1 := CreateMorphism( C, 4 );[127X[104X
+    [4X[28X(C1)-[(C1)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( idC1 );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27Xsigma := CreateMorphism( C, 5 );[127X[104X
+    [4X[28X(C1)-[(id*s)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27Xtau := CreateMorphism( C, 6 );[127X[104X
+    [4X[28X(C1)-[(id*t)]->(C1)[128X[104X
+    [4X[25Xgap>[125X [27XIsEndomorphism( sigma );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( sigma );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( sigma );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEndomorphism( tau );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XIsMonomorphism( tau );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsEpimorphism( tau );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsOne( tau );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XIsWellDefined( CreateMorphism( C1, 7, C1 ) );[127X[104X
+    [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( s, id ) = idC0;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( t, id ) = idC0;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( id, s ) = sigma;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XPreCompose( id, t ) = tau;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( C0, C0 );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( C1, C1 );[127X[104X
+    [4X[28X|3|[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( C0, C1 );[127X[104X
+    [4X[28X|2|[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( C1, C0 );[127X[104X
+    [4X[28X|1|[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( s ) );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( t ) );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( Source( s ), Target( s ), HomStructure( s ) ) = s;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XHomStructure( Source( t ), Target( t ), HomStructure( t ) ) = t;[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( s, t ) );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 1 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( t, s ) );[127X[104X
+    [4X[28X{ 0 } ⱶ[ 0 ]→ { 0, 1 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( sigma, tau ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 2, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure([127X[104X
+    [4X[25X>[125X [27X        PreCompose( Delta1.id, Delta1.s ),[127X[104X
+    [4X[25X>[125X [27X        PreCompose( Delta1.id, Delta1.t ) ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 2, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( tau, sigma ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 1, 1 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure([127X[104X
+    [4X[25X>[125X [27X        PreCompose( Delta1.id, Delta1.t ),[127X[104X
+    [4X[25X>[125X [27X        PreCompose( Delta1.id, Delta1.s ) ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 1, 1, 1 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( tau, idC1 ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27XDisplay( HomStructure( idC1, idC1 ) );[127X[104X
+    [4X[28X{ 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }[128X[104X
+    [4X[25Xgap>[125X [27Xmors := SetOfMorphisms( C );;[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( mors );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(id)]->(C0), (C0)-[(s)]->(C1), (C0)-[(t)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(id*s)]->(C1), (C1)-[(id*t)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( List( mors, OppositeMorphismInOppositeCategoryFromDataTables ) );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0),[128X[104X
+    [4X[28X(C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( List( mors, DecompositionOfMorphismInCategory ) );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ][128X[104X
+    [4X[25Xgap>[125X [27XC_op := OppositeCategoryFromDataTables( C );[127X[104X
+    [4X[28XOpposite([128X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
+    [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ] )[128X[104X
+    [4X[25Xgap>[125X [27XIsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XViewObj( IndicesOfGeneratingMorphisms( C_op ) );[127X[104X
+    [4X[28X[ 3, 1, 2 ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( SetOfGeneratingMorphisms( C_op ) );[127X[104X
+    [4X[28X[ (C0)-[(id)]->(C1), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0) ][128X[104X
+    [4X[25Xgap>[125X [27Xmors_op := SetOfMorphisms( C_op );;[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( mors_op );[127X[104X
+    [4X[28X[ (C0)-[(C0)]->(C0), (C1)-[(s)]->(C0), (C1)-[(t)]->(C0), (C0)-[(id)]->(C1),[128X[104X
+    [4X[28X  (C1)-[(C1)]->(C1), (C1)-[(s*id)]->(C1), (C1)-[(t*id)]->(C1) ][128X[104X
+    [4X[25Xgap>[125X [27XViewObj( List( mors_op, DecompositionOfMorphismInCategory ) );[127X[104X
+    [4X[28X[ [  ], [ (C1)-[(s)]->(C0) ], [ (C1)-[(t)]->(C0) ], [ (C0)-[(id)]->(C1) ],[128X[104X
+    [4X[28X  [  ], [ (C1)-[(s)]->(C0), (C0)-[(id)]->(C1) ],[128X[104X
+    [4X[28X  [ (C1)-[(t)]->(C0), (C0)-[(id)]->(C1) ] ][128X[104X
   [4X[32X[104X
+  
+  [1X3.2-2 CategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XCategoryFromDataTables[102X( [3XC[103X ) [32X attribute[133X
+  
+  [1X3.2-3 CategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XCategoryFromDataTables[102X( [3XC[103X ) [32X attribute[133X
+  
+  [1X3.2-4 CategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XCategoryFromDataTables[102X( [3XC[103X ) [32X attribute[133X
+  
+  [1X3.2-5 CreateObject[101X
+  
+  [33X[1;0Y[29X[2XCreateObject[102X( [3XC[103X, [3Xo[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YConstruct the [3Xo[103X-th object in the category [3XC[103X created from data tables.[133X
+  
+  [1X3.2-6 CreateMorphism[101X
+  
+  [33X[1;0Y[29X[2XCreateMorphism[102X( [3XC[103X, [3Xm[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateMorphism[102X( [3Xsource[103X, [3Xm[103X, [3Xrange[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateMorphism[102X( [3XC[103X, [3Xm[103X ) [32X operation[133X
+  [33X[1;0Y[29X[2XCreateMorphism[102X( [3Xsource[103X, [3Xm[103X, [3Xrange[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YConstruct  the  [3Xm[103X-th  morphism [3Xsource[103X[23X\to[123X[3Xrange[103X in the category [3XC[103X created from
+  data tables.[133X
+  
+  [33X[0;0YConstruct  the  [3Xm[103X-th  morphism [3Xsource[103X[23X\to[123X[3Xrange[103X in the category [3XC[103X created from
+  nerve data.[133X
+  
+  
+  [1X3.3 [33X[0;0YGAP categories[133X[101X
+  
+  [1X3.3-1 IsCategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsCategoryFromDataTables[102X( [3Xcategory[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of categories from data tables.[133X
+  
+  [1X3.3-2 IsCellInCategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsCellInCategoryFromDataTables[102X( [3Xcell[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of cells in a category from data tables.[133X
+  
+  [1X3.3-3 IsObjectInCategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInCategoryFromDataTables[102X( [3Xobject[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in a category from data tables.[133X
+  
+  [1X3.3-4 IsMorphismInCategoryFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInCategoryFromDataTables[102X( [3Xmorphism[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in a category from data tables.[133X
   
