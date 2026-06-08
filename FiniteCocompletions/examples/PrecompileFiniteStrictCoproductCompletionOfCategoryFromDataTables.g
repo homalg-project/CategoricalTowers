@@ -21,13 +21,13 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
-free_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) );;
+free_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) );;
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return FiniteStrictCoproductCompletion( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ) ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return FiniteStrictCoproductCompletion( CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ) ); end;;
 
-given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
+given_arguments := [ FinQuiver( "q(2)[m:1->2]" ) ];;
 compiled_category_name := "FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled";;
 package_name := "FiniteCocompletions";;
 
@@ -47,10 +47,10 @@ CapJitPrecompileCategoryAndCompareResult(
 );;
 
 FiniteStrictCoproductCompletionOfCategoryFromDataTablesPrecompiled( given_arguments[1] );
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "q(1,2)[m:1→2]" ) ) )
 
 cat := FiniteStrictCoproductCompletion( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );
-#! FiniteStrictCoproductCompletion( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ) )
+#! FiniteStrictCoproductCompletion( PathCategory( FinQuiver( "q(1,2)[m:1→2]" ) ) )
 
 cat!.precompiled_functions_added;
 #! true

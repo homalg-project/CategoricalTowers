@@ -9,6 +9,9 @@
 LoadPackage( "FiniteCocompletions", false );
 #! true
 
+LoadPackage( "Algebroids", false );
+#! true
+
 LoadPackage( "CompilerForCAP", ">= 2025.11-01", false );
 #! true
 
