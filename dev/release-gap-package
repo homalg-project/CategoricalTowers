@@ -608,7 +608,18 @@ notice "Pushing your tag to GitHub"
 if [ "x$FORCE" = xyes ] ; then
     git push --force "$REMOTE" "$TAG"
 else
-    git push "$REMOTE" "$TAG"
+    tag_pushed=no
+    for attempt in 1 2 3; do
+        if git push "$REMOTE" "$TAG"; then
+            tag_pushed=yes
+            break
+        fi
+        if [ "$attempt" -lt 3 ]; then
+            notice "Tag push failed (attempt $attempt/3), retrying in 30s..."
+            sleep 30
+        fi
+    done
+    [ "$tag_pushed" = yes ] || exit 1
 fi
 
 
