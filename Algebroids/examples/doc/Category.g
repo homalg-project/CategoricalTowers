@@ -1,4 +1,4 @@
-#! @BeginChunk FpCategory
+#! @BeginChunk FreeCategory
 
 LoadPackage( "Algebroids" );
 
@@ -43,11 +43,11 @@ SetOfGeneratingMorphisms( Cr );
 #! [ (u)-[(a)]->(v), (v)-[(b)]->(u), (v)-[(c)]->(u), (v)-[(d)]->(w) ]
 SetOfGeneratingMorphisms( Cr, Cr.u, Cr.v );
 #! [ (u)-[(a)]->(v) ]
-ObjectInFpCategory( Cl, ql.u ) = Cl.u;
+ObjectInFreeCategory( Cl, ql.u ) = Cl.u;
 #! true
 Cl.u = ql.u / Cl;
 #! true
-MorphismInFpCategory( Cl, ql.a ) = Cl.a;
+MorphismInFreeCategory( Cl, ql.a ) = Cl.a;
 #! true
 Cl.a = ql.a / Cl;
 #! true

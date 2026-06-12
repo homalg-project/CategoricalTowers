@@ -38,13 +38,13 @@ SetOfGeneratingMorphisms( zz );
 #! [ (o)-[(m)]->(o), (o)-[(i)]->(o) ]
 SetOfGeneratingMorphisms( zz, zz.o, zz.o );
 #! [ (o)-[(m)]->(o), (o)-[(i)]->(o) ]
-ObjectInFpCategory( zz, o ) = zz.o;
+ObjectInFreeCategory( zz, o ) = zz.o;
 #! true
 zz.o = o / zz;
 #! true
 IdentityMorphism( zz.o );
 #! (o)-[(o)]->(o)
-MorphismInFpCategory( zz, q.m ) = zz.m;
+MorphismInFreeCategory( zz, q.m ) = zz.m;
 #! true
 zz.m = q.m / zz;
 #! true

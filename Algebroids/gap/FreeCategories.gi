@@ -12,8 +12,8 @@
 
 ##
 InstallMethod( Size,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( B )
     local kq;
@@ -30,7 +30,7 @@ end );
 
 ##
 InstallMethod( AssignSetOfObjects,
-        [ IsFpCategory, IsString ],
+        [ IsFreeCategory, IsString ],
         
   function( A, label )
     local names, objects, func;
@@ -61,7 +61,7 @@ end );
 
 ##
 InstallOtherMethod( AssignSetOfObjects,
-        [ IsFpCategory and HasUnderlyingQuiver ],
+        [ IsFreeCategory and HasUnderlyingQuiver ],
   function( A )
   
     AssignSetOfObjects( A, "" );
@@ -70,31 +70,31 @@ end );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for a f.p. category and two objects",
-        [ IsFpCategory and HasUnderlyingQuiver, IsObjectInFpCategory, IsObjectInFpCategory ],
+        "for a free category and two objects",
+        [ IsFreeCategory and HasUnderlyingQuiver, IsObjectInFreeCategory, IsObjectInFreeCategory ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Target( m ) ) )
 );
 
 ##
 InstallMethod( SetOfGeneratingMorphisms,
-        "for two objects in a f.p. category",
-         [ IsObjectInFpCategory, IsObjectInFpCategory ],
+        "for two objects in a free category",
+         [ IsObjectInFreeCategory, IsObjectInFreeCategory ],
          
   { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
 );
 
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
-        "for a f.p. category and two integers",
-        [ IsFpCategory and HasUnderlyingQuiver, IsInt, IsInt ],
+        "for a free category and two integers",
+        [ IsFreeCategory and HasUnderlyingQuiver, IsInt, IsInt ],
         
   { A, i, j } -> SetOfGeneratingMorphisms( A, SetOfObjects( A )[ i ], SetOfObjects( A )[ j ] )
 );
 
 ##
 InstallMethod( AssignSetOfGeneratingMorphisms,
-        [ IsFpCategory, IsString ],
+        [ IsFreeCategory, IsString ],
   function( A, label )
     local names, morphisms, func;
     
@@ -124,7 +124,7 @@ end );
 
 ##
 InstallOtherMethod( AssignSetOfGeneratingMorphisms,
-        [ IsFpCategory and HasUnderlyingQuiver ],
+        [ IsFreeCategory and HasUnderlyingQuiver ],
   function( A )
     
     AssignSetOfGeneratingMorphisms( A, "" );
@@ -133,13 +133,13 @@ end );
 
 ##
 InstallMethod( RelationsAmongGeneratingMorphisms,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( C )
     local relations, objs, mors, func;
     
-    relations := RelationsOfFpCategory( C );
+    relations := RelationsOfFreeCategory( C );
     
     if IsEmpty( relations ) then
         return [ ];
@@ -166,15 +166,15 @@ end );
 
 ##
 InstallMethod( IndicesOfGeneratingMorphisms,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   IndicesOfGeneratingMorphismsFromHomStructure );
 
 ##
 InstallOtherMethodForCompilerForCAP( DecompositionIndicesOfMorphism,
-        "for a f.p. category and a morphism therein",
-        [ IsFpCategory, IsMorphismInFpCategory ],
+        "for a free category and a morphism therein",
+        [ IsFreeCategory, IsMorphismInFreeCategory ],
         
   function( C, mor )
     local cmp, gmors;
@@ -209,8 +209,8 @@ end );
 
 ##
 InstallMethod( DecompositionIndicesOfMorphism,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+        "for a morphism in a free category",
+        [ IsMorphismInFreeCategory ],
         
   function( mor )
     
@@ -220,8 +220,8 @@ end );
 
 ##
 InstallMethod( DecompositionOfMorphismInCategory,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+        "for a morphism in a free category",
+        [ IsMorphismInFreeCategory ],
         
   function( mor )
     local C;
@@ -234,8 +234,8 @@ end );
 
 ##
 InstallMethod( DecompositionIndicesOfAllMorphismsFromHomStructure,
-        "for a f.p. category",
-        [ IsFpCategory and IsFiniteCategory ],
+        "for a free category",
+        [ IsFreeCategory and IsFiniteCategory ],
         
   function( C )
     local objs;
@@ -250,15 +250,15 @@ end );
 
 ##
 InstallMethod( DecompositionIndicesOfAllMorphisms,
-        "for a f.p. category",
-        [ IsFpCategory and IsFiniteCategory ],
+        "for a free category",
+        [ IsFreeCategory and IsFiniteCategory ],
         
   DecompositionIndicesOfAllMorphismsFromHomStructure  );
 
 ##
 InstallMethod( DataTablesOfCategory,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( C )
     
@@ -268,8 +268,8 @@ end );
 
 ##
 InstallMethod( CategoryFromDataTables,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( C )
     
@@ -312,7 +312,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     AddObjectConstructor( category,
       function( category, v )
         
-        return ObjectInFpCategory( category, v );
+        return ObjectInFreeCategory( category, v );
         
     end );
     
@@ -328,7 +328,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
     AddMorphismConstructor( category,
       function( category, source, m, range )
         
-        return MorphismInFpCategory( category, source, m, range );
+        return MorphismInFreeCategory( category, source, m, range );
         
     end );
     
@@ -451,7 +451,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         
         id := PathAsAlgebraElement( quiver_algebra, QuiverVertexAsIdentityPath( UnderlyingVertex( object ) ) );
         
-        return MorphismInFpCategory( category,
+        return MorphismInFreeCategory( category,
                        object,
                        id,
                        object );
@@ -466,7 +466,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInFpCategory( category,
+            return MorphismInFreeCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_1 ) * UnderlyingQuiverAlgebraElement( morphism_2 ),
                            Target( morphism_2 ) );
@@ -478,7 +478,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_FP_CATEGORY,
         AddPreCompose( category,
           function( category, morphism_1, morphism_2 )
             
-            return MorphismInFpCategory( category,
+            return MorphismInFreeCategory( category,
                            Source( morphism_1 ),
                            UnderlyingQuiverAlgebraElement( morphism_2 ) * UnderlyingQuiverAlgebraElement( morphism_1 ),
                            Target( morphism_2 ) );
@@ -504,8 +504,8 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( cat )
     
@@ -515,8 +515,8 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( cat )
     
@@ -580,7 +580,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
         
         Add( basis_paths_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], path );
         
-        Add( basis_morphisms_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInFpCategory( fpcategory, PathAsAlgebraElement( quiver_algebra, path ) ) );
+        Add( basis_morphisms_by_vertex_index[ VertexIndex( Source( path ) ) ][ VertexIndex( Target( path ) ) ], MorphismInFreeCategory( fpcategory, PathAsAlgebraElement( quiver_algebra, path ) ) );
         
     od;
     
@@ -749,7 +749,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_HOM_STRUCTURE_OF_FP_CATEGORY,
             
             element := QuiverAlgebraElement( quiver_algebra, [ 1 ], basis{[ 1 + AsList( morphism )[1] ]} );
             
-            return MorphismInFpCategory( fpcategory, a, element, b );
+            return MorphismInFreeCategory( fpcategory, a, element, b );
             
         end );
         
@@ -805,9 +805,9 @@ InstallMethodWithCache( Category,
     fi;
     
     C := CreateCapCategoryWithDataTypes( C,
-                 IsFpCategory,
-                 IsObjectInFpCategory,
-                 IsMorphismInFpCategory,
+                 IsFreeCategory,
+                 IsObjectInFreeCategory,
+                 IsMorphismInFreeCategory,
                  IsCapCategoryTwoCell,
                  IsQuiverVertex,
                  IsQuiverAlgebraElement,
@@ -896,7 +896,7 @@ InstallMethod( Category,
     
     C := Category( A : relations := L );
     
-    SetRelationsOfFpCategory( C, L );
+    SetRelationsOfFreeCategory( C, L );
     
     return C;
     
@@ -921,21 +921,21 @@ end );
 
 ##
 InstallMethod( QuotientCategory,
-        "for a f.p. category and a list",
-        [ IsFpCategory and HasUnderlyingQuiver, IsList ],
+        "for a free category and a list",
+        [ IsFreeCategory and HasUnderlyingQuiver, IsList ],
         
   function( C, L )
     local relations, f;
     
-    if HasRelationsOfFpCategory( C ) then
-        relations := ShallowCopy( RelationsOfFpCategory( C ) );
+    if HasRelationsOfFreeCategory( C ) then
+        relations := ShallowCopy( RelationsOfFreeCategory( C ) );
     else
         relations := [ ];
     fi;
     
     f :=
       function( p )
-        if IsObjectInFpCategory( p ) then
+        if IsObjectInFreeCategory( p ) then
             return UnderlyingVertex( p );
         fi;
         return BasisPathOfPathAlgebraBasisElement( UnderlyingQuiverAlgebraElement( p ) );
@@ -949,8 +949,8 @@ end );
 
 ##
 InstallMethod( \/,
-        "for a f.p. category and a list",
-        [ IsFpCategory and HasUnderlyingQuiver, IsList ],
+        "for a free category and a list",
+        [ IsFreeCategory and HasUnderlyingQuiver, IsList ],
         
   function( C, L )
     
@@ -1050,9 +1050,9 @@ InstallMethod( Unit,
 end );
 
 ##
-InstallMethodForCompilerForCAP( ObjectInFpCategory,
-         "for a f.p. category and a vertex of a quiver",
-        [ IsFpCategory, IsQuiverVertex ],
+InstallMethodForCompilerForCAP( ObjectInFreeCategory,
+         "for a free category and a vertex of a quiver",
+        [ IsFreeCategory, IsQuiverVertex ],
         
   function( C, v )
     local name, o;
@@ -1083,15 +1083,15 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsQuiverVertex, IsFpCategory ],
+        [ IsQuiverVertex, IsFreeCategory ],
         
-  { v, C } -> ObjectInFpCategory( C, v )
+  { v, C } -> ObjectInFreeCategory( C, v )
 );
 
 ##
-InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
-        "for a f.p. category, two objects in a f.p. category, and an element of the quiver algebra",
-        [ IsFpCategory, IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+InstallOtherMethodForCompilerForCAP( MorphismInFreeCategory,
+        "for a free category, two objects in a free category, and an element of the quiver algebra",
+        [ IsFreeCategory, IsObjectInFreeCategory, IsQuiverAlgebraElement, IsObjectInFreeCategory ],
         
   function( B, S, path, T )
     local l;
@@ -1132,20 +1132,20 @@ InstallOtherMethodForCompilerForCAP( MorphismInFpCategory,
 end );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for two objects in a f.p. category and an element of the quiver algebra",
-        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ],
+InstallMethod( MorphismInFreeCategory,
+        "for two objects in a free category and an element of the quiver algebra",
+        [ IsObjectInFreeCategory, IsQuiverAlgebraElement, IsObjectInFreeCategory ],
         
   function( S, path, T )
     
-    return MorphismInFpCategory( CapCategory( S ), S, path, T );
+    return MorphismInFreeCategory( CapCategory( S ), S, path, T );
     
 end );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for a f.p. category and an element of a path algebra",
-        [ IsFpCategory, IsPathAlgebraElement ],
+InstallMethod( MorphismInFreeCategory,
+        "for a free category and an element of a path algebra",
+        [ IsFreeCategory, IsPathAlgebraElement ],
         
   function( C, path )
     local l, S, T;
@@ -1163,14 +1163,14 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( C, C.(S), path, C.(T) );
+    return MorphismInFreeCategory( C, C.(S), path, C.(T) );
     
 end );
 
 ##
 InstallMethod( \.,
-        "for a f.p. category and a positive integer",
-        [ IsFpCategory, IsPosInt ],
+        "for a free category and a positive integer",
+        [ IsFreeCategory, IsPosInt ],
         
   function( C, string_as_int )
     local name, q, a, b;
@@ -1185,12 +1185,12 @@ InstallMethod( \.,
         if IsBound( C!.Vertices.(name) ) then
             return C!.Vertices.(name);
         fi;
-        b := ObjectInFpCategory( C, a );
+        b := ObjectInFreeCategory( C, a );
     elif IsArrow( a ) or IsCompositePath( a ) then
         if IsBound( C!.Arrows.(name) ) then
             return C!.Arrows.(name);
         fi;
-        b := MorphismInFpCategory(
+        b := MorphismInFreeCategory(
                      C.(String( Source( a ) ) ),
                      PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), a ),
                      C.(String( Target( a ) ) ) );
@@ -1205,9 +1205,9 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for a f.p. category and an element of a quotient of a path algebra",
-        [ IsFpCategory, IsQuotientOfPathAlgebraElement ],
+InstallMethod( MorphismInFreeCategory,
+        "for a free category and an element of a quotient of a path algebra",
+        [ IsFreeCategory, IsQuotientOfPathAlgebraElement ],
         
   function( A, path )
     local l, S, T;
@@ -1223,37 +1223,37 @@ InstallMethod( MorphismInFpCategory,
     S := String( Source( l ) );
     T := String( Target( l ) );
     
-    return MorphismInFpCategory( A, A.(S), path, A.(T) );
+    return MorphismInFreeCategory( A, A.(S), path, A.(T) );
     
 end );
 
 ##
-InstallMethod( MorphismInFpCategory,
-        "for a f.p. category and a path",
-        [ IsFpCategory, IsPath ],
+InstallMethod( MorphismInFreeCategory,
+        "for a free category and a path",
+        [ IsFreeCategory, IsPath ],
         
   function( C, path )
     
     path := PathAsAlgebraElement( UnderlyingQuiverAlgebra( C ), path );
     
-    return MorphismInFpCategory( C, path );
+    return MorphismInFreeCategory( C, path );
     
 end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsPath, IsFpCategory ],
+        [ IsPath, IsFreeCategory ],
         
   function( path, C )
     
-    return MorphismInFpCategory( C, path );
+    return MorphismInFreeCategory( C, path );
     
 end );
 
 ##
 InstallMethod( POW,
-        "for a f.p. category and an integer",
-        [ IsFpCategory and HasUnderlyingQuiverAlgebra, IsInt ],
+        "for a free category and an integer",
+        [ IsFreeCategory and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( C, n )
     local Qq, R, parity;
@@ -1327,7 +1327,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for objects in categorys",
-        [ IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory ],
+        [ IsObjectInFreeCategory, IsObjectInFreeCategory, IsFreeCategory ],
         
   function( a, b, T )
       
@@ -1343,7 +1343,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for object and morphism in categorys",
-        [ IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory ],
+        [ IsObjectInFreeCategory, IsMorphismInFreeCategory, IsFreeCategory ],
         
   function( object, morphism, T )
     local source, range, morphism_as_quiver_algebra_element, path,
@@ -1361,16 +1361,16 @@ InstallMethod( ElementaryTensor,
     
     mors := List( List( ArrowList( path ),
                     b -> PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ object_underlying_vertex, b ] ) ),
-                  b -> MorphismInFpCategory(
-                          ObjectInFpCategory( T, Source( b ) ),
+                  b -> MorphismInFreeCategory(
+                          ObjectInFreeCategory( T, Source( b ) ),
                           QuiverAlgebraElement( UnderlyingQuiverAlgebra( T ), [ 1 ], [ b ] ),
-                          ObjectInFpCategory( T, Target( b ) ) ) );
+                          ObjectInFreeCategory( T, Target( b ) ) ) );
     
     if Length( mors ) = 0 then
         
         Assert( 3, IsQuiverVertex( path ) );
         
-        o := ObjectInFpCategory( CapCategory( morphism ), path );
+        o := ObjectInFreeCategory( CapCategory( morphism ), path );
         
         Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
         
@@ -1385,7 +1385,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for morphism and object in categorys",
-        [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ],
+        [ IsMorphismInFreeCategory, IsObjectInFreeCategory, IsFreeCategory ],
         
   function( morphism, object, T )
     local source, range, morphism_as_quiver_algebra_element, path,
@@ -1403,16 +1403,16 @@ InstallMethod( ElementaryTensor,
     
     mors := List( List( ArrowList( path ),
                     a -> PathInProductQuiver( QuiverOfAlgebra( UnderlyingQuiverAlgebra( T ) ), [ a, object_underlying_vertex ] ) ),
-                  a -> MorphismInFpCategory(
-                          ObjectInFpCategory( T, Source( a ) ),
+                  a -> MorphismInFreeCategory(
+                          ObjectInFreeCategory( T, Source( a ) ),
                           QuiverAlgebraElement( UnderlyingQuiverAlgebra( T ), [ 1 ], [ a ] ),
-                          ObjectInFpCategory( T, Target( a ) ) ) );
+                          ObjectInFreeCategory( T, Target( a ) ) ) );
     
     if Length( mors ) = 0 then
         
         Assert( 3, IsQuiverVertex( path ) );
         
-        o := ObjectInFpCategory( CapCategory( morphism ), path );
+        o := ObjectInFreeCategory( CapCategory( morphism ), path );
         
         Assert( 3, o = Source( morphism ) and o = Target( morphism ) );
         
@@ -1438,7 +1438,7 @@ end );
 ##
 InstallMethod( \*,
         "for two categorys",
-        [ IsFpCategory and HasUnderlyingQuiverAlgebra, IsFpCategory and HasUnderlyingQuiverAlgebra ],
+        [ IsFreeCategory and HasUnderlyingQuiverAlgebra, IsFreeCategory and HasUnderlyingQuiverAlgebra ],
         
   function( A, B )
 
@@ -1448,8 +1448,8 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for a f.p. category, two lists, a CAP Category, and a boolean",
-        [ IsFpCategory, IsList, IsList, IsCapCategory, IsBool ],
+        "for a free category, two lists, a CAP Category, and a boolean",
+        [ IsFreeCategory, IsList, IsList, IsCapCategory, IsBool ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B, covariant )
     local kq, vertices, arrows, functor, func_obj, func_mor;
@@ -1532,8 +1532,8 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for a f.p. category, two lists, and a CAP category",
-        [ IsFpCategory, IsList, IsList, IsCapCategory ],
+        "for a free category, two lists, and a CAP category",
+        [ IsFreeCategory, IsList, IsList, IsCapCategory ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B )
     
@@ -1543,8 +1543,8 @@ end );
 
 ## this a convenience method
 InstallMethod( CapFunctor,
-        "for a f.p. category, two records, and a boolean",
-        [ IsFpCategory, IsRecord, IsRecord, IsBool ],
+        "for a free category, two records, and a boolean",
+        [ IsFreeCategory, IsRecord, IsRecord, IsBool ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
     local kq, vertices, images_of_objects, arrows, images_of_generating_morphisms,
@@ -1593,8 +1593,8 @@ end );
 
 ## this a convenience method
 InstallMethod( CapFunctor,
-        "for a f.p. category and two records",
-        [ IsFpCategory, IsRecord, IsRecord ],
+        "for a free category and two records",
+        [ IsFreeCategory, IsRecord, IsRecord ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms )
     
@@ -1604,8 +1604,8 @@ end );
 
 ##
 InstallMethod( CapFunctor,
-        "for a f.p. category and a CAP category object",
-        [ IsFpCategory, IsCapCategoryObject ],
+        "for a free category and a CAP category object",
+        [ IsFreeCategory, IsCapCategoryObject ],
         
   function( A, object )
     
@@ -1618,14 +1618,14 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( OppositeFpCategory,
-        "for a f.p. category",
-        [ IsFpCategory and HasRelationsOfFpCategory ],
+InstallMethod( OppositeFreeCategory,
+        "for a free category",
+        [ IsFreeCategory and HasRelationsOfFreeCategory ],
         
   function( C )
     local relations, range_category, C_op;
     
-    relations := RelationsOfFpCategory( C );
+    relations := RelationsOfFreeCategory( C );
     
     relations := List( relations, a -> List( a, OppositePath ) );
     
@@ -1639,7 +1639,7 @@ InstallMethod( OppositeFpCategory,
                     OppositeQuiver( UnderlyingQuiver( C ) ),
                     relations : range_of_HomStructure := range_category );
     
-    SetOppositeFpCategory( C_op, C );
+    SetOppositeFreeCategory( C_op, C );
     
     return C_op;
     
@@ -1647,8 +1647,8 @@ end );
 
 ##
 InstallMethod( CategoryFromNerveData,
-        "for a f.p. category",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
         
   function( C )
     
@@ -1665,7 +1665,7 @@ end );
 
 ##
 InstallMethod( SieveFunctor,
-        [ IsFpCategory ],
+        [ IsFreeCategory ],
         
   function ( B )
     local Sieves, Bop, sFinSets;
@@ -1673,7 +1673,7 @@ InstallMethod( SieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategory( B );
+    Bop := OppositeFreeCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1683,7 +1683,7 @@ end );
 
 ##
 InstallMethod( TruthMorphismOfTrueToSieveFunctor,
-        [ IsFpCategory ],
+        [ IsFreeCategory ],
         
   function ( B )
     local Sieves, Bop, sFinSets, Constant_functor, Sieves_maximal, Sieves_functor;
@@ -1691,7 +1691,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategory( B );
+    Bop := OppositeFreeCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1709,7 +1709,7 @@ end );
 
 ##
 InstallMethod( EmbeddingOfSieveFunctor,
-        [ IsFpCategory ],
+        [ IsFreeCategory ],
         
   function ( B )
     local Sieves, Bop, sFinSets, Sieves_functor, Sieves_emb, HomHomOmega_functor;
@@ -1717,7 +1717,7 @@ InstallMethod( EmbeddingOfSieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategory( B );
+    Bop := OppositeFreeCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1741,8 +1741,8 @@ end );
 
 ##
 InstallMethod( IsCommutative,
-        "for an FpCategory",
-        [ IsFpCategory ],
+        "for a free category",
+        [ IsFreeCategory ],
      
   function( A )
     local arrows, i, j;
@@ -1769,8 +1769,8 @@ end );
 
 ##
 InstallMethod( ViewString,
-        "for an object in a f.p. category",
-        [ IsObjectInFpCategory ],
+        "for an object in a free category",
+        [ IsObjectInFreeCategory ],
         
   function( o )
     
@@ -1780,8 +1780,8 @@ end );
 
 ##
 InstallMethod( ViewObj,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+        "for a morphism in a free category",
+        [ IsMorphismInFreeCategory ],
         
   function( m )
     
@@ -1803,8 +1803,8 @@ end );
 
 ##
 InstallMethod( PrintObj,
-        "for an object in a f.p. category",
-        [ IsObjectInFpCategory ],
+        "for an object in a free category",
+        [ IsObjectInFreeCategory ],
         
   function( o )
     
@@ -1814,8 +1814,8 @@ end );
 
 ##
 InstallMethod( PrintObj,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+        "for a morphism in a free category",
+        [ IsMorphismInFreeCategory ],
         
   function( m )
     
@@ -1825,8 +1825,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for an object in a f.p. category",
-        [ IsObjectInFpCategory ],
+        "for an object in a free category",
+        [ IsObjectInFreeCategory ],
         
   function( o )
     
@@ -1837,8 +1837,8 @@ end );
 
 ##
 InstallMethod( Display,
-        "for a morphism in a f.p. category",
-        [ IsMorphismInFpCategory ],
+        "for a morphism in a free category",
+        [ IsMorphismInFreeCategory ],
         
   function( m )
     
@@ -1849,14 +1849,14 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsObjectInFpCategory ],
+          [ IsObjectInFreeCategory ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsMorphismInFpCategory ],
+          [ IsMorphismInFreeCategory ],
           
   function( m )
     local s;

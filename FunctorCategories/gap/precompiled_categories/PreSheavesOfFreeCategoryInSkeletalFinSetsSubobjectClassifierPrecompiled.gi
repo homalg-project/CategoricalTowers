@@ -3,7 +3,7 @@
 #
 # Implementations
 #
-BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled", function ( cat )
+BindGlobal( "ADD_FUNCTIONS_FOR_PreSheavesOfFreeCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled", function ( cat )
     
     ##
     AddSubobjectClassifier( cat,
@@ -399,7 +399,7 @@ end
     
 end );
 
-BindGlobal( "PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled", function ( quiver )
+BindGlobal( "PreSheavesOfFreeCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled", function ( quiver )
   local category_constructor, cat;
     
     category_constructor :=
@@ -416,7 +416,7 @@ end;
     
     cat := category_constructor( quiver : FinalizeCategory := false, no_precompiled_code := true );
     
-    ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( cat );
+    ADD_FUNCTIONS_FOR_PreSheavesOfFreeCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( cat );
     
     Finalize( cat );
     

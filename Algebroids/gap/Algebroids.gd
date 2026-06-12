@@ -406,17 +406,17 @@ DeclareOperation( "Algebroid",
 #! @Arguments C, H
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsFpCategory, IsCapCategory ] );
+        [ IsFreeCategory, IsCapCategory ] );
 
 #! @Arguments R, C
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsHomalgRing, IsFpCategory ] );
+        [ IsHomalgRing, IsFreeCategory ] );
 
 #! @Arguments R, C
 #! @Group Algebroid
 DeclareOperation( "[]",
-        [ IsHomalgRing, IsFpCategory ] );
+        [ IsHomalgRing, IsFreeCategory ] );
 
 #! @Arguments A, L
 #! @Group Algebroid

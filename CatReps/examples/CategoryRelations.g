@@ -22,7 +22,7 @@ q := RightQuiverFromConcreteCategory( c3c3c3 );
 #! q(3)[a:1->1,b:1->2,c:2->2,d:2->3,e:3->3,f:1->3]
 relEndo := RelationsOfEndomorphisms( c3c3c3 );
 #! [ [ (a*a*a), (1) ], [ (c*c*c), (2) ], [ (e*e*e), (3) ] ]
-C := AsFpCategory( c3c3c3 );
+C := AsFreeCategory( c3c3c3 );
 #! FreeCategory( RightQuiver(
 #!   "q(3)[a:1->1,b:1->2,c:2->2,d:2->3,e:3->3,f:1->3]" ) ) / relations
 A := UnderlyingQuiverAlgebra( C );

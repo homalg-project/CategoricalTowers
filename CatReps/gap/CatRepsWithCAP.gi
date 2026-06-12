@@ -208,7 +208,7 @@ InstallMethod( RelationsOfEndomorphisms,
 end );
 
 ##
-InstallMethod( AsFpCategory,
+InstallMethod( AsFreeCategory,
         "for a finite category",
         [ IsFiniteConcreteCategory ],
         
@@ -283,7 +283,7 @@ InstallMethodWithCache( Algebroid,
         
   function( k, C )
     
-    return Algebroid( k, AsFpCategory( C ) : range_of_HomStructure := MatrixCategory( k ) );
+    return Algebroid( k, AsFreeCategory( C ) : range_of_HomStructure := MatrixCategory( k ) );
     
 end );
 

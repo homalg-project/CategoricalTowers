@@ -74,7 +74,7 @@ DeclareOperation( "ConcreteCategoryForCAP",
 #!  Return a finitely presented category isomorphic to the finite category <A>C</A>.
 #! @Arguments C
 #! @Returns a finitely presented category
-DeclareAttribute( "AsFpCategory",
+DeclareAttribute( "AsFreeCategory",
         IsFiniteConcreteCategory );
 #! @InsertChunk CategoryRelations
 

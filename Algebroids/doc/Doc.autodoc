@@ -6,8 +6,8 @@
 @Section The integers as f.g. monoid
 @InsertChunk IntegersAsMonoid
 
-@Section A f.p. category
-@InsertChunk FpCategory
+@Section Free categories
+@InsertChunk FreeCategory
 
 @Section Algebroids
 @InsertChunk Algebroid
