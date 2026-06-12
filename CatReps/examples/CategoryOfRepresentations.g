@@ -5,7 +5,7 @@ LoadPackage( "CatReps" );
 #! true
 c3c3 := ConcreteCategoryForCAP( [ [2,3,1], [4,5,6], [,,,5,6,4] ] );
 #! A finite concrete category
-C3C3 := AsFpCategory( c3c3 );
+C3C3 := AsFreeCategory( c3c3 );
 #! FreeCategory( RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) / relations
 UnderlyingQuiverAlgebra( C3C3 );
 #! (Q * q) / [ 1*(a*a*a) - 1*(1), 1*(c*c*c) - 1*(2), 1*(b*c) - 1*(a*b) ]

@@ -30,13 +30,13 @@ SetOfGeneratingMorphisms( N );
 #! [ (o)-[(m)]->(o) ]
 SetOfGeneratingMorphisms( N, N.o, N.o );
 #! [ (o)-[(m)]->(o) ]
-ObjectInFpCategory( N, o ) = N.o;
+ObjectInFreeCategory( N, o ) = N.o;
 #! true
 N.o = o / N;
 #! true
 IdentityMorphism( N.o );
 #! (o)-[(o)]->(o)
-MorphismInFpCategory( N, m ) = N.m;
+MorphismInFreeCategory( N, m ) = N.m;
 #! true
 N.m = m / N;
 #! true

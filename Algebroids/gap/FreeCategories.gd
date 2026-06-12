@@ -14,28 +14,28 @@
 
 #! @Description
 #!  The &GAP; category of finitely presented categories.
-DeclareCategory( "IsFpCategory",
+DeclareCategory( "IsFreeCategory",
         IsCapCategory );
 
 #! @Description
 #!  The &GAP; category of algebras.
 DeclareCategory( "IsMonoidAsCategory",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a finitely presented category.
-DeclareCategory( "IsCellInFpCategory",
+DeclareCategory( "IsCellInFreeCategory",
         IsCapCategoryCell );
 
 #! @Description
 #!  The &GAP; category of objects in a finitely presented category.
-DeclareCategory( "IsObjectInFpCategory",
-        IsCellInFpCategory and IsCapCategoryObject );
+DeclareCategory( "IsObjectInFreeCategory",
+        IsCellInFreeCategory and IsCapCategoryObject );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finitely presented category.
-DeclareCategory( "IsMorphismInFpCategory",
-        IsCellInFpCategory and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInFreeCategory",
+        IsCellInFreeCategory and IsCapCategoryMorphism );
 
 ####################################
 #
@@ -48,21 +48,21 @@ DeclareCategory( "IsMorphismInFpCategory",
 #! @Arguments C
 #! @Returns true or false
 DeclareProperty( "IsCommutative",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  Check whether <A>B</A> is counitary.
 #! @Arguments B
 #! @Returns true or false
 DeclareProperty( "IsCounitary",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  Check whether <A>B</A> is coassociative.
 #! @Arguments B
 #! @Returns true or false
 DeclareProperty( "IsCoassociative",
-        IsFpCategory );
+        IsFreeCategory );
 
 ####################################
 #
@@ -75,33 +75,33 @@ DeclareProperty( "IsCoassociative",
 #! @Arguments C
 #! @Returns a &QPA; quiver
 DeclareAttribute( "UnderlyingQuiver",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The quiver algebra (=path algebra with relations) underlying the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebra",
-        IsFpCategory );
+        IsFreeCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpCategory ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFreeCategory ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The number of morphisms in the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a nonnegative integer
 DeclareAttribute( "Size",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
-#!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>,
+#!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the free category <A>C</A>,
 #!  indexed by the vertex indices of source and target of the path.
 #! @Arguments C
 #! @Returns a matrix of basis paths of a &QPA; path algebra
 DeclareAttribute( "BasisPathsByVertexIndex",
-        IsFpCategory );
+        IsFreeCategory );
 
-#CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpCategory ], function ( input_types )
+#CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFreeCategory ], function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfListOf(
@@ -110,14 +110,14 @@ DeclareAttribute( "BasisPathsByVertexIndex",
 #end );
 
 #! @Description
-#!  The matrix of basis morphisms of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>,
+#!  The matrix of basis morphisms of the canonical basis of the quiver algebra (=path algebra with relations) underlying the free category <A>C</A>,
 #!  indexed by the vertex indices of source and target of the morphism.
 #! @Arguments A
 #! @Returns a matrix of basis morphisms
 DeclareAttribute( "BasisMorphismsByVertexIndex",
-        IsFpCategory );
+        IsFreeCategory );
 
-#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFpCategory ], function ( input_types )
+#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFreeCategory ], function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfListOf(
@@ -126,15 +126,15 @@ DeclareAttribute( "BasisMorphismsByVertexIndex",
 #end );
 
 #! @Description
-#!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the f.p. category <A>C</A>:
+#!  The hom structure on basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the free category <A>C</A>:
 #!  `HomStructureOnBasisPaths( `<A>A</A>` )[ v_index ][ w_index ][ v'_index ][ w'_index ][ basis_path_1_index ][ basis_path_2_index ] = [ Hom(v,w) -> Hom(v',w'): x -> basis_path_1 * x * basis_path_2 ]`
 #!  for `basis_path_1: v' -> v` and `basis_path_2: w -> w'`.
 #! @Arguments C
 #! @Returns a six-dimensional matrix of matrices
 DeclareAttribute( "HomStructureOnBasisPaths",
-        IsFpCategory );
+        IsFreeCategory );
 
-#CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpCategory ], function ( input_types )
+#CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFreeCategory ], function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfListOf(
@@ -152,31 +152,31 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 #! @Arguments C, label
 #! @Returns nothing
 DeclareOperation( "AssignSetOfObjects",
-        [ IsFpCategory, IsString ] );
+        [ IsFreeCategory, IsString ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments C, obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsFpCategory, IsObjectInFpCategory, IsObjectInFpCategory ] );
+        [ IsFreeCategory, IsObjectInFreeCategory, IsObjectInFreeCategory ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsObjectInFpCategory, IsObjectInFpCategory ] );
+        [ IsObjectInFreeCategory, IsObjectInFreeCategory ] );
 
 #! @Description
 #!  Delegates to <C>SetOfGeneratingMorphisms</C>( <A>C</A>, <C>SetOfObjects</C>(<A>C</A>)[<A>i</A>], <C>SetOfObjects</C>(<A>C</A>)[<A>j</A>] ).
 #! @Arguments C, i, j
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsFpCategory, IsInt, IsInt ] );
+        [ IsFreeCategory, IsInt, IsInt ] );
 
 DeclareAttribute( "IndicesOfGeneratingMorphisms",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  Assigns the generating morphisms of the finitely presented category <A>C</A> to global variables.
@@ -184,30 +184,31 @@ DeclareAttribute( "IndicesOfGeneratingMorphisms",
 #! @Arguments C, label
 #! @Returns nothing
 DeclareOperation( "AssignSetOfGeneratingMorphisms",
-        [ IsFpCategory, IsString ] );
+        [ IsFreeCategory, IsString ] );
 
 #! @Description
 #!  The relations of the finitely presented category <A>C</A> corresponding to
 #!  <C>RelationsOfAlgebra( UnderlyingQuiverAlgebra( <A>C</A> ) )</C>.
 #! @Arguments C
 #! @Returns a &QPA; path algebra
-DeclareAttribute( "RelationsOfFpCategory",
-        IsFpCategory );
+DeclareAttribute( "RelationsOfFreeCategory",
+        IsFreeCategory );
 
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The finitely presented category defined by the opposite of the underlying quiver with relations.
 #! @Arguments C
 #! @Returns a &CAP; category
-DeclareAttribute( "OppositeFpCategory",
-        IsFpCategory );
+DeclareAttribute( "OppositeFreeCategory",
+        IsFreeCategory );
 
-CapJitAddTypeSignature( "OppositeFpCategory", [ IsFpCategory ],
+CapJitAddTypeSignature( "OppositeFreeCategory", [ IsFreeCategory ],
+  
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( OppositeFpCategory( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( OppositeFreeCategory( input_types[1].category ) );
     
 end );
 
@@ -222,25 +223,25 @@ DeclareAttribute( "Unit",
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Antipode",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The vertex of the quiver underlying the object <A>obj</A> in a finitely presented category.
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
-        IsObjectInFpCategory );
+        IsObjectInFreeCategory );
 
-CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFpCategory ], IsQuiverVertex );
+CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFreeCategory ], IsQuiverVertex );
 
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in a finitely presented category.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
-        IsMorphismInFpCategory );
+        IsMorphismInFreeCategory );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpCategory ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFreeCategory ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 ##
 DeclareAttribute( "BasisPathOfPathAlgebraBasisElement",
@@ -253,14 +254,14 @@ CapJitAddTypeSignature( "BasisPathOfPathAlgebraBasisElement", [ IsQuiverAlgebraE
 #! @Arguments C
 #! @Returns a ring
 DeclareAttribute( "UnderlyingAlgebra",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The parity of the finitely presented category <A>C</A>.
 #! @Arguments C
 #! @Returns a string ("left" or "right")
 DeclareAttribute( "Parity",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Description
 #!  The <A>n</A>-th power of the finitely presented category <A>C</A>.
@@ -268,38 +269,38 @@ DeclareAttribute( "Parity",
 #! @Arguments C, n
 #! @Returns a &CAP; category
 DeclareOperation( "POW",
-        [ IsFpCategory, IsInt ] );
+        [ IsFreeCategory, IsInt ] );
 
 DeclareAttribute( "DecompositionIndicesOfMorphism",
-        IsMorphismInFpCategory );
+        IsMorphismInFreeCategory );
 
 DeclareAttribute( "DecompositionOfMorphismInCategory",
-        IsMorphismInFpCategory );
+        IsMorphismInFreeCategory );
 
 DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
-        IsFpCategory );
+        IsFreeCategory );
 
 #! @Arguments C
 DeclareAttribute( "CategoryFromNerveData",
-        IsFpCategory );
+        IsFreeCategory );
 
-DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategory );
+DeclareAttribute( "EmbeddingOfSieveFunctor", IsFreeCategory );
 
 #! @Description
 #!  Return the truth morphism of true from terminal functor
-#!  to the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
+#!  to the functor of sieves from <C>OppositeFreeCategory</C>( <A>B</A> )
 #!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #! @Arguments B
 #! @Returns a &CAP; functor
-DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFpCategory );
+DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFreeCategory );
 #! @InsertChunk SieveFunctor
 
 #! @Description
-#!  Return the functor of sieves from <C>OppositeFpCategory</C>( <A>B</A> )
+#!  Return the functor of sieves from <C>OppositeFreeCategory</C>( <A>B</A> )
 #!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #! @Arguments B
 #! @Returns a &CAP; functor
-DeclareAttribute( "SieveFunctor", IsFpCategory );
+DeclareAttribute( "SieveFunctor", IsFreeCategory );
 #! @InsertChunk SieveFunctor
 
 DeclareAttribute( "AssociatedFreeCategory",
@@ -317,28 +318,28 @@ DeclareOperation( "TrivialCategory",
 
 #! @Arguments C, D
 DeclareOperation( "\*",
-        [ IsFpCategory, IsFpCategory ] );
+        [ IsFreeCategory, IsFreeCategory ] );
 
 #! @Description
 #!  Given an object <A>a</A> in a finitely presented category A and an object <A>b</A> in a finitely presented category B and the tensor product <A>T</A> of A and B, return the tensor product of a and b in T.
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsObjectInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
+        [ IsObjectInFreeCategory, IsObjectInFreeCategory, IsFreeCategory ] );
 
 #! @Description
 #!  Given an object <A>a</A> in a finitely presented category A and a morphism <A>g</A> in a finitely presented category B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
 #! @Arguments a, g, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsObjectInFpCategory, IsMorphismInFpCategory, IsFpCategory ] );
+        [ IsObjectInFreeCategory, IsMorphismInFreeCategory, IsFreeCategory ] );
 
 #! @Description
 #!  Given a morphism <A>f</A> in a finitely presented category A and an object <A>b</A> in a finitely presented category B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
 #! @Arguments f, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsMorphismInFpCategory, IsObjectInFpCategory, IsFpCategory ] );
+        [ IsMorphismInFreeCategory, IsObjectInFreeCategory, IsFreeCategory ] );
 
 #! @Description
 #!   Simply returns <A>vertex</A>, but with the semantics of being an identity path.
@@ -376,24 +377,24 @@ DeclareOperation( "Category",
 #!  possibly modulo the relations <A>L</A>.
 #! @Arguments q
 #! @Returns a &CAP; category
-#! @Group FpCategory
+#! @Group FreeCategory
 DeclareOperation( "FreeCategory",
         [ IsQuiver ] );
 
 #! @Arguments q, L
-#! @Group FpCategory
+#! @Group FreeCategory
 DeclareOperation( "Category",
         [ IsQuiver, IsList ] );
 
 #! @Arguments C, L
-#! @Group FpCategory
+#! @Group FreeCategory
 DeclareOperation( "QuotientCategory",
-        [ IsFpCategory, IsList ] );
+        [ IsFreeCategory, IsList ] );
 
 #! @Arguments C, L
-#! @Group FpCategory
+#! @Group FreeCategory
 DeclareOperation( "/",
-        [ IsFpCategory, IsList ] );
+        [ IsFreeCategory, IsList ] );
 
 #! @Description
 #!  Construct a functor with source the finitely presented category <A>C</A> and target <A>B</A> using
@@ -402,13 +403,13 @@ DeclareOperation( "/",
 #! @Arguments A, images_of_objects, images_of_generating_morphisms, B, covariant
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsFpCategory, IsList, IsList, IsCapCategory, IsBool ] );
+        [ IsFreeCategory, IsList, IsList, IsCapCategory, IsBool ] );
 
 #! @Arguments A, images_of_objects, images_of_generating_morphisms, B
 #!  If the last boolean argument <A>covariant</A> is not specified it defaults to <C>true</C>.
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsFpCategory, IsList, IsList, IsCapCategory ] );
+        [ IsFreeCategory, IsList, IsList, IsCapCategory ] );
 
 #! @Description
 #!  Alternatively one could specify the records of images <A>rec_images_of_objects</A> and <A>rec_images_of_generating_morphisms</A>.
@@ -418,12 +419,12 @@ DeclareOperation( "CapFunctor",
 #! @Returns a &CAP; functor
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsFpCategory, IsRecord, IsRecord, IsBool ] );
+        [ IsFreeCategory, IsRecord, IsRecord, IsBool ] );
 
 #! @Arguments A, rec_images_of_objects, rec_images_of_generating_morphisms
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsFpCategory, IsRecord, IsRecord ] );
+        [ IsFreeCategory, IsRecord, IsRecord ] );
 
 #! @Description
 #!  In the case of two arguments, where the second argument is an object <A>obj</A>
@@ -432,30 +433,30 @@ DeclareOperation( "CapFunctor",
 #! @Arguments A, obj
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsFpCategory, IsCapCategoryObject ] );
+        [ IsFreeCategory, IsCapCategoryObject ] );
 
 #! @Description
 #!  The constructor of objects in a finitely presented category <A>C</A> given a vertex <A>V</A>
 #!  in the underlying quiver.
 #! @Arguments A, V
 #! @Returns an object in a &CAP; category
-#! @Group ObjectInFpCategory
-DeclareOperation( "ObjectInFpCategory",
-        [ IsFpCategory, IsQuiverVertex ] );
+#! @Group ObjectInFreeCategory
+DeclareOperation( "ObjectInFreeCategory",
+        [ IsFreeCategory, IsQuiverVertex ] );
 
 #! @Description
-#!  Delegates to <C>ObjectInFpCategory</C>( <A>C</A>,  <A>V</A> ).
+#!  Delegates to <C>ObjectInFreeCategory</C>( <A>C</A>,  <A>V</A> ).
 #! @Arguments V, A
 #! @Returns an object in a &CAP; category
 if false then
-DeclareOperation( "\/", [ IsQuiverVertex, IsFpCategory ] );
+DeclareOperation( "\/", [ IsQuiverVertex, IsFreeCategory ] );
 fi;
 
-DeclareOperation( "MorphismInFpCategory",
-        [ IsObjectInFpCategory, IsQuiverAlgebraElement, IsObjectInFpCategory ] );
+DeclareOperation( "MorphismInFreeCategory",
+        [ IsObjectInFreeCategory, IsQuiverAlgebraElement, IsObjectInFreeCategory ] );
 
-DeclareOperation( "MorphismInFpCategory",
-        [ IsFpCategory, IsQuiverAlgebraElement ] );
+DeclareOperation( "MorphismInFreeCategory",
+        [ IsFreeCategory, IsQuiverAlgebraElement ] );
 
 #! @Description
 #!  The constructor of morphisms in a finitely presented category <A>C</A> given the source <A>S</A>,
@@ -463,24 +464,24 @@ DeclareOperation( "MorphismInFpCategory",
 #!  If neither <A>S</A> nor <A>T</A> are provided they are read off from <A>path</A>.
 #! @Arguments S, path, T
 #! @Returns a morphism in a &CAP; category
-#! @Group MorphismInFpCategory
-DeclareOperation( "MorphismInFpCategory",
-        [ IsObjectInFpCategory, IsPath, IsObjectInFpCategory ] );
+#! @Group MorphismInFreeCategory
+DeclareOperation( "MorphismInFreeCategory",
+        [ IsObjectInFreeCategory, IsPath, IsObjectInFreeCategory ] );
 
 #! @Arguments A, path
-#! @Group MorphismInFpCategory
-DeclareOperation( "MorphismInFpCategory",
-        [ IsFpCategory, IsPath ] );
+#! @Group MorphismInFreeCategory
+DeclareOperation( "MorphismInFreeCategory",
+        [ IsFreeCategory, IsPath ] );
 
 #! @Description
-#!  Delegates to <C>MorphismInFpCategory</C>( <A>path</A> ).
+#!  Delegates to <C>MorphismInFreeCategory</C>( <A>path</A> ).
 #! @Arguments path, A
 #! @Returns a morphism in a &CAP; category
-DeclareOperation( "\/", [ IsPath, IsFpCategory ] );
+DeclareOperation( "\/", [ IsPath, IsFreeCategory ] );
 
 #! @Description
-#!  Returns the <C>CategoryFromDataTables</C> of the f.p. category <A>C</A>.
+#!  Returns the <C>CategoryFromDataTables</C> of the free category <A>C</A>.
 #! @Arguments C
 #! @Returns a &CAP; category
 DeclareAttribute( "CategoryFromDataTables",
-        IsFpCategory );
+        IsFreeCategory );
