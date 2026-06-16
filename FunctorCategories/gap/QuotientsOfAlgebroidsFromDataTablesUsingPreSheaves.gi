@@ -53,7 +53,7 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
                        _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
                         r -> HomomorphismStructureOnMorphisms( A, IdentityMorphism( SetOfObjects( A )[r] ), SetOfGeneratingMorphisms( A )[l] ) ) ) ) ] );
     
-    PSh := PreSheaves( TensorProductOfAlgebroids( OppositeAlgebroid( A ), A ) );
+    PSh := PreSheaves( TensorProductOfAlgebroids( OppositeOfObjectFiniteCategory( A ), A ) );
     
     return ObjectConstructor( PSh, Pair( images_of_objs, images_of_gmorphisms ) );
     
@@ -67,7 +67,7 @@ InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
     local A, A_op, T;
     
     A := CapCategory( m );
-    A_op := OppositeAlgebroid( A );
+    A_op := OppositeOfObjectFiniteCategory( A );
     T := TensorProductOfAlgebroids( A_op, A );
     
     return MorphismFromRepresentableByYonedaLemma(

@@ -17,7 +17,7 @@ InstallOtherMethod( QuotientCategory,
         
     fi;
     
-    A_op := OppositeAlgebroid( A );
+    A_op := OppositeOfObjectFiniteCategory( A );
     
     A_as_presheaf := ValueGlobal( "AlgebroidAsObjectInPreSheavesCategory" )( A : eager := false );
     

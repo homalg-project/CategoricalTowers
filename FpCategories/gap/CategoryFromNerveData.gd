@@ -145,13 +145,6 @@ end );
 DeclareAttribute( "OppositeNerveData",
         IsList );
 
-#! @Description
-#!  The opposite category of the category <A>C</A> defined by nerve data.
-#! @Arguments C
-#! @Returns a &CAP; category
-DeclareAttribute( "OppositeCategoryFromNerveData",
-        IsCategoryFromNerveData );
-
 DeclareAttribute( "DecompositionIndicesOfAllMorphismsFromHomStructure",
         IsCapCategory );
 

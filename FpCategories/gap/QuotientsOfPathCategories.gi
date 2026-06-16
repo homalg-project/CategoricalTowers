@@ -291,7 +291,7 @@ InstallMethod( ExternalHomsWithGivenLengthOp,
 end );
 
 ##
-InstallMethod( OppositeQuotientOfPathCategory,
+InstallMethod( OppositeOfObjectFiniteCategory,
         "for a quotient of a path category",
         [ IsQuotientOfPathCategory ],
         
@@ -300,7 +300,7 @@ InstallMethod( OppositeQuotientOfPathCategory,
     
     C := AmbientCategory( quo_C );
     
-    C_op := OppositePathCategory( C );
+    C_op := OppositeOfObjectFiniteCategory( C );
     
     relations_op :=  List( DefiningRelations( quo_C ), pair ->
                               Pair(
@@ -319,7 +319,7 @@ InstallMethod( OppositeQuotientOfPathCategory,
     
     quo_C_op := CallFuncListAtRuntime( QuotientCategory, [ C_op, relations_op ] );
     
-    SetOppositeQuotientOfPathCategory( quo_C_op, quo_C );
+    SetOppositeOfObjectFiniteCategory( quo_C_op, quo_C );
     
     return quo_C_op;
     

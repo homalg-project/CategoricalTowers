@@ -803,7 +803,18 @@ INSTALL_DOT_METHOD( IsPathCategory );
 # =#
 
 ##
-InstallMethod( OppositePathCategory,
+InstallOtherMethod( OppositeOfObjectFiniteCategory,
+        "for a category that was created as an opposite category",
+        [ WasCreatedAsOppositeCategory ],
+        
+  function( C )
+    
+    return OppositeCategory( C );
+    
+end );
+
+##
+InstallMethod( OppositeOfObjectFiniteCategory,
         "for a path category",
         [ IsPathCategory ],
         
@@ -818,7 +829,7 @@ InstallMethod( OppositePathCategory,
         C_op := PathCategory( quiver_op );
     fi;
     
-    SetOppositePathCategory( C_op, C );
+    SetOppositeOfObjectFiniteCategory( C_op, C );
     
     return C_op;
     

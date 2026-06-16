@@ -493,7 +493,7 @@ Display( s1 );
 #! An object in FunctorCategory( Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations,
 #! Category of matrices over GF(3) ) given by the above data
-Aop := OppositeAlgebroid( A );
+Aop := OppositeOfObjectFiniteCategory( A );
 #! Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q_op(2)[a:1->1,b:2->1,c:2->2]" ) ) ) / relations
 Yop := YonedaEmbeddingInFunctorCategory( Aop );

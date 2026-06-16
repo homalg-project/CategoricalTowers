@@ -464,22 +464,18 @@ InstallMethodWithCache( FunctorCategory,
     
     ## building the categorical tower:
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
-        B_op := OppositeFpCategoryDefinedByQuiverAlgebra( B : FinalizeCategory := true );
-    elif IsPathCategory( B ) then
-        B_op := OppositePathCategory( B : FinalizeCategory := true );
-    elif IsQuotientOfPathCategory( B ) then
-        B_op := OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
-    elif IsCategoryFromNerveData( B ) then
-        B_op := OppositeCategoryFromNerveData( B : FinalizeCategory := true );
-    elif IsCategoryFromDataTables( B ) then
-        B_op := OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-    elif HasIsInitialCategory( B ) and IsInitialCategory( B ) then
+    if HasIsInitialCategory( B ) and IsInitialCategory( B ) then
         B_op := Opposite( B : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
-    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
-        B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) then
-        B_op := OppositeAlgebroid( B : FinalizeCategory := true );
+    elif IsFpCategoryDefinedByQuiverAlgebra( B ) or
+        IsFpAlgebroidDefinedByQuiverAlgebra( B ) or
+        IsPathCategory( B ) or
+        IsQuotientOfPathCategory( B ) or
+        IsCategoryFromNerveData( B ) or
+        IsCategoryFromDataTables( B ) or
+        (HasIsFiniteCategory( B ) and IsFiniteCategory( B )) or
+        IsFpAlgebroidFromDataTables( B ) then
+        
+        B_op := OppositeOfObjectFiniteCategory( B : FinalizeCategory := true );
     else
         Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsFpAlgebroidDefinedByQuiverAlgebra }\n" );
     fi;
@@ -791,11 +787,10 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
   function ( B_op )
     local B, Hom, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
     
-
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
+        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeAlgebroid( B_op : FinalizeCategory := true );
+        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     else
         Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
     fi;
@@ -842,11 +837,10 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
   function ( B_op )
     local B, Hom, Yoneda, Yoneda_data;
     
-
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
+        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeAlgebroid( B_op : FinalizeCategory := true );
+        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     else
         Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
     fi;

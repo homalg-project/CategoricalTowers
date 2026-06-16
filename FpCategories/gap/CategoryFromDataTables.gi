@@ -582,7 +582,7 @@ InstallOtherMethod( CategoryFromNerveData,
 end ) );
 
 ##
-InstallMethod( OppositeCategoryFromDataTables,
+InstallMethod( OppositeOfObjectFiniteCategory,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
@@ -591,12 +591,12 @@ InstallMethod( OppositeCategoryFromDataTables,
     
     C_from_nerve := CategoryFromNerveData( C );
     
-    Cop := OppositeCategoryFromNerveData( C_from_nerve );
+    Cop := OppositeOfObjectFiniteCategory( C_from_nerve );
     
     C_op := CategoryFromDataTables( Cop );
     
-    SetOppositeCategoryFromDataTables( C_op, C );
-    
+    SetOppositeOfObjectFiniteCategory( C_op, C );
+
     return C_op;
     
 end );
@@ -655,7 +655,7 @@ InstallOtherMethod( OppositeMorphismInOppositeCategoryFromDataTables,
     fi;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not IsIdenticalObj( C_op, OppositeCategoryFromDataTables( C ) ) then
+    if not IsIdenticalObj( C_op, OppositeOfObjectFiniteCategory( C ) ) then
         Error( "the opposite category of `C` is not the category `C_op`\n" );
     fi;
     
@@ -679,7 +679,7 @@ InstallMethod( OppositeMorphismInOppositeCategoryFromDataTables,
     
     C := CapCategory( mor );
     
-    C_op := OppositeCategoryFromDataTables( C );
+    C_op := OppositeOfObjectFiniteCategory( C );
     
     return CallFuncListAtRuntime( OppositeMorphismInOppositeCategoryFromDataTables, [ C_op, C, mor ] );
     

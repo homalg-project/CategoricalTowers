@@ -1618,8 +1618,8 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( OppositeFpCategoryDefinedByQuiverAlgebra,
-        "for a f.p category",
+InstallMethod( OppositeOfObjectFiniteCategory,
+        "for a f.p. category",
         [ IsFpCategoryDefinedByQuiverAlgebra and HasRelationsOfFpCategoryDefinedByQuiverAlgebra ],
         
   function( C )
@@ -1639,7 +1639,7 @@ InstallMethod( OppositeFpCategoryDefinedByQuiverAlgebra,
                     OppositeQuiver( UnderlyingQuiver( C ) ),
                     relations : range_of_HomStructure := range_category );
     
-    SetOppositeFpCategoryDefinedByQuiverAlgebra( C_op, C );
+    SetOppositeOfObjectFiniteCategory( C_op, C );
     
     return C_op;
     
@@ -1673,7 +1673,7 @@ InstallMethod( SieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategoryDefinedByQuiverAlgebra( B );
+    Bop := OppositeOfObjectFiniteCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1691,7 +1691,7 @@ InstallMethod( TruthMorphismOfTrueToSieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategoryDefinedByQuiverAlgebra( B );
+    Bop := OppositeOfObjectFiniteCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     
@@ -1717,7 +1717,7 @@ InstallMethod( EmbeddingOfSieveFunctor,
     # asserts that IsSkeletalCategoryOfFiniteSets( RangeCategoryOfHomomorphismStructure( B ) )
     Sieves := TruthMorphismOfTrueToSieveFunctorAndEmbedding( B );
     
-    Bop := OppositeFpCategoryDefinedByQuiverAlgebra( B );
+    Bop := OppositeOfObjectFiniteCategory( B );
     
     sFinSets := RangeCategoryOfHomomorphismStructure( B );
     

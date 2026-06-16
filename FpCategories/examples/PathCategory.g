@@ -92,14 +92,14 @@ Display( List( SetOfGeneratingMorphisms( qC ), IsMonomorphism ) );
 #! [ false, true, true, true, true, true, true, true, false ]
 Display( List( SetOfGeneratingMorphisms( qC ), IsEpimorphism ) );
 #! [ false, true, true, true, true, true, true, true, false ]
-C_op := OppositePathCategory( C );
+C_op := OppositeOfObjectFiniteCategory( C );
 #! PathCategory( FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,
 #! d:4→3,t:5→4,y:5→5]" ) )
-IsIdenticalObj( OppositePathCategory( C_op ), C );
+IsIdenticalObj( OppositeOfObjectFiniteCategory( C_op ), C );
 #! true
-qC_op := OppositeQuotientOfPathCategory( qC );
+qC_op := OppositeOfObjectFiniteCategory( qC );
 #! PathCategory( FinQuiver( "q_op(0,1,2,3,4,5)[x:0→0,s:1→0,a:2→1,c:3→1,e:4→1,b:4→2,
 #! d:4→3,t:5→4,y:5→5]" ) ) / [ x^5 = x, y^5 = y^2 ]
-IsIdenticalObj( OppositeQuotientOfPathCategory( qC_op ), qC );
+IsIdenticalObj( OppositeOfObjectFiniteCategory( qC_op ), qC );
 #! true
 #! @EndExample

@@ -91,13 +91,7 @@ InstallMethod( CreatePreSheaf,
     
     B_op := SourceOfFunctor( F );
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeAlgebroid( B_op );
-    else
-        B := Opposite( B_op );
-    fi;
+    B := OppositeOfObjectFiniteCategory( B_op );
     
     PSh := PreSheaves( B, RangeOfFunctor( F ) );
     
@@ -249,13 +243,7 @@ InstallMethod( CreatePreSheafMorphism,
     
     B_op := SourceOfFunctor( F );
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeAlgebroid( B_op );
-    else
-        B := Opposite( B_op );
-    fi;
+    B := OppositeOfObjectFiniteCategory( B_op );
     
     PSh := PreSheaves( B, RangeOfFunctor( F ) );
     
@@ -297,32 +285,6 @@ InstallMethod( CreatePreSheafMorphism,
     fi;
     
     return CreatePreSheafMorphismByValues( CapCategory( U ), U, e, V );
-    
-end );
-
-##
-InstallGlobalFunction( OppositeOfFpEnrichedCategory,
-  function ( B )
-    
-    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
-        return OppositeFpCategoryDefinedByQuiverAlgebra( B : FinalizeCategory := true );
-    elif IsPathCategory( B ) then
-        return OppositePathCategory( B : FinalizeCategory := true );
-    elif IsQuotientOfPathCategory( B ) then
-        return OppositeQuotientOfPathCategory( B : FinalizeCategory := true );
-    elif IsCategoryFromNerveData( B ) then
-        return OppositeCategoryFromNerveData( B : FinalizeCategory := true );
-    elif IsCategoryFromDataTables( B ) then
-        return OppositeCategoryFromDataTables( B : FinalizeCategory := true );
-    elif WasCreatedAsOppositeCategory( B ) then
-        return OppositeCategory( B );
-    elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
-        return OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) then
-        return OppositeAlgebroid( B : FinalizeCategory := true );
-    else
-        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsFpAlgebroidDefinedByQuiverAlgebra }\n" );
-    fi;
     
 end );
 
@@ -1405,7 +1367,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     is_computable := IsBound( D!.is_computable ) and D!.is_computable = true;
     
     ##
-    B_op := OppositeOfFpEnrichedCategory( B );
+    B_op := OppositeOfObjectFiniteCategory( B );
     
     ##
     if ( IsFpCategoryDefinedByQuiverAlgebra( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or

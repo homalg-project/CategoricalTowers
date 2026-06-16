@@ -197,18 +197,10 @@ DeclareAttribute( "RelationsOfFpCategoryDefinedByQuiverAlgebra",
 DeclareAttribute( "RelationsAmongGeneratingMorphisms",
         IsFpCategoryDefinedByQuiverAlgebra );
 
-#! @Description
-#!  The finitely presented category defined by the opposite of the underlying quiver with relations.
-#! @Arguments C
-#! @Returns a &CAP; category
-DeclareAttribute( "OppositeFpCategoryDefinedByQuiverAlgebra",
-        IsFpCategoryDefinedByQuiverAlgebra );
-
-CapJitAddTypeSignature( "OppositeFpCategoryDefinedByQuiverAlgebra", [ IsFpCategoryDefinedByQuiverAlgebra ],
-  
+CapJitAddTypeSignature( "OppositeOfObjectFiniteCategory", [ IsFpCategoryDefinedByQuiverAlgebra ],
   function ( input_types )
     
-    return CapJitDataTypeOfCategory( OppositeFpCategoryDefinedByQuiverAlgebra( input_types[1].category ) );
+    return CapJitDataTypeOfCategory( OppositeOfObjectFiniteCategory( input_types[1].category ) );
     
 end );
 
@@ -288,7 +280,7 @@ DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategoryDefinedByQuiverAlgebra 
 
 #! @Description
 #!  Return the truth morphism of true from terminal functor
-#!  to the functor of sieves from <C>OppositeFpCategoryDefinedByQuiverAlgebra</C>( <A>B</A> )
+#!  to the functor of sieves from <C>OppositeOfObjectFiniteCategory</C>( <A>B</A> )
 #!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #! @Arguments B
 #! @Returns a &CAP; functor
@@ -296,7 +288,7 @@ DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFpCategoryDefinedByQuiv
 #! @InsertChunk SieveFunctor
 
 #! @Description
-#!  Return the functor of sieves from <C>OppositeFpCategoryDefinedByQuiverAlgebra</C>( <A>B</A> )
+#!  Return the functor of sieves from <C>OppositeOfObjectFiniteCategory</C>( <A>B</A> )
 #!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
 #! @Arguments B
 #! @Returns a &CAP; functor

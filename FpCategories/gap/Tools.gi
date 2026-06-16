@@ -616,7 +616,7 @@ InstallMethod( NerveTruncatedInDegree2AsFunctor,
     Delta2 := ValueGlobal( "SimplicialCategoryTruncatedInDegree2" );
     
     ## Delta_op(C0,C1,C2)[id:C0->C1,s:C1->C0,t:C1->C0,is:C1->C2,it:C1->C2,ps:C2->C1,pt:C2->C1,mu:C2->C1]
-    Delta2op := OppositeQuotientOfPathCategory( Delta2 );
+    Delta2op := OppositeOfObjectFiniteCategory( Delta2 );
     
     return CapFunctor( Delta2op, nerve_ValuesOnAllObjects, nerve_ValuesOnAllGeneratingMorphisms, RangeCategoryOfHomomorphismStructure( C ) );
     
@@ -685,7 +685,7 @@ InstallMethod( OppositeFiniteCategory,
     if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
         TryNextMethod( );
     fi;
-    
+
     C_op := Opposite( C );
     
     defining_triple := DefiningTripleOfUnderlyingQuiver( C );
@@ -695,10 +695,19 @@ InstallMethod( OppositeFiniteCategory,
                                List( defining_triple[3], a -> Pair( a[2], a[1] ) ) );
     
     SetDefiningTripleOfUnderlyingQuiver( C_op, defining_triple );
+
+    SetOppositeFiniteCategory( C_op, C );
     
     return C_op;
     
 end );
+
+##
+InstallMethod( OppositeOfObjectFiniteCategory,
+        "for a finite category",
+        [ IsCapCategory ],
+
+    OppositeFiniteCategory );
 
 ##
 InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
