@@ -6,7 +6,7 @@
 
 ReadPackage( "Algebroids", "gap/QuiverRows.gd" );
 
-ReadPackage( "Algebroids", "gap/FpCategories.gd");
+ReadPackage( "Algebroids", "gap/FpCategoriesDefinedByQuiverAlgebras.gd");
 ReadPackage( "Algebroids", "gap/Algebroids.gd");
 ReadPackage( "Algebroids", "gap/Functors.gd");
 ReadPackage( "Algebroids", "gap/CategoryOfFpAlgebras.gd" );

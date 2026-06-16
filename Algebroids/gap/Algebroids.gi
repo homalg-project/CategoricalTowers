@@ -1372,7 +1372,7 @@ end );
 ##
 InstallMethodWithCache( Algebroid,
         "for a homalg ring and a finitely presented category",
-        [ IsHomalgRing, IsFpCategory ],
+        [ IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra ],
         
   function( k, C )
     local relations, kq, A, over_Z;
@@ -1417,7 +1417,7 @@ end );
 ##
 InstallMethodWithCache( Algebroid,
         "for a finitely presented category and a category",
-        [ IsFpCategory, IsCapCategory ],
+        [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory ],
         
   function( C, H )
     local relations, k, kq, A, over_Z;
@@ -1458,7 +1458,7 @@ end );
 ##
 InstallMethod( \[\],
         "for a homalg ring and a finitely presented category",
-        [ IsHomalgRing, IsFpCategory ],
+        [ IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra ],
         
   Algebroid );
 
@@ -2162,7 +2162,7 @@ end );
 ##
 InstallMethod( CapFunctor,
         "for an algebroid and a CAP category object",
-        [ IsFpCategory, IsCapCategoryObject ],
+        [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategoryObject ],
         
   function( A, object )
     
