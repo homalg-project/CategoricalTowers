@@ -2397,7 +2397,7 @@ InstallMethod( DataTablesOfLinearCategory,
           [ IsFpAlgebroidDefinedByQuiverAlgebra ],
   
   function ( B )
-    local all_objs, support_objs, objs, all_gmors, support_gmors, gmors;
+    local all_objs, support_objs, objs, all_gmors, support_gmors, gmors, is_admissible;
     
     all_objs := SetOfObjects( B );
     support_objs := PositionsProperty( all_objs, o -> not IsZero( o ) );
@@ -2407,8 +2407,14 @@ InstallMethod( DataTablesOfLinearCategory,
     support_gmors := PositionsProperty( all_gmors, m -> not IsZero( m ) );
     gmors := all_gmors{support_gmors};
     
+    if HasIsAdmissibleAlgebroid( B ) then
+        is_admissible := IsAdmissibleAlgebroid( B );
+    else
+        is_admissible := fail;
+    fi;
+    
     return
-      NTuple( 5,
+      NTuple( 6,
         
         CommutativeSemiringOfLinearCategory( B ),
         
@@ -2440,7 +2446,9 @@ InstallMethod( DataTablesOfLinearCategory,
           EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, IdentityMorphism( B, o ), m ) ) ) ) ),
         
         List( objs, o -> List( gmors, m ->
-          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, o ) ) ) ) ) ) );
+          EntriesOfHomalgMatrixAsListList( UnderlyingMatrix( HomomorphismStructureOnMorphisms( B, m, IdentityMorphism( B, o ) ) ) ) ) ),
+        
+        is_admissible );
         
 end );
 

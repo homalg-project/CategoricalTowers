@@ -54,7 +54,7 @@ DeclareCategory( "IsMorphismInFpAlgebroidFromDataTables",
 ####################################
 
 #! @Description
-#!  Construct an enrichted algebroid $A$ out of the <A>data_tables</A> consisting of $7$ entries:
+#!  Construct an enrichted algebroid $A$ out of the <A>data_tables</A> consisting of $6$ entries:
 #!  * <A>data_tables</A>[1] is the commutative ring $k$ over which $A$ is linear.
 #!  * <A>data_tables</A>[2] is the underlying quiver or a string that can be used to constructe a CAP quiver. Suppose the number of objects is <C>nr_objs</C> and
 #!    the number of morphisms is <C>nr_mors</C>.
@@ -64,14 +64,18 @@ DeclareCategory( "IsMorphismInFpAlgebroidFromDataTables",
 #!    The entry $L[i][j]$ contains the matrices of the $k$-linear maps $\mathrm{Hom}_{A}(v_i,m_j)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
 #!  * <A>data_tables</A>[5]: an array $L$ containing <C>nr_objs</C> rows and <C>nr_mors</C> columns.
 #!    The entry $L[i][j]$ contains the matrices of the $k$-linear maps $\mathrm{Hom}_{A}(m_j,v_i)$ where $u_i$ and $m_j$ are the $i$'th object and the $j$'th generating morphism.
+#!  * <A>data_tables</A>[6]: <C>true</C> or <C>false</C> if the admissibility of the algebroid is known, and <C>fail</C> otherwise.
+#!    When not <C>fail</C>, this value is used to set the property <C>IsAdmissibleAlgebroid</C> on the resulting algebroid.
 #! @Arguments data_tables
 #! @Returns a &CAP; category
 DeclareOperation( "AlgebroidFromDataTables", [ IsDenseList ] );
 #! @InsertChunk AlgebroidFromDataTables
 
 #! @Description
-#!  Returns the 5-tuple data tables of a linear category.
+#!  Returns the 6-tuple data tables of a linear category.
 #! The output can be passed to the constructor <C>AlgebroidFromDataTables</C>.
+#! The 6th entry is <C>true</C> or <C>false</C> if <C>HasIsAdmissibleAlgebroid</C> holds
+#! for the category, and <C>fail</C> otherwise.
 #! @Arguments A
 #! @Returns a list
 DeclareAttribute( "DataTablesOfLinearCategory", IsCapCategory );
