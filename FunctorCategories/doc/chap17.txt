@@ -327,7 +327,7 @@
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[28X# CI_SINGLE_JOB_ID:PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled[128X[104X
+    [4X[28X# CI_SINGLE_JOB_ID:PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled[128X[104X
     [4X[28X#@if ValueOption( "no_precompiled_code" ) <> true[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -344,7 +344,7 @@
     [4X[25X>[125X [27X  function( quiver )[127X[104X
     [4X[25X>[125X [27X    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ), sFinSets ); end;;[127X[104X
     [4X[25Xgap>[125X [27Xgiven_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;[127X[104X
-    [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled";;[127X[104X
+    [4X[25Xgap>[125X [27Xcompiled_category_name := "PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled";;[127X[104X
     [4X[25Xgap>[125X [27Xpackage_name := "FunctorCategories";;[127X[104X
     [4X[25Xgap>[125X [27XCapJitPrecompileCategoryAndCompareResult([127X[104X
     [4X[25X>[125X [27X    category_constructor,[127X[104X
@@ -364,7 +364,7 @@
     [4X[25X>[125X [27X                     #"ExponentialOnObjects",[127X[104X
     [4X[25X>[125X [27X                     ][127X[104X
     [4X[25X>[125X [27X);;[127X[104X
-    [4X[25Xgap>[125X [27XPreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( given_arguments[1] );[127X[104X
+    [4X[25Xgap>[125X [27XPreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled( given_arguments[1] );[127X[104X
     [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
     [4X[25Xgap>[125X [27Xcat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );[127X[104X
     [4X[28XPreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )[128X[104X
