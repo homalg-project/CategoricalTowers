@@ -94,7 +94,7 @@ jobs:
         config:
           - { package: FunctorCategories, targets: [PreSheavesOfCategoryPrecompiled] }
           - { package: FunctorCategories, targets: [FinQuiversPrecompiled, FinBouquetsPrecompiled, FinReflexiveQuiversPrecompiled] }
-          - { package: FunctorCategories, targets: [PreSheavesOfAlgebroidPrecompiled, PreSheavesOfAlgebroidFromDataTablesPrecompiled, PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled] }
+          - { package: FunctorCategories, targets: [PreSheavesOfAlgebroidPrecompiled, PreSheavesOfAlgebroidFromDataTablesPrecompiled, PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled] }
           - { package: FunctorCategories, targets: [base] }
           - { package: Algebroids, targets: [AdelmanCategoryVsQuiverRows, SnakeLemmaProof, SnakeLemmaProof2] }
           - { package: Algebroids, targets: [CategoryOfFpAlgebras, CategoryOfFpMatrixAlgebras] }

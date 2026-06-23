@@ -464,8 +464,8 @@ InstallMethodWithCache( FunctorCategory,
     
     ## building the categorical tower:
     
-    if IsFpCategory( B ) then
-        B_op := OppositeFpCategory( B : FinalizeCategory := true );
+    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
+        B_op := OppositeFpCategoryDefinedByQuiverAlgebra( B : FinalizeCategory := true );
     elif IsPathCategory( B ) then
         B_op := OppositePathCategory( B : FinalizeCategory := true );
     elif IsQuotientOfPathCategory( B ) then
@@ -481,7 +481,7 @@ InstallMethodWithCache( FunctorCategory,
     elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
     else
-        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
+        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
     fi;
     
     PSh := PreSheaves( B_op, D : FinalizeCategory := true );
@@ -791,12 +791,13 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
   function ( B_op )
     local B, Hom, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
     
-    if IsFpCategory( B_op ) then
-        B := OppositeFpCategory( B_op : FinalizeCategory := true );
+
+    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
+        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
     elif IsAlgebroid( B_op ) then
         B := OppositeAlgebroid( B_op : FinalizeCategory := true );
     else
-        Error( "the input must either be IsFpCategory or is IsAlgebroid\n" );
+        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsAlgebroid\n" );
     fi;
     
     Hom := FunctorCategory( B );
@@ -841,12 +842,13 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
   function ( B_op )
     local B, Hom, Yoneda, Yoneda_data;
     
-    if IsFpCategory( B_op ) then
-        B := OppositeFpCategory( B_op : FinalizeCategory := true );
+
+    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
+        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
     elif IsAlgebroid( B_op ) then
         B := OppositeAlgebroid( B_op : FinalizeCategory := true );
     else
-        Error( "the input must either be IsFpCategory or is IsAlgebroid\n" );
+        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsAlgebroid\n" );
     fi;
     
     Hom := FunctorCategory( B );

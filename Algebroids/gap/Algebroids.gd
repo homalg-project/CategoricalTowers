@@ -406,17 +406,17 @@ DeclareOperation( "Algebroid",
 #! @Arguments C, H
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsFpCategory, IsCapCategory ] );
+        [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory ] );
 
 #! @Arguments R, C
 #! @Group Algebroid
 DeclareOperation( "Algebroid",
-        [ IsHomalgRing, IsFpCategory ] );
+        [ IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra ] );
 
 #! @Arguments R, C
 #! @Group Algebroid
 DeclareOperation( "[]",
-        [ IsHomalgRing, IsFpCategory ] );
+        [ IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra ] );
 
 #! @Arguments A, L
 #! @Group Algebroid

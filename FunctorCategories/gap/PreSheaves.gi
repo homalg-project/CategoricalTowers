@@ -91,8 +91,8 @@ InstallMethod( CreatePreSheaf,
     
     B_op := SourceOfFunctor( F );
     
-    if IsFpCategory( B_op ) then
-        B := OppositeFpCategory( B_op );
+    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
+        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
     elif IsAlgebroid( B_op ) then
         B := OppositeAlgebroid( B_op );
     else
@@ -249,8 +249,8 @@ InstallMethod( CreatePreSheafMorphism,
     
     B_op := SourceOfFunctor( F );
     
-    if IsFpCategory( B_op ) then
-        B := OppositeFpCategory( B_op );
+    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
+        B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
     elif IsAlgebroid( B_op ) then
         B := OppositeAlgebroid( B_op );
     else
@@ -304,8 +304,8 @@ end );
 InstallGlobalFunction( OppositeOfFpEnrichedCategory,
   function ( B )
     
-    if IsFpCategory( B ) then
-        return OppositeFpCategory( B : FinalizeCategory := true );
+    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
+        return OppositeFpCategoryDefinedByQuiverAlgebra( B : FinalizeCategory := true );
     elif IsPathCategory( B ) then
         return OppositePathCategory( B : FinalizeCategory := true );
     elif IsQuotientOfPathCategory( B ) then
@@ -321,7 +321,7 @@ InstallGlobalFunction( OppositeOfFpEnrichedCategory,
     elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
         return OppositeAlgebroid( B : FinalizeCategory := true );
     else
-        Error( "the first argument must be in { IsFpCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
+        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
     fi;
     
 end );
@@ -475,9 +475,9 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
     D := Target( PSh );
     B_op := OppositeOfSource( PSh );
     
-    if IsFpCategory( B ) then
+    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
         kq := UnderlyingQuiverAlgebra( B_op );
-        relations := RelationsOfFpCategory( B_op );
+        relations := RelationsOfFpCategoryDefinedByQuiverAlgebra( B_op );
         A := kq;
         if IsQuotientOfPathAlgebra( A ) then
             A := PathAlgebra( A );
@@ -522,7 +522,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
         
     end );
     
-    if IsFpCategory( B ) then
+    if IsFpCategoryDefinedByQuiverAlgebra( B ) then
         
         AddIsWellDefinedForObjects( PSh,
           function ( PSh, F )
@@ -1408,7 +1408,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     B_op := OppositeOfFpEnrichedCategory( B );
     
     ##
-    if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+    if ( IsFpCategoryDefinedByQuiverAlgebra( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFiniteCategory and IsFiniteCategory)( B ) or
@@ -1898,7 +1898,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     
     ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY( PSh );
     
-    if ( IsFpCategory( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
+    if ( IsFpCategoryDefinedByQuiverAlgebra( B ) and HasIsFinitelyPresentedCategory( B ) and IsFinitelyPresentedCategory( B ) ) or
        IsPathCategory( B ) or
        IsQuotientOfPathCategory( B ) or
        IsCategoryFromNerveData( B ) or
@@ -2293,11 +2293,11 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     #if false then
     if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         
-        if IsFpCategory( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
+        if IsFpCategoryDefinedByQuiverAlgebra( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
             
-            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsPrecompiled( PSh );
+            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled( PSh );
             
-            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
+            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
         elif IsCategoryFromDataTables( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
             
@@ -2343,7 +2343,7 @@ end ) );
 ##
 InstallMethodWithCache( PreSheaves,
         "for a f.p. category and a category",
-        [ IsFpCategory, IsCapCategory ],
+        [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory ],
         
   function ( B, D )
     
@@ -3027,7 +3027,7 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                        F_datum[2]{1 + DecompositionIndicesOfMorphism( B, morB )},
                        F_datum[1][1 + IndexOfObject( Source( morB ) )] );
         
-    elif IsFpCategory( B ) then
+    elif IsFpCategoryDefinedByQuiverAlgebra( B ) then
         
         F_datum := ObjectDatum( PSh, F );
         
@@ -4695,7 +4695,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
-        [ IsFpCategory ],
+        [ IsFpCategoryDefinedByQuiverAlgebra ],
         
   function ( B )
     
