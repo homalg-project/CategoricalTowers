@@ -114,14 +114,7 @@
   
   [33X[0;0YReturns the label of the morphism [3Xalpha[103X.[133X
   
-  [1X2.2-10 IsFinitePathCategory[101X
-  
-  [33X[1;0Y[29X[2XIsFinitePathCategory[102X( [3XC[103X ) [32X property[133X
-  [6XReturns:[106X  [33X[0;10Ya boolean[133X
-  
-  [33X[0;0YReturns whether [3XC[103X can be enriched over the category of finite sets.[133X
-  
-  [1X2.2-11 HasFiniteNumberOfMacaulayMorphisms[101X
+  [1X2.2-10 HasFiniteNumberOfMacaulayMorphisms[101X
   
   [33X[1;0Y[29X[2XHasFiniteNumberOfMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
@@ -132,7 +125,7 @@
   whether  the  number of morphisms that are not multiples of elements in [3Xmors[103X
   (i.e., Macaulay monomials) is finite.[133X
   
-  [1X2.2-12 MacaulayMorphisms[101X
+  [1X2.2-11 MacaulayMorphisms[101X
   
   [33X[1;0Y[29X[2XMacaulayMorphisms[102X( [3XC[103X, [3Xmors[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya boolean[133X
