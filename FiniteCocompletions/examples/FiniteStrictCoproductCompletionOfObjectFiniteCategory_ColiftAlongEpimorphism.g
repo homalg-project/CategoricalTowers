@@ -20,14 +20,16 @@ t := Pair( 2, [ 2 ] ) / UTm;
 #! ategoryWithSingleObject( ) )>
 pi := MorphismConstructor(
               x,
-              [ [ [ [ 0, 0, 0, 0, 0 ], [ 0, 0, 2, 1, 1 ] ] ],
+              [ [ [ 0, 0, 0, 0, 0 ] ],
+                [ [ 0, 0, 2, 1, 1 ] ],
                 [ [ id_T, id_T, id_T, id_T, id_T ] ] ],
               y );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
 #! CategoryWithSingleObject( ) )>
 phi := MorphismConstructor(
                x,
-               [ [ [ [ 0, 0, 0, 0, 0 ], [ 1, 1, 1, 0, 0 ] ] ],
+               [ [ [ 0, 0, 0, 0, 0 ] ],
+                 [ [ 1, 1, 1, 0, 0 ] ],
                  [ [ id_T, id_T, id_T, id_T, id_T ] ] ],
                t );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
@@ -38,11 +40,12 @@ psi := ColiftAlongEpimorphism( pi, phi );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
 #! CategoryWithSingleObject( ) )>
 Display( psi );
-#! { 0, 1, 2 } ⱶ[ [ [ 0, 0, 0 ], [ 1, 0, 1 ] ] ]→ { 0, 1 }
-#!
+#! { 0, 1, 2 } ⱶ[ [ [ 0, 0, 0 ] ], [ [ 1, 0, 1 ] ] ]→ { 0, 1 }
+#! 
 #! [ [ A morphism in TerminalCategoryWithSingleObject( ), 
-#!     A morphism in TerminalCategoryWithSingleObject( ), 
-#!     A morphism in TerminalCategoryWithSingleObject( ) ] ]
+#!       A morphism in TerminalCategoryWithSingleObject( ), 
+#!       A morphism in TerminalCategoryWithSingleObject( ) ] ]
+#!
 #! A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( TerminalC\
 #! ategoryWithSingleObject( ) ) given by the above data
 PreCompose( pi, psi ) = phi;
@@ -56,7 +59,8 @@ y := Pair( 3, [ 3 ] ) / UTm;
 #! ategoryWithSingleObject( ) )>
 pi := MorphismConstructor(
               x,
-              [ [ [ [ 0, 0, 0, 0 ], [ 1, 0, 1, 2 ] ] ],
+              [ [ [ 0, 0, 0, 0 ] ],
+                [ [ 1, 0, 1, 2 ] ],
                 [ [ id_T, id_T, id_T, id_T ] ] ],
               y );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
@@ -74,7 +78,8 @@ x := Pair( 4, [ 4 ] ) / UTm;
 #! ategoryWithSingleObject( ) )>
 f := MorphismConstructor(
              x,
-             [ [ [ [ 0, 0, 0, 0 ], [ 1, 3, 0, 2 ] ] ],
+             [ [ [ 0, 0, 0, 0 ] ],
+               [ [ 1, 3, 0, 2 ] ],
                [ [ id_T, id_T, id_T, id_T ] ] ],
              x );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
@@ -101,14 +106,16 @@ t_1 := Pair( 2, [ 2 ] ) / UTm;
 #! ategoryWithSingleObject( ) )>
 pi_1 := MorphismConstructor(
                 x_1,
-                [ [ [ [ 0, 0, 0, 0 ], [ 0, 0, 1, 2 ] ] ],
+                [ [ [ 0, 0, 0, 0 ] ],
+                  [ [ 0, 0, 1, 2 ] ],
                   [ [ id_T, id_T, id_T, id_T ] ] ],
                 y_1 );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
 #! CategoryWithSingleObject( ) )>
 phi_1 := MorphismConstructor(
                  x_1,
-                 [ [ [ [ 0, 0, 0, 0 ], [ 1, 1, 0, 0 ] ] ],
+                 [ [ [ 0, 0, 0, 0 ] ],
+                   [ [ 1, 1, 0, 0 ] ],
                    [ [ id_T, id_T, id_T, id_T ] ] ],
                  t_1 );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
@@ -121,7 +128,7 @@ x_2 := Pair( 2, [ 2 ] ) / UTm;
 #! ategoryWithSingleObject( ) )>
 pi_2 := MorphismConstructor(
                 x_2,
-                [ [ [ [ 0, 0 ], [ 1, 0 ] ] ], [ [ id_T, id_T ] ] ],
+                [ [ [ 0, 0 ] ], [ [ 1, 0 ] ], [ [ id_T, id_T ] ] ],
                 x_2 );
 #! <A morphism in FiniteStrictCoproductCompletionOfObjectFiniteCategory( Terminal\
 #! CategoryWithSingleObject( ) )>
