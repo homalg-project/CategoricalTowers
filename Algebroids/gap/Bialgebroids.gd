@@ -15,7 +15,7 @@
 #! @Description
 #!  The &GAP; category of bialgebroids.
 DeclareCategory( "IsBialgebroid",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 ####################################
 #
@@ -48,14 +48,14 @@ DeclareProperty( "IsHopfAlgebroid",
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Counit",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The comultiplication of the bialgebroid <A>B</A>.
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Comultiplication",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 ####################################
 #
@@ -69,11 +69,11 @@ DeclareAttribute( "Comultiplication",
 #! @Arguments A, counit, comult
 #! @Returns a &CAP; category
 DeclareOperation( "AddBialgebroidStructure",
-        [ IsAlgebroid, IsRecord, IsRecord ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord ] );
 
 #! @Description
 #!  Add to the bialgebroid <A>B</A> an antipode <A>S</A>.
 #! @Arguments B, S
 #! @Returns a &CAP; category
 DeclareOperation( "AddAntipode",
-        [ IsAlgebroid, IsRecord ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord ] );

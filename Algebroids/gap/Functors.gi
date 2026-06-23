@@ -147,7 +147,7 @@ InstallMethod( IsomorphismFromQuiverRows,
     
     algebroid := UnderlyingCategory( additive_closure );
     
-    if not IsAlgebroid( algebroid ) then
+    if not IsFpAlgebroidDefinedByQuiverAlgebra( algebroid ) then
       
       Error( "The argument should be an additive closure of some algebroid!\n" );
       
@@ -181,7 +181,7 @@ InstallMethod( IsomorphismOntoQuiverRows,
     
     algebroid := UnderlyingCategory( additive_closure );
     
-    if not IsAlgebroid( algebroid ) then
+    if not IsFpAlgebroidDefinedByQuiverAlgebra( algebroid ) then
       
       Error( "The argument should be an additive closure of some algebroid!\n" );
       
@@ -261,7 +261,7 @@ end );
 
 ##
 InstallMethod( ProjectionFromAlgebroidOfPathAlgebra,
-          [ IsAlgebroid ],
+          [ IsFpAlgebroidDefinedByQuiverAlgebra ],
   function( algebroid )
     local A, kQ, path_algebroid, F;
     

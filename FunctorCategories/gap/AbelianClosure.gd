@@ -65,7 +65,7 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 #! @Arguments B
 #! @Group AbelianClosure
 DeclareOperation( "AbelianClosure",
-        [ IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperationWithCache( "AbelianClosure",
-        [ IsAlgebroid, IsCapCategory ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ] );

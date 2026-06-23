@@ -478,10 +478,10 @@ InstallMethodWithCache( FunctorCategory,
         B_op := Opposite( B : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         B_op := OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) then
         B_op := OppositeAlgebroid( B : FinalizeCategory := true );
     else
-        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsAlgebroid }\n" );
+        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsFpAlgebroidDefinedByQuiverAlgebra }\n" );
     fi;
     
     PSh := PreSheaves( B_op, D : FinalizeCategory := true );
@@ -704,7 +704,7 @@ end ) );
 ##
 InstallMethodWithCache( FunctorCategory,
         "for a CAP category and a homalg field",
-        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   function ( B, k )
     local kmat, Hom;
@@ -752,7 +752,7 @@ InstallMethod( Hom,
 ##
 InstallMethod( Hom,
         "for a CAP category and a homalg field",
-        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   FunctorCategory );
 
@@ -794,10 +794,10 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
 
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
         B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
-    elif IsAlgebroid( B_op ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
         B := OppositeAlgebroid( B_op : FinalizeCategory := true );
     else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsAlgebroid\n" );
+        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
     fi;
     
     Hom := FunctorCategory( B );
@@ -845,10 +845,10 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
 
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
         B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op : FinalizeCategory := true );
-    elif IsAlgebroid( B_op ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
         B := OppositeAlgebroid( B_op : FinalizeCategory := true );
     else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsAlgebroid\n" );
+        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
     fi;
     
     Hom := FunctorCategory( B );

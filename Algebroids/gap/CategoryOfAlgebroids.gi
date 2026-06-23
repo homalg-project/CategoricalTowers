@@ -29,7 +29,7 @@ end );
 
 ##
 InstallMethod( CategoryOfAlgebroidsObject,
-                        [ IsAlgebroid ],
+                        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
                
   function( A )
     local category;
@@ -258,7 +258,7 @@ end );
 ##
 InstallMethod( TensorProductOnObjects,
         "for algebroids",
-        [ IsAlgebroid, IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( X, Y )
 
@@ -373,7 +373,7 @@ end );
 ##
 InstallMethod( LeftUnitorAsFunctor,
         "for algebroid as category",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA,
@@ -409,7 +409,7 @@ end );
 ##
 InstallMethod( RightUnitorAsFunctor,
         "for algebroid as category",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     local objects_in_A, k, Axk, unique_object_in_k, objects_in_Axk,
@@ -445,7 +445,7 @@ end );
 ##
 InstallMethod( LeftUnitorInverseAsFunctor,
         "for algebroid as category",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     local objects_in_A, k, kxA, unique_object_in_k, objects_in_kxA,
@@ -480,7 +480,7 @@ end );
 
 InstallMethod( RightUnitorInverseAsFunctor,
         "for algebroid as category",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     local objects_in_A, k, Axk, unique_object_in_k,
@@ -515,7 +515,7 @@ end );
 ##
 InstallMethod( AssociatorLeftToRightWithGivenTensorProductsAsFunctor,
         "for algebroids as categories",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( AxB_C, A, B, C, A_BxC )
     local algebra_of_AxB_C, algebra_of_A_BxC, iso_to_flat, iso_from_flat,
@@ -553,7 +553,7 @@ end );
 ##
 InstallMethod( AssociatorRightToLeftWithGivenTensorProductsAsFunctor,
         "for algebroids as categories",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
   function( A_BxC, A, B, C, AxB_C )
     local algebra_of_A_BxC, algebra_of_AxB_C, iso_to_flat, iso_from_flat,
           functor_images_of_generating_morphisms, functor_images_of_objects,
@@ -588,7 +588,7 @@ end );
 ##
 InstallMethod( Twist,
         "for two algebroids",
-        [ IsAlgebroid, IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A, B )
     local A_underlying_quiver_algebra, B_underlying_quiver_algebra,

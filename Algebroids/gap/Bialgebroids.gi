@@ -13,7 +13,7 @@
 ##
 InstallMethod( AddBialgebroidStructure,
         "for an algebroid and two records",
-        [ IsAlgebroid, IsRecord, IsRecord ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord ],
         
   function( B, counit_images, comult_images )
     local vertices, B0, counit_record_morphisms, counit_record_objects, counit_functor, B2, comult_record_morphisms, comult_record_objects, comult_functor, a;
@@ -77,7 +77,7 @@ end );
 ##
 InstallMethod( AddAntipode,
         "for a CAP category and a record",
-        [ IsAlgebroid, IsRecord ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord ],
         
   function( B, S_images_of_generating_morphisms )
     local vertices, S_images_of_objects, S_functor, a;

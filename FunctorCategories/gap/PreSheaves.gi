@@ -93,7 +93,7 @@ InstallMethod( CreatePreSheaf,
     
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
         B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
-    elif IsAlgebroid( B_op ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
         B := OppositeAlgebroid( B_op );
     else
         B := Opposite( B_op );
@@ -251,7 +251,7 @@ InstallMethod( CreatePreSheafMorphism,
     
     if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
         B := OppositeFpCategoryDefinedByQuiverAlgebra( B_op );
-    elif IsAlgebroid( B_op ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
         B := OppositeAlgebroid( B_op );
     else
         B := Opposite( B_op );
@@ -318,10 +318,10 @@ InstallGlobalFunction( OppositeOfFpEnrichedCategory,
         return OppositeCategory( B );
     elif HasIsFiniteCategory( B ) and IsFiniteCategory( B ) then
         return OppositeFiniteCategory( B : FinalizeCategory := true );
-    elif IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) then
         return OppositeAlgebroid( B : FinalizeCategory := true );
     else
-        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsAlgebroid }\n" );
+        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsFpAlgebroidDefinedByQuiverAlgebra }\n" );
     fi;
     
 end );
@@ -485,7 +485,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
         relations := List( relations, a -> List( a, ai -> PathAsAlgebraElement( A, ai ) ) );
     elif IsQuotientOfPathCategory( B ) then
         relations := DefiningRelations( B_op );
-    elif IsAlgebroid( B ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) then
         relations := RelationsOfAlgebroid( B_op );
         relations := List( relations, UnderlyingQuiverAlgebraElement );
     else
@@ -606,7 +606,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
             
         end );
         
-    elif IsAlgebroid( B ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) then
         
         AddIsWellDefinedForObjects( PSh,
           function ( PSh, F )
@@ -634,7 +634,7 @@ InstallGlobalFunction( ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY,
             
         end );
         
-    elif IsAlgebroidFromDataTables( B ) then
+    elif IsFpAlgebroidFromDataTables( B ) then
 
         AddIsWellDefinedForObjects( PSh,
           function ( PSh, F )
@@ -1412,8 +1412,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFiniteCategory and IsFiniteCategory)( B ) or
-       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
-       IsAlgebroidFromDataTables( B ) then
+       ( IsFpAlgebroidDefinedByQuiverAlgebra( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
+       IsFpAlgebroidFromDataTables( B ) then
         
         create_func_bool :=
           function ( name, PSh )
@@ -1904,8 +1904,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
        IsCategoryFromNerveData( B ) or
        IsCategoryFromDataTables( B ) or
        (HasIsFiniteCategory and IsFiniteCategory)( B ) or
-       ( IsAlgebroid( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
-       IsAlgebroidFromDataTables( B ) then
+       ( IsFpAlgebroidDefinedByQuiverAlgebra( B ) and HasIsFinitelyPresentedLinearCategory( B ) and IsFinitelyPresentedLinearCategory( B ) ) or
+       IsFpAlgebroidFromDataTables( B ) then
       
       ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY( PSh );
         
@@ -2305,7 +2305,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
             
-        elif IsAlgebroid( B ) then
+        elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) then
             
             commutative_semiring := CommutativeSemiringOfLinearCategory( D );
             
@@ -2354,7 +2354,7 @@ end );
 ##
 InstallMethodWithCache( PreSheaves,
         "for an algebroid and a category",
-        [ IsAlgebroid, IsCapCategory ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ],
         
   function ( B, D )
     
@@ -2402,7 +2402,7 @@ end );
 ##
 InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
-        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   function ( B, k )
     local kmat, PSh;
@@ -2432,7 +2432,7 @@ end );
 ##
 InstallMethodWithCache( PreSheaves,
         "for an algebroid from data tables and a category",
-        [ IsAlgebroidFromDataTables, IsCapCategory ],
+        [ IsFpAlgebroidFromDataTables, IsCapCategory ],
         
   function ( B, D )
     
@@ -3036,14 +3036,14 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                        ListOfValues( F_datum[2] ){1 + DecompositionIndicesOfMorphism( B, morB )},
                        F_datum[1][VertexIndex( UnderlyingVertex( Source( morB ) ) )] );
         
-    elif IsAlgebroidFromDataTables( B_op ) then
+    elif IsFpAlgebroidFromDataTables( B_op ) then
         
         morB_op := MorphismConstructor( B_op,
                            SetOfObjects( B_op )[ObjectIndex( Target( morB ) )],
                            CoefficientsList( morB ),
                            SetOfObjects( B_op )[ObjectIndex( Source( morB ) )] );
         
-    elif IsAlgebroid( B ) then
+    elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) then
         
         morB_op := MorphismConstructor( B_op,
                            SetOfObjects( B_op )[VertexIndex( UnderlyingVertex( Target( morB ) ) )],
@@ -4931,7 +4931,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( F );
      
-    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -4971,7 +4971,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( F );
      
-    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -5061,7 +5061,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( eta );
     
-    if not ( IsAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     
@@ -5092,7 +5092,7 @@ InstallMethod( ViewString,
     
     PSh := CapCategory( eta );
     
-    if not ( IsAlgebroid( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
         TryNextMethod();
     fi;
     

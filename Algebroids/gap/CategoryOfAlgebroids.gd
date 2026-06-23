@@ -84,7 +84,7 @@ DeclareOperation( "CategoryOfAlgebroids",
 
 #!
 DeclareAttribute( "CategoryOfAlgebroidsObject",
-                  IsAlgebroid );
+                  IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #!
 DeclareOperation( "CategoryOfAlgebroidsMorphism",
@@ -101,30 +101,30 @@ DeclareOperation( "CategoryOfAlgebroidsMorphism",
 ####################################
 
 DeclareOperation( "TensorProductOnObjects",
-        [ IsAlgebroid, IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "LeftUnitorInverseAsFunctor",
-        [ IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "LeftUnitorAsFunctor",
-        [ IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "RightUnitorInverseAsFunctor",
-        [ IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "RightUnitorAsFunctor",
-        [ IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "AssociatorLeftToRightWithGivenTensorProductsAsFunctor",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 DeclareOperation( "AssociatorRightToLeftWithGivenTensorProductsAsFunctor",
-        [ IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid, IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  Construct the canonical twist from <A>A</A> $\otimes$ <A>B</A> to <A>B</A> $\otimes$ <A>A</A>
 #! @Arguments A, B
 #! @Returns a &CAP; functor
 DeclareOperation( "Twist",
-        [ IsAlgebroid, IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 

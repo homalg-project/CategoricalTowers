@@ -28,7 +28,7 @@ InstallOtherMethod( Range,
 ##
 InstallMethod( Dimension,
         "for an algebroid",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     local kq;
@@ -45,7 +45,7 @@ end );
 
 ##
 InstallMethod( AssignSetOfObjects,
-        [ IsAlgebroid, IsString ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsString ],
         
   function( A, label )
     local names, objects, func;
@@ -76,7 +76,7 @@ end );
 
 ##
 InstallOtherMethod( AssignSetOfObjects,
-        [ IsAlgebroid and HasUnderlyingQuiver ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver ],
         
   function( A )
   
@@ -87,7 +87,7 @@ end );
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for an algebroid and two objects",
-        [ IsAlgebroid and HasUnderlyingQuiver, IsObjectInAlgebroid, IsObjectInAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
         
   { A, obj_1, obj_2 } -> Filtered( SetOfGeneratingMorphisms( A ), m -> IsEqualForObjects( obj_1, Source( m ) ) and IsEqualForObjects( obj_2, Target( m ) ) )
 );
@@ -95,7 +95,7 @@ InstallMethodWithCache( SetOfGeneratingMorphisms,
 ##
 InstallMethod( SetOfGeneratingMorphisms,
         "for two objects in an algebroid",
-         [ IsObjectInAlgebroid, IsObjectInAlgebroid ],
+         [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
          
   { obj_1, obj_2 } -> SetOfGeneratingMorphisms( CapCategory( obj_1 ), obj_1, obj_2 )
 );
@@ -103,14 +103,14 @@ InstallMethod( SetOfGeneratingMorphisms,
 ##
 InstallMethodWithCache( SetOfGeneratingMorphisms,
         "for an algebroid and two integers",
-        [ IsAlgebroid and HasUnderlyingQuiver, IsInt, IsInt ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver, IsInt, IsInt ],
         
   { A, i, j } -> SetOfGeneratingMorphisms( A, SetOfObjects( A )[ i ], SetOfObjects( A )[ j ] )
 );
 
 ##
 InstallMethod( AssignSetOfGeneratingMorphisms,
-        [ IsAlgebroid, IsString ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsString ],
         
   function( A, label )
     local names, morphisms, func;
@@ -141,7 +141,7 @@ end );
 
 ##
 InstallOtherMethod( AssignSetOfGeneratingMorphisms,
-        [ IsAlgebroid and HasUnderlyingQuiver ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver ],
         
   function( A )
     
@@ -153,7 +153,7 @@ end );
 ##
 InstallMethod( RelationsOfAlgebroid,
         "for an algebroid",
-        [ IsAlgebroid and HasUnderlyingQuiverAlgebra ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiverAlgebra ],
         
   function( A )
     local relations;
@@ -200,7 +200,7 @@ end );
 ##
 InstallMethod( DecompositionOfMorphismInAlgebroid,
         "for a morphism in an algebroid",
-        [ IsMorphismInAlgebroid ],
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( mor )
     local B, func;
@@ -233,7 +233,7 @@ end );
 ##
 InstallMethod( DecompositionOfMorphismInSquareOfAlgebroid,
         "for a morphism in an algebroid",
-        [ IsMorphismInAlgebroid ],
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( mor )
     local B, Rq, gens, prod, func;
@@ -714,7 +714,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
         "for an algebroid",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( cat )
     
@@ -725,7 +725,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         "for an algebroid",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( cat )
     
@@ -1104,7 +1104,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdditiveClosureOfAlgebroidPrecompiled", function 
     
     A := UnderlyingCategory( cat );
     
-    Assert( 0, IsAlgebroid( A ) );
+    Assert( 0, IsFpAlgebroidDefinedByQuiverAlgebra( A ) );
     
     Rq := UnderlyingQuiverAlgebra( A );
     
@@ -1145,7 +1145,7 @@ BindGlobal( "ADD_FUNCTIONS_FOR_AdelmanCategoryOfAdditiveClosureOfAlgebroidPrecom
     
     A := UnderlyingCategory( Add );
     
-    Assert( 0, IsAlgebroid( A ) );
+    Assert( 0, IsFpAlgebroidDefinedByQuiverAlgebra( A ) );
     
     Rq := UnderlyingQuiverAlgebra( A );
     
@@ -1246,9 +1246,9 @@ InstallMethod( Algebroid,
     fi;
     
     A := CreateCapCategoryWithDataTypes( A,
-                 IsAlgebroid,
-                 IsObjectInAlgebroid,
-                 IsMorphismInAlgebroid,
+                 IsFpAlgebroidDefinedByQuiverAlgebra,
+                 IsObjectInFpAlgebroidDefinedByQuiverAlgebra,
+                 IsMorphismInFpAlgebroidDefinedByQuiverAlgebra,
                  IsCapCategoryTwoCell,
                  IsQuiverVertex,
                  IsQuiverAlgebraElement,
@@ -1465,7 +1465,7 @@ InstallMethod( \[\],
 ##
 InstallMethod( QuotientCategory,
         "for an algebroid and a list",
-        [ IsAlgebroid, IsList ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList ],
 
   function( A, relations )
     
@@ -1476,7 +1476,7 @@ end );
 ##
 InstallMethod( \/,
         "for an algebroid and a list",
-        [ IsAlgebroid, IsList ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList ],
 
   function( A, relations )
     
@@ -1487,7 +1487,7 @@ end );
 ##
 InstallMethod( DescentToZDefinedByBasisPaths,
         "for an algebroid",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A )
     
@@ -1575,7 +1575,7 @@ end );
 ##
 InstallMethod( ObjectInAlgebroid,
          "for an algebroid and a vertex of a quiver",
-        [ IsAlgebroid, IsQuiverVertex ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsQuiverVertex ],
         
   function( A, v )
     local name, obj;
@@ -1596,7 +1596,7 @@ end );
 ##
 InstallOtherMethodForCompilerForCAP( MorphismInAlgebroid,
         "for an algebroid, two objects in this algebroid and an element of the quiver algebra",
-        [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( A, S, path, T )
     local l;
@@ -1641,7 +1641,7 @@ end );
 ##
 InstallMethod( MorphismInAlgebroid,
                "for two objects in an algebroid and an element of the quiver algebra",
-               [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ],
+               [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
                
   function( S, path, T )
     
@@ -1652,7 +1652,7 @@ end );
 ##
 InstallMethod( \.,
         "for an algebroid and a positive integer",
-        [ IsAlgebroid, IsPosInt ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsPosInt ],
         
   function( B, string_as_int )
     local name, q, a, b;
@@ -1689,7 +1689,7 @@ end );
 ##
 InstallMethod( MorphismInAlgebroid,
         "for an algebroid and an element of a path algebra",
-        [ IsAlgebroid, IsPathAlgebraElement ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsPathAlgebraElement ],
         
   function( A, path )
     local l, S, T;
@@ -1711,7 +1711,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsPathAlgebraElement, IsAlgebroid ],
+        [ IsPathAlgebraElement, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( path, A )
     
@@ -1722,7 +1722,7 @@ end );
 ##
 InstallMethod( MorphismInAlgebroid,
         "for an algebroid and an element of a quotient of a path algebra",
-        [ IsAlgebroid, IsQuotientOfPathAlgebraElement ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsQuotientOfPathAlgebraElement ],
         
   function( A, path )
     local l, S, T;
@@ -1744,7 +1744,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsQuotientOfPathAlgebraElement, IsAlgebroid ],
+        [ IsQuotientOfPathAlgebraElement, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( path, A )
     
@@ -1755,7 +1755,7 @@ end );
 ##
 InstallMethod( POW,
         "for an algebroid and an integer",
-        [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsInt ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiverAlgebra, IsInt ],
         
   function( A, n )
     local Rq, R, parity;
@@ -1830,7 +1830,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for objects in algebroids",
-        [ IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ],
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( a, b, T )
     local product_string, a_string, b_string, product_vertex;
@@ -1845,7 +1845,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for object and morphism in algebroids",
-        [ IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid ],
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( object, morphism, T )
     local source, range, morphism_as_quiver_algebra_element, paths, coeffs,
@@ -1915,7 +1915,7 @@ end );
 ##
 InstallMethod( ElementaryTensor,
         "for morphism and object in algebroids",
-        [ IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ],
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( morphism, object, T )
     local source, range, morphism_as_quiver_algebra_element, coeffs, paths,
@@ -1985,7 +1985,7 @@ end );
 ##
 InstallMethod( \*,
         "for two algebroids",
-        [ IsAlgebroid and HasUnderlyingQuiverAlgebra, IsAlgebroid and HasUnderlyingQuiverAlgebra ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiverAlgebra ],
         
   function( A, B )
 
@@ -1996,7 +1996,7 @@ end );
 ##
 InstallMethod( CapFunctor,
         "for an algebroid, two lists, a CAP Category, and a boolean",
-        [ IsAlgebroid, IsList, IsList, IsCapCategory, IsBool ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory, IsBool ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B, covariant )
     local kq, vertices, arrows, functor, func_obj, func_mor;
@@ -2090,7 +2090,7 @@ end );
 ##
 InstallMethod( CapFunctor,
         "for an algebroid, two lists, and a CAP category",
-        [ IsAlgebroid, IsList, IsList, IsCapCategory ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory ],
         
   function( A, images_of_objects, images_of_generating_morphisms, B )
     
@@ -2101,7 +2101,7 @@ end );
 ## this a convenience method
 InstallMethod( CapFunctor,
         "for an algebroid, two records, and a boolean",
-        [ IsAlgebroid, IsRecord, IsRecord, IsBool ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord, IsBool ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms, covariant )
     local kq, vertices, images_of_objects, arrows, images_of_generating_morphisms,
@@ -2151,7 +2151,7 @@ end );
 ## this a convenience method
 InstallMethod( CapFunctor,
         "for an algebroid and two records",
-        [ IsAlgebroid, IsRecord, IsRecord ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord ],
         
   function( A, rec_images_of_objects, rec_images_of_generating_morphisms )
     
@@ -2177,7 +2177,7 @@ end );
 ##
 InstallMethod( OppositeAlgebroid,
         "for an algebroid",
-        [ IsAlgebroid and HasUnderlyingQuiver ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver ],
         
   function( A )
     local ring, over_Z, range_category, A_op;
@@ -2220,7 +2220,7 @@ end );
 ##
 InstallMethod( IsCommutative,
         "for an Algebroid",
-        [ IsAlgebroid ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra ],
      
   function( A )
     local arrows, i, j;
@@ -2385,7 +2385,7 @@ end );
 
 ##
 InstallMethod( CellAsEvaluatableString,
-        [ IsMorphismInAlgebroid, IsList ], ## not HasHasGenesisOfCell
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsList ], ## not HasHasGenesisOfCell
         
   _MorphismInAlgebroid_CellAsEvaluatableString );
 
@@ -2394,7 +2394,7 @@ InstallMethod( CellAsEvaluatableString,
 
 ##
 InstallMethod( DataTablesOfLinearCategory,
-          [ IsAlgebroid ],
+          [ IsFpAlgebroidDefinedByQuiverAlgebra ],
   
   function ( B )
     local all_objs, support_objs, objs, all_gmors, support_gmors, gmors;
@@ -2446,7 +2446,7 @@ end );
 
 ##
 InstallMethod( IsomorphismOntoAlgebroidFromDataTables,
-          [ IsAlgebroid, IsAlgebroidFromDataTables ],
+          [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidFromDataTables ],
   
   function ( B, A )
     local eta;
@@ -2469,7 +2469,7 @@ end );
 
 ##
 InstallMethod( IsomorphismFromAlgebroidFromDataTables,
-          [ IsAlgebroidFromDataTables, IsAlgebroid ],
+          [ IsFpAlgebroidFromDataTables, IsFpAlgebroidDefinedByQuiverAlgebra ],
   
   function ( A, B )
     local eta;
@@ -2499,7 +2499,7 @@ end );
 ##
 InstallMethod( ViewString,
         "for an object in an algebroid",
-        [ IsObjectInAlgebroid ],
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( o )
     
@@ -2510,7 +2510,7 @@ end );
 ##
 InstallMethod( ViewString,
         "for a morphism in an algebroid",
-        [ IsMorphismInAlgebroid ],
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra ],
         
   function( o )
     
@@ -2534,14 +2534,14 @@ end );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsObjectInAlgebroid ],
+          [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra ],
           
   o -> LaTeXStringForQPA( UnderlyingVertex( o ) )
 );
 
 ##
 InstallMethod( LaTeXOutput,
-          [ IsMorphismInAlgebroid ],
+          [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra ],
           
   function( m )
     local s;

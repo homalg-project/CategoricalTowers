@@ -15,7 +15,7 @@
 #!  to $f\bullet(-)\bullet g =\mathrm{Hom}_B(f,g): \mathrm{Hom}_B(t,u) \to \mathrm{Hom}_B(s,v) \in k\mbox{-}\mathrm{rows}$.
 #! @Arguments A
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategory", IsAlgebroidFromDataTables );
+DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategory", IsFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is a morphism $\alpha: t \to u$ in an algebroid $A$ over a commutative ring $k$.
@@ -24,5 +24,5 @@ DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategory", IsAlgebroidFromDataTa
 #!  $\mathrm{Hom}_{A}(t,u) = F_{A}(u^{\mathrm{op}}\otimes t) \simeq \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})$.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsMorphismInFpAlgebroidFromDataTables );
 #! @InsertChunk QuotientsOfAlgebroidsFromDataTables

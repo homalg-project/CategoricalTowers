@@ -31,7 +31,7 @@
 #
 ##
 InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
-          [ IsAlgebroidFromDataTables ],
+          [ IsFpAlgebroidFromDataTables ],
           
   function ( A )
     local q, nr_objs, nr_gmors, images_of_objs, images_of_gmorphisms, PSh;
@@ -61,7 +61,7 @@ end );
 
 ##
 InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
-          [ IsMorphismInAlgebroidFromDataTables ],
+          [ IsMorphismInFpAlgebroidFromDataTables ],
           
   function ( m )
     local A, A_op, T;

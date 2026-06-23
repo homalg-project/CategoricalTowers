@@ -7,7 +7,7 @@
 ##
 InstallMethodWithCache( AbelianClosure,
         "for a CAP category",
-        [ IsAlgebroid, IsCapCategory and IsAbCategory ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory and IsAbCategory ],
         
   function( algebroid, range_category_of_hom_structure )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -46,7 +46,7 @@ end );
 ##
 InstallMethod( AbelianClosure,
         "for a CAP category",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasRangeCategoryOfHomomorphismStructure ],
         
   function( algebroid )
     
