@@ -70,4 +70,6 @@ B := AlgebroidFromDataTables( quo_k_quo_C );
 #! t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
 HomStructure( B.("0"), B.("5") );
 #! <A row module over Q of rank 50>
+Dimension( kC / [ kC.id_0, kC.id_1, kC.id_2, kC.id_3, kC.id_4, kC.id_5 ] );
+#! 0
 #! @EndExample

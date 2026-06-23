@@ -156,12 +156,6 @@ DeclareAttribute( "DecompositionOfMorphismInCategory",
         IsPathCategoryMorphism );
 
 #! @Description
-#!  Returns whether <A>C</A> can be enriched over the category of finite sets.
-#! @Arguments C
-#! @Returns a boolean
-DeclareProperty( "IsFinitePathCategory", IsPathCategory );
-
-#! @Description
 #!  The input is a path category <A>C</A> and a list of morphisms <A>mors</A> in <A>C</A>
 #!  (<A>mors</A> is usually the leading terms of a Groebner basis).
 #!  The output is whether almost all morphisms of <A>C</A> are multiples of elements in <A>mors</A>.

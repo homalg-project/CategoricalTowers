@@ -28,7 +28,10 @@ InstallMethod( ReductionOfMorphism,
         
         leading_morph_f_datum := MorphismDatum( C, leading_morph_f );
         
-        i := PositionProperty( leading_morphs_G_datum, datum -> PositionSublist( leading_morph_f_datum[2], datum[2] ) <> fail );
+        i := PositionProperty( [ 1 .. Length( leading_morphs_G_datum ) ],
+                     j -> PositionSublist( leading_morph_f_datum[2], leading_morphs_G_datum[j][2] ) <> fail and
+                          ( leading_morphs_G_datum[j][2] <> [] or
+                            ObjectDatum( C, Source( leading_morphs_G[j] ) ) = ObjectDatum( C, Source( leading_morph_f ) ) ) );
         
         if i <> fail then
             

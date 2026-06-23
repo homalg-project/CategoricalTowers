@@ -267,11 +267,11 @@ InstallMethod( PathCategory,
         
     end );
     
-    SetIsFiniteCategory( C, IsFinitePathCategory( C ) );
-    
     # Homomorphism Structure - Only for path categories with underlying acyclic quivers
-    
-    if IsFiniteCategory( C )  then
+    #
+    if HasFiniteNumberOfMacaulayMorphisms( C, [ ] )  then
+        
+        SetIsFiniteCategory( C,  true );
         
         range_cat := CAP_NAMED_ARGUMENTS.range_of_HomStructure;
         
@@ -998,16 +998,6 @@ end );
 # Hom-Structure in Path Categories and their Quotients
 #
 #######################################################
-
-##
-InstallOtherMethod( IsFinitePathCategory,
-          [ IsPathCategory ],
-  
-  function ( C )
-    
-    return HasFiniteNumberOfMacaulayMorphisms( C, [ ] );
-    
-end );
 
 ##
 InstallMethod( HasFiniteNumberOfMacaulayMorphisms,
