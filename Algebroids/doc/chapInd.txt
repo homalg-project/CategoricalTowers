@@ -2,16 +2,16 @@
   
   [1XIndex[101X
   
-  [2X/[102X, for IsAlgebroid, IsList 4.4-1 
+  [2X/[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsList 4.4-1 
       for IsFpCategoryDefinedByQuiverAlgebra, IsList 2.4-1 
   [2X[][102X, for IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra 4.4-1 
-  [2X\*[102X, for IsAlgebroid, IsAlgebroid 4.3-4 
+  [2X\*[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 4.3-4 
       for IsFpCategoryDefinedByQuiverAlgebra, IsFpCategoryDefinedByQuiverAlgebra 2.3-2 
   [2X\/[102X, for IsPath, IsFpCategoryDefinedByQuiverAlgebra 2.4-4 
-      for IsQuiverAlgebraElement, IsAlgebroid 4.4-7 
-      for IsQuiverVertex, IsAlgebroid 4.4-5 
-  [2XAddAntipode[102X, for IsAlgebroid, IsRecord 7.3-2 
-  [2XAddBialgebroidStructure[102X, for IsAlgebroid, IsRecord, IsRecord 7.3-1 
+      for IsQuiverAlgebraElement, IsFpAlgebroidDefinedByQuiverAlgebra 4.4-7 
+      for IsQuiverVertex, IsFpAlgebroidDefinedByQuiverAlgebra 4.4-5 
+  [2XAddAntipode[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord 7.3-2 
+  [2XAddBialgebroidStructure[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord 7.3-1 
   [2XAlgebroid[102X, for IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory 4.4-1 
       for IsHomalgRing, IsFpCategoryDefinedByQuiverAlgebra 4.4-1 
       for IsHomalgRing, IsQuiver 4.4-1 
@@ -19,30 +19,30 @@
       for IsQuiverAlgebra, IsList 4.4-1 
   [2XAmbientAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 9.1-13 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-17 
-  [2XAntipode[102X, for IsAlgebroid 4.2-14 
+  [2XAntipode[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-14 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-14 
   [2XApplyToQuiverAlgebraElement[102X, for IsCapFunctor, IsQuiverAlgebraElement 4.3-2 
       for IsFunction, IsFunction, IsCapCategory, IsQuiverAlgebraElement, IsBool 4.3-2 
   [2XAsCapCategory[102X, for IsCategoryOfAlgebroidsObject 6.2-1 
   [2XAsCapFunctor[102X, for IsCategoryOfAlgebroidsMorphism 6.2-2 
-  [2XAssignSetOfGeneratingMorphisms[102X, for IsAlgebroid, IsString 4.2-11 
+  [2XAssignSetOfGeneratingMorphisms[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsString 4.2-11 
       for IsFpCategoryDefinedByQuiverAlgebra, IsString 2.2-11 
-  [2XAssignSetOfObjects[102X, for IsAlgebroid, IsString 4.2-7 
+  [2XAssignSetOfObjects[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsString 4.2-7 
       for IsFpCategoryDefinedByQuiverAlgebra, IsString 2.2-7 
   [2XAssociatedFunctorOfLinearClosuresOfPathCategoriesData[102X, for IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras 9.3-4 
   [2XAssociatedLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 9.1-8 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-12 
   [2XAssociatedQuotientCategoryOfLinearClosureOfPathCategory[102X, for IsObjectInCategoryOfFpAlgebras 9.1-11 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-15 
-  [2XBasisMorphismsByVertexIndex[102X, for IsAlgebroid 4.2-5 
+  [2XBasisMorphismsByVertexIndex[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-5 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-5 
-  [2XBasisPathsByVertexIndex[102X, for IsAlgebroid 4.2-4 
+  [2XBasisPathsByVertexIndex[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-4 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-4 
-  [2XCapFunctor[102X, for IsAlgebroid, IsCapCategoryObject 4.4-3 
-      for IsAlgebroid, IsList, IsList, IsCapCategory 4.4-3 
-      for IsAlgebroid, IsList, IsList, IsCapCategory, IsBool 4.4-3 
-      for IsAlgebroid, IsRecord, IsRecord 4.4-3 
-      for IsAlgebroid, IsRecord, IsRecord, IsBool 4.4-3 
+  [2XCapFunctor[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategoryObject 4.4-3 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory 4.4-3 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory, IsBool 4.4-3 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord 4.4-3 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord, IsBool 4.4-3 
       for IsFpCategoryDefinedByQuiverAlgebra, IsCapCategoryObject 4.4-3 
       for IsFpCategoryDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory 4.4-3 
       for IsFpCategoryDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory, IsBool 4.4-3 
@@ -54,7 +54,7 @@
   [2XCategoryOfAlgebroids[102X, for IsHomalgRing, IsString 6.4-1 
   [2XCategoryOfAlgebroidsMorphism[102X, for IsAlgebroidMorphism 6.4-4 
       for IsCategoryOfAlgebroidsObject, IsAlgebroidMorphism, IsCategoryOfAlgebroidsObject 6.4-3 
-  [2XCategoryOfAlgebroidsObject[102X, for IsAlgebroid 6.4-2 
+  [2XCategoryOfAlgebroidsObject[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 6.4-2 
   [2XCategoryOfFpAlgebras[102X, for IsCapCategory and IsLinearCategoryOverCommutativeRing 9.2-1 
       for IsHomalgRing and IsCommutative 9.2-2 
   [2XCategoryOfFpMatrixAlgebras[102X, for IsCategoryOfFpAlgebras 10.2-1 
@@ -63,28 +63,28 @@
       for IsCategoryOfFpMatrixAlgebras 10.1-3 
       for IsObjectInCategoryOfFpAlgebras 9.1-3 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-4 
-  [2XComultiplication[102X, for IsAlgebroid 7.2-2 
+  [2XComultiplication[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 7.2-2 
       for IsObjectInCategoryOfFpAlgebras, IsList 9.3-3 
       for IsObjectInCategoryOfFpMatrixAlgebras, IsList 10.3-2 
-  [2XCounit[102X, for IsAlgebroid 7.2-1 
+  [2XCounit[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 7.2-1 
       for IsObjectInCategoryOfFpAlgebras, IsList 9.3-2 
       for IsObjectInCategoryOfFpMatrixAlgebras, IsList 10.3-1 
-  [2XDataTablesOfCategory[102X, for IsAlgebroid 4.2-20 
+  [2XDataTablesOfCategory[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-20 
   [2XDecomposeQuiverAlgebraElement[102X, for IsQuiverAlgebraElement 4.3-1 
   [2XDefiningPairOfFinitelyPresentedMatrixAlgebra[102X, for IsObjectInCategoryOfFpMatrixAlgebras 10.1-5 
   [2XDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 9.1-9 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-13 
   [2XDefiningSeptupleOfFinitelyPresentedAlgebra[102X, for IsObjectInCategoryOfFpAlgebras 9.1-4 
   [2XDefiningTripleOfAQuiver[102X, for IsQuiver 11.2-1 
-  [2XDescentToZDefinedByBasisPaths[102X, for IsAlgebroid 4.4-2 
-  [2XDimension[102X, for IsAlgebroid 4.2-3 
-      for IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms 11.1-1 
+  [2XDescentToZDefinedByBasisPaths[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.4-2 
+  [2XDimension[102X, for IsCapCategory and IsObjectFiniteCategory and IsLinearCategoryOverCommutativeRingWithFinitelyGeneratedFreeExternalHoms 11.1-1 
+      for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-3 
       for IsObjectInCategoryOfFpAlgebras 9.1-12 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-16 
-  [2XElementaryTensor[102X, for IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 4.3-7 
+  [2XElementaryTensor[102X, for IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 4.3-7 
       for IsMorphismInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra, IsFpCategoryDefinedByQuiverAlgebra 2.3-5 
-      for IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid 4.3-6 
-      for IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid 4.3-5 
+      for IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 4.3-6 
+      for IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 4.3-5 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra, IsMorphismInFpCategoryDefinedByQuiverAlgebra, IsFpCategoryDefinedByQuiverAlgebra 2.3-4 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra, IsFpCategoryDefinedByQuiverAlgebra 2.3-3 
   [2XEvaluateFpAlgebraMorphism[102X, for IsCategoryOfFpAlgebras, IsMorphismInCategoryOfFpAlgebras, IsCapCategory, IsCapCategoryObject, IsList 9.3-1 
@@ -93,91 +93,91 @@
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-10 
   [2XGroebnerBasisOfDefiningRelations[102X, for IsObjectInCategoryOfFpAlgebras 9.1-10 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-14 
-  [2XHomStructureOnBasisPaths[102X, for IsAlgebroid 4.2-6 
+  [2XHomStructureOnBasisPaths[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-6 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-6 
-  [2XIsAlgebraAsCategory[102X, for IsAlgebroid 4.5-5 
-  [2XIsAlgebroid[102X, for IsCapCategory 4.5-4 
+  [2XIsAlgebraAsCategory[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.5-5 
   [2XIsAlgebroidMorphism[102X, for IsCapFunctor 4.5-6 
-  [2XIsBialgebroid[102X, for IsAlgebroid 7.4-1 
+  [2XIsBialgebroid[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 7.4-1 
   [2XIsCategoryOfAlgebroidsMorphism[102X, for IsCapCategoryMorphism 6.5-2 
   [2XIsCategoryOfAlgebroidsObject[102X, for IsCapCategoryObject 6.5-1 
   [2XIsCategoryOfFpAlgebras[102X, for IsCapCategory 9.4-1 
   [2XIsCategoryOfFpMatrixAlgebras[102X, for IsCapCategory 10.4-1 
-  [2XIsCellInAlgebroid[102X, for IsCapCategoryCell 4.5-1 
+  [2XIsCellInFpAlgebroidDefinedByQuiverAlgebra[102X, for IsCellInFpAlgebroid 4.5-1 
   [2XIsCellInFpCategory[102X, for IsCapCategoryCell 2.5-3 
-  [2XIsCoassociative[102X, for IsAlgebroid 4.1-4 
-      for IsCategoryOfAlgebroidsObject 6.1-3 
+  [2XIsCoassociative[102X, for IsCategoryOfAlgebroidsObject 6.1-3 
+      for IsFpAlgebroidDefinedByQuiverAlgebra 4.1-4 
       for IsFpCategoryDefinedByQuiverAlgebra 2.1-3 
   [2XIsCocommutative[102X, for IsBialgebroid 7.1-1 
-  [2XIsCommutative[102X, for IsAlgebroid 4.1-2 
-      for IsCategoryOfAlgebroidsObject 6.1-1 
+  [2XIsCommutative[102X, for IsCategoryOfAlgebroidsObject 6.1-1 
+      for IsFpAlgebroidDefinedByQuiverAlgebra 4.1-2 
       for IsFpCategoryDefinedByQuiverAlgebra 2.1-1 
-  [2XIsCounitary[102X, for IsAlgebroid 4.1-3 
-      for IsCategoryOfAlgebroidsObject 6.1-2 
+  [2XIsCounitary[102X, for IsCategoryOfAlgebroidsObject 6.1-2 
+      for IsFpAlgebroidDefinedByQuiverAlgebra 4.1-3 
       for IsFpCategoryDefinedByQuiverAlgebra 2.1-2 
   [2XIsFinitelyPresentedLinearCategory[102X, for IsCapCategory 4.1-1 
+  [2XIsFpAlgebroidDefinedByQuiverAlgebra[102X, for IsFpAlgebroid 4.5-4 
   [2XIsFpCategoryDefinedByQuiverAlgebra[102X, for IsCapCategory 2.5-1 
   [2XIsHopfAlgebroid[102X, for IsBialgebroid 7.1-2 
   [2XIsMonoidAsCategory[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.5-2 
-  [2XIsMorphismInAlgebroid[102X, for IsCellInAlgebroid and IsCapCategoryMorphism 4.5-3 
   [2XIsMorphismInCategoryOfFpAlgebras[102X, for IsCapCategoryMorphism 9.4-3 
   [2XIsMorphismInCategoryOfFpMatrixAlgebras[102X, for IsCapCategoryMorphism 10.4-3 
+  [2XIsMorphismInFpAlgebroidDefinedByQuiverAlgebra[102X, for IsMorphismInFpAlgebroid and IsCellInFpAlgebroidDefinedByQuiverAlgebra 4.5-3 
   [2XIsMorphismInFpCategoryDefinedByQuiverAlgebra[102X, for IsCellInFpCategory and IsCapCategoryMorphism 2.5-5 
-  [2XIsObjectInAlgebroid[102X, for IsCellInAlgebroid and IsCapCategoryObject 4.5-2 
   [2XIsObjectInCategoryOfFpAlgebras[102X, for IsCapCategoryObject 9.4-2 
   [2XIsObjectInCategoryOfFpMatrixAlgebras[102X, for IsCapCategoryObject 10.4-2 
+  [2XIsObjectInFpAlgebroidDefinedByQuiverAlgebra[102X, for IsObjectInFpAlgebroid and IsCellInFpAlgebroidDefinedByQuiverAlgebra 4.5-2 
   [2XIsObjectInFpCategoryDefinedByQuiverAlgebra[102X, for IsCellInFpCategory and IsCapCategoryObject 2.5-4 
-  [2XIsomorphismFromAlgebroidFromDataTables[102X, for IsAlgebroidFromDataTables, IsAlgebroid 4.2-22 
-  [2XIsomorphismOntoAlgebroidFromDataTables[102X, for IsAlgebroid, IsAlgebroidFromDataTables 4.2-21 
+  [2XIsomorphismFromAlgebroidFromDataTables[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidDefinedByQuiverAlgebra 4.2-22 
+  [2XIsomorphismOntoAlgebroidFromDataTables[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidFromDataTables 4.2-21 
   [2XListOfImages[102X, for IsMorphismInCategoryOfFpAlgebras 9.1-5 
   [2XListOfMatrixImages[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 10.1-8 
   [2XMatrixGenerators[102X, for IsObjectInCategoryOfFpMatrixAlgebras 10.1-11 
-  [2XMorphismInAlgebroid[102X, for IsAlgebroid, IsQuiverAlgebraElement 4.4-6 
-      for IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid 4.4-6 
+  [2XMorphismInAlgebroid[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement 4.4-6 
+      for IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement, IsObjectInFpAlgebroidDefinedByQuiverAlgebra 4.4-6 
   [2XMorphismInFpCategory[102X, for IsFpCategoryDefinedByQuiverAlgebra, IsPath 2.4-3 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra, IsPath, IsObjectInFpCategoryDefinedByQuiverAlgebra 2.4-3 
   [2XNrGenerators[102X, for IsObjectInCategoryOfFpAlgebras 9.1-6 
       for IsObjectInCategoryOfFpMatrixAlgebras 10.1-9 
-  [2XObjectInAlgebroid[102X, for IsAlgebroid, IsQuiverVertex 4.4-4 
+  [2XObjectInAlgebroid[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsQuiverVertex 4.4-4 
   [2XObjectInFpCategory[102X, for IsFpCategoryDefinedByQuiverAlgebra, IsQuiverVertex 2.4-2 
-  [2XOppositeAlgebroid[102X, for IsAlgebroid 4.2-13 
+  [2XOppositeAlgebroid[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-13 
   [2XOppositeFpCategoryDefinedByQuiverAlgebra[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-13 
-  [2XParity[102X, for IsAlgebroid 4.2-18 
+  [2XParity[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-18 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-18 
-  [2XPOW[102X, for IsAlgebroid, IsInt 4.2-19 
-      for IsCapCategoryMorphism, IsInt 4.4-8 
+  [2XPOW[102X, for IsCapCategoryMorphism, IsInt 4.4-8 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsInt 4.2-19 
       for IsFpCategoryDefinedByQuiverAlgebra, IsInt 2.2-19 
   [2XQuiverVertexAsIdentityPath[102X, for IsQuiverVertex 2.3-6 
-  [2XQuotientCategory[102X, for IsAlgebroid, IsList 4.4-1 
+  [2XQuotientCategory[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsList 4.4-1 
       for IsFpCategoryDefinedByQuiverAlgebra, IsList 2.4-1 
-  [2XRelationsOfAlgebroid[102X, for IsAlgebroid 4.2-12 
+  [2XRelationsOfAlgebroid[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-12 
   [2XRelationsOfFpCategoryDefinedByQuiverAlgebra[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-12 
-  [2XSetOfGeneratingMorphisms[102X, for IsAlgebroid, IsInt, IsInt 4.2-10 
-      for IsAlgebroid, IsObjectInAlgebroid, IsObjectInAlgebroid 4.2-8 
+  [2XSetOfGeneratingMorphisms[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsInt, IsInt 4.2-10 
+      for IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra 4.2-8 
       for IsFpCategoryDefinedByQuiverAlgebra, IsInt, IsInt 2.2-10 
       for IsFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra 2.2-8 
-      for IsObjectInAlgebroid, IsObjectInAlgebroid 4.2-9 
+      for IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra 4.2-9 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra 2.2-9 
   [2XSieveFunctor[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-22 
   [2XSize[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-3 
   [2XTrivialAlgebroid[102X, for IsHomalgRing, IsString 4.3-3 
   [2XTrivialCategory[102X, for IsString 2.3-1 
   [2XTruthMorphismOfTrueToSieveFunctor[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-21 
-  [2XTwist[102X, for IsAlgebroid, IsAlgebroid 6.3-1 
-  [2XUnderlyingAlgebra[102X, for IsAlgebroid 4.2-17 
+  [2XTwist[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 6.3-1 
+  [2XUnderlyingAlgebra[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-17 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-17 
   [2XUnderlyingCategory[102X, for IsCategoryOfFpMatrixAlgebras 10.1-1 
   [2XUnderlyingCategoryOfMatrices[102X, for IsCategoryOfFpAlgebras 9.1-1 
       for IsCategoryOfFpMatrixAlgebras 10.1-2 
   [2XUnderlyingFpAlgebra[102X, for IsObjectInCategoryOfFpMatrixAlgebras 10.1-6 
   [2XUnderlyingListOfMorphismsInCategoryOfFpAlgebras[102X, for IsMorphismInCategoryOfFpMatrixAlgebras 10.1-7 
-  [2XUnderlyingQuiver[102X, for IsAlgebroid 4.2-1 
+  [2XUnderlyingQuiver[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-1 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-1 
-  [2XUnderlyingQuiverAlgebra[102X, for IsAlgebroid 4.2-2 
+  [2XUnderlyingQuiverAlgebra[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-2 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-2 
-  [2XUnderlyingQuiverAlgebraElement[102X, for IsMorphismInAlgebroid 4.2-16 
+  [2XUnderlyingQuiverAlgebraElement[102X, for IsMorphismInFpAlgebroidDefinedByQuiverAlgebra 4.2-16 
       for IsMorphismInFpCategoryDefinedByQuiverAlgebra 2.2-16 
-  [2XUnderlyingVertex[102X, for IsObjectInAlgebroid 4.2-15 
+  [2XUnderlyingVertex[102X, for IsObjectInFpAlgebroidDefinedByQuiverAlgebra 4.2-15 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra 2.2-15 
   
   

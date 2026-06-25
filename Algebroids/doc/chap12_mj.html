@@ -50,7 +50,7 @@ true
 <span class="GAPprompt">&gt;</span> <span class="GAPinput"># this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) ); fi;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.HomStructureOnBasisPaths ) then</span>
-<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )</span>
+<span class="GAPprompt">&gt;</span> <span class="GAPinput">    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpAlgebroidDefinedByQuiverAlgebra ], function ( input_types )</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        </span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">        return CapJitDataTypeOfListOf(</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">                       CapJitDataTypeOfListOf(</span>

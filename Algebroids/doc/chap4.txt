@@ -441,30 +441,30 @@
   
   [1X4.5 [33X[0;0YGAP categories[133X[101X
   
-  [1X4.5-1 IsCellInAlgebroid[101X
+  [1X4.5-1 IsCellInFpAlgebroidDefinedByQuiverAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsCellInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsCellInFpAlgebroidDefinedByQuiverAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of cells in an algebroid.[133X
   
-  [1X4.5-2 IsObjectInAlgebroid[101X
+  [1X4.5-2 IsObjectInFpAlgebroidDefinedByQuiverAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsObjectInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsObjectInFpAlgebroidDefinedByQuiverAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of objects in an algebroid.[133X
   
-  [1X4.5-3 IsMorphismInAlgebroid[101X
+  [1X4.5-3 IsMorphismInFpAlgebroidDefinedByQuiverAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsMorphismInFpAlgebroidDefinedByQuiverAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of morphisms in an algebroid.[133X
   
-  [1X4.5-4 IsAlgebroid[101X
+  [1X4.5-4 IsFpAlgebroidDefinedByQuiverAlgebra[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsFpAlgebroidDefinedByQuiverAlgebra[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
   [33X[0;0YThe [5XGAP[105X category of algebroids.[133X
