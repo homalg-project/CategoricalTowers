@@ -4,8 +4,84 @@
 # Implementations
 #
 
+##
+InstallMethod( SubobjectsOfGeneratedSublattice,
+        [ IsCapCategoryObject, IsList ],
+        
+  function( A, subobjects )
+    local predicate, func;
+    
+    Assert( 0, ForAll( subobjects, m -> IsCapCategoryMorphism( m ) and Target( m ) = A ) );
+    
+    predicate :=
+      function( subobjects, subobjects_new )
+        
+        return Length( subobjects ) = Length( subobjects_new );
+        
+    end;
+    
+    func :=
+      function( subobjects )
+        local subobjects_new, l, i, j, sum, int;
+        
+        subobjects_new := ShallowCopy( subobjects );
+        
+        l := Length( subobjects_new );
+        
+        for i in [ 1 .. l ] do
+            for j in [ i + 1 .. l ] do
+                
+                sum := EmbeddingOfUnionSubobject( subobjects_new[i], subobjects_new[j] );
+                
+                if not ForAny( subobjects_new, sub -> IsEqualAsSubobjects( sub, sum ) ) then
+                    Add( subobjects_new, sum );
+                fi;
+                
+            od;
+        od;
+        
+        for i in [ 1 .. l ] do
+            for j in [ i + 1 .. l ] do
+                
+                int := EmbeddingOfIntersectionSubobject( subobjects_new[i], subobjects_new[j] );
+                
+                if not ForAny( subobjects_new, sub -> IsEqualAsSubobjects( sub, int ) ) then
+                    Add( subobjects_new, int );
+                fi;
+                
+            od;
+        od;
+        
+        return subobjects_new;
+        
+    end;
+    
+    return CapFixpoint( predicate, func, subobjects );
+    
+end );
+
 #= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+
+##
+InstallMethod( DigraphOfSubobjects,
+        [ IsCapCategoryObject, IsList ],
+        
+  function( A, subobjects )
+    local D;
+    
+    Assert( 0, ForAll( subobjects, m -> IsCapCategoryMorphism( m ) and Target( m ) = A ) );
+    
+    D := Digraph( [ 1 .. Length( subobjects ) ],
+                 { i, j } -> IsDominating( subobjects[i], subobjects[j] ) );
+    
+    D := DigraphReflexiveTransitiveReduction( D );
+    
+    SetFilterObj( D, IsDigraphOfSubobjects );
+    
+    return D;
+    
+end );
 
 ##
 InstallMethod( DigraphOfSubobjects,
@@ -16,14 +92,7 @@ InstallMethod( DigraphOfSubobjects,
     
     subobjects := ListOfSubobjects( A );
     
-    D := Digraph( [ 1 .. Length( subobjects ) ],
-                 { i, j } -> IsDominating( subobjects[i], subobjects[j] ) );
-    
-    D := DigraphReflexiveTransitiveReduction( D );
-    
-    SetFilterObj( D, IsDigraphOfSubobjects );
-    
-    return D;
+    return DigraphOfSubobjects( A, subobjects );
     
 end );
 

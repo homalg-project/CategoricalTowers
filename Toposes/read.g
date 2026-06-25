@@ -20,3 +20,9 @@ ReadPackage( "Toposes", "gap/Tools.gi" );
 
 ## DPO
 ReadPackage( "Toposes", "gap/DPO.gi" );
+
+#= comment for Julia
+if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
+    ReadPackage( "Toposes", "gap/Julia.gi" );
+fi;
+# =#
