@@ -6,6 +6,10 @@ SetUserPreference( "ShortBanners", true );
 FORCE_LOADING_FROM_USER_GAP_ROOT := function ( )
   local name, package_info, pos;
     for name in RecNames( GAPInfo.PackagesInfo ) do
+        # skip packages that are already loaded (e.g., AutoDoc) to avoid "another version ... is already loaded" errors
+        if IsBound( GAPInfo.PackagesLoaded.(name) ) then
+            continue;
+        fi;
         package_info := GAPInfo.PackagesInfo.(name);
         pos := PositionProperty( package_info, info -> StartsWith( info.InstallationPath, GAPInfo.UserGapRoot ) );
         if pos <> fail then
