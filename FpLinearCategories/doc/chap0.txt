@@ -6,10 +6,10 @@
    [1X Finitely presented linear categories by generating quivers and relations [101X
   
   
-                                   2026.06-01
+                                   2026.06-02
   
   
-                                  23 June 2026
+                                  25 June 2026
   
   
                                 Mohamed Barakat
@@ -72,9 +72,13 @@
       1.4-1 AlgebroidFromDataTables
       1.4-2 DataTablesOfLinearCategory
     1.5 [33X[0;0YGAP categories[133X
-      1.5-1 IsAlgebroidFromDataTables
-      1.5-2 IsObjectInAlgebroidFromDataTables
-      1.5-3 IsMorphismInAlgebroidFromDataTables
+      1.5-1 IsFpAlgebroid
+      1.5-2 IsCellInFpAlgebroid
+      1.5-3 IsObjectInFpAlgebroid
+      1.5-4 IsMorphismInFpAlgebroid
+      1.5-5 IsFpAlgebroidFromDataTables
+      1.5-6 IsObjectInFpAlgebroidFromDataTables
+      1.5-7 IsMorphismInFpAlgebroidFromDataTables
   2 [33X[0;0YLinear closures of path categories and their quotients[133X
     2.1 [33X[0;0YConstructors[133X
       2.1-1 LinearClosure

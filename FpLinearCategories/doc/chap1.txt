@@ -399,24 +399,52 @@
   
   [1X1.5 [33X[0;0YGAP categories[133X[101X
   
-  [1X1.5-1 IsAlgebroidFromDataTables[101X
+  [1X1.5-1 IsFpAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsFpAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of objects in an algebroid from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of f.p. algebroids.[133X
   
-  [1X1.5-2 IsObjectInAlgebroidFromDataTables[101X
+  [1X1.5-2 IsCellInFpAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsObjectInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsCellInFpAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of algebroids from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of cells in an f.p. algebroid.[133X
   
-  [1X1.5-3 IsMorphismInAlgebroidFromDataTables[101X
+  [1X1.5-3 IsObjectInFpAlgebroid[101X
   
-  [33X[1;0Y[29X[2XIsMorphismInAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [33X[1;0Y[29X[2XIsObjectInFpAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in an algebroid from data tables.[133X
+  [33X[0;0YThe [5XGAP[105X category of objects in an f.p. algebroid.[133X
+  
+  [1X1.5-4 IsMorphismInFpAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFpAlgebroid[102X( [3Xarg[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in an f.p. algebroid.[133X
+  
+  [1X1.5-5 IsFpAlgebroidFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsFpAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of f.p. algebroids defined by data tables.[133X
+  
+  [1X1.5-6 IsObjectInFpAlgebroidFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInFpAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of objects in an f.p. algebroid defined by data tables.[133X
+  
+  [1X1.5-7 IsMorphismInFpAlgebroidFromDataTables[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFpAlgebroidFromDataTables[102X( [3Xarg[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe [5XGAP[105X category of morphisms in an f.p. algebroid defined by data tables.[133X
   
