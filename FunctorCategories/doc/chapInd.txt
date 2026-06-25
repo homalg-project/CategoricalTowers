@@ -2,10 +2,10 @@
   
   [1XIndex[101X
   
-  [2XAbelianClosure[102X, for IsAlgebroid 10.1-1 
+  [2XAbelianClosure[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 10.1-1 
   [2XAddIsReflexive[102X, for IsCapCategory, IsFunction 16.1-1 
       for IsCapCategory, IsFunction, IsInt 16.1-1 
-  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsAlgebroidFromDataTables 14.1-1 
+  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsFpAlgebroidFromDataTables 14.1-1 
   [2XApplyMorphismInCoPreSheafCategoryToObject[102X, for IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject 13.3-3 
   [2XApplyMorphismInFunctorCategoryToObject[102X, for IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject 1.3-5 
   [2XApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject 2.3-4 
@@ -31,7 +31,7 @@
       for IsCapFunctor 1.1-2 
   [2XAssociatedCoequalizerPairInPreSheaves[102X, for IsObjectInCategoryOfColimitQuivers 2.1-23 
       for IsObjectInFiniteColimitCompletionWithStrictCoproducts 2.1-24 
-  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInAlgebroidFromDataTables 14.1-2 
+  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInFpAlgebroidFromDataTables 14.1-2 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
@@ -171,10 +171,10 @@
   [2XMaximalMorphismFromRepresentable[102X, for IsObjectInPreSheafCategory 2.1-12 
   [2XMorphismFromCoproductOfRepresentables[102X, for IsPreSheafCategory, IsList, IsObjectInPreSheafCategory 2.1-11 
   [2XMorphismFromRepresentableByYonedaLemma[102X, for IsPreSheafCategory, IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInPreSheafCategory 2.1-10 
-  [2XNakayamaLeftAdjoint[102X, for IsAlgebroid 12.2-1 
+  [2XNakayamaLeftAdjoint[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 12.2-1 
       for IsPreSheafCategory, IsCoPreSheafCategory 12.2-1 
-  [2XNakayamaRightAdjoint[102X, for IsAlgebroid 12.2-2 
-      for IsCoPreSheafCategory, IsPreSheafCategory 12.2-2 
+  [2XNakayamaRightAdjoint[102X, for IsCoPreSheafCategory, IsPreSheafCategory 12.2-2 
+      for IsFpAlgebroidDefinedByQuiverAlgebra 12.2-2 
   [2XNerveTruncatedInDegree2[102X, for IsCapCategory 2.2-7 
   [2XOppositeOfSource[102X, for IsCoPreSheafCategory 13.2-5 
       for IsFunctorCategory 1.2-5 
