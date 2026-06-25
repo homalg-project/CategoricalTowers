@@ -30,28 +30,28 @@ DeclareGlobalVariable( "ALGEBROIDS" );
 
 #! @Description
 #!  The &GAP; category of cells in an algebroid.
-DeclareCategory( "IsCellInAlgebroid",
-        IsCapCategoryCell );
+DeclareCategory( "IsCellInFpAlgebroidDefinedByQuiverAlgebra",
+        IsCellInFpAlgebroid );
 
 #! @Description
 #!  The &GAP; category of objects in an algebroid.
-DeclareCategory( "IsObjectInAlgebroid",
-        IsCellInAlgebroid and IsCapCategoryObject );
+DeclareCategory( "IsObjectInFpAlgebroidDefinedByQuiverAlgebra",
+        IsObjectInFpAlgebroid and IsCellInFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The &GAP; category of morphisms in an algebroid.
-DeclareCategory( "IsMorphismInAlgebroid",
-        IsCellInAlgebroid and IsCapCategoryMorphism );
+DeclareCategory( "IsMorphismInFpAlgebroidDefinedByQuiverAlgebra",
+        IsMorphismInFpAlgebroid and IsCellInFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The &GAP; category of algebroids.
-DeclareCategory( "IsAlgebroid",
-        IsCapCategory );
+DeclareCategory( "IsFpAlgebroidDefinedByQuiverAlgebra",
+        IsFpAlgebroid );
 
 #! @Description
 #!  The &GAP; category of algebras.
 DeclareCategory( "IsAlgebraAsCategory",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The &GAP; category of morphisms of algebroids.
@@ -78,21 +78,21 @@ AddCategoricalProperty( [ "IsFinitelyPresentedLinearCategory", "IsFinitelyPresen
 #! @Arguments A
 #! @Returns true or false
 DeclareProperty( "IsCommutative",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  Check whether <A>B</A> is counitary.
 #! @Arguments B
 #! @Returns true or false
 DeclareProperty( "IsCounitary",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  Check whether <A>B</A> is coassociative.
 #! @Arguments B
 #! @Returns true or false
 DeclareProperty( "IsCoassociative",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 ####################################
 #
@@ -105,25 +105,25 @@ DeclareProperty( "IsCoassociative",
 #! @Arguments A
 #! @Returns a &QPA; quiver
 DeclareAttribute( "UnderlyingQuiver",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
-CapJitAddTypeSignature( "UnderlyingQuiver", [ IsAlgebroid ], IsQuiver );
+CapJitAddTypeSignature( "UnderlyingQuiver", [ IsFpAlgebroidDefinedByQuiverAlgebra ], IsQuiver );
 
 #! @Description
 #!  The quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebra",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsAlgebroid ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebra", [ IsFpAlgebroidDefinedByQuiverAlgebra ], input_types -> CapJitDataTypeOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The dimension of the underlying quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>.
 #! @Arguments A
 #! @Returns a nonnegative integer
 DeclareAttribute( "Dimension",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The matrix of basis paths of the canonical basis of the quiver algebra (=path algebra with relations) underlying the algebroid <A>A</A>,
@@ -131,9 +131,9 @@ DeclareAttribute( "Dimension",
 #! @Arguments A
 #! @Returns a matrix of basis paths of a &QPA; path algebra
 DeclareAttribute( "BasisPathsByVertexIndex",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
-CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsAlgebroid ], function ( input_types )
+CapJitAddTypeSignature( "BasisPathsByVertexIndex", [ IsFpAlgebroidDefinedByQuiverAlgebra ], function ( input_types )
     
     return CapJitDataTypeOfListOf(
                    CapJitDataTypeOfListOf(
@@ -147,9 +147,9 @@ end );
 #! @Arguments A
 #! @Returns a matrix of basis morphisms
 DeclareAttribute( "BasisMorphismsByVertexIndex",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
-#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsAlgebroid ], function ( input_types )
+#CapJitAddTypeSignature( "BasisMorphismsByVertexIndex", [ IsFpAlgebroidDefinedByQuiverAlgebra ], function ( input_types )
 #    
 #    return CapJitDataTypeOfListOf(
 #                   CapJitDataTypeOfListOf(
@@ -164,7 +164,7 @@ DeclareAttribute( "BasisMorphismsByVertexIndex",
 #! @Arguments A
 #! @Returns a six-dimensional matrix of matrices
 DeclareAttribute( "HomStructureOnBasisPaths",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  Assigns the objects of the finitely presented algebroid <A>A</A> to global variables.
@@ -172,28 +172,28 @@ DeclareAttribute( "HomStructureOnBasisPaths",
 #! @Arguments A, label
 #! @Returns nothing
 DeclareOperation( "AssignSetOfObjects",
-        [ IsAlgebroid, IsString ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsString ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments A, obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsAlgebroid, IsObjectInAlgebroid, IsObjectInAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  The subset of the generating morphisms that start at <A>obj_1</A> and ends at <A>obj_2</A>.
 #! @Arguments obj_1, obj_2
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsObjectInAlgebroid, IsObjectInAlgebroid ] );
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  Delegates to <C>SetOfGeneratingMorphisms</C>( <A>A</A>, <C>SetOfObjects</C>(<A>A</A>)[<A>i</A>], <C>SetOfObjects</C>(<A>A</A>)[<A>j</A>] ).
 #! @Arguments A, i, j
 #! @Returns a list
 DeclareOperation( "SetOfGeneratingMorphisms",
-        [ IsAlgebroid, IsInt, IsInt ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsInt, IsInt ] );
 
 #! @Description
 #!  Assigns the generating morphisms of the finitely presented algebroid <A>A</A> to global variables.
@@ -201,7 +201,7 @@ DeclareOperation( "SetOfGeneratingMorphisms",
 #! @Arguments A, label
 #! @Returns nothing
 DeclareOperation( "AssignSetOfGeneratingMorphisms",
-        [ IsAlgebroid, IsString ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsString ] );
 
 #! @Description
 #!  The relations of the algebroid <A>A</A> corresponding to
@@ -209,14 +209,14 @@ DeclareOperation( "AssignSetOfGeneratingMorphisms",
 #! @Arguments A
 #! @Returns a &QPA; path algebra
 DeclareAttribute( "RelationsOfAlgebroid",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The algebroid defined by the opposite of the underlying quiver algebra.
 #! @Arguments A
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeAlgebroid",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 DeclareAttribute( "Multiplication",
         IsAlgebraAsCategory );
@@ -229,39 +229,39 @@ DeclareAttribute( "Unit",
 #! @Arguments B
 #! @Returns a &CAP; functor
 DeclareAttribute( "Antipode",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The vertex of the quiver underlying the object <A>obj</A> in an algebroid.
 #! @Arguments obj
 #! @Returns a vertex in a &QPA; quiver
 DeclareAttribute( "UnderlyingVertex",
-        IsObjectInAlgebroid );
+        IsObjectInFpAlgebroidDefinedByQuiverAlgebra );
 
-CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInAlgebroid ], IsQuiverVertex );
+CapJitAddTypeSignature( "UnderlyingVertex", [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra ], IsQuiverVertex );
 
 #! @Description
 #!  The quiver algebra element underlying the morphism <A>mor</A> in an algebroid.
 #! @Arguments mor
 #! @Returns an element in a &QPA; path algebra
 DeclareAttribute( "UnderlyingQuiverAlgebraElement",
-        IsMorphismInAlgebroid );
+        IsMorphismInFpAlgebroidDefinedByQuiverAlgebra );
 
-CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInAlgebroid ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
+CapJitAddTypeSignature( "UnderlyingQuiverAlgebraElement", [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra ], input_types -> CapJitDataTypeOfElementOfRing( UnderlyingQuiverAlgebra( input_types[1].category ) ) );
 
 #! @Description
 #!  The underlying algebra of an algebroid.
 #! @Arguments A
 #! @Returns a ring
 DeclareAttribute( "UnderlyingAlgebra",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The parity of an algebroid.
 #! @Arguments A
 #! @Returns a string ("left" or "right")
 DeclareAttribute( "Parity",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  The <A>n</A>-th power of the algebroid <A>A</A>.
@@ -269,16 +269,16 @@ DeclareAttribute( "Parity",
 #! @Arguments A, n
 #! @Returns a &CAP; category
 DeclareOperation( "POW",
-        [ IsAlgebroid, IsInt ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsInt ] );
 
 DeclareAttribute( "BijectionBetweenPairsAndElementaryTensors",
         IsQuiverAlgebra );
 
 DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
-        IsMorphismInAlgebroid );
+        IsMorphismInFpAlgebroidDefinedByQuiverAlgebra );
 
 DeclareAttribute( "DecompositionOfMorphismInSquareOfAlgebroid",
-        IsMorphismInAlgebroid );
+        IsMorphismInFpAlgebroidDefinedByQuiverAlgebra );
 
 DeclareAttribute( "AssociatedAlgebroid",
         IsLinearClosure );
@@ -293,7 +293,7 @@ if false then
 #! @Arguments A
 #! @Returns a &CAP; functor
 DeclareAttribute( "DataTablesOfCategory",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 fi;
 
 #! @Description
@@ -301,14 +301,14 @@ fi;
 #! @Arguments A, D
 #! @Returns a &CAP; functor
 DeclareOperation( "IsomorphismOntoAlgebroidFromDataTables",
-        [ IsAlgebroid, IsAlgebroidFromDataTables ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidFromDataTables ] );
 
 #! @Description
 #!  The isomorphism onto an algebroid <C>A</C> from the algebroid <C>D</C> defined by data tables extracted from <C>A</C>.
 #! @Arguments D, A
 #! @Returns a &CAP; functor
 DeclareOperation( "IsomorphismFromAlgebroidFromDataTables",
-        [ IsAlgebroidFromDataTables, IsAlgebroid ] );
+        [ IsFpAlgebroidFromDataTables, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 #! @InsertChunk Functors_Between_QPA_Algebroid_and_AlgebroidFromDataTables
 
 ####################################
@@ -341,28 +341,28 @@ DeclareOperation( "TrivialAlgebroid",
 
 #! @Arguments A, B
 DeclareOperation( "\*",
-        [ IsAlgebroid, IsAlgebroid ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  Given an object <A>a</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and b in T.
 #! @Arguments a, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsObjectInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ] );
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  Given an object <A>a</A> in an algebroid A and a morphism <A>g</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of a and g in T.
 #! @Arguments a, g, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsObjectInAlgebroid, IsMorphismInAlgebroid, IsAlgebroid ] );
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  Given a morphism <A>f</A> in an algebroid A and an object <A>b</A> in an algebroid B and the tensor product <A>T</A> of A and B, return the tensor product of f and b in T.
 #! @Arguments f, b, T
 #! @Returns a morphism in a &CAP; category
 DeclareOperation( "ElementaryTensor",
-        [ IsMorphismInAlgebroid, IsObjectInAlgebroid, IsAlgebroid ] );
+        [ IsMorphismInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 ####################################
 #
@@ -421,12 +421,12 @@ DeclareOperation( "[]",
 #! @Arguments A, L
 #! @Group Algebroid
 DeclareOperation( "QuotientCategory",
-        [ IsAlgebroid, IsList ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList ] );
 
 #! @Arguments A, L
 #! @Group Algebroid
 DeclareOperation( "/",
-        [ IsAlgebroid, IsList ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList ] );
 
 #! @Description
 #! The argument is an algebroid $A$ with left acting domain given by the field of rationals $\mathbb{Q}$,
@@ -445,7 +445,7 @@ DeclareOperation( "/",
 #! @Arguments A
 #! @Returns a &CAP; category
 DeclareAttribute( "DescentToZDefinedByBasisPaths",
-        IsAlgebroid );
+        IsFpAlgebroidDefinedByQuiverAlgebra );
 
 #! @Description
 #!  Construct a functor with source the finitely presented algebroid <A>A</A> and target <A>B</A> using
@@ -454,13 +454,13 @@ DeclareAttribute( "DescentToZDefinedByBasisPaths",
 #! @Arguments A, images_of_objects, images_of_generating_morphisms, B, covariant
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsList, IsList, IsCapCategory, IsBool ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory, IsBool ] );
 
 #! @Arguments A, images_of_objects, images_of_generating_morphisms, B
 #!  If the last boolean argument <A>covariant</A> is not specified it defaults to <C>true</C>.
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsList, IsList, IsCapCategory ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory ] );
 
 #! @Description
 #!  Alternatively one could specify the records of images <A>rec_images_of_objects</A> and <A>rec_images_of_generating_morphisms</A>.
@@ -470,12 +470,12 @@ DeclareOperation( "CapFunctor",
 #! @Returns a &CAP; functor
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsRecord, IsRecord, IsBool ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord, IsBool ] );
 
 #! @Arguments A, rec_images_of_objects, rec_images_of_generating_morphisms
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsRecord, IsRecord ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsRecord, IsRecord ] );
 
 #! @Description
 #!  In the case of two arguments, where the second argument is an object <A>obj</A>
@@ -484,7 +484,7 @@ DeclareOperation( "CapFunctor",
 #! @Arguments A, obj
 #! @Group CapFunctor
 DeclareOperation( "CapFunctor",
-        [ IsAlgebroid, IsCapCategoryObject ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategoryObject ] );
 
 #! @Description
 #!  The constructor of objects in an algebroid <A>A</A> given a vertex <A>V</A>
@@ -493,13 +493,13 @@ DeclareOperation( "CapFunctor",
 #! @Returns an object in a &CAP; category
 #! @Group ObjectInAlgebroid
 DeclareOperation( "ObjectInAlgebroid",
-        [ IsAlgebroid, IsQuiverVertex ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsQuiverVertex ] );
 
 #! @Description
 #!  Delegates to <C>ObjectInAlgebroid</C>( <A>A</A>,  <A>V</A> ).
 #! @Arguments V, A
 #! @Returns an object in a &CAP; category
-DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
+DeclareOperation( "\/", [ IsQuiverVertex, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 #! @Description
 #!  The constructor of morphisms in an algebroid <A>A</A> given the source <A>S</A>,
@@ -509,9 +509,9 @@ DeclareOperation( "\/", [ IsQuiverVertex, IsAlgebroid ] );
 #! @Returns a morphism in a &CAP; category
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
-        [ IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ] );
+        [ IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ] );
 
-#CapJitAddTypeSignature( "MorphismInAlgebroid", [ IsAlgebroid, IsObjectInAlgebroid, IsQuiverAlgebraElement, IsObjectInAlgebroid ], function ( input_types )
+#CapJitAddTypeSignature( "MorphismInAlgebroid", [ IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement, IsObjectInFpAlgebroidDefinedByQuiverAlgebra ], function ( input_types )
 #    
 #    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
 #    
@@ -520,13 +520,13 @@ DeclareOperation( "MorphismInAlgebroid",
 #! @Arguments A, path
 #! @Group MorphismInAlgebroid
 DeclareOperation( "MorphismInAlgebroid",
-        [ IsAlgebroid, IsQuiverAlgebraElement ] );
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsQuiverAlgebraElement ] );
 
 #! @Description
 #!  Delegates to <C>MorphismInAlgebroid</C>( <A>path</A> ).
 #! @Arguments path, A
 #! @Returns a morphism in a &CAP; category
-DeclareOperation( "\/", [ IsQuiverAlgebraElement, IsAlgebroid ] );
+DeclareOperation( "\/", [ IsQuiverAlgebraElement, IsFpAlgebroidDefinedByQuiverAlgebra ] );
 
 
 #! @Description

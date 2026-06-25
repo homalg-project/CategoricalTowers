@@ -13,19 +13,39 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of objects in an algebroid from data tables.
-DeclareCategory( "IsAlgebroidFromDataTables",
+#!  The &GAP; category of f.p. algebroids.
+DeclareCategory( "IsFpAlgebroid",
         IsCapCategory );
 
 #! @Description
-#!  The &GAP; category of algebroids from data tables.
-DeclareCategory( "IsObjectInAlgebroidFromDataTables",
-        IsCapCategoryObject );
+#!  The &GAP; category of cells in an f.p. algebroid.
+DeclareCategory( "IsCellInFpAlgebroid",
+        IsCapCategoryCell );
 
 #! @Description
-#!  The &GAP; category of morphisms in an algebroid from data tables.
-DeclareCategory( "IsMorphismInAlgebroidFromDataTables",
-        IsCapCategoryMorphism );
+#!  The &GAP; category of objects in an f.p. algebroid.
+DeclareCategory( "IsObjectInFpAlgebroid",
+        FilterIntersection( IsCapCategoryObject, IsCellInFpAlgebroid ) );
+
+#! @Description
+#!  The &GAP; category of morphisms in an f.p. algebroid.
+DeclareCategory( "IsMorphismInFpAlgebroid",
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFpAlgebroid ) );
+
+#! @Description
+#!  The &GAP; category of f.p. algebroids defined by data tables.
+DeclareCategory( "IsFpAlgebroidFromDataTables",
+        IsFpAlgebroid );
+
+#! @Description
+#!  The &GAP; category of objects in an f.p. algebroid defined by data tables.
+DeclareCategory( "IsObjectInFpAlgebroidFromDataTables",
+        IsObjectInFpAlgebroid );
+
+#! @Description
+#!  The &GAP; category of morphisms in an f.p. algebroid defined by data tables.
+DeclareCategory( "IsMorphismInFpAlgebroidFromDataTables",
+        IsMorphismInFpAlgebroid );
 
 ####################################
 #
@@ -68,23 +88,23 @@ DeclareAttribute( "DataTablesOfLinearCategory", IsCapCategory );
 #! @Arguments A, I
 #! @Returns a record
 DeclareOperation( "QuotientCategory",
-        [ IsAlgebroidFromDataTables, IsDenseList ] );
+        [ IsFpAlgebroidFromDataTables, IsDenseList ] );
 
 #! @Description
 #!  The data tables used to define $A$.
 #! @Arguments A
 #! @Returns a record
 DeclareAttribute( "CategoryDatum",
-        IsAlgebroidFromDataTables );
+        IsFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is an algebroid <A>A</A>.
 #!  The output is a list of lists $L$ where $L[i][j]$ is the basis of the external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
 #! @Arguments A
 #! @Returns a list of lists
-DeclareAttribute( "BasesElements", IsAlgebroidFromDataTables );
+DeclareAttribute( "BasesElements", IsFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "BasesElements", [ IsAlgebroidFromDataTables ],
+CapJitAddTypeSignature( "BasesElements", [ IsFpAlgebroidFromDataTables ],
   function ( input_types )
     
     return CapJitDataTypeOfListOf(
@@ -100,9 +120,9 @@ end );
 #!  In other words, it is the third entry in the underlying defining data tables.
 #! @Arguments A
 #! @Returns a list of lists
-DeclareAttribute( "DecompositionIndicesOfBasesElements", IsAlgebroidFromDataTables );
+DeclareAttribute( "DecompositionIndicesOfBasesElements", IsFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "DecompositionIndicesOfBasesElements", [ IsAlgebroidFromDataTables ],
+CapJitAddTypeSignature( "DecompositionIndicesOfBasesElements", [ IsFpAlgebroidFromDataTables ],
   function ( input_types )
     
     return CapJitDataTypeOfListOf(
@@ -117,18 +137,18 @@ end );
 #!  The output is a list of lists $L$ where $L[i][j]$ is the labels of the basis elements of $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
 #! @Arguments A
 #! @Returns a list of lists
-DeclareAttribute( "LabelsOfBasesElements", IsAlgebroidFromDataTables );
+DeclareAttribute( "LabelsOfBasesElements", IsFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is an algebroid <A>A</A>.
 #!  The output is a list of lists $L$ where $L[i][j]$ is the latex strings of the basis elements of $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are $i$'th resp. $j$'th objects in $A$.
 #! @Arguments A
 #! @Returns a list of lists
-DeclareAttribute( "LaTeXStringsOfBasesElements", IsAlgebroidFromDataTables );
+DeclareAttribute( "LaTeXStringsOfBasesElements", IsFpAlgebroidFromDataTables );
 
-DeclareAttribute( "HomomorphismStructureOnObjectsRanks", IsAlgebroidFromDataTables );
+DeclareAttribute( "HomomorphismStructureOnObjectsRanks", IsFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "HomomorphismStructureOnObjectsRanks", [ IsAlgebroidFromDataTables ],
+CapJitAddTypeSignature( "HomomorphismStructureOnObjectsRanks", [ IsFpAlgebroidFromDataTables ],
   function ( input_types )
     
     return CapJitDataTypeOfListOf(
@@ -136,9 +156,9 @@ CapJitAddTypeSignature( "HomomorphismStructureOnObjectsRanks", [ IsAlgebroidFrom
     
 end );
 
-DeclareAttribute( "HomomorphismStructureOnMorphismsMatrices", IsAlgebroidFromDataTables );
+DeclareAttribute( "HomomorphismStructureOnMorphismsMatrices", IsFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsAlgebroidFromDataTables ],
+CapJitAddTypeSignature( "HomomorphismStructureOnMorphismsMatrices", [ IsFpAlgebroidFromDataTables ],
   function ( input_types )
     local ring;
     
@@ -161,7 +181,7 @@ end );
 #!  the ideal generated by all generating morphisms in <A>A</A>.
 #! @Arguments A, i
 #! @Returns a list
-KeyDependentOperation( "PowerOfArrowIdeal", IsAlgebroidFromDataTables, IsInt, ReturnTrue );
+KeyDependentOperation( "PowerOfArrowIdeal", IsFpAlgebroidFromDataTables, IsInt, ReturnTrue );
 
 ####################################
 #
@@ -178,7 +198,7 @@ KeyDependentOperation( "PowerOfArrowIdeal", IsAlgebroidFromDataTables, IsInt, Re
 #!  where $\mathfrak{m}^i=$<C>PowerOfArrowIdeal</C>(<A>A</A>,$i$).
 #! @Arguments A, i
 #! @Returns a list
-DeclareProperty( "IsAdmissibleAlgebroid", IsAlgebroidFromDataTables );
+DeclareProperty( "IsAdmissibleAlgebroid", IsFpAlgebroidFromDataTables );
 #! @InsertChunk AdmissibleAlgebroidFromDataTables
 
 ####################################
@@ -195,7 +215,7 @@ DeclareProperty( "IsAdmissibleAlgebroid", IsAlgebroidFromDataTables );
 #! @Arguments A [, optional_string]
 #! @Returns nothing
 DeclareOperation( "AssignSetOfObjects",
-        [ IsAlgebroidFromDataTables, IsString ] );
+        [ IsFpAlgebroidFromDataTables, IsString ] );
 
 #! @Description
 #!  The arguments are an algebroid <A>A</A> and a string <A>optional_string</A>.
@@ -205,25 +225,25 @@ DeclareOperation( "AssignSetOfObjects",
 #! @Arguments A [, optional_string]
 #! @Returns nothing
 DeclareOperation( "AssignSetOfGeneratingMorphisms",
-        [ IsAlgebroidFromDataTables, IsString ] );
+        [ IsFpAlgebroidFromDataTables, IsString ] );
 
 #! @Description
 #!  The argument is an object <A>v</A> in an algebroid <A>A</A>.
 #!  The output is the index of <A>v</A> in <C>SetOfObjects</C>(<A>A</A>).
 #! @Arguments v
 #! @Returns an integer
-DeclareAttribute( "ObjectIndex", IsObjectInAlgebroidFromDataTables );
+DeclareAttribute( "ObjectIndex", IsObjectInFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "ObjectIndex", [ IsObjectInAlgebroidFromDataTables ], IsInt );
+CapJitAddTypeSignature( "ObjectIndex", [ IsObjectInFpAlgebroidFromDataTables ], IsInt );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> in an algebroid <A>A</A>.
 #!  The output is the list of coefficients of <A>alpha</A> with respect to the basis of external hom $\mathrm{Hom}_B(u,v)$ where $u$ and $v$ are source resp. target of <A>alpha</A>.
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "CoefficientsList", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "CoefficientsList", IsMorphismInFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "CoefficientsList", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
+CapJitAddTypeSignature( "CoefficientsList", [ IsMorphismInFpAlgebroidFromDataTables ], function ( input_types )
     
     return CapJitDataTypeOfListOf( CapJitDataTypeOfElementOfRing( CategoryDatum( input_types[1].category )[1] ) );
     
@@ -234,9 +254,9 @@ end );
 #!  The output is the indices of the non-zero entries of <C>CoefficientsList</C>(<A>alpha</A>).
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "IndicesOfSupportMorphisms", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "IndicesOfSupportMorphisms", IsMorphismInFpAlgebroidFromDataTables );
 
-CapJitAddTypeSignature( "IndicesOfSupportMorphisms", [ IsMorphismInAlgebroidFromDataTables ], function ( input_types )
+CapJitAddTypeSignature( "IndicesOfSupportMorphisms", [ IsMorphismInFpAlgebroidFromDataTables ], function ( input_types )
     
     return CapJitDataTypeOfListOf( IsInt );
     
@@ -247,14 +267,14 @@ end );
 #!  The output is the list of elements in <C>CoefficientsList</C>(<A>alpha</A>) that correspond to <C>IndicesOfSupportMorphisms</C>(<A>alpha</A>).
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "CoefficientsOfSupportMorphisms", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "CoefficientsOfSupportMorphisms", IsMorphismInFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> from <A>u</A> to <A>v</A> in an algebroid <A>A</A>.
 #!  The output is the list of elements in <C>BasisOfExternalHom</C>(<A>u,v</A>) that correspond to <C>IndicesOfSupportMorphisms</C>(<A>alpha</A>).
 #! @Arguments alpha
 #! @Returns a &CAP; category morphism
-DeclareAttribute( "SupportMorphisms", IsMorphismInAlgebroidFromDataTables );
+DeclareAttribute( "SupportMorphisms", IsMorphismInFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> in an algebroid $A$ (over a commutative ring $k$).
@@ -264,7 +284,7 @@ DeclareAttribute( "SupportMorphisms", IsMorphismInAlgebroidFromDataTables );
 #! @Arguments alpha
 #! @Returns a list of pairs
 DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
-        IsMorphismInAlgebroidFromDataTables );
+        IsMorphismInFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is a morphism <A>alpha</A> in an algebroid $A$ (over a commutative ring $k$).
@@ -274,7 +294,7 @@ DeclareAttribute( "DecompositionOfMorphismInAlgebroid",
 #! @Arguments alpha
 #! @Returns a list of pairs
 DeclareAttribute( "DecompositionIndicesOfMorphismInAlgebroid",
-        IsMorphismInAlgebroidFromDataTables );
+        IsMorphismInFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The argument is an algebroid <A>A</A>.
@@ -282,7 +302,7 @@ DeclareAttribute( "DecompositionIndicesOfMorphismInAlgebroid",
 #! @Arguments A
 #! @Returns a &CAP; category
 DeclareAttribute( "OppositeAlgebroid",
-        IsAlgebroidFromDataTables );
+        IsFpAlgebroidFromDataTables );
 
 #! @Description
 #!  The arguments are two algebroids <A>A</A> and <A>B</A>.
@@ -290,7 +310,7 @@ DeclareAttribute( "OppositeAlgebroid",
 #! @Arguments A, B
 #! @Returns a &CAP; category
 DeclareOperation( "TensorProductOfAlgebroids",
-            [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+            [ IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables ] );
 
 #= comment for Julia
 #! @Description
@@ -298,7 +318,7 @@ DeclareOperation( "TensorProductOfAlgebroids",
 #! @Arguments A, B
 #! @Returns a &CAP; category
 DeclareOperation( "\*",
-            [ IsAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+            [ IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables ] );
 # =#
 
 #! @Description
@@ -307,7 +327,7 @@ DeclareOperation( "\*",
 #! @Arguments a, b, T
 #! @Returns a &CAP; category object
 DeclareOperation( "ElementaryTensor",
-            [ IsObjectInAlgebroidFromDataTables, IsObjectInAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+            [ IsObjectInFpAlgebroidFromDataTables, IsObjectInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables ] );
 
 #! @Description
 #!  The arguments are two morphisms <A>f</A>, <A>g</A> and a tensor product algebroid <A>T</A>$=A\otimes B$ where <A>f</A> and <A>g</A> belong to $A$ resp. $B$.
@@ -315,5 +335,5 @@ DeclareOperation( "ElementaryTensor",
 #! @Arguments f, g, T
 #! @Returns a &CAP; category morphism
 DeclareOperation( "ElementaryTensor",
-            [ IsMorphismInAlgebroidFromDataTables, IsMorphismInAlgebroidFromDataTables, IsAlgebroidFromDataTables ] );
+            [ IsMorphismInFpAlgebroidFromDataTables, IsMorphismInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables ] );
 

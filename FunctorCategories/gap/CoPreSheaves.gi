@@ -571,7 +571,7 @@ end ) );
 ##
 InstallMethodWithCache( CoPreSheaves,
         "for a CAP category and a homalg field",
-        [ IsAlgebroid, IsHomalgRing and IsFieldForHomalg ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   function ( B, k )
     local kmat, coPSh;

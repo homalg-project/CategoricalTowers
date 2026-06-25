@@ -6,7 +6,7 @@
 
 ##
 InstallOtherMethod( QuotientCategory,
-        [ IsAlgebroidFromDataTables, IsDenseList ],
+        [ IsFpAlgebroidFromDataTables, IsDenseList ],
   
   function ( A, relations )
     local A_op, A_as_presheaf, eager, PSh, tau, S, H, pi, congruence_func, name, quo_A, FinalizeCategory, range_of_HomStructure, ring;
@@ -282,7 +282,7 @@ end );
 
 ##
 InstallOtherMethod( AlgebroidFromDataTables,
-        [ IsAlgebroidFromDataTables, IsDenseList ],
+        [ IsFpAlgebroidFromDataTables, IsDenseList ],
   
   function ( A, relations )
     
@@ -292,7 +292,7 @@ end );
 
 ##
 InstallOtherMethod( \/,
-        [ IsAlgebroidFromDataTables, IsDenseList ],
+        [ IsFpAlgebroidFromDataTables, IsDenseList ],
   
   function ( A, relations )
     

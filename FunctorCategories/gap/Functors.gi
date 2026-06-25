@@ -18,7 +18,7 @@ InstallMethodForCompilerForCAP( NakayamaLeftAdjointData,
     B := Source( coPSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not ( ( IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+    if not ( ( IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
         TryNextMethod( );
     fi;
     
@@ -78,7 +78,7 @@ end );
 ##
 InstallMethod( NakayamaLeftAdjoint,
         "for a f.p. algebroid with a Hom-structure",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     
@@ -98,7 +98,7 @@ InstallMethodForCompilerForCAP( NakayamaRightAdjointData,
     B := Source( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if not ( ( IsAlgebroid( B ) or IsAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
+    if not ( ( IsFpAlgebroidDefinedByQuiverAlgebra( B ) or IsFpAlgebroidFromDataTables( B ) ) and HasRangeCategoryOfHomomorphismStructure( B ) ) then
         TryNextMethod( );
     fi;
     
@@ -158,7 +158,7 @@ end );
 ##
 InstallMethod( NakayamaRightAdjoint,
         "for a f.p. algebroid with a Hom-structure",
-        [ IsAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpAlgebroidDefinedByQuiverAlgebra and HasRangeCategoryOfHomomorphismStructure ],
         
   function ( B )
     

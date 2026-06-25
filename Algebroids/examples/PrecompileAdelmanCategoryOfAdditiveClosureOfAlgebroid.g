@@ -26,7 +26,7 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 # this might already have been added by PrecompileAdditiveClosureOfAlgebroid.g
 if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.CoefficientsOfPaths ) then CapJitAddTypeSignature( "CoefficientsOfPaths", [ IsList, IsQuiverAlgebraElement ], CapJitDataTypeOfListOf( IsInt ) ); fi;
 if not IsBound( CAP_JIT_INTERNAL_TYPE_SIGNATURES.HomStructureOnBasisPaths ) then
-    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsAlgebroid ], function ( input_types )
+    CapJitAddTypeSignature( "HomStructureOnBasisPaths", [ IsFpAlgebroidDefinedByQuiverAlgebra ], function ( input_types )
         
         return CapJitDataTypeOfListOf(
                        CapJitDataTypeOfListOf(

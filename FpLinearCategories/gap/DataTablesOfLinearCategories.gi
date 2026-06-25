@@ -114,7 +114,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DAT
     
     A := AmbientCategory( qA );
     
-    if not IsAlgebroidFromDataTables( A ) then
+    if not IsFpAlgebroidFromDataTables( A ) then
         Error( "the ambient category of the passed category must be an algebroid from data-tables!\n" );
     fi;
     
@@ -179,7 +179,7 @@ InstallMethod( DataTablesOfLinearCategory,
         
         C := AmbientCategory( kC );
         
-        if IsAlgebroidFromDataTables( C ) then
+        if IsFpAlgebroidFromDataTables( C ) then
             
             return DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DATA_TABLES( kC );
             
