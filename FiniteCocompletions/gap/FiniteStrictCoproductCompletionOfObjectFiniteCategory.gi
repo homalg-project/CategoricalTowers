@@ -120,8 +120,8 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     fi;
 
     if HasIsSkeletalCategory( C ) and IsSkeletalCategory( C ) and
-       ( not IsBound( H ) or
-         ( IsBound( H ) and
+       ( not HasRangeCategoryOfHomomorphismStructure( C ) or
+         ( HasRangeCategoryOfHomomorphismStructure( C ) and
            ## list the bases of enrichment for which we know that the result is again skeletal, a nonexample would be InternvalCategory
            ( IsSkeletalCategoryOfFiniteSets( H ) or
              IsSkeletalCategoryOfFiniteSetsWithCountingStartingAt1( H ) or
@@ -299,7 +299,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
     fi;
     
-    if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
+    if not ( HasRangeCategoryOfHomomorphismStructure( C ) and IsIntervalCategory( H ) ) then
         
         ##
         AddIsCongruentForMorphisms( UCm,
@@ -891,7 +891,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
     fi;
     
     if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
-       IsBound( H ) and IsIntervalCategory( H ) and
+        HasRangeCategoryOfHomomorphismStructure( C ) and IsIntervalCategory( H ) and
        CanCompute( C, "SetOfObjectsOfCategory" ) then
         
         SetIsFiniteCategory( UCm, true );
@@ -1029,14 +1029,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite product completion category and a positive integer",
-        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite product completion category",
+        [ IsString, IsFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
         
-  function( UCm, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, UCm )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( UCm );
     
@@ -1079,10 +1077,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategoryData,
         "for a two categories and a pair of functions",
-        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
+        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, FilterIntersection( IsCapCategory, IsCocartesianCategory ) ], ## IsStrictCocartesianCategory would exclude the lazy category
         
   function( UCm, pair_of_funcs, category_with_strict_coproducts )
     local functor_on_objects, functor_on_morphisms,
@@ -1210,19 +1212,17 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
         
   function ( a )
     
-    Display( PairOfIntAndList( a ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( StringDisplay( PairOfIntAndList( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory ],
         
   function ( phi )
@@ -1230,12 +1230,11 @@ InstallMethod( Display,
     
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
-    Print( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) );
-    Print( " ⱶ", TripleOfLists( phi ){[1,2]}, "→ " );
-    Print( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ), "\n\n" );
-    
-    Print( TripleOfLists( phi )[3], "\n\n" );
-    
-    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation(
+        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) ),
+        " ⱶ", StringDisplay( TripleOfLists( phi ){[1,2]} ), "→ ",
+        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ) ), "\n\n",
+        StringDisplay( TripleOfLists( phi )[3] ), "\n\n",
+        "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

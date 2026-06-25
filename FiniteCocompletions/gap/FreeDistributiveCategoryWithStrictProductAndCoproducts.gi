@@ -88,14 +88,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
+InstallMethod( \/,
         "for the free distributive closure category with strict products and coproducts of a category and a positive integer",
-        [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts, IsPosInt ],
+        [ IsString, IsFreeDistributiveCategoryWithStrictProductAndCoproducts ],
         
-  function( DC, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, DC )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( DC );
     
@@ -138,10 +136,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFreeDistributiveCategoryWithStrictProductAndCoproducts );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData,
         "for a two categories and a pair of functions",
-        [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts, IsList, IsDistributiveCategory ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
+        [ IsFreeDistributiveCategoryWithStrictProductAndCoproducts, IsList, FilterIntersection( IsCapCategory, IsDistributiveCategory ) ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
         
   function( DC, pair_of_funcs, distributive_category_with_strict_products_and_coproducts )
     local UPC, PC;

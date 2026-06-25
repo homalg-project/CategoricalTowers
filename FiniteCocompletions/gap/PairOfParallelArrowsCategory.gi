@@ -11,7 +11,7 @@ BindGlobal( "QuiverOfCategoryOfQuivers",
 ##
 InstallMethod( PairOfParallelArrowsCategory,
         "for a CAP category",
-        [ IsCapCategory and IsCocartesianCategory ],
+        [ FilterIntersection( IsCapCategory, IsCocartesianCategory ) ],
         
   function ( C )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -178,16 +178,14 @@ InstallMethod( PairOfParallelArrowsCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a pair of parallel arrows category and a positive integer",
-        [ IsObjectInPairOfParallelArrowsCategory, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a pair of parallel arrows categoryr",
+        [ IsString, IsObjectInPairOfParallelArrowsCategory ],
         
-  function ( obj, string_as_int )
-    local pair, name;
+  function ( name, obj )
+    local pair;
     
     pair := ObjectDatum( obj );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return pair[1][1];
@@ -203,17 +201,28 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
-        "for a morphism in a pair of parallel arrows category and a positive integer",
-        [ IsMorphismInPairOfParallelArrowsCategory, IsPosInt ],
+        "for an object in a pair of parallel arrows category and a positive integer",
+        [ IsObjectInPairOfParallelArrowsCategory, IsPosInt ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+function ( obj, string_as_int )
+    
+    return NameRNam( string_as_int ) / obj;
+    
+end );
+# =#
+
+##
+InstallOtherMethod( \/,
+        "for a string and a morphism in a pair of parallel arrows category",
+        [ IsString, IsMorphismInPairOfParallelArrowsCategory ],
+        
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return datum[1];
@@ -224,6 +233,19 @@ InstallMethod( \.,
     Error( "mor has no component with the name \"", name, "\"\n" );
     
 end );
+
+#= comment for Julia
+##
+InstallMethod( \.,
+        "for a morphism in a pair of parallel arrows category and a positive integer",
+        [ IsMorphismInPairOfParallelArrowsCategory, IsPosInt ],
+        
+  function ( mor, string_as_int )
+    
+    return NameRNam( string_as_int ) / mor;
+    
+end );
+# =#
 
 ####################################
 #

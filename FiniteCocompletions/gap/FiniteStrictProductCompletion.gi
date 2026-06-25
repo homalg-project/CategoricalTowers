@@ -256,14 +256,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite product completion category and a positive integer",
-        [ IsFiniteStrictProductCompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite product completion category",
+        [ IsString, IsFiniteStrictProductCompletion ],
         
-  function( PC, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, PC )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( PC );
     
@@ -306,10 +304,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteStrictProductCompletion );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictProductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsFiniteStrictProductCompletion, IsList, IsCartesianCategory ], ## IsStrictCartesianCategory would exclude the lazy category
+        [ IsFiniteStrictProductCompletion, IsList, FilterIntersection( IsCapCategory, IsCartesianCategory ) ], ## IsStrictCartesianCategory would exclude the lazy category
         
   function( PC, pair_of_funcs, category_with_strict_products )
     local functor_on_objects, functor_on_morphisms,
@@ -447,19 +449,17 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInFiniteStrictProductCompletion ],
         
   function ( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( StringDisplay( ObjectDatum( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInFiniteStrictProductCompletion ],
         
   function ( phi )
@@ -467,12 +467,11 @@ InstallMethod( Display,
     
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
-    Print( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ) );
-    Print( " ⱶ", MorphismDatum( phi )[1], "→ " );
-    Print( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ), "\n\n" );
-    
-    Print( MorphismDatum( phi )[2], "\n\n" );
-    
-    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation(
+        StringDisplay( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ) ),
+        " ⱶ", StringDisplay( MorphismDatum( phi )[1] ), "→ ",
+        StringDisplay( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ) ), "\n\n",
+        StringDisplay( MorphismDatum( phi )[2] ), "\n\n",
+        "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInPairOfParallelArrowsCategory",
 #! @Description
 #!  The &GAP; category of objects in the pair of parallel arrows category of a category.
 DeclareCategory( "IsObjectInPairOfParallelArrowsCategory",
-        IsCellInPairOfParallelArrowsCategory and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInPairOfParallelArrowsCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the pair of parallel arrows category of a category.
 DeclareCategory( "IsMorphismInPairOfParallelArrowsCategory",
-        IsCellInPairOfParallelArrowsCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInPairOfParallelArrowsCategory ) );
 
 ####################################
 #
@@ -99,5 +99,8 @@ DeclareAttribute( "UnderlyingCategory",
 #! @Description
 #!  Return the finite coequalizer closure of the coartesian category <A>cat</A>.
 #! @Arguments cat
+#= comment for Julia
 DeclareAttribute( "PairOfParallelArrowsCategory",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "PairOfParallelArrowsCategory" );

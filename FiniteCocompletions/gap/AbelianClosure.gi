@@ -6,7 +6,7 @@
 
 ##
 InstallMethod( AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure,
-        [ IsAbCategory ],
+        [ FilterIntersection( IsCapCategory, IsAbCategory ) ],
         
   function( C )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -95,14 +95,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for the free abelian closure category with strict direct sums of a category and a positive integer",
-        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure, IsPosInt ],
+InstallMethod( \/,
+        "for a string and the free abelian closure category with strict direct sums of a category",
+        [ IsString, IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
-  function( AC, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, AC )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( AC );
     
@@ -145,10 +143,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToAbelianClosureData,
         "for a two categories and a pair of functions",
-        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure, IsList, IsAbelianCategory ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
+        [ IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure, IsList, FilterIntersection( IsCapCategory, IsAbelianCategory ) ], ## IsStrict(Co)cartesianCategory would exclude the lazy category
         
   function( AC, pair_of_funcs, abelian_category_with_strict_direct_sums )
     local FKSC, KSC, SC;
@@ -210,26 +212,21 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function ( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Print( "An object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( ObjectDatum( a ) ), "An object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ],
         
   function ( phi )
-    local sFinSets;
     
-    Display( MorphismDatum( phi ) );
-    
-    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation( DisplayString( MorphismDatum( phi ) ), "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

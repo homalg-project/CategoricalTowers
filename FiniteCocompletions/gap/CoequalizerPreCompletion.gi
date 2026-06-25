@@ -7,7 +7,7 @@
 ##
 InstallMethod( CoequalizerPreCompletion,
         "for a CAP category",
-        [ IsCapCategory and IsCocartesianCategory ],
+        [ FilterIntersection( IsCapCategory, IsCocartesianCategory ) ],
         
   function ( C )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -398,14 +398,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a coequalizer completion category and a positive integer",
-        [ IsCoequalizerPreCompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a coequalizer completion category",
+        [ IsString, IsCoequalizerPreCompletion ],
         
-  function( Coeq, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, Coeq )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( Coeq );
     
@@ -448,17 +446,28 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
-        "for an object in a category of coequalizer pairs and a positive integer",
-        [ IsObjectInCoequalizerPreCompletion, IsPosInt ],
+        "for a coequalizer completion category and a positive integer",
+        [ IsCoequalizerPreCompletion, IsPosInt ],
         
-  function ( obj, string_as_int )
-    local pair, name;
+  function( Coeq, string_as_int )
+    
+    return NameRNam( string_as_int ) / Coeq;
+    
+end );
+# =#
+
+##
+InstallOtherMethod( \/,
+        "for a string and an object in a category of coequalizer pairs",
+        [ IsString, IsObjectInCoequalizerPreCompletion ],
+        
+  function ( name, obj )
+    local pair;
     
     pair := ObjectDatum( obj );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return pair[1][1];
@@ -474,17 +483,28 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
-        "for a morphism in a category of coequalizer pairs and a positive integer",
-        [ IsMorphismInCoequalizerPreCompletion, IsPosInt ],
+        "for an object in a category of coequalizer pairs and a positive integer",
+        [ IsObjectInCoequalizerPreCompletion, IsPosInt ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( obj, string_as_int )
+    
+    return NameRNam( string_as_int ) / obj;
+    
+end );
+# =#
+
+##
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of coequalizer pairs",
+        [ IsString, IsMorphismInCoequalizerPreCompletion ],
+        
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return datum[1];
@@ -496,6 +516,19 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+##
+InstallMethod( \.,
+        "for a morphism in a category of coequalizer pairs and a positive integer",
+        [ IsMorphismInCoequalizerPreCompletion, IsPosInt ],
+        
+  function ( mor, string_as_int )
+    
+    return NameRNam( string_as_int ) / mor;
+    
+end );
+# =#
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
@@ -503,7 +536,7 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in the category of coequalizer pairs of a category",
         [ IsObjectInCoequalizerPreCompletion ],
         
@@ -512,14 +545,12 @@ InstallMethod( Display,
     
     CoequalizerPreCompletion := CapCategory( parallel_pair );
     
-    Display( ModelingObject( CoequalizerPreCompletion, parallel_pair ) );
-    
-    Print( "\nAn object in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
+    return Concatenation( DisplayString( ModelingObject( CoequalizerPreCompletion, parallel_pair ) ), "\nAn object in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in the category of coequalizer pairs of a category",
         [ IsMorphismInCoequalizerPreCompletion ],
         
@@ -528,8 +559,6 @@ InstallMethod( Display,
     
     CoequalizerPreCompletion := CapCategory( parallel_pair_morphism );
     
-    Display( ModelingMorphism( CoequalizerPreCompletion, parallel_pair_morphism ) );
-    
-    Print( "\nA morphism in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
+    return Concatenation( DisplayString( ModelingMorphism( CoequalizerPreCompletion, parallel_pair_morphism ) ), "\nA morphism in ", Name( CoequalizerPreCompletion ), " given by the above data\n" );
     
 end );

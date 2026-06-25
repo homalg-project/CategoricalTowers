@@ -15,6 +15,7 @@
 DeclareOperation( "EnrichmentSpecificFiniteStrictCoproductCompletion",
         [ IsCapCategory, IsCapCategory ] );
 
+#= comment for Julia
 #! @Description
 #!  The arguments are an ojbect <A>objC</A> in a category $C$ and
 #!  an object <A>objH</A> in $H :=$ <C>RangeCategoryOfHomomorphismStructure</C>( $C$ ).
@@ -26,6 +27,9 @@ DeclareOperation( "EnrichmentSpecificFiniteStrictCoproductCompletion",
 #! @Returns a &CAP; object
 DeclareOperation( "TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure" )
 
 #! @Description
 #!  The arguments are an ojbect <A>objC</A> in a cocartesian category $C$ and
@@ -38,9 +42,13 @@ DeclareOperation( "TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructu
 #!  $t :=$ <C>ObjectDatum</C>( <C>Range</C>( <A>morH</A> ) ).
 #! @Arguments objC, morH
 #! @Returns a &CAP; morphism
+#= comment for Julia
 DeclareOperation( "TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure",
         [ IsCapCategoryObject, IsCapCategoryMorphism ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure" )
 
+#= comment for Julia
 #! @Description
 #!  The arguments are a morphism <A>morC</A> in a cocartesian category $C$ and
 #!  an object <A>objH</A> in $H :=$ <C>RangeCategoryOfHomomorphismStructure</C>( $C$ ).
@@ -54,6 +62,9 @@ DeclareOperation( "TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStruc
 DeclareOperation( "TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure",
         [ IsCapCategoryMorphism, IsCapCategoryObject ] );
 #! @InsertChunk CharacteristicMatrix
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure" )
 
 # Technical functions
 DeclareGlobalFunction( "SKELETAL_CATEGORY_OF_FINITE_SETS_IsMonomorphism" );

@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCom
 #! @Description
 #!  The &GAP; category of objects in the category of skeletal finsets.
 DeclareCategory( "IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
-        IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of skeletal finsets.
 DeclareCategory( "IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory",
-        IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ) );
 
 ####################################
 #

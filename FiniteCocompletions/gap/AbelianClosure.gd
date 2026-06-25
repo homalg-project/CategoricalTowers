@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure"
 #! @Description
 #!  The &GAP; category of objects in the free distributive closure category with strict products and coproducts of a category.
 DeclareCategory( "IsObjectInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
-        IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the free distributive closure category with strict products and coproducts of a category.
 DeclareCategory( "IsMorphismInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
-        IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure ) );
 
 ####################################
 #
@@ -58,6 +58,7 @@ DeclareAttribute( "UnderlyingCategory",
 #
 ####################################
 
+#= comment for Julia
 #! @Description
 #!  Construct the free distributive closure category with strict products and coproducts of a category <A>C</A>.
 #! @Arguments C
@@ -65,6 +66,9 @@ DeclareAttribute( "UnderlyingCategory",
 DeclareAttribute( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure",
         IsCapCategory );
 #! @InsertChunk SnakeInFreeAbelian
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "AbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure" )
 
 DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
         IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
@@ -77,8 +81,12 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsAbelianClosureAsFreydOfCoFreydOfStrictAdditiveClosure );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToAbelianClosureData",
         [ IsCapCategory, IsList, IsCapCategory ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToAbelianClosureData" );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying

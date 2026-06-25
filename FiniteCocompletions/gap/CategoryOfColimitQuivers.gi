@@ -260,14 +260,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for the category of colimit quivers in a category and a positive integer",
-        [ IsCategoryOfColimitQuivers, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a category of colimit quivers",
+        [ IsString, IsCategoryOfColimitQuivers ],
         
-  function( ColimitQuivers, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, ColimitQuivers )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( ColimitQuivers );
     
@@ -309,6 +307,10 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfColimitQuivers );
+# =#
+
 ##
 InstallMethod( FiniteColimitCompletionWithStrictCoproductsOfUnderlyingCategory,
         [ IsCategoryOfColimitQuivers ],
@@ -336,32 +338,27 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in the category of colimit quivers in a category",
         [ IsObjectInCategoryOfColimitQuivers ],
         
   function ( quiver )
     
-    Display( ObjectDatum( quiver ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( quiver ) ), " given by the above data\n" );
+    return Concatenation( StringDisplay( ObjectDatum( quiver ) ), "\nAn object in ", Name( CapCategory( quiver ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in the category of colimit quivers in a category",
         [ IsMorphismInCategoryOfColimitQuivers ],
         
   function ( quiver_morphism )
-
-    Print( "Source: " );
-    Display( Source( quiver_morphism ) );
-    Print( "\nDatum:  " );
-    Display( MorphismDatum( quiver_morphism ) );
-    Print( "\nRange:  " );
-    Display( Target( quiver_morphism ) );
     
-    Print( "\nA morphism in ", Name( CapCategory( quiver_morphism ) ), " given by the above data\n" );
+    return Concatenation(
+        "Source: ", DisplayString( Source( quiver_morphism ) ),
+        "\nDatum:  ", StringDisplay( MorphismDatum( quiver_morphism ) ), "\n",
+        "\nRange:  ", DisplayString( Target( quiver_morphism ) ),
+        "\nA morphism in ", Name( CapCategory( quiver_morphism ) ), " given by the above data\n" );
     
 end );
