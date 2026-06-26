@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFiniteStrictProductCompletion",
 #! @Description
 #!  The &GAP; category of objects in a finite product completion category.
 DeclareCategory( "IsObjectInFiniteStrictProductCompletion",
-        IsCellInFiniteStrictProductCompletion and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteStrictProductCompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite product completion category.
 DeclareCategory( "IsMorphismInFiniteStrictProductCompletion",
-        IsCellInFiniteStrictProductCompletion and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteStrictProductCompletion ) );
 
 ####################################
 #
@@ -110,8 +110,11 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteStrictProductCompletion );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToFiniteStrictProductCompletionData",
         [ IsFiniteStrictProductCompletion, IsList, IsCartesianCategory ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToFiniteStrictProductCompletionData", [ IsFiniteStrictProductCompletion, IsList, IsCapCategory ] );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying

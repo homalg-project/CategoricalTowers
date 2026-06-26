@@ -23,8 +23,12 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsCoFreydCategory );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToCoFreydCategoryData",
         [ IsCoFreydCategory, IsList, IsAdditiveCategory ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToCoFreydCategoryData" )
 
 #! @Description
 #!  The full embedding functor from the additive category $C$ underlying

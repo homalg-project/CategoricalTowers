@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInCoequalizerPreCompletion",
 #! @Description
 #!  The &GAP; category of objects in the coequalizer completion of a category.
 DeclareCategory( "IsObjectInCoequalizerPreCompletion",
-        IsCellInCoequalizerPreCompletion and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInCoequalizerPreCompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the coequalizer completion of a category.
 DeclareCategory( "IsMorphismInCoequalizerPreCompletion",
-        IsCellInCoequalizerPreCompletion and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCoequalizerPreCompletion ) );
 
 ####################################
 #
@@ -98,6 +98,9 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 #! @Description
 #!  Return the finite coequalizer completion of the coartesian category <A>cat</A>.
 #! @Arguments cat
+#= comment for Julia
 DeclareAttribute( "CoequalizerPreCompletion",
         IsCapCategory );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "CoequalizerPreCompletion" );
 #! @InsertChunk CoequalizerPreCompletion

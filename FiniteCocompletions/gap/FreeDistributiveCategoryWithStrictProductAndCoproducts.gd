@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts
 #! @Description
 #!  The &GAP; category of objects in the free distributive closure category with strict products and coproducts of a category.
 DeclareCategory( "IsObjectInFreeDistributiveCategoryWithStrictProductAndCoproducts",
-        IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the free distributive closure category with strict products and coproducts of a category.
 DeclareCategory( "IsMorphismInFreeDistributiveCategoryWithStrictProductAndCoproducts",
-        IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFreeDistributiveCategoryWithStrictProductAndCoproducts ) );
 
 ####################################
 #
@@ -77,8 +77,11 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFreeDistributiveCategoryWithStrictProductAndCoproducts );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData",
         [ IsCapCategory, IsList, IsCapCategory ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproductsData", [ IsCapCategory, IsList, IsCapCategory ] );
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying

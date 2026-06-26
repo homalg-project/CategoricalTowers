@@ -222,14 +222,12 @@ InstallMethod( AsColimitCompletionMorphism,
 end );
 
 ##
-InstallMethod( \.,
-        "for a coequalizer closure category and a positive integer",
-        [ IsFiniteColimitCompletionWithStrictCoproducts, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a coequalizer closure category",
+        [ IsString, IsFiniteColimitCompletionWithStrictCoproducts ],
         
-  function( C_hat, string_as_int )
-    local name, C, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, C_hat )
+    local C, Yc;
     
     C := UnderlyingCategory( C_hat );
     
@@ -273,17 +271,19 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteColimitCompletionWithStrictCoproducts );
+# =#
+
 ##
-InstallMethod( \.,
-        "for an object in a category of coequalizer pairs and a positive integer",
-        [ IsObjectInFiniteColimitCompletionWithStrictCoproducts, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of coequalizer pairs",
+        [ IsString, IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
-  function ( obj, string_as_int )
-    local pair, name;
+  function ( name, obj )
+    local pair;
     
     pair := ObjectDatum( obj );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return pair[1][1];
@@ -299,17 +299,28 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
 ##
 InstallMethod( \.,
-        "for a morphism in a category of coequalizer pairs and a positive integer",
-        [ IsMorphismInFiniteColimitCompletionWithStrictCoproducts, IsPosInt ],
+        "for an object in a category of coequalizer pairs and a positive integer",
+        [ IsObjectInFiniteColimitCompletionWithStrictCoproducts, IsPosInt ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( obj, string_as_int )
+    
+    return NameRNam( string_as_int ) / obj;
+    
+end );
+# =#
+
+##
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of coequalizer pairs",
+        [ IsString, IsMorphismInFiniteColimitCompletionWithStrictCoproducts ],
+        
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return datum[1];
@@ -320,6 +331,19 @@ InstallMethod( \.,
     Error( "mor has no component with the name \"", name, "\"\n" );
     
 end );
+
+#= comment for Julia
+##
+InstallMethod( \.,
+        "for a morphism in a category of coequalizer pairs and a positive integer",
+        [ IsMorphismInFiniteColimitCompletionWithStrictCoproducts, IsPosInt ],
+        
+  function ( mor, string_as_int )
+    
+    return NameRNam( string_as_int ) / mor;
+    
+end );
+# =#
 
 ##
 InstallMethod( CategoryOfColimitQuiversOfUnderlyingCategory,
@@ -381,7 +405,7 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in the category of coequalizer pairs of a category",
         [ IsObjectInFiniteColimitCompletionWithStrictCoproducts ],
         
@@ -392,14 +416,12 @@ InstallMethod( Display,
     
     PSh := ModelingCategory( AmbientCategory( ModelingCategory( ModelingCategory( C_hat ) ) ) );
     
-    Display( ObjectConstructor( PSh, ObjectDatum( parallel_pair ) ) );
-    
-    Print( "\nAn object in ", Name( C_hat ), " given by the above data\n" );
+    return Concatenation( DisplayString( ObjectConstructor( PSh, ObjectDatum( parallel_pair ) ) ), "\nAn object in ", Name( C_hat ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in the category of coequalizer pairs of a category",
         [ IsMorphismInFiniteColimitCompletionWithStrictCoproducts ],
         
@@ -413,8 +435,6 @@ InstallMethod( Display,
     source := ObjectConstructor( PSh, ObjectDatum( Source( parallel_pair_morphism ) ) );
     target := ObjectConstructor( PSh, ObjectDatum( Target( parallel_pair_morphism ) ) );
     
-    Display( MorphismConstructor( PSh, source, MorphismDatum( parallel_pair_morphism ), target ) );
-    
-    Print( "\nA morphism in ", Name( C_hat ), " given by the above data\n" );
+    return Concatenation( DisplayString( MorphismConstructor( PSh, source, MorphismDatum( parallel_pair_morphism ), target ) ), "\nA morphism in ", Name( C_hat ), " given by the above data\n" );
     
 end );

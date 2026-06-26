@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory"
 #! @Description
 #!  The &GAP; category of objects in a finite coproduct completion of an object-finite category.
 DeclareCategory( "IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory",
-        IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite coproduct completion of an object-finite category.
 DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletionOfObjectFiniteCategory",
-        IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteStrictCoproductCompletionOfObjectFiniteCategory ) );
 
 ####################################
 #
@@ -133,8 +133,11 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteStrictCoproductCompletionOfObjectFiniteCategory );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategoryData",
-        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, IsCocartesianCategory ] );
+        [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, IsCapCategory ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToFiniteStrictCoproductCompletionOfObjectFiniteCategoryData", [ IsFiniteStrictCoproductCompletionOfObjectFiniteCategory, IsList, IsCapCategory ] );
 
 #! @Description
 #!  The full embedding functor from the object-finite category $C$ underlying

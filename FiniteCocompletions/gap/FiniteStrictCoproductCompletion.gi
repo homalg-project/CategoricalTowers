@@ -261,7 +261,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
-    if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
+    if not ( HasRangeCategoryOfHomomorphismStructure( C ) and IsIntervalCategory( H ) ) then
         
         ##
         AddIsCongruentForMorphisms( UC,
@@ -355,7 +355,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     fi;
     
-    if not ( IsBound( H ) and IsIntervalCategory( H ) ) then
+    if not ( HasRangeCategoryOfHomomorphismStructure( C ) and IsIntervalCategory( H ) ) then
         
         if CanCompute( C, "IsMonomorphism" ) then
             
@@ -962,7 +962,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     fi;
     
     if HasIsFiniteCategory( C ) and IsFiniteCategory( C ) and
-       IsBound( H ) and IsIntervalCategory( H ) and
+       HasRangeCategoryOfHomomorphismStructure( C ) and IsIntervalCategory( H ) and
        CanCompute( C, "SetOfObjectsOfCategory" ) then
         
         SetIsFiniteCategory( UC, true );
@@ -988,7 +988,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     if HasIsEquippedWithHomomorphismStructure( C ) and IsEquippedWithHomomorphismStructure( C ) and
        MissingOperationsForConstructivenessOfCategory( C, "IsEquippedWithHomomorphismStructure" ) = [ ] and
-       IsBound( H ) and
+       HasRangeCategoryOfHomomorphismStructure( C ) and
        HasIsCartesianCategory( H ) and IsCartesianCategory( H ) and
        MissingOperationsForConstructivenessOfCategory( H, "IsCartesianCategory" ) = [ ] then
         
@@ -1374,7 +1374,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
                 
             fi;
             
-        elif ( IsBound( IsSkeletalCategoryOfFiniteSets ) and ValueGlobal( "IsSkeletalCategoryOfFiniteSets" )( H ) ) or
+        elif IsSkeletalCategoryOfFiniteSets( H ) or
           IsSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory( H ) or
           IsIntervalCategory( H ) then
             
@@ -1462,10 +1462,13 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
 end ) );
 
+#% G2J:julia-only @FilterIntersection( IsObjectInFiniteStrictCoproductCompletion, HasIsZeroForObjects, IsZeroForObjects );
+#% G2J:julia-only @FilterIntersection( IsMorphismInFiniteStrictCoproductCompletion, HasIsZeroForMorphisms, IsZeroForMorphisms );
+
 ##
 InstallMethod( FiniteStrictCoproductCompletion,
         "for a CAP category",
-        [ IsCapCategory and IsInitialCategory ],
+        [ FilterIntersection( IsCapCategory, IsInitialCategory ) ],
         
   FunctionWithNamedArguments(
   [
@@ -1481,9 +1484,9 @@ InstallMethod( FiniteStrictCoproductCompletion,
     
     category_filter := IsFiniteStrictCoproductCompletion;
     
-    category_object_filter := IsObjectInFiniteStrictCoproductCompletion and HasIsZeroForObjects and IsZeroForObjects;
+    category_object_filter := FilterIntersection( IsObjectInFiniteStrictCoproductCompletion, HasIsZeroForObjects, IsZeroForObjects );
     
-    category_morphism_filter := IsMorphismInFiniteStrictCoproductCompletion and HasIsZeroForMorphisms and IsZeroForMorphisms;
+    category_morphism_filter := FilterIntersection( IsMorphismInFiniteStrictCoproductCompletion, HasIsZeroForMorphisms, IsZeroForMorphisms );
     
     ## e.g., ZeroObject, DirectSum
     create_func_object :=
@@ -1623,7 +1626,8 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
     end );
     
-    if not H = "self" then ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
+    ## if H = "self", the Hom-structure will be derived from the closed monoidal structure
+    if not H = "self" then
         
         ##
         AddDistinguishedObjectOfHomomorphismStructure( UI,
@@ -1776,14 +1780,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite coproduct cocompletion category and a positive integer",
-        [ IsFiniteStrictCoproductCompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite coproduct cocompletion category",
+        [ IsString, IsFiniteStrictCoproductCompletion ],
         
-  function( UC, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, UC )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( UC );
     
@@ -1826,10 +1828,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteStrictCoproductCompletion );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsFiniteStrictCoproductCompletion, IsList, IsCocartesianCategory ], ## IsStrictCocartesianCategory would exclude the lazy category
+        [ IsFiniteStrictCoproductCompletion, IsList, FilterIntersection( IsCapCategory, IsCocartesianCategory ) ], ## IsStrictCocartesianCategory would exclude the lazy category
         
   function( UC, pair_of_funcs, category_with_strict_coproducts )
     local functor_on_objects, functor_on_morphisms,
@@ -1946,7 +1952,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, an object in the cocartesian category, and an object in the skeletal category of finite sets",
         [ IsSkeletalCategoryOfFiniteSets,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsSkeletalFiniteSet ],
         
   function( H, UC, c, h )
@@ -1971,7 +1977,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, three objects in the cocartesian category, and a morphism in the skeletal category of finite sets",
         [ IsSkeletalCategoryOfFiniteSets,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryObject, IsSkeletalFiniteSetMap, IsCapCategoryObject ],
         
   function( H, UC, source, c, nu, target )
@@ -2005,7 +2011,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a skeletal category of finite sets, a finite strict coproduct cocompletion, two objects and a morphism in the cocartesian category, and an object in the skeletal category of finite sets",
         [ IsSkeletalCategoryOfFiniteSets,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryMorphism, IsSkeletalFiniteSet, IsCapCategoryObject ],
         
   function( H, UC, source, phi, h, target )
@@ -2033,7 +2039,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a interval category, a finite strict coproduct cocompletion, an object in the cocartesian category, and an object in the interval category",
         [ IsIntervalCategory,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsObjectInIntervalCategory ],
         
   function( H, UC, c, h )
@@ -2058,7 +2064,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
         "for a interval category, a finite strict coproduct cocompletion, three objects in the cocartesian category, and a morphism in the interval category",
         [ IsIntervalCategory,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryObject, IsMorphismInIntervalCategory, IsCapCategoryObject ],
         
   function( H, UC, source, c, nu, target )
@@ -2092,7 +2098,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a interval category, a finite strict coproduct cocompletion, two objects and a morphism in the cocartesian category, and an object in the interval category",
         [ IsIntervalCategory,
-          IsFiniteStrictCoproductCompletion and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsCapCategory, IsFiniteStrictCoproductCompletion, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryMorphism, IsObjectInIntervalCategory, IsCapCategoryObject ],
         
   function( H, UC, source, phi, h, target )
@@ -2157,19 +2163,17 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsObjectInFiniteStrictCoproductCompletion ],
         
   function ( a )
     
-    Display( ObjectDatum( a ) );
-    
-    Print( "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    return Concatenation( StringDisplay( ObjectDatum( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         [ IsMorphismInFiniteStrictCoproductCompletion ],
         
   function ( phi )
@@ -2177,12 +2181,11 @@ InstallMethod( Display,
     
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
-    Print( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) );
-    Print( " ⱶ", PairOfLists( phi )[1], "→ " );
-    Print( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ), "\n\n" );
-    
-    Print( PairOfLists( phi )[2], "\n\n" );
-    
-    Print( "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
+    return Concatenation(
+        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) ),
+        " ⱶ", StringDisplay( PairOfLists( phi )[1] ), "→ ",
+        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ) ), "\n\n",
+        StringDisplay( PairOfLists( phi )[2] ), "\n\n",
+        "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     
 end );

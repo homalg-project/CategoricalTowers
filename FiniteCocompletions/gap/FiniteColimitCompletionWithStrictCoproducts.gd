@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFiniteColimitCompletionWithStrictCoproducts",
 #! @Description
 #!  The &GAP; category of objects in the colimit completion of a category.
 DeclareCategory( "IsObjectInFiniteColimitCompletionWithStrictCoproducts",
-        IsCellInFiniteColimitCompletionWithStrictCoproducts and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteColimitCompletionWithStrictCoproducts ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the colimit completion of a category.
 DeclareCategory( "IsMorphismInFiniteColimitCompletionWithStrictCoproducts",
-        IsCellInFiniteColimitCompletionWithStrictCoproducts and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteColimitCompletionWithStrictCoproducts ) );
 
 ####################################
 #

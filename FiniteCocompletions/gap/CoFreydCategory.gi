@@ -47,14 +47,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a Fredy category and a positive integer",
-        [ IsCoFreydCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a co-Freyd category",
+        [ IsString, IsCoFreydCategory ],
         
-  function( coFreyd, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, coFreyd )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( coFreyd );
     
@@ -94,7 +92,7 @@ InstallMethod( \.,
     else
         
         # COVERAGE_IGNORE_NEXT_LINE
-        Error( "`Yc` is neither an object nor a morphism in `IsFreydCategory`\n" );
+        Error( "`Yc` is neither an object nor a morphism in `coFreyd` category\n" );
         
     fi;
     
@@ -102,10 +100,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCoFreydCategory );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToCoFreydCategoryData,
         "for a two categories and a pair of functions",
-        [ IsCoFreydCategory, IsList, IsAdditiveCategory ],
+        [ IsCoFreydCategory, IsList, FilterIntersection( IsCapCategory, IsAdditiveCategory ) ],
         
   function( KC, pair_of_funcs, additive_category_with_kernels )
     local functor_on_objects, functor_on_morphisms,

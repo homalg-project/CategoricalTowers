@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFiniteStrictCoproductCompletion",
 #! @Description
 #!  The &GAP; category of objects in a finite coproduct cocompletion category.
 DeclareCategory( "IsObjectInFiniteStrictCoproductCompletion",
-        IsCellInFiniteStrictCoproductCompletion and IsCapCategoryObject  );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteStrictCoproductCompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite coproduct cocompletion category.
 DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletion",
-        IsCellInFiniteStrictCoproductCompletion and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteStrictCoproductCompletion ) );
 
 ####################################
 #
@@ -38,6 +38,7 @@ DeclareCategory( "IsMorphismInFiniteStrictCoproductCompletion",
 #
 ####################################
 
+#= comment for Julia
 #! @Description
 #!  Return the finite coproduct cocompletion of the category <A>cat</A>
 #!  in which the cocartesian associators are given by identities.
@@ -47,6 +48,9 @@ DeclareAttribute( "FiniteStrictCoproductCompletion",
 #! @InsertChunk TerminalCategory_as_FiniteStrictCoproductCompletion
 #! @InsertChunk FiniteStrictCoproductCompletion
 #! @InsertChunk FiniteStrictCoproductCompletion_poset
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedAttribute( "FiniteStrictCoproductCompletion", IsCapCategory );
 
 #CapJitAddTypeSignature( "FiniteStrictCoproductCompletion", [ IsCapCategory ], function ( input_types )
 #    
@@ -121,8 +125,12 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsFiniteStrictCoproductCompletion );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCompletionData",
-        [ IsFiniteStrictCoproductCompletion, IsList, IsCocartesianCategory ] );
+        [ IsFiniteStrictCoproductCompletion, IsList, IsCapCategory ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "ExtendFunctorToFiniteStrictCoproductCompletionData" )
 
 #! @Description
 #!  The full embedding functor from the category $C$ underlying

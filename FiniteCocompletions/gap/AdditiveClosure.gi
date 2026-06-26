@@ -62,7 +62,7 @@ end );
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionData,
         "for a two categories and a pair of functions",
-        [ IsAdditiveClosureCategory, IsList, IsAdditiveCategory ],
+        [ IsAdditiveClosureCategory, IsList, FilterIntersection( IsCapCategory, IsAdditiveCategory ) ],
         
   function( SC, pair_of_funcs, strict_additive_category )
     local functor_on_objects, functor_on_morphisms,
@@ -162,7 +162,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a category of rows, an additive closure category, an object in the additive category, and an object in the category of rows",
         [ IsCategoryOfRows,
-          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsAdditiveClosureCategory, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCategoryOfRowsObject ],
         
   function( H, UL, a, h )
@@ -184,7 +184,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure,
         "for a category of rows, an additive closure category, three objects in the additive category, and a morphism in the category of rows",
         [ IsCategoryOfRows,
-          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsAdditiveClosureCategory, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryObject, IsCategoryOfRowsMorphism, IsCapCategoryObject ],
         
   function( H, UL, source, a, nu, target )
@@ -221,7 +221,7 @@ end );
 InstallOtherMethodForCompilerForCAP( TensorizeMorphismWithObjectInRangeCategoryOfHomomorphismStructure,
         "for a category of rows, an additive closure category, two objects and a morphism in the additive category, and an object in the category of rows",
         [ IsCategoryOfRows,
-          IsAdditiveClosureCategory and HasRangeCategoryOfHomomorphismStructure,
+          FilterIntersection( IsAdditiveClosureCategory, HasRangeCategoryOfHomomorphismStructure ),
           IsCapCategoryObject, IsCapCategoryMorphism, IsCategoryOfRowsObject, IsCapCategoryObject ],
         
   function( H, UL, source, phi, h, target )

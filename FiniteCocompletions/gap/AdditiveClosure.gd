@@ -23,8 +23,10 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategoryData",
 DeclareAttribute( "EmbeddingOfUnderlyingCategory",
         IsAdditiveClosureCategory );
 
+#= comment for Julia
 DeclareOperation( "ExtendFunctorToFiniteStrictCoproductCompletionData",
         [ IsAdditiveClosureCategory, IsList, IsAdditiveCategory ] );
+# =#
 
 #! @Description
 #!  The full embedding functor from the preadditive category $C$ underlying

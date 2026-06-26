@@ -46,15 +46,14 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
     
 end );
 
+## Should this be moved to FreydCategoriesForCAP?
 ##
-InstallMethod( \.,
-        "for a Fredy category and a positive integer",
-        [ IsFreydCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a Freyd category",
+        [ IsString, IsFreydCategory ],
         
-  function( Freyd, string_as_int )
-    local name, C, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, Freyd )
+    local C, Y, Yc;
     
     C := UnderlyingCategory( Freyd );
     
@@ -102,10 +101,14 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFreydCategory );
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToFreydCategoryData,
         "for a two categories and a pair of functions",
-        [ IsFreydCategory, IsList, IsAdditiveCategory ],
+        [ IsFreydCategory, IsList, FilterIntersection( IsCapCategory, IsAdditiveCategory ) ],
         
   function( FC, pair_of_funcs, additive_category_with_cokernels )
     local functor_on_objects, functor_on_morphisms,

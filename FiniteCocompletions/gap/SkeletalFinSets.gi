@@ -153,7 +153,19 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
     
     if ValueOption( "no_precompiled_code" ) <> true then
         
+        ## In Julia, `ReinterpretationOfCategory` calls `CategoryConstructor` which installs
+        ## wrapped versions of all primitive operations of the modeling category `UT` for `sFinSets`
+        ## (in this concrete case, the operation `Coproduct`).
+        ## Then calling `ADD_FUNCTIONS_FOR_...Precompiled( sFinSets )` would invoke `AddCoproduct`
+        ## again for the same concrete type, which Julia forbids during module precompilation 
+        ## ("Method overwriting is not permitted during Module precompilation").
+        ## In GAP, the precompiled implementations override the `CategoryConstructor`-installed ones
+        ## at higher weight, which is the desired behavior. In Julia we simply rely on the
+        ## `CategoryConstructor`-installed wrappers, which correctly delegate to `UT`.
+        ## We need to figure out a way to prevent multiple Add's for the same operation.
+        #= comment for Julia
         ADD_FUNCTIONS_FOR_SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategoryPrecompiled( sFinSets );
+        # =#
         
     fi;
     
@@ -174,48 +186,48 @@ InstallGlobalFunction( SkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductComple
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a skeletal finite set",
         [ IsObjectInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( s )
-    Print( "|", Cardinality( s ), "|" );
+    return Concatenation( "|", String( Cardinality( s ) ), "|" );
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
-    Print( "|", Cardinality( Source( phi ) ), "| → |", Cardinality( Target( phi ) ), "|" );
+    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| → |", String( Cardinality( Target( phi ) ) ), "|" );
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsMonomorphism ],
         
   function ( phi )
-    Print( "|", Cardinality( Source( phi ) ), "| ↪ |", Cardinality( Target( phi ) ), "|" );
+    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ↪ |", String( Cardinality( Target( phi ) ) ), "|" );
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsEpimorphism ],
         
   function ( phi )
-    Print( "|", Cardinality( Source( phi ) ), "| ↠ |", Cardinality( Target( phi ) ), "|" );
+    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ↠ |", String( Cardinality( Target( phi ) ) ), "|" );
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsIsomorphism ],
         
   function ( phi )
-    Print( "|", Cardinality( Source( phi ) ), "| ⭇ |", Cardinality( Target( phi ) ), "|" );
+    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ⭇ |", String( Cardinality( Target( phi ) ) ), "|" );
 end );
 
 # We want lists of skeletal finite sets and maps to be displayed in a "fancy" way.
