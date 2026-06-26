@@ -34,18 +34,13 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X815A1C627CDDF107">6.2-2 DefiningPairOfMorphismBetweenParallelPairs</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X81A472EA7C1CD4FB">6.2-3 UnderlyingCategory</a></span>
 </div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X86EC0F0A78ECBC10">6.3 <span class="Heading">Constructors</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7D03633A7D98026B">6.3 <span class="Heading">GAP categories</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7925411183EC110C">6.3-1 PairOfParallelArrowsCategory</a></span>
-</div></div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap6.html#X7D03633A7D98026B">6.4 <span class="Heading">GAP categories</span></a>
-</span>
-<div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D185BFF79B46FE6">6.4-1 IsPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X838A82637B30F1FD">6.4-2 IsCellInPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X87120D7278FC6D3F">6.4-3 IsObjectInPairOfParallelArrowsCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7C4086A07FA587FF">6.4-4 IsMorphismInPairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7D185BFF79B46FE6">6.3-1 IsPairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X838A82637B30F1FD">6.3-2 IsCellInPairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X7AFA2E657901BDCA">6.3-3 IsObjectInPairOfParallelArrowsCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap6.html#X83EFF87084A0C0CA">6.3-4 IsMorphismInPairOfParallelArrowsCategory</a></span>
 </div></div>
 </div>
 
@@ -83,24 +78,13 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCategory</code>( <var class="Arg">PPAC</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Return the category <span class="Math">C</span> underlying the category <var class="Arg">PPAC</var> := <code class="code">PairOfParallelArrowsCategory</code>( <span class="Math">C</span> ).</p>
 
-<p><a id="X86EC0F0A78ECBC10" name="X86EC0F0A78ECBC10"></a></p>
-
-<h4>6.3 <span class="Heading">Constructors</span></h4>
-
-<p><a id="X7925411183EC110C" name="X7925411183EC110C"></a></p>
-
-<h5>6.3-1 PairOfParallelArrowsCategory</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; PairOfParallelArrowsCategory</code>( <var class="Arg">cat</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Return the finite coequalizer closure of the coartesian category <var class="Arg">cat</var>.</p>
-
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 
-<h4>6.4 <span class="Heading">GAP categories</span></h4>
+<h4>6.3 <span class="Heading">GAP categories</span></h4>
 
 <p><a id="X7D185BFF79B46FE6" name="X7D185BFF79B46FE6"></a></p>
 
-<h5>6.4-1 IsPairOfParallelArrowsCategory</h5>
+<h5>6.3-1 IsPairOfParallelArrowsCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
@@ -109,25 +93,25 @@
 
 <p><a id="X838A82637B30F1FD" name="X838A82637B30F1FD"></a></p>
 
-<h5>6.4-2 IsCellInPairOfParallelArrowsCategory</h5>
+<h5>6.3-2 IsCellInPairOfParallelArrowsCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsCellInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of cells in the pair of parallel arrows category of a category.</p>
 
-<p><a id="X87120D7278FC6D3F" name="X87120D7278FC6D3F"></a></p>
+<p><a id="X7AFA2E657901BDCA" name="X7AFA2E657901BDCA"></a></p>
 
-<h5>6.4-3 IsObjectInPairOfParallelArrowsCategory</h5>
+<h5>6.3-3 IsObjectInPairOfParallelArrowsCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
 
 <p>The <strong class="pkg">GAP</strong> category of objects in the pair of parallel arrows category of a category.</p>
 
-<p><a id="X7C4086A07FA587FF" name="X7C4086A07FA587FF"></a></p>
+<p><a id="X83EFF87084A0C0CA" name="X83EFF87084A0C0CA"></a></p>
 
-<h5>6.4-4 IsMorphismInPairOfParallelArrowsCategory</h5>
+<h5>6.3-4 IsMorphismInPairOfParallelArrowsCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInPairOfParallelArrowsCategory</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
 <p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
