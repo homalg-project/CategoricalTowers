@@ -155,7 +155,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
 end ) );
 
 ##
-InstallOtherMethod( LinearClosure,
+InstallMethodWithCache( LinearClosure,
           [ IsCategoryOfRows, IsPathCategory ],
           
   FunctionWithNamedArguments(
