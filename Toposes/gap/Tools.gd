@@ -26,6 +26,13 @@ DeclareOperation( "DigraphOfSubobjects",
 
 DeclareFilter( "IsDigraphOfSubobjects" );
 
+#! @Description
+#!  Opens a PDF with the graph of the digraph D of subobjects.
+#! @Arguments D
+#! @Returns nothing
+DeclareOperation( "Visualize",
+        [ IsDigraphOfSubobjects ] );
+
 #= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 

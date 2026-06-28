@@ -64,6 +64,17 @@ InstallOtherMethod( DotVertexLabelledDigraph,
     
 end );
 
+##
+InstallMethod( Visualize,
+        "for a digraph of subobjects",
+        [ IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects ],
+        
+  function( D )
+    
+    Splash( DotVertexLabelledDigraph( D ) );
+    
+end );
+
 MakeShowable( [ "image/svg+xml" ], IsDigraphByOutNeighboursRep and IsDigraphOfSubobjects );
 
 ##
