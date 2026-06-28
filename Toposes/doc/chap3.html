@@ -25,8 +25,10 @@
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3.html#X823115CB80433935">3.1 <span class="Heading">Visualizing posets of subobjects</span></a>
 </span>
 <div class="ContSSBlock">
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X865B46EF82FACBEE">3.1-1 DigraphOfSubobjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78624B8D7C1C7603">3.1-2 SvgString</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7D4B85C586B98A15">3.1-1 DigraphOfSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X865B46EF82FACBEE">3.1-2 DigraphOfSubobjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X7EF825467DBD2DC9">3.1-3 Visualize</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3.html#X78624B8D7C1C7603">3.1-4 SvgString</a></span>
 </div></div>
 </div>
 
@@ -36,18 +38,36 @@
 
 <h4>3.1 <span class="Heading">Visualizing posets of subobjects</span></h4>
 
-<p><a id="X865B46EF82FACBEE" name="X865B46EF82FACBEE"></a></p>
+<p><a id="X7D4B85C586B98A15" name="X7D4B85C586B98A15"></a></p>
 
 <h5>3.1-1 DigraphOfSubobjects</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfSubobjects</code>( <var class="Arg">A</var>, <var class="Arg">subobjs</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a digraph</p>
+
+<p>The argument is an object <var class="Arg">A</var> and a list <var class="Arg">subobjs</var> of subobjects of <var class="Arg">A</var>. The output is the reflexive transitive reduction of the poset of all subobjects in <var class="Arg">subobjs</var>.</p>
+
+<p><a id="X865B46EF82FACBEE" name="X865B46EF82FACBEE"></a></p>
+
+<h5>3.1-2 DigraphOfSubobjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DigraphOfSubobjects</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a digraph</p>
 
 <p>The argument is an object <var class="Arg">A</var>. The output is the reflexive transitive reduction of the poset of all subobjects of <var class="Arg">A</var>.</p>
 
+<p><a id="X7EF825467DBD2DC9" name="X7EF825467DBD2DC9"></a></p>
+
+<h5>3.1-3 Visualize</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; Visualize</code>( <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: nothing</p>
+
+<p>Opens a PDF with the graph of the digraph D of subobjects.</p>
+
 <p><a id="X78624B8D7C1C7603" name="X78624B8D7C1C7603"></a></p>
 
-<h5>3.1-2 SvgString</h5>
+<h5>3.1-4 SvgString</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SvgString</code>( <var class="Arg">digraph</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 
