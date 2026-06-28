@@ -20,7 +20,7 @@ DeclareOperation( "Visualize",
 
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
-#! @Arguments cell
+#! @Arguments D
 DeclareAttribute( "SvgString",
         IsDigraph and IsDigraphOfDoctrines );
 
