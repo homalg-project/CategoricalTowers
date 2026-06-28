@@ -151,4 +151,5 @@ MorphismDatum( EvaluatedCell( Gff ) );
 #! [ [ 0, 0 ], [ (A)-[(f)]->(B), (B)-[(B)]->(B) ] ]
 MorphismDatum( EvaluatedCell( Ggg ) );
 #! [ [ 0, 0 ], [ (A)-[(g)]->(B), (B)-[(B)]->(B) ] ]
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

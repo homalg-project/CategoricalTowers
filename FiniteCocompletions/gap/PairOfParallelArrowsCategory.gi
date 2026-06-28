@@ -13,7 +13,11 @@ InstallMethod( PairOfParallelArrowsCategory,
         "for a CAP category",
         [ FilterIntersection( IsCapCategory, IsCocartesianCategory ) ],
         
-  function ( C )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
@@ -72,9 +76,13 @@ InstallMethod( PairOfParallelArrowsCategory,
     
     F := PathCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := SkeletalFinSets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
+    F := CallFuncListAtRuntime(
+          { } -> CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true ),
+          [ ] );
     
-    PSh_VA := PreSheaves( F, C : FinalizeCategory := true );
+    PSh_VA := CallFuncListAtRuntime(
+             { } -> PreSheaves( F, C : FinalizeCategory := true ),
+             [ ] );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
@@ -171,11 +179,13 @@ InstallMethod( PairOfParallelArrowsCategory,
         
     fi;
     
-    Finalize( ParallelPairs );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      Finalize( ParallelPairs );
+    fi;
     
     return ParallelPairs;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( \/,

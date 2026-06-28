@@ -111,4 +111,5 @@ Ggamma := G( gamma );
 #!  FiniteStrictProductCompletion( FreeCategory( RightQuiver( "Q(a,b)[]" ) ) ) )>
 IsWellDefined( Ggamma );
 #! true
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

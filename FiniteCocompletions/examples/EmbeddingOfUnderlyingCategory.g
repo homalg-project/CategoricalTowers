@@ -1,6 +1,9 @@
 #! @Chunk EmbeddingOfUnderlyingCategory
 
+
 #! @Example
+LoadPackage( "FunctorCategories" );
+#! true
 LoadPackage( "FiniteCocompletions" );
 #! true
 q := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR->SG,rhoT:TR->TG,phi:SG->TG,chi:SR->TR]" );
@@ -49,4 +52,5 @@ CokernelObjectFunctorial( F.rhoS, F.phi, F.rhoT ) = psi;
 psi =
   EvalString( CellAsEvaluatableString( psi, [ "F", "K", "A", "L", "C", "P" ] ) );
 #! true
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample

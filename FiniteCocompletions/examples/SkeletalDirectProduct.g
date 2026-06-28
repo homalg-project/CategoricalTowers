@@ -47,4 +47,5 @@ psi := UniversalMorphismIntoDirectProduct( [ m, n, p ], [ pi1, pi2, pi3 ] );
 #! |84| → |84|
 psi = IdentityMorphism( d );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

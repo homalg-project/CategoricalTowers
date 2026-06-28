@@ -151,6 +151,6 @@ TripleOfLists( l )[2];
 #! [ [ 2, 1 ] ]
 PreCompose( l, i ) = tau;
 #! true
-
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample
 #! @EndChunk

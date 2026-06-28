@@ -131,5 +131,6 @@ Display( F_as_colimit_quiver );
 F_as_presheaf =
   Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );
 #! true
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample
 #! @EndChunk

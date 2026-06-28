@@ -42,4 +42,5 @@ Display( hom_alpha_gamma );
 #! { 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }
 IsWellDefined( hom_alpha_gamma );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

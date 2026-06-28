@@ -150,6 +150,6 @@ psi_to_be :=
 #! CategoryWithSingleObject( ) )>
 psi_to_be = ColiftAlongEpimorphism( pi, phi );
 #! true
-
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample
 #! @EndChunk

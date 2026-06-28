@@ -272,5 +272,5 @@ Display( compiled_func );
 #! end
 
 #! #@fi
-
+# @drop_example_in_Julia (needs CompilerForCAP)
 #! @EndExample

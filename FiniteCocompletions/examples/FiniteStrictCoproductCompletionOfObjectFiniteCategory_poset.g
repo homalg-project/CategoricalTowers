@@ -45,5 +45,6 @@ Display( Lhat );
 #! * IsFiniteCategory
 #! * IsEquippedWithHomomorphismStructure
 #! * IsJoinSemiLattice
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample
 #! @EndChunk

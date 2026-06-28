@@ -203,4 +203,5 @@ Display( hom_alpha_gamma );
 #! given by the above data
 IsWellDefined( hom_alpha_gamma );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

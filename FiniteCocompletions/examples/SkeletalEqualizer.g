@@ -43,4 +43,5 @@ psi := EmbeddingOfEqualizer( D );
 #! |3| → |5|
 Display( psi );
 #! { 0, 1, 2 } ⱶ[ 0, 3, 4 ]→ { 0,..., 4 }
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

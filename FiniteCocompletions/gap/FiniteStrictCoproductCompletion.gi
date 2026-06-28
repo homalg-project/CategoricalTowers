@@ -104,7 +104,7 @@ InstallMethod( FiniteStrictCoproductCompletion,
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0,
-                IsInt( pair_of_int_and_list[1] ) and
+                IsBigInt( pair_of_int_and_list[1] ) and
                 pair_of_int_and_list[1] = Length( pair_of_int_and_list[2] ) and
                 ForAll( pair_of_int_and_list[2], obj -> IsCapCategoryObject( obj ) and IsIdenticalObj( UnderlyingCategory( UC ), CapCategory( obj ) ) ) );
         
@@ -1714,30 +1714,38 @@ InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
         [ IsCapCategory, IsIntervalCategory ],
         
-  function( C, H )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C, H )
     
     if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
         Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
     fi;
     
-    return FiniteStrictCoproductCompletion( C );
+    return FiniteStrictCoproductCompletion( C : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category and its range category of homomorphism structure",
         [ IsCapCategory, IsSkeletalCategoryOfFiniteSets ],
         
-  function( C, H )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C, H )
     
     if not IsIdenticalObj( H, RangeCategoryOfHomomorphismStructure( C ) ) then
         Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
     fi;
     
-    return FiniteStrictCoproductCompletion( C );
+    return FiniteStrictCoproductCompletion( C : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
@@ -1791,7 +1799,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( UC );
     
-    Yc := Y( C.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, C.(name) ] );
     
     if IsObjectInFiniteStrictCoproductCompletion( Yc ) then
 
@@ -2182,9 +2190,9 @@ InstallMethod( DisplayString,
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
     return Concatenation(
-        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) ),
-        " ⱶ", StringDisplay( PairOfLists( phi )[1] ), "→ ",
-        StringDisplay( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ) ), "\n\n",
+        PrintString( ObjectConstructor( sFinSets, PairOfIntAndList( Source( phi ) )[1] ) ),
+        " ⱶ", PrintString( PairOfLists( phi )[1] ), "→ ",
+        PrintString( ObjectConstructor( sFinSets, PairOfIntAndList( Target( phi ) )[1] ) ), "\n\n",
         StringDisplay( PairOfLists( phi )[2] ), "\n\n",
         "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     

@@ -98,9 +98,6 @@ DeclareAttribute( "EmbeddingOfUnderlyingCategory",
 #! @Description
 #!  Return the finite coequalizer completion of the coartesian category <A>cat</A>.
 #! @Arguments cat
-#= comment for Julia
 DeclareAttribute( "CoequalizerPreCompletion",
         IsCapCategory );
-# =#
-#% G2J:julia-only @DeclareFilterDispatchedOperation( "CoequalizerPreCompletion" );
 #! @InsertChunk CoequalizerPreCompletion

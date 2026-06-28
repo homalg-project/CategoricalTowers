@@ -315,4 +315,5 @@ Display( s );
 #! Algebroid( Q, FreeCategory( RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) )
 #! / relations ) given by the above data
 #! #@fi
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

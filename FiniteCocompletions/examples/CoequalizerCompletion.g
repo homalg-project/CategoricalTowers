@@ -213,5 +213,6 @@ Display( proj );
 #! [sS:AS->VS,tS:AS->VS,sT:AT->VT,tT:AT->VT,
 #!  m1:VS->VT,w1:AS->AT,m2:VS->VT,w2:AS->AT,m3:VS->VT,w3:AS->AT]" ) ) )
 #! / relations ) ) given by the above data
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample
 #! @EndChunk

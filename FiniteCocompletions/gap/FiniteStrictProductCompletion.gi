@@ -224,10 +224,10 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     local embedding_on_objects, embedding_on_morphisms;
     
     embedding_on_objects :=
-      objC -> ObjectConstructor( PC, Pair( 1, [ objC ] ) );
+      objC -> ObjectConstructor( PC, Pair( BigInt( 1 ), [ objC ] ) );
     
     embedding_on_morphisms :=
-      { source, morC, target } -> MorphismConstructor( PC, source, Pair( [ 0 ], [ morC ] ), target );
+      { source, morC, target } -> MorphismConstructor( PC, source, Pair( [ BigInt( 0 ) ], [ morC ] ), target );
     
     return Triple( UnderlyingCategory( PC ),
                    Pair( embedding_on_objects, embedding_on_morphisms ),
@@ -267,7 +267,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( PC );
     
-    Yc := Y( C.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, C.(name) ] );
     
     if IsObjectInFiniteStrictProductCompletion( Yc ) then
 
@@ -468,9 +468,9 @@ InstallMethod( DisplayString,
     sFinSets := ValueGlobal( "SkeletalFinSetsAsFiniteStrictCoproductCompletionOfTerminalCategory" );
     
     return Concatenation(
-        StringDisplay( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ) ),
-        " ⱶ", StringDisplay( MorphismDatum( phi )[1] ), "→ ",
-        StringDisplay( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ) ), "\n\n",
+        PrintString( ObjectConstructor( sFinSets, ObjectDatum( Target( phi ) )[1] ) ),
+        " ⱶ", PrintString( MorphismDatum( phi )[1] ), "→ ",
+        PrintString( ObjectConstructor( sFinSets, ObjectDatum( Source( phi ) )[1] ) ), "\n\n",
         StringDisplay( MorphismDatum( phi )[2] ), "\n\n",
         "A morphism in ", Name( CapCategory( phi ) ), " given by the above data\n" );
     

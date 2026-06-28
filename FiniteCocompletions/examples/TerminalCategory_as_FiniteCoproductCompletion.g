@@ -80,4 +80,5 @@ IsEqualForMorphisms( id_z, fn_z );
 #! true
 IsCongruentForMorphisms( id_z, fn_z );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

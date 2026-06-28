@@ -37,5 +37,6 @@ Display( Poly );
 #! and furthermore mathematically
 #! * IsStrictCartesianCategory
 #! * IsStrictCocartesianCategory
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample
 #! @EndChunk
