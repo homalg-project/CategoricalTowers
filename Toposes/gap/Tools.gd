@@ -17,12 +17,20 @@
 ####################################
 
 #! @Description
+#! The argument is an object <A>A</A> and a list <A>subobjs</A> of subobjects of <A>A</A>.
+#! The output is the reflexive transitive reduction of the poset of all subobjects in <A>subobjs</A>.
+#! @Returns a digraph
+#! @Arguments A, subobjs
+DeclareOperation( "DigraphOfSubobjects",
+        [ IsCapCategoryObject, IsList ] );
+
+#! @Description
 #! The argument is an object <A>A</A>.
 #! The output is the reflexive transitive reduction of the poset of all subobjects of <A>A</A>.
 #! @Returns a digraph
 #! @Arguments A
 DeclareOperation( "DigraphOfSubobjects",
-                  [ IsCapCategoryObject ] );
+        [ IsCapCategoryObject ] );
 
 DeclareFilter( "IsDigraphOfSubobjects" );
 

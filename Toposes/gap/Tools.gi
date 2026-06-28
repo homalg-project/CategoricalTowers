@@ -9,12 +9,12 @@ if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##
 InstallMethod( DigraphOfSubobjects,
-        [ IsCapCategoryObject ],
+        [ IsCapCategoryObject, IsList ],
         
-  function( A )
-    local subobjects, D;
+  function( A, subobjects )
+    local D;
     
-    subobjects := ListOfSubobjects( A );
+    Assert( 0, ForAll( subobjects, m -> IsCapCategoryMorphism( m ) and Target( m ) = A ) );
     
     D := Digraph( [ 1 .. Length( subobjects ) ],
                  { i, j } -> IsDominating( subobjects[i], subobjects[j] ) );
@@ -24,6 +24,19 @@ InstallMethod( DigraphOfSubobjects,
     SetFilterObj( D, IsDigraphOfSubobjects );
     
     return D;
+    
+end );
+
+##
+InstallMethod( DigraphOfSubobjects,
+        [ IsCapCategoryObject ],
+        
+  function( A )
+    local subobjects, D;
+    
+    subobjects := ListOfSubobjects( A );
+    
+    return DigraphOfSubobjects( A, subobjects );
     
 end );
 
