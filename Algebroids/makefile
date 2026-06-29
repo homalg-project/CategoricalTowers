@@ -79,3 +79,6 @@ ci-test: test-basic-spacing test-with-coverage test-with-coverage-without-precom
 ci-test-base: test-basic-spacing test-with-coverage-base test-with-coverage-without-precompiled-code-base
 
 ci-test-single: test-with-coverage-single test-with-coverage-single-without-precompiled-code
+
+match_tests_to_examples:
+	python3 $$([ -f ../dev/match_tst_to_examples.py ] && echo ../dev/match_tst_to_examples.py || echo dev/match_tst_to_examples.py) .

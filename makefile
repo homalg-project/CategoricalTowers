@@ -222,4 +222,72 @@ update-notebooks_FunctorCategories:
 update-notebooks_InternalModules:
 	$(MAKE) -C InternalModules update-notebooks
 
+################################
+match_tests_to_examples: match_tests_to_examples_Algebroids match_tests_to_examples_CategoriesWithAmbientObjects match_tests_to_examples_CatReps match_tests_to_examples_ExteriorPowersCategories match_tests_to_examples_FiniteCocompletions match_tests_to_examples_FpCategories match_tests_to_examples_FpLinearCategories match_tests_to_examples_FunctorCategories match_tests_to_examples_GradedCategories match_tests_to_examples_InternalModules match_tests_to_examples_IntrinsicCategories match_tests_to_examples_IntrinsicGradedModules match_tests_to_examples_IntrinsicModules match_tests_to_examples_LazyCategories match_tests_to_examples_Locales match_tests_to_examples_PresheafCategories match_tests_to_examples_QuotientCategories match_tests_to_examples_SliceCategories match_tests_to_examples_SubcategoriesForCAP match_tests_to_examples_ToolsForCategoricalTowers match_tests_to_examples_Toposes match_tests_to_examples_ZariskiFrames
+
+match_tests_to_examples_Algebroids:
+	$(MAKE) -C Algebroids match_tests_to_examples
+
+match_tests_to_examples_CategoriesWithAmbientObjects:
+	$(MAKE) -C CategoriesWithAmbientObjects match_tests_to_examples
+
+match_tests_to_examples_CatReps:
+	$(MAKE) -C CatReps match_tests_to_examples
+
+match_tests_to_examples_ExteriorPowersCategories:
+	$(MAKE) -C ExteriorPowersCategories match_tests_to_examples
+
+match_tests_to_examples_FiniteCocompletions:
+	$(MAKE) -C FiniteCocompletions match_tests_to_examples
+
+match_tests_to_examples_FpCategories:
+	$(MAKE) -C FpCategories match_tests_to_examples
+
+match_tests_to_examples_FpLinearCategories:
+	$(MAKE) -C FpLinearCategories match_tests_to_examples
+
+match_tests_to_examples_FunctorCategories:
+	$(MAKE) -C FunctorCategories match_tests_to_examples
+
+match_tests_to_examples_GradedCategories:
+	$(MAKE) -C GradedCategories match_tests_to_examples
+
+match_tests_to_examples_InternalModules:
+	$(MAKE) -C InternalModules match_tests_to_examples
+
+match_tests_to_examples_IntrinsicCategories:
+	$(MAKE) -C IntrinsicCategories match_tests_to_examples
+
+match_tests_to_examples_IntrinsicGradedModules:
+	$(MAKE) -C IntrinsicGradedModules match_tests_to_examples
+
+match_tests_to_examples_IntrinsicModules:
+	$(MAKE) -C IntrinsicModules match_tests_to_examples
+
+match_tests_to_examples_LazyCategories:
+	$(MAKE) -C LazyCategories match_tests_to_examples
+
+match_tests_to_examples_Locales:
+	$(MAKE) -C Locales match_tests_to_examples
+
+match_tests_to_examples_PresheafCategories:
+	$(MAKE) -C PresheafCategories match_tests_to_examples
+
+match_tests_to_examples_QuotientCategories:
+	$(MAKE) -C QuotientCategories match_tests_to_examples
+
+match_tests_to_examples_SliceCategories:
+	$(MAKE) -C SliceCategories match_tests_to_examples
+
+match_tests_to_examples_SubcategoriesForCAP:
+	$(MAKE) -C SubcategoriesForCAP match_tests_to_examples
+
+match_tests_to_examples_ToolsForCategoricalTowers:
+	$(MAKE) -C ToolsForCategoricalTowers match_tests_to_examples
+
+match_tests_to_examples_Toposes:
+	$(MAKE) -C Toposes match_tests_to_examples
+
+match_tests_to_examples_ZariskiFrames:
+	$(MAKE) -C ZariskiFrames match_tests_to_examples
 # END PACKAGE JANITOR
