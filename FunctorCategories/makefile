@@ -85,3 +85,6 @@ ci-test: test-basic-spacing test-with-coverage test-notebooks
 ci-test-base: test-basic-spacing test-with-coverage-base test-notebooks
 
 ci-test-single: test-with-coverage-single
+
+match_tests_to_examples:
+	python3 $$([ -f ../dev/match_tst_to_examples.py ] && echo ../dev/match_tst_to_examples.py || echo dev/match_tst_to_examples.py) .
