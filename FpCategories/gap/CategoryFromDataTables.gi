@@ -9,7 +9,13 @@ InstallMethod( CategoryFromDataTables,
         "for a record",
         [ IsRecord ],
         
-  function( input_record )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+    [ "set_category_attribute_resolving_functions", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, input_record )
     local known_keys_with_filters, key, filter, C, prop, V, data_tables, C0, s, t;
     
     ## check the keys of the given input record
@@ -98,7 +104,7 @@ InstallMethod( CategoryFromDataTables,
              "DataTables",
              ] );
     
-    if IsIdenticalObj( ValueOption( "set_category_attribute_resolving_functions" ), true ) then
+    if CAP_NAMED_ARGUMENTS.set_category_attribute_resolving_functions then
        
        ## specify the attributes the compiler should fully resolve during compilation
        C!.compiler_hints.category_attribute_resolving_functions :=
@@ -325,24 +331,32 @@ InstallMethod( CategoryFromDataTables,
     end );
     
     #if false then
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         
         ADD_FUNCTIONS_FOR_CategoryFromDataTablesPrecompiled( C );
         
     fi;
     
-    Finalize( C );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( C );
+    fi;
     
     return C;
     
-end );
+end ) );
 
 ##
 InstallMethod( CategoryFromDataTables,
         "for a path category",
         [ IsPathCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+    [ "set_category_attribute_resolving_functions", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     return CategoryFromDataTables(
                    rec( name := Name( C ),
@@ -352,16 +366,25 @@ InstallMethod( CategoryFromDataTables,
                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), ObjectLabel ), List( SetOfGeneratingMorphisms( C ), MorphismLabel ) ],
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory,
+                     set_category_attribute_resolving_functions := CAP_NAMED_ARGUMENTS.set_category_attribute_resolving_functions );
     
-end );
+end ) );
 
 ##
 InstallMethod( CategoryFromDataTables,
         "for a quotient of a path category",
         [ IsQuotientOfPathCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+    [ "set_category_attribute_resolving_functions", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     return CategoryFromDataTables(
                    rec( name := Name( C ),
@@ -372,16 +395,25 @@ InstallMethod( CategoryFromDataTables,
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), o -> ObjectLabel( UnderlyingCell( o ) ) ),
                                 List( SetOfGeneratingMorphisms( C ), m -> MorphismLabel( CanonicalRepresentative( m ) ) ) ],
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory,
+                     set_category_attribute_resolving_functions := CAP_NAMED_ARGUMENTS.set_category_attribute_resolving_functions );
     
-end );
+end ) );
 
 ##
 InstallMethod( CategoryFromDataTables,
         "for a category from nerve data",
         [ IsCategoryFromNerveData ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+    [ "set_category_attribute_resolving_functions", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     return CategoryFromDataTables(
                    rec( name := Name( C ),
@@ -391,9 +423,12 @@ InstallMethod( CategoryFromDataTables,
                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory,
+                     set_category_attribute_resolving_functions := CAP_NAMED_ARGUMENTS.set_category_attribute_resolving_functions );
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -526,7 +561,12 @@ InstallOtherMethod( CategoryFromNerveData,
         "for a category from data tables",
         [ IsCategoryFromDataTables ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     return CategoryFromNerveData(
                    rec( name := Name( C ),
@@ -535,9 +575,11 @@ InstallOtherMethod( CategoryFromNerveData,
                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphisms( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := C!.labels,
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethod( OppositeCategoryFromDataTables,

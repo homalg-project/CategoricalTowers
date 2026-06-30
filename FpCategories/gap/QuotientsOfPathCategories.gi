@@ -459,7 +459,12 @@ InstallMethod( CategoryFromNerveData,
         "for a quotient of a path category",
         [ IsQuotientOfPathCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
         TryNextMethod( );
@@ -473,9 +478,11 @@ InstallMethod( CategoryFromNerveData,
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), o -> ObjectLabel( UnderlyingCell( o ) ) ),
                                 List( SetOfGeneratingMorphisms( C ), m -> MorphismLabel( CanonicalRepresentative( m ) ) ) ],
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethod( DataTablesOfCategory,
