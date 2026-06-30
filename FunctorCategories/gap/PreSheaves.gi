@@ -2345,66 +2345,102 @@ InstallMethodWithCache( PreSheaves,
         "for a f.p. category and a category",
         [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for an algebroid and a category",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for a category form nerve data and a category",
         [ IsCategoryFromNerveData, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for a category form data tables and a category",
         [ IsCategoryFromDataTables, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for a finite category and a category",
         [ IsCapCategory and IsFinite, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
     if not CanCompute( B, "SetOfGeneratingMorphismsOfCategory" ) then
         TryNextMethod( );
     fi;
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
-  function ( B, k )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, k )
     local kmat, PSh;
     
     if HasRangeCategoryOfHomomorphismStructure( B ) then
@@ -2421,31 +2457,43 @@ InstallMethodWithCache( PreSheaves,
     
     CapCategorySwitchLogicOn( kmat );
     
-    PSh := PreSheaves( B, kmat );
+    PSh := PreSheaves( B, kmat : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
     CapCategorySwitchLogicOn( PSh );
     
     return PSh;
     
-end );
+  end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for an algebroid from data tables and a category",
         [ IsFpAlgebroidFromDataTables, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory and IsInitialCategory, IsCapCategory ],
         
-  function ( I, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, I, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
@@ -2672,22 +2720,30 @@ InstallMethodWithCache( PreSheaves,
         
     end, 1 );
     
-    Finalize( PSh_I_I );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      Finalize( PSh_I_I );
+    fi;
     
     return PSh_I_I;
     
-end );
+  end ) );
 
 ##
 InstallMethod( PreSheaves,
         "for a CAP category",
         [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
         
-  function( B )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
     
-    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethod( FiniteStrictCoproductCompletionOfSourceCategory,
