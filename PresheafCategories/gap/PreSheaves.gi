@@ -284,7 +284,12 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ IsCapCategory, IsCapCategory ],
         
-  function ( B, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object, create_func_morphism,
@@ -847,7 +852,7 @@ InstallMethodWithCache( PreSheaves,
     
     return PSh;
     
-end );
+  end ) );
 
 # Filters can not be defined inside functions in Julia, hence we define it here and retrieve it in the function:
 #% G2J:julia-only @FilterIntersection( IsCapCategory, IsInitialCategory )
@@ -858,7 +863,12 @@ InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
         [ FilterIntersection( IsCapCategory, IsInitialCategory ), IsCapCategory ],
         
-  function ( I, D )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, I, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_object, create_func_morphism,
@@ -1067,22 +1077,29 @@ InstallMethodWithCache( PreSheaves,
         
     end, OperationWeight( PSh_I_I, "IdentityMorphism" ) );
     
-    Finalize( PSh_I_I );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      Finalize( PSh_I_I );
+    fi;
     
     return PSh_I_I;
     
-end );
+  end ) );
 
 ##
 InstallMethod( PreSheaves,
         "for a CAP category",
         [ FilterIntersection( IsCapCategory, HasRangeCategoryOfHomomorphismStructure ) ],
         
-  function( B )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
     
-    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
-end );
+end ) );
 
 ####################################
 #
