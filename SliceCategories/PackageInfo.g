@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "SliceCategories",
 Subtitle := "Slice categories",
-Version := "2026.05-03",
-Date := "2026-05-11",
+Version := "2026.06-01",
+Date := "2026-06-30",
 License := "GPL-2.0-or-later",
 
 Persons := [
