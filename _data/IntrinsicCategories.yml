@@ -1,7 +1,7 @@
 name: IntrinsicCategories
-version: "2026.04-01"
+version: "2026.06-01"
 license: "GPL-2.0-or-later"
-date: 2026-04-11
+date: 2026-06-30
 description: |
     Intrinsic categories for CAP
 
@@ -35,11 +35,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/IntrinsicCategor
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.04-01/IntrinsicCategories-2026.04-01.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.06-01/IntrinsicCategories-2026.06-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.04-01/IntrinsicCategories-2026.04-01.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.06-01/IntrinsicCategories-2026.06-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.04-01/IntrinsicCategories-2026.04-01-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/IntrinsicCategories-2026.06-01/IntrinsicCategories-2026.06-01-manual.pdf
 
 abstract: |
 
@@ -50,10 +50,10 @@ keywords: |
     categories, intrinsic categories.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>Bar11</span>]   <b class='BibAuthor'>Barakat, M.</b>,
+    [<span class='BibKey'>Bar30</span>]   <b class='BibAuthor'>Barakat, M.</b>,
      <i class='BibTitle'>IntrinsicCategories, Intrinsic categories for CAP,
-             Version 2026.04-01</i>
-     (<span class='BibYear'>4-11</span>)<br />
+             Version 2026.06-01</i>
+     (<span class='BibYear'>6-30</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/IntrinsicCategories">https://homalg-project.github.io/pkg/IntrinsicCategories</a></span>.
     </p>
@@ -63,9 +63,9 @@ bibtex: |
     @misc{ IntrinsicCategories,
       author =           {Barakat, M.},
       title =            {{IntrinsicCategories}, {Intrinsic categories for CAP},
-                          {V}ersion 2026.04\texttt{\symbol{45}}01},
+                          {V}ersion 2026.06\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {4\texttt{\symbol{45}}11},
+      year =             {6\texttt{\symbol{45}}30},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/IntrinsicCategories}
@@ -73,6 +73,6 @@ bibtex: |
                           {}{}{}\texttt{pkg/}\discretionary
                           {}{}{}\texttt{IntrinsicCategories}}},
       keywords =         {categories; intrinsic categories},
-      printedkey =       {Bar11}
+      printedkey =       {Bar30}
     }
 
