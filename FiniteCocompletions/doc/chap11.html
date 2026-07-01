@@ -47,6 +47,8 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories" );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FiniteCocompletions" );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">q := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR-&gt;SG,rhoT:TR-&gt;TG,phi:SG-&gt;TG,chi:SR-&gt;TR]" );</span>
@@ -95,6 +97,7 @@ true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">psi =</span>
 <span class="GAPprompt">&gt;</span> <span class="GAPinput">  EvalString( CellAsEvaluatableString( psi, [ "F", "K", "A", "L", "C", "P" ] ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia (requires FunctorCategories)</span>
 </pre></div>
 
 <p><a id="X786CBC8C82888AE7" name="X786CBC8C82888AE7"></a></p>

@@ -13,6 +13,8 @@
   (=cokernel closure) category [3XFC[103X into [3XFC[103X.[133X
   
   [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories" );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FiniteCocompletions" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xq := FinQuiver( "Q(SG,SR,TG,TR)[rhoS:SR->SG,rhoT:TR->TG,phi:SG->TG,chi:SR->TR]" );[127X[104X
@@ -61,6 +63,7 @@
     [4X[25Xgap>[125X [27Xpsi =[127X[104X
     [4X[25X>[125X [27X  EvalString( CellAsEvaluatableString( psi, [ "F", "K", "A", "L", "C", "P" ] ) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   
   [1X11.1-2 ExtendFunctorToFreydCategory[101X

@@ -236,6 +236,7 @@
     [4X[28X[128X[104X
     [4X[28XAn object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   
   [1X9.2-2 CategoryOfPreSheavesOfUnderlyingCategory[101X
@@ -433,6 +434,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in FiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   
   
@@ -564,6 +566,7 @@
     [4X[28X"Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0) ],[128X[104X
     [4X[28XSkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   
   
@@ -606,5 +609,6 @@
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsStrictCartesianCategory[128X[104X
     [4X[28X* IsStrictCocartesianCategory[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   

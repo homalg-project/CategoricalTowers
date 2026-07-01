@@ -177,6 +177,7 @@
     [4X[25Xgap>[125X [27XF_as_presheaf =[127X[104X
     [4X[25X>[125X [27X  Coequalizer( AssociatedCoequalizerPairInPreSheaves( F_as_colimit_quiver )[2] );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires FunctorCategories)[127X[104X
   [4X[32X[104X
   
   [1X7.2-2 CategoryOfPreSheavesOfUnderlyingCategory[101X

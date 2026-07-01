@@ -125,7 +125,7 @@
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xfalse[128X[104X
-    [4X[25Xgap>[125X [27Xpsi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );[127X[104X
+    [4X[25Xgap>[125X [27Xpsi := MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );[127X[104X
     [4X[28X|7| → |4|[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( psi );[127X[104X
     [4X[28Xtrue[128X[104X
@@ -133,6 +133,7 @@
     [4X[28X{ 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }[128X[104X
     [4X[25Xgap>[125X [27XMorphismDatum( psi );[127X[104X
     [4X[28X[ 0, 2, 1, 3, 2, 1, 3 ][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -158,6 +159,7 @@
     [4X[28X|3| → |7|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( alpha );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 3, 2, 5 ]→ { 0,..., 6 }[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -197,6 +199,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsLiftable( h, f );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -226,6 +229,7 @@
     [4X[28X { 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 2, 1 ]→ { 0, 1, 2 },\[128X[104X
     [4X[28X { 0, 1 } ⱶ[ 0, 2 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 },\[128X[104X
     [4X[28X { 0, 1 } ⱶ[ 2, 2 ]→ { 0, 1, 2 } ][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -281,6 +285,7 @@
     [4X[28X{ 0,..., 7 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0 ]→ { 0 }[128X[104X
     [4X[25Xgap>[125X [27Xpi = pi_t;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -333,6 +338,7 @@
     [4X[28X|84| → |84|[128X[104X
     [4X[25Xgap>[125X [27Xpsi = IdentityMorphism( d );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -379,6 +385,7 @@
     [4X[28X|14| → |14|[128X[104X
     [4X[25Xgap>[125X [27Xpsi = id;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -394,7 +401,7 @@
     [4X[28X|3|[128X[104X
     [4X[25Xgap>[125X [27Xn := ObjectConstructor( sFinSets, 5 );[127X[104X
     [4X[28X|5|[128X[104X
-    [4X[25Xgap>[125X [27Xiota:= MorphismConstructor( m, [ 1, 4, 2 ], n );[127X[104X
+    [4X[25Xgap>[125X [27Xiota := MorphismConstructor( m, [ 1, 4, 2 ], n );[127X[104X
     [4X[28X|3| → |5|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( iota );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 1, 4, 2 ]→ { 0,..., 4 }[128X[104X
@@ -412,6 +419,7 @@
     [4X[28X{ 0,..., 4 } ⱶ[ 1, 4, 2, 0, 3 ]→ { 0,..., 4 }[128X[104X
     [4X[25Xgap>[125X [27XIsIsomorphism( iso );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -458,6 +466,7 @@
     [4X[28X|3| → |5|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( psi );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 3, 4 ]→ { 0,..., 4 }[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
   
@@ -505,5 +514,6 @@
     [4X[28X{ 0,..., 8 } ⱶ[ 7, 5, 5, 2, 0, 0, 2, 0, 0 ]→ { 0,..., 7 }[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( hom_alpha_gamma );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was manually added to julia)[127X[104X
   [4X[32X[104X
   
