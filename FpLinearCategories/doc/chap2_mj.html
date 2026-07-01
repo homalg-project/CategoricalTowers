@@ -29,8 +29,22 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X790B39727DE20A25">2.1-1 IsFinitelyPresentedLinearCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DE60AA87F215180">2.1-2 LinearClosure</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80C887E37EE0EC31">2.1-3 QuotientCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8138C97682A7C1BE">2.1-2 IsFpLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X846887DA7F2C19A9">2.1-3 IsObjectInFpLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7AE19AE37E00106B">2.1-4 IsMorphismInFpLinearCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X870793A1819A3CF0">2.1-5 IsLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X854C6CE97AE57C8A">2.1-6 IsObjectInLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7CB8A1F7861C35DB">2.1-7 IsMorphismInLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7847139E7BC9F82E">2.1-8 IsLinearClosureOfQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X78A06C3A86332568">2.1-9 IsObjectInLinearClosureOfQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D73B0F1795C1AC8">2.1-10 IsMorphismInLinearClosureOfQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7DE60AA87F215180">2.1-11 LinearClosure</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X867B789F78D7CEEE">2.1-12 IsQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7C472E3379BC8D97">2.1-13 IsObjectInQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7B66508F7F0CCA1E">2.1-14 IsMorphismInQuotientCategoryOfLinearClosureOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X85002E177BA332F8">2.1-15 IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X8458176E80D62CE3">2.1-16 IsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X80C887E37EE0EC31">2.1-17 QuotientCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X7DE8E16C7C2D387B">2.2 <span class="Heading">Operations</span></a>
 </span>
@@ -55,18 +69,144 @@
 
 <p>Is the linear category <var class="Arg">A</var> finitely presented. This property is true by construction for linear closures of path categories and their quotients, and for algebroids defined by path algebras or their quotients.</p>
 
+<p><a id="X8138C97682A7C1BE" name="X8138C97682A7C1BE"></a></p>
+
+<h5>2.1-2 IsFpLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsFpLinearCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for finitely presented linear CAP categories.</p>
+
+<p><a id="X846887DA7F2C19A9" name="X846887DA7F2C19A9"></a></p>
+
+<h5>2.1-3 IsObjectInFpLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInFpLinearCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for objects in finitely presented linear CAP categories.</p>
+
+<p><a id="X7AE19AE37E00106B" name="X7AE19AE37E00106B"></a></p>
+
+<h5>2.1-4 IsMorphismInFpLinearCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInFpLinearCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for morphisms in finitely presented linear CAP categories.</p>
+
+<p><a id="X870793A1819A3CF0" name="X870793A1819A3CF0"></a></p>
+
+<h5>2.1-5 IsLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLinearClosureOfPathCategory</code>( <var class="Arg">kC</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for linear closures of path categories.</p>
+
+<p><a id="X854C6CE97AE57C8A" name="X854C6CE97AE57C8A"></a></p>
+
+<h5>2.1-6 IsObjectInLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInLinearClosureOfPathCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for objects in linear closures of path categories.</p>
+
+<p><a id="X7CB8A1F7861C35DB" name="X7CB8A1F7861C35DB"></a></p>
+
+<h5>2.1-7 IsMorphismInLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInLinearClosureOfPathCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for morphisms in linear closures of path categories.</p>
+
+<p><a id="X7847139E7BC9F82E" name="X7847139E7BC9F82E"></a></p>
+
+<h5>2.1-8 IsLinearClosureOfQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsLinearClosureOfQuotientOfPathCategory</code>( <var class="Arg">kC</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for linear closures of quotients of path categories.</p>
+
+<p><a id="X78A06C3A86332568" name="X78A06C3A86332568"></a></p>
+
+<h5>2.1-9 IsObjectInLinearClosureOfQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInLinearClosureOfQuotientOfPathCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for objects in linear closures of quotients of path categories.</p>
+
+<p><a id="X7D73B0F1795C1AC8" name="X7D73B0F1795C1AC8"></a></p>
+
+<h5>2.1-10 IsMorphismInLinearClosureOfQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInLinearClosureOfQuotientOfPathCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for morphisms in linear closures of quotients of path categories.</p>
+
 <p><a id="X7DE60AA87F215180" name="X7DE60AA87F215180"></a></p>
 
-<h5>2.1-2 LinearClosure</h5>
+<h5>2.1-11 LinearClosure</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; LinearClosure</code>( <var class="Arg">k</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category</p>
 
 <p>Returns the <span class="SimpleMath">\(k\)</span>-linear closure category of <var class="Arg">C</var>.</p>
 
+<p><a id="X867B789F78D7CEEE" name="X867B789F78D7CEEE"></a></p>
+
+<h5>2.1-12 IsQuotientCategoryOfLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">kC</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for quotient categories of linear closures of path categories.</p>
+
+<p><a id="X7C472E3379BC8D97" name="X7C472E3379BC8D97"></a></p>
+
+<h5>2.1-13 IsObjectInQuotientCategoryOfLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsObjectInQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">obj</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for objects in quotient categories of linear closures of path categories.</p>
+
+<p><a id="X7B66508F7F0CCA1E" name="X7B66508F7F0CCA1E"></a></p>
+
+<h5>2.1-14 IsMorphismInQuotientCategoryOfLinearClosureOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInQuotientCategoryOfLinearClosureOfPathCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for morphisms in quotient categories of linear closures of path categories.</p>
+
+<p><a id="X85002E177BA332F8" name="X85002E177BA332F8"></a></p>
+
+<h5>2.1-15 IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</code>( <var class="Arg">kC</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for quotient categories of linear closures of quotients of path categories.</p>
+
+<p><a id="X8458176E80D62CE3" name="X8458176E80D62CE3"></a></p>
+
+<h5>2.1-16 IsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; IsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory</code>( <var class="Arg">mor</var> )</td><td class="tdright">(&nbsp;category&nbsp;)</td></tr></table></div>
+<p>Returns: <code class="keyw">true</code> or <code class="keyw">false</code></p>
+
+<p>The filter for objects in quotient categories of linear closures of quotients of path categories. The filter for morphisms in quotient categories of linear closures of quotients of path categories.</p>
+
 <p><a id="X80C887E37EE0EC31" name="X80C887E37EE0EC31"></a></p>
 
-<h5>2.1-3 QuotientCategory</h5>
+<h5>2.1-17 QuotientCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuotientCategory</code>( <var class="Arg">kC</var>, <var class="Arg">relations</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list of morphisms</p>
@@ -130,8 +270,6 @@ Q-algebroid( {0,1,2,3,4,5}[x:0→0,s:0→1,a:1→2,c:1→3,e:1→4,b:2→4,d:3�
 t:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( B.("0"), B.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( kC / [ kC.id_0, kC.id_1, kC.id_2, kC.id_3, kC.id_4, kC.id_5 ] );</span>
-0
 </pre></div>
 
 <p><a id="X7DE8E16C7C2D387B" name="X7DE8E16C7C2D387B"></a></p>

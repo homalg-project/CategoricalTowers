@@ -1,5 +1,5 @@
 name: FpLinearCategories
-version: "2026.06-05"
+version: "2026.06-07"
 license: "GPL-2.0-or-later"
 date: 2026-07-01
 description: |
@@ -30,7 +30,7 @@ needed-pkgs:
       version: ">= 2026.04-01"
       url: "https://homalg-project.github.io/pkg/QuotientCategories"
     - name: "LinearClosuresForCAP"
-      version: ">= 2026.04-01"
+      version: ">= 2026.06-01"
       url: "https://homalg-project.github.io/pkg/LinearClosuresForCAP"
     - name: "AdditiveClosuresForCAP"
       version: ">= 2026.04-02"
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FpLinearCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-05/FpLinearCategories-2026.06-05.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-07/FpLinearCategories-2026.06-07.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-05/FpLinearCategories-2026.06-05.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-07/FpLinearCategories-2026.06-07.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-05/FpLinearCategories-2026.06-05-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FpLinearCategories-2026.06-07/FpLinearCategories-2026.06-07-manual.pdf
 
 abstract: |
 
@@ -62,7 +62,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>BS01</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>FpLinearCategories, Finitely presented linear categories by generating quivers and relations,
-             Version 2026.06-05</i>
+             Version 2026.06-07</i>
      (<span class='BibYear'>7-01</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FpLinearCategories">https://homalg-project.github.io/pkg/FpLinearCategories</a></span>.
@@ -74,7 +74,7 @@ bibtex: |
       author =           {Barakat, M. and Saleh, K.},
       title =            {{FpLinearCategories},   {Finitely   presented   linear
                           categories   by  generating  quivers  and  relations},
-                          {V}ersion 2026.06\texttt{\symbol{45}}05},
+                          {V}ersion 2026.06\texttt{\symbol{45}}07},
       month =            {6\texttt{\symbol{45}}},
       year =             {7\texttt{\symbol{45}}01},
       note =             {GAP package},

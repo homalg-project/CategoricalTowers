@@ -13,14 +13,117 @@
   construction for linear closures of path categories and their quotients, and
   for algebroids defined by path algebras or their quotients.[133X
   
-  [1X2.1-2 LinearClosure[101X
+  [1X2.1-2 IsFpLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XIsFpLinearCategory[102X( [3XA[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for finitely presented linear CAP categories.[133X
+  
+  [1X2.1-3 IsObjectInFpLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInFpLinearCategory[102X( [3Xobj[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for objects in finitely presented linear CAP categories.[133X
+  
+  [1X2.1-4 IsMorphismInFpLinearCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInFpLinearCategory[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for morphisms in finitely presented linear CAP categories.[133X
+  
+  [1X2.1-5 IsLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsLinearClosureOfPathCategory[102X( [3XkC[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for linear closures of path categories.[133X
+  
+  [1X2.1-6 IsObjectInLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInLinearClosureOfPathCategory[102X( [3Xobj[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for objects in linear closures of path categories.[133X
+  
+  [1X2.1-7 IsMorphismInLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInLinearClosureOfPathCategory[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for morphisms in linear closures of path categories.[133X
+  
+  [1X2.1-8 IsLinearClosureOfQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsLinearClosureOfQuotientOfPathCategory[102X( [3XkC[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for linear closures of quotients of path categories.[133X
+  
+  [1X2.1-9 IsObjectInLinearClosureOfQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInLinearClosureOfQuotientOfPathCategory[102X( [3Xobj[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for objects in linear closures of quotients of path categories.[133X
+  
+  [1X2.1-10 IsMorphismInLinearClosureOfQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInLinearClosureOfQuotientOfPathCategory[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for morphisms in linear closures of quotients of path categories.[133X
+  
+  [1X2.1-11 LinearClosure[101X
   
   [33X[1;0Y[29X[2XLinearClosure[102X( [3Xk[103X, [3XC[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
   [33X[0;0YReturns the [23Xk[123X-linear closure category of [3XC[103X.[133X
   
-  [1X2.1-3 QuotientCategory[101X
+  [1X2.1-12 IsQuotientCategoryOfLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsQuotientCategoryOfLinearClosureOfPathCategory[102X( [3XkC[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe filter for quotient categories of linear closures of path categories.[133X
+  
+  [1X2.1-13 IsObjectInQuotientCategoryOfLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsObjectInQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xobj[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  filter  for  objects  in quotient categories of linear closures of path
+  categories.[133X
+  
+  [1X2.1-14 IsMorphismInQuotientCategoryOfLinearClosureOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInQuotientCategoryOfLinearClosureOfPathCategory[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  filter  for morphisms in quotient categories of linear closures of path
+  categories.[133X
+  
+  [1X2.1-15 IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory[102X( [3XkC[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  filter  for quotient categories of linear closures of quotients of path
+  categories.[133X
+  
+  [1X2.1-16 IsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory[101X
+  
+  [33X[1;0Y[29X[2XIsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory[102X( [3Xmor[103X ) [32X Category[133X
+  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
+  
+  [33X[0;0YThe  filter  for  objects  in  quotient  categories  of  linear  closures of
+  quotients   of  path  categories.  The  filter  for  morphisms  in  quotient
+  categories of linear closures of quotients of path categories.[133X
+  
+  [1X2.1-17 QuotientCategory[101X
   
   [33X[1;0Y[29X[2XQuotientCategory[102X( [3XkC[103X, [3Xrelations[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya list of morphisms[133X
@@ -85,8 +188,6 @@
     [4X[28Xt:4→5,y:5→5] ) defined by 6 objects and 9 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( B.("0"), B.("5") );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
-    [4X[25Xgap>[125X [27XDimension( kC / [ kC.id_0, kC.id_1, kC.id_2, kC.id_3, kC.id_4, kC.id_5 ] );[127X[104X
-    [4X[28X0[128X[104X
   [4X[32X[104X
   
   
