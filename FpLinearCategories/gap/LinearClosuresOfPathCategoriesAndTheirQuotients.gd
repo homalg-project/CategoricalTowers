@@ -13,6 +13,17 @@
 ####################################
 
 #! @Description
+#!  Is the linear category <A>A</A> finitely presented.
+#!  This property is true by construction for linear closures of path categories
+#!  and their quotients, and for algebroids defined by path algebras or their quotients.
+#! @Arguments A
+DeclareProperty( "IsFinitelyPresentedLinearCategory",
+        IsCapCategory );
+
+AddCategoricalProperty( [ "IsFinitelyPresentedLinearCategory", "IsFinitelyPresentedLinearCategory" ] );
+
+
+#! @Description
 #!  Returns the $k$-linear closure category of <A>C</A>.
 #! @Arguments k, C
 #! @Returns a &CAP; category
