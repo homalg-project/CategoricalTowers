@@ -13,6 +13,7 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
   function ( CAP_NAMED_ARGUMENTS, kC, relations )
     local C, q, name,
           reduced_gb, leading_monomials, congruence_func,
+          category_filter, category_object_filter, category_morphism_filter,
           quo_kC, homQ, range_HomStructure, k;
     
     C := UnderlyingCategory( kC );
@@ -37,13 +38,20 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
     
     congruence_func := m -> IsZeroForMorphisms( kC, ReductionOfMorphism( kC, m, reduced_gb ) );
     
+    category_filter := IsQuotientCategoryOfLinearClosureOfPathCategory;
+    category_object_filter := IsObjectInQuotientCategoryOfLinearClosureOfPathCategory;
+    category_morphism_filter := IsMorphismInQuotientCategoryOfLinearClosureOfPathCategory;
+    
     ##
     quo_kC :=
       QuotientCategory(
               rec( name := name,
                    nr_arguments_of_congruence_func := 1,
                    congruence_func := congruence_func,
-                   underlying_category := kC )
+                   underlying_category := kC,
+                   category_filter := category_filter,
+                   category_object_filter := category_object_filter,
+                   category_morphism_filter := category_morphism_filter )
               : FinalizeCategory := false );
     
     SetUnderlyingQuiver( quo_kC, UnderlyingQuiver( C ) );
@@ -169,6 +177,7 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY",
     
 end ) );
 
+##
 BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
   
   function ( k_quo_C, relations )
@@ -211,9 +220,9 @@ BindGlobal( "QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_QUOTIENT_OF_PATH_CATEGORY",
     name := Concatenation( Name( k_quo_C ), " / [ ", JoinStringsWithSeparator( name, ", " ), " ]" );
     
     ##
-    category_filter := IsQuotientCategory;
-    category_object_filter := IsQuotientCategoryObject;
-    category_morphism_filter := IsQuotientCategoryMorphism;
+    category_filter := IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory;
+    category_object_filter := IsObjectInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory;
+    category_morphism_filter := IsMorphismInQuotientCategoryOfLinearClosureOfQuotientOfPathCategory;
     
     ##
     object_constructor :=

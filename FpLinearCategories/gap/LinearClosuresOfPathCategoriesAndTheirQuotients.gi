@@ -11,7 +11,7 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     [ "colors", fail ],
   ],
   function ( CAP_NAMED_ARGUMENTS, rows, C )
-    local k, sorting_func, order, kC;
+    local k, sorting_func, order, kC, category_filter, category_object_filter, category_morphism_filter;
     
     k := CommutativeSemiringOfLinearCategory( rows );
     
@@ -45,15 +45,29 @@ BindGlobal( "LINEAR_CLOSURE_OF_PATH_CATEGORIES_OR_THEIR_QUOTIENTS",
     
     if IsPathCategory( C ) then
         
+        category_filter := IsLinearClosureOfPathCategory;
+        category_object_filter := IsObjectInLinearClosureOfPathCategory;
+        category_morphism_filter := IsMorphismInLinearClosureOfPathCategory;
+        
+        # every morphism starts by its maximum monomial
         sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( C, mor_1, mor_2, order );
         
     else
         
+        category_filter := IsLinearClosureOfQuotientOfPathCategory;
+        category_object_filter := IsObjectInLinearClosureOfQuotientOfPathCategory;
+        category_morphism_filter := IsMorphismInLinearClosureOfQuotientOfPathCategory;
+        
+        # every morphism starts by its maximum monomial
         sorting_func := { mor_1, mor_2 } -> IsDescendingForMorphisms( AmbientCategory( C ), CanonicalRepresentative( mor_1 ), CanonicalRepresentative( mor_2 ), order );
         
     fi;
     
-    kC := LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, C, sorting_func : FinalizeCategory := false ); # every morphism starts by its maximum monomial
+    kC := LINEAR_CLOSURE_CONSTRUCTOR_USING_CategoryOfRows( rows, C, sorting_func :
+            category_filter := category_filter,
+            category_object_filter := category_object_filter,
+            category_morphism_filter := category_morphism_filter,
+            FinalizeCategory := false );
     
     SetIsObjectFiniteCategory( kC, true );
     
