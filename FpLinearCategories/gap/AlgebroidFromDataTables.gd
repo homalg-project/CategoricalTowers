@@ -15,7 +15,7 @@
 #! @Description
 #!  The &GAP; category of f.p. algebroids.
 DeclareCategory( "IsFpAlgebroid",
-        IsCapCategory );
+        IsFpLinearCategory );
 
 #! @Description
 #!  The &GAP; category of cells in an f.p. algebroid.
@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInFpAlgebroid",
 #! @Description
 #!  The &GAP; category of objects in an f.p. algebroid.
 DeclareCategory( "IsObjectInFpAlgebroid",
-        FilterIntersection( IsCapCategoryObject, IsCellInFpAlgebroid ) );
+        FilterIntersection( IsObjectInFpLinearCategory, IsCellInFpAlgebroid ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in an f.p. algebroid.
 DeclareCategory( "IsMorphismInFpAlgebroid",
-        FilterIntersection( IsCapCategoryMorphism, IsCellInFpAlgebroid ) );
+        FilterIntersection( IsMorphismInFpLinearCategory, IsCellInFpAlgebroid ) );
 
 #! @Description
 #!  The &GAP; category of f.p. algebroids defined by data tables.
@@ -81,6 +81,21 @@ DeclareAttribute( "DataTablesOfLinearCategory", IsCapCategory );
 #! @Section Attributes
 #
 ####################################
+
+#! @Description
+#!  The &GAP; category of quotient categories of f.p. algebroids defined by data tables.
+DeclareCategory( "IsQuotientCategoryOfFpAlgebroidFromDataTables",
+        FilterIntersection( IsQuotientCategory, IsFpLinearCategory ) );
+
+#! @Description
+#!  The &GAP; category of objects in quotient categories of f.p. algebroids defined by data tables.
+DeclareCategory( "IsObjectInQuotientCategoryOfFpAlgebroidFromDataTables",
+        FilterIntersection( IsQuotientCategoryObject, IsObjectInFpLinearCategory ) );
+
+#! @Description
+#!  The &GAP; category of morphisms in quotient categories of f.p. algebroids defined by data tables.
+DeclareCategory( "IsMorphismInQuotientCategoryOfFpAlgebroidFromDataTables",
+        FilterIntersection( IsQuotientCategoryMorphism, IsMorphismInFpLinearCategory ) );
 
 #! @Description
 #!  The arguments are an algebroid $A$ and a list <A>I</A> of morphisms in $A$.

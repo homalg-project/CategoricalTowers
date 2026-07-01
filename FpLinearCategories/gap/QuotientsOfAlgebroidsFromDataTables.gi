@@ -71,6 +71,9 @@ InstallOtherMethod( QuotientCategory,
                   rec( underlying_category := A,
                         name := name,
                         congruence_func := congruence_func,
+                        category_filter := IsQuotientCategoryOfFpAlgebroidFromDataTables,
+                        category_object_filter := IsObjectInQuotientCategoryOfFpAlgebroidFromDataTables,
+                        category_morphism_filter := IsMorphismInQuotientCategoryOfFpAlgebroidFromDataTables,
                         nr_arguments_of_congruence_func := 1 ) : FinalizeCategory := false );
     
     ##
