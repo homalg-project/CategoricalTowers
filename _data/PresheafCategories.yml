@@ -1,7 +1,7 @@
 name: PresheafCategories
-version: "2026.06-02"
+version: "2026.06-03"
 license: "GPL-2.0-or-later"
-date: 2026-06-30
+date: 2026-07-01
 description: |
     Categories of (co)presheaves
 
@@ -45,11 +45,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/PresheafCategori
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-02/PresheafCategories-2026.06-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-03/PresheafCategories-2026.06-03.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-02/PresheafCategories-2026.06-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-03/PresheafCategories-2026.06-03.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-02/PresheafCategories-2026.06-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/PresheafCategories-2026.06-03/PresheafCategories-2026.06-03-manual.pdf
 
 abstract: |
 
@@ -60,10 +60,10 @@ keywords: |
     finite coproduct cocompletions, finite product completions, finite colimit cocompletions, finite limit completions.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BS30</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
+    [<span class='BibKey'>BS01</span>]   <b class='BibAuthor'>Barakat, M. and Saleh, K.</b>,
      <i class='BibTitle'>PresheafCategories, Categories of (co)presheaves,
-             Version 2026.06-02</i>
-     (<span class='BibYear'>6-30</span>)<br />
+             Version 2026.06-03</i>
+     (<span class='BibYear'>7-01</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/PresheafCategories">https://homalg-project.github.io/pkg/PresheafCategories</a></span>.
     </p>
@@ -73,9 +73,9 @@ bibtex: |
     @misc{ PresheafCategories,
       author =           {Barakat, M. and Saleh, K.},
       title =            {{PresheafCategories},  {Categories of (co)presheaves},
-                          {V}ersion 2026.06\texttt{\symbol{45}}02},
+                          {V}ersion 2026.06\texttt{\symbol{45}}03},
       month =            {6\texttt{\symbol{45}}},
-      year =             {6\texttt{\symbol{45}}30},
+      year =             {7\texttt{\symbol{45}}01},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/PresheafCategories}
@@ -85,6 +85,6 @@ bibtex: |
       keywords =         {finite   coproduct   cocompletions,   finite   product
                           completions,   finite  colimit  cocompletions,  finite
                           limit completions},
-      printedkey =       {BS30}
+      printedkey =       {BS01}
     }
 
