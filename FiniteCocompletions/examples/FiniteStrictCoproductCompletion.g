@@ -66,5 +66,6 @@ homMN := MorphismsOfExternalHom( M, N );;
 List( homMN, m -> HomStructure( M, N, HomStructure( m ) ) = m );
 #! [ true, true, true, true, true, true, true, true, true,
 #!   true, true, true, true, true, true, true, true, true ]
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample
 #! @EndChunk

@@ -24,4 +24,5 @@ Display( MorphismsOfExternalHom( M, N ) );
 #!  { 0, 1 } ⱶ[ 1, 1 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 2, 1 ]→ { 0, 1, 2 },\
 #!  { 0, 1 } ⱶ[ 0, 2 ]→ { 0, 1, 2 }, { 0, 1 } ⱶ[ 1, 2 ]→ { 0, 1, 2 },\
 #!  { 0, 1 } ⱶ[ 2, 2 ]→ { 0, 1, 2 } ]
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

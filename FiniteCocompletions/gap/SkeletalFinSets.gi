@@ -196,38 +196,24 @@ end );
 
 ##
 InstallMethod( ViewString,
-    "for a map of skeletal finite sets",
+        "for a map of skeletal finite sets",
         [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory ],
         
   function ( phi )
-    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| → |", String( Cardinality( Target( phi ) ) ), "|" );
-end );
-
-##
-InstallMethod( ViewString,
-    "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsMonomorphism ],
-        
-  function ( phi )
-    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ↪ |", String( Cardinality( Target( phi ) ) ), "|" );
-end );
-
-##
-InstallMethod( ViewString,
-    "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsEpimorphism ],
-        
-  function ( phi )
-    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ↠ |", String( Cardinality( Target( phi ) ) ), "|" );
-end );
-
-##
-InstallMethod( ViewString,
-        "for a map of skeletal finite sets",
-        [ IsMorphismInSkeletalCategoryOfFiniteSetsAsFiniteStrictCoproductCompletionOfTerminalCategory and IsIsomorphism ],
-        
-  function ( phi )
-    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ⭇ |", String( Cardinality( Target( phi ) ) ), "|" );
+    local arrow;
+    
+    if HasIsIsomorphism( phi ) and IsIsomorphism( phi ) then
+        arrow := "⭇";
+    elif HasIsEpimorphism( phi ) and IsEpimorphism( phi ) then
+        arrow := "↠";
+    elif HasIsMonomorphism( phi ) and IsMonomorphism( phi ) then
+        arrow := "↪";
+    else
+        arrow := "→";
+    fi;
+    
+    return Concatenation( "|", String( Cardinality( Source( phi ) ) ), "| ", arrow, " |", String( Cardinality( Target( phi ) ) ), "|" );
+    
 end );
 
 # We want lists of skeletal finite sets and maps to be displayed in a "fancy" way.

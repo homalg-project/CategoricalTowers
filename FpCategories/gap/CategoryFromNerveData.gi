@@ -9,7 +9,12 @@ InstallMethod( CategoryFromNerveData,
         "for a record",
         [ IsRecord ],
         
-  function( input_record )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, input_record )
     local known_keys_with_filters, key, filter, nerve_data, C0, C, prop, V, s, t;
     
     ## check the keys of the given input record
@@ -532,18 +537,20 @@ InstallMethod( CategoryFromNerveData,
     end );
     
     #if false then
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         
         ADD_FUNCTIONS_FOR_CategoryFromNerveDataPrecompiled( C );
         ADD_FUNCTIONS_FOR_CategoryFromNerveDataHomStructureOnMorphismsPrecompiled( C );
         
     fi;
     
-    Finalize( C );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( C );
+    fi;
     
     return C;
     
-end );
+  end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

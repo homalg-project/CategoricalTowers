@@ -41,4 +41,5 @@ id := IdentityMorphism( Coproduct( [ m, n, p ] ) );
 #! |14| → |14|
 psi = id;
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

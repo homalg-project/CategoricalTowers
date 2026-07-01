@@ -191,5 +191,6 @@ Display( pushout );
 #! 
 #! An object in FiniteColimitCompletionWithStrictCoproducts(
 #! PathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ) given by the above data
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample
 #! @EndChunk

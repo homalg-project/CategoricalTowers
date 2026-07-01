@@ -1314,7 +1314,12 @@ InstallMethod( CategoryFromNerveData,
         "for a path category",
         [ IsPathCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     if not IsFiniteCategory( C ) then
         TryNextMethod( );
@@ -1327,9 +1332,11 @@ InstallMethod( CategoryFromNerveData,
                         decomposition_of_all_morphisms := DecompositionIndicesOfAllMorphismsFromHomStructure( C ),
                         relations := RelationsAmongGeneratingMorphisms( C ),
                         labels := [ List( SetOfObjects( C ), ObjectLabel ), List( SetOfGeneratingMorphisms( C ), MorphismLabel ) ],
-                        properties := ListKnownCategoricalProperties( C ) ) );
+                        properties := ListKnownCategoricalProperties( C ) )
+                   : no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code,
+                     FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethod( DataTablesOfCategory,

@@ -6,10 +6,14 @@
 
 ##
 InstallMethod( CoequalizerPreCompletion,
-        "for a CAP category",
-        [ FilterIntersection( IsCapCategory, IsCocartesianCategory ) ],
+        "for a cocartesian CAP category",
+        [ IsCapCategory ],
         
-  function ( C )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
@@ -17,6 +21,10 @@ InstallMethod( CoequalizerPreCompletion,
           modeling_tower_object_constructor, modeling_tower_object_datum,
           modeling_tower_morphism_constructor, modeling_tower_morphism_datum,
           CoequalizerPreCompletion;
+    
+    if not (HasIsCocartesianCategory( C ) and IsCocartesianCategory( C )) then
+        TryNextMethod( );
+    fi;
     
     if not MissingOperationsForConstructivenessOfCategory( C, "IsCocartesianCategory" ) = [ ] then
         Error( "the given category `C` must be algorithmically cocartesian\n" );
@@ -319,11 +327,13 @@ InstallMethod( CoequalizerPreCompletion,
         
     fi;
     
-    Finalize( CoequalizerPreCompletion );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+        Finalize( CoequalizerPreCompletion );
+    fi;
     
     return CoequalizerPreCompletion;
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,

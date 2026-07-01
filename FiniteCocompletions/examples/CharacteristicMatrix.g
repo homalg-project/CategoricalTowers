@@ -127,5 +127,6 @@ Mphi_as_coequqlizer_pair.s = phi_in_additive_closure;
 #! true
 Mphi_as_coequqlizer_pair.t = x_in_additive_closure;
 #! true
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample
 #! @EndChunk

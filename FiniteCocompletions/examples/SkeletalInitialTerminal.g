@@ -50,4 +50,5 @@ Display( pi_t );
 #! { 0,..., 7 } ⱶ[ 0, 0, 0, 0, 0, 0, 0, 0 ]→ { 0 }
 pi = pi_t;
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

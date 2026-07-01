@@ -10,7 +10,7 @@ m := ObjectConstructor( sFinSets, 3 );
 #! |3|
 n := ObjectConstructor( sFinSets, 5 );
 #! |5|
-iota:= MorphismConstructor( m, [ 1, 4, 2 ], n );
+iota := MorphismConstructor( m, [ 1, 4, 2 ], n );
 #! |3| → |5|
 Display( iota );
 #! { 0, 1, 2 } ⱶ[ 1, 4, 2 ]→ { 0,..., 4 }
@@ -28,4 +28,5 @@ Display( iso );
 #! { 0,..., 4 } ⱶ[ 1, 4, 2, 0, 3 ]→ { 0,..., 4 }
 IsIsomorphism( iso );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

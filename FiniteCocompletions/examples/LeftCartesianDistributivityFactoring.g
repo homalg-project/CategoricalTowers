@@ -71,4 +71,5 @@ Id := ExtendFunctorToFreeDistributiveCategoryWithStrictProductAndCoproducts(
 #!         with strict products and coproducts ) )
 Id( phi ) = phi;
 #! true
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

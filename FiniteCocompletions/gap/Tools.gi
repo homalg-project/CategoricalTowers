@@ -9,15 +9,19 @@ InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         "for a category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, C )
     
     if not HasRangeCategoryOfHomomorphismStructure( C ) then
         Error( "the category `C` has no RangeCategoryOfHomomorphismStructure\n" );
     fi;
     
-    return EnrichmentSpecificFiniteStrictCoproductCompletion( C, RangeCategoryOfHomomorphismStructure( C ) );
+    return EnrichmentSpecificFiniteStrictCoproductCompletion( C, RangeCategoryOfHomomorphismStructure( C ) : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
-end );
+end ) );
 
 ##
 InstallMethod( TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure,

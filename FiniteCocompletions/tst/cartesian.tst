@@ -47,4 +47,5 @@ gap> Display( List( ObjectDatum( o12 )[2], d -> List( GenesisOfCellArguments( d 
   [  2,  3 ] ]
 
 #
+gap> # @drop_example_in_Julia
 gap> STOP_TEST( "cartesian" );

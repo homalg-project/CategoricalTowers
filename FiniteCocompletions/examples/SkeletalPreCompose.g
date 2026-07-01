@@ -20,4 +20,5 @@ alpha := PreCompose( psi, phi );
 #! |3| → |7|
 Display( alpha );
 #! { 0, 1, 2 } ⱶ[ 3, 2, 5 ]→ { 0,..., 6 }
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

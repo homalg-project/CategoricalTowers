@@ -51,5 +51,5 @@ cat!.precompiled_functions_added;
 #! true
 
 #! #@fi
-
+# @drop_example_in_Julia (needs CompilerForCAP)
 #! @EndExample

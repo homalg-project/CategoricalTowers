@@ -47,5 +47,6 @@ IsOne( u );
 #! true
 IsWellDefined( u );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample
 #! @EndChunk

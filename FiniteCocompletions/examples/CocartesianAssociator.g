@@ -92,4 +92,5 @@ Galpha := G( alpha );
 #!  FreeCategory( RightQuiver( "Q(a,b,c)[]" ) ) ) )>
 IsWellDefined( Galpha );
 #! true
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

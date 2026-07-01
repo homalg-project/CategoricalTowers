@@ -34,4 +34,5 @@ IsLiftable( f, h );
 #! true
 IsLiftable( h, f );
 #! false
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

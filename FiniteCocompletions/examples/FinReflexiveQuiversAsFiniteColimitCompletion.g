@@ -126,5 +126,6 @@ Display( iso );
 #! "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ],
 #! SkeletalFinSets ) given by the above data
+# @drop_example_in_Julia (requires FunctorCategories)
 #! @EndExample
 #! @EndChunk

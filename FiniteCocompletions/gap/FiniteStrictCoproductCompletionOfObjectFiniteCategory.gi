@@ -351,7 +351,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             multiplicities := pair[2];
             
-            coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities[c], -1 + c ) );
+            coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicities[c], -1 + BigInt( c ) ) );
 
             fine_maps := List( [ 1 .. l ], c -> [ 0 .. multiplicities[c] - 1 ] );
 
@@ -434,8 +434,8 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         data := List( diagram, PairOfIntAndList );
         
         return ObjectConstructor( UCm,
-                       Pair( Sum( List( data, datum -> datum[1] ) ),
-                             ListWithIdenticalEntries( l, 0 ) + Sum( List( data, datum -> datum[2] ) ) ) );
+                       Pair( Sum( List( data, datum -> datum[1] ), BigInt( 0 ) ),
+                             Sum( List( data, datum -> datum[2] ), ListWithIdenticalEntries( l, BigInt( 0 ) ) ) ) );
         
     end );
     
@@ -456,11 +456,11 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         multiplicity_k := multiplicities[k];
         
-        offsets_k := ListWithIdenticalEntries( l, 0 ) + Sum( multiplicities{[ 1 .. k - 1 ]} );
+        offsets_k := Sum( multiplicities{[ 1 .. k - 1 ]}, ListWithIdenticalEntries( l, BigInt( 0 ) ) );
         
-        coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicity_k[c], -1 + c ) );
+        coarse_maps := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicity_k[c], -1 + BigInt( c ) ) );
         
-        fine_maps := List( [ 1 .. l ], c -> offsets_k[c] + [ 0 .. multiplicity_k[c] - 1 ] );
+        fine_maps := List( [ 1 .. l ], c ->  List( [ 0 .. multiplicity_k[c] - 1 ], i -> offsets_k[c] + i ) );
         
         mors := List( [ 1 .. l ], c -> ListWithIdenticalEntries( multiplicity_k[c], IdentityMorphism( C, objectsC[c] )  )  );
         
@@ -591,7 +591,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             if not ForAll( [ 1 .. l ], c ->
                        ForAll( [ 1 .. m_target[c] ], i ->
                                ForAny( [ 1 .. l ], d ->
-                                       ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) ) then
+                                       ForAny( [ 1 .. m_source[d] ], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) ) then
                 
                 return false;
                 
@@ -613,7 +613,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             preim_c := List( [ 1 .. l ], c ->
                              List( [ 1 .. m_target[c] ], i ->
                                    Filtered( [ 1 .. l ], d ->
-                                           ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
+                                           ForAny( [ 1 .. m_source[d] ], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
             
             preim := List( [ 1 .. l ], c ->
                            List( [ 1 .. m_target[c] ], i ->
@@ -636,7 +636,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
         
         AddColiftAlongEpimorphism( UCm,
           function( UCm, pi, phi )
-            local C, l, target_pi, m_source, m_target, dphi, dpi, cmap_pi, fmap_pi, mor_pi, preim_c, preim_i,
+            local C, l, target_pi, m_source, m_target, dphi, dpi, cmap_pi, fmap_pi, mor_pi, preim_c, f, preim_i,
                   coarse_maps, fine_maps, mors;
             
             C := UnderlyingCategory( UCm );
@@ -657,12 +657,16 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             preim_c := List( [ 1 .. l ], c ->
                              List( [ 1 .. m_target[c] ], i ->
                                    SafeFirst( [ 1 .. l ], d ->
-                                           ForAny( [ 1 .. m_source[d]], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
+                                           ForAny( [ 1 .. m_source[d] ], j -> 1 + cmap_pi[d][j] = c and 1 + fmap_pi[d][j] = i ) ) ) );
+            
+            # Putting it inside the SafeFirst causes nested brackets that cannot be handled when transpiling to Julia
+            f := {m_source, preim_c, c, i} -> m_source[preim_c[c][i]];
             
             preim_i := List( [ 1 .. l ], c ->
                              List( [ 1 .. m_target[c] ], i ->
-                                   SafeFirst( [ 1 .. m_source[preim_c[c][i]]], j -> 1 + cmap_pi[preim_c[c][i]][j] = c and 1 + fmap_pi[preim_c[c][i]][j] = i ) ) );
+                                   SafeFirst( [ 1 .. f(m_source, preim_c, c, i) ], j -> 1 + cmap_pi[preim_c[c][i]][j] = c and 1 + fmap_pi[preim_c[c][i]][j] = i ) ) );
             
+
             coarse_maps := List( [ 1 .. l ], c -> List( [ 1 .. m_target[c] ], i -> dphi[1][preim_c[c][i]][preim_i[c][i]] ) );
             
             fine_maps := List( [ 1 .. l ], c -> List( [ 1 .. m_target[c] ], i -> dphi[2][preim_c[c][i]][preim_i[c][i]] ) );
@@ -717,7 +721,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                                                       List( [ 1 .. n ], j -> mors[j][ 1 + x[1] ][ 1 + x[2] ] ) );
             
             ##
-            eq := Length( flat_pos_eq );
+            eq := BigInt( Length( flat_pos_eq ) );
             
             eq_index_in_C := List( [ 1 .. eq ], i ->
                                    Position( objectsC,
@@ -727,7 +731,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
-            return ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, pos -> Length( pos ) ) ) );
+            return ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, pos -> BigInt( Length( pos ) ) ) ) );
             
         end );
         
@@ -766,7 +770,7 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                                             fine_maps[j][c][ i + 1 ] = fine_maps[j + 1][c][ i + 1 ] ) ) );
             
             flat_pos_eq_coarse := Concatenation( List( [ 1 .. l ], c ->
-                                         ListWithIdenticalEntries( Length( pos_eq[c] ), -1 + c ) ) );
+                                         ListWithIdenticalEntries( Length( pos_eq[c] ), -1 + BigInt(c) ) ) );
             
             flat_pos_eq_fine := Concatenation( pos_eq );
             
@@ -783,9 +787,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
-            Eq := List( sort_index_eq, Length );
+            Eq := List( sort_index_eq, u -> BigInt( Length( u ) ) );
             
-            equalizer := ObjectConstructor( UCm, Pair( eq, Eq ) );
+            equalizer := ObjectConstructor( UCm, Pair( BigInt( eq ), Eq ) );
             
             emb_coarse_maps := List( [ 1 .. l ], c -> flat_pos_eq_coarse{sort_index_eq[c]} );
             
@@ -851,9 +855,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
             
             sort_index_eq := List( [ 1 .. l ], c -> Positions( eq_index_in_C, c ) );
             
-            equalizer := ObjectConstructor( UCm, Pair( eq, List( sort_index_eq, l -> Length(l) ) ) );
+            equalizer := ObjectConstructor( UCm, Pair( BigInt( eq ), List( sort_index_eq, l -> BigInt( Length(l) ) ) ) );
             
-            offset := List( [ 1 .. eq ], i -> Position( sort_index_eq[ eq_index_in_C[i] ] , i ) );
+            offset := List( [ 1 .. eq ], i -> BigInt( Position( sort_index_eq[ eq_index_in_C[i] ] , i ) ) );
             
             ##offset := List( [ 1 .. teq ], i -> 1 + Length( Positions( eq_index_in_C{[ 1 .. i ]}, eq_index_in_C[i] ) ) );
             
@@ -871,9 +875,9 @@ InstallMethod( FiniteStrictCoproductCompletionOfObjectFiniteCategory,
                                    List( [ 1 .. t[c] ], i ->
                                          Position( flat_pos_eq, [ test_coarse_maps[c][i], test_fine_maps[c][i] ] ) ) );
             
-            univ_coarse_maps := List( [ 1 .. l ], c -> -1 + eq_index_in_C{pos_test_maps[c]} );
+            univ_coarse_maps := List( [ 1 .. l ], c -> List( eq_index_in_C{pos_test_maps[c]}, e -> -1 + BigInt( e ) ) );
             
-            univ_fine_maps := List( [ 1 .. l ], c -> -1 + offset{pos_test_maps[c]} );
+            univ_fine_maps := List( [ 1 .. l ], c -> List( offset{pos_test_maps[c]}, e -> -1 + BigInt( e ) ) );
             
             univ_mors := List( [ 1 .. l ], c ->
                                List( [ 1 .. t[c] ], i ->
@@ -952,14 +956,14 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
       function( objC )
         local L, pos;
         
-        L := ListWithIdenticalEntries( l, 0 );
+        L := ListWithIdenticalEntries( l, BigInt( 0 ) );
         
         pos := PositionProperty( objectsC, c -> IsEqualForObjects( C, c, objC ) );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         Assert( 0, IsInt( pos ) );
         
-        L[pos] := 1;
+        L[pos] := BigInt( 1 );
         
         return L;
         
@@ -973,7 +977,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
         pos_t := PositionProperty( objectsC, c -> IsEqualForObjects( C, c, Target( morC ) ) );
         
         L_coarse_maps := ListWithIdenticalEntries( l, [] );
-        L_coarse_maps[pos_s] := [ -1 + pos_t ];
+        L_coarse_maps[pos_s] := [ -1 + BigInt( pos_t ) ];
 
         L_fine_maps := ListWithIdenticalEntries( l, [] );
         L_fine_maps[pos_s] := [ BigInt( 0 ) ];
@@ -988,7 +992,7 @@ InstallMethodForCompilerForCAP( EmbeddingOfUnderlyingCategoryData,
     embedding_on_objects :=
       function ( objC )
         
-        return ObjectConstructor( UCm, Pair( 1, func_obj( objC ) ) );
+        return ObjectConstructor( UCm, Pair( BigInt( 1 ), func_obj( objC ) ) );
         
     end;
     
@@ -1040,7 +1044,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( UCm );
     
-    Yc := Y( C.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, C.(name) ] );
     
     if IsObjectInFiniteStrictCoproductCompletionOfObjectFiniteCategory( Yc ) then
 

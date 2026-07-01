@@ -50,5 +50,6 @@ C = J;
 #! false
 Lhat_objs = [ I, M, A, B, J, C ];
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample
 #! @EndChunk

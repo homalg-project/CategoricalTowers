@@ -43,7 +43,7 @@ psi := MorphismConstructor( s, [ 1, 2, 1, 4, 2, 1, 3 ], t );
 #! |7| → |4|
 IsWellDefined( psi );
 #! false
-psi:= MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );
+psi := MorphismConstructor( s, [ 0, 2, 1, 3, 2, 1, 3 ], t );
 #! |7| → |4|
 IsWellDefined( psi );
 #! true
@@ -51,4 +51,5 @@ Display( psi );
 #! { 0,..., 6 } ⱶ[ 0, 2, 1, 3, 2, 1, 3 ]→ { 0,..., 3 }
 MorphismDatum( psi );
 #! [ 0, 2, 1, 3, 2, 1, 3 ]
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

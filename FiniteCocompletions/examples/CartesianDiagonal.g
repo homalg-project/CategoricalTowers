@@ -129,4 +129,5 @@ Gdelta := G( delta );
 #!  FiniteStrictProductCompletion( PathCategory( FinQuiver( "Q(a)[]" ) ) ) )>
 IsWellDefined( Gdelta );
 #! true
+# @drop_example_in_Julia (was manually added to julia)
 #! @EndExample

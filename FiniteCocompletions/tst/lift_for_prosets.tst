@@ -25,4 +25,5 @@ gap> IsIsomorphicForObjects( p, Coproduct( [ p, p ] ) );
 true
 
 #
+gap> # @drop_example_in_Julia
 gap> STOP_TEST( "lift_for_prosets" );
