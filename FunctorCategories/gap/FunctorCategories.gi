@@ -620,19 +620,22 @@ InstallMethodWithCache( FunctorCategory,
     
     ## building the categorical tower:
     
-    if ( HasIsInitialCategory( B ) and IsInitialCategory( B ) ) or
-        IsFpCategoryDefinedByQuiverAlgebra( B ) or
-        IsFpAlgebroidDefinedByQuiverAlgebra( B ) or
-        IsPathCategory( B ) or
-        IsQuotientOfPathCategory( B ) or
-        IsCategoryFromNerveData( B ) or
-        IsCategoryFromDataTables( B ) or
-        (HasIsFiniteCategory( B ) and IsFiniteCategory( B )) or
-        IsFpAlgebroidFromDataTables( B ) then
+    if (HasIsObjectFiniteCategory( B ) and IsObjectFiniteCategory( B )) and
+        ApplicableMethod( OppositeOfObjectFiniteCategory, [ B ] ) <> fail then
+        # The following types of categories are covered by this case:
+        #   - (HasIsInitialCategory( B ) and IsInitialCategory( B )) or
+        #   - IsFpCategoryDefinedByQuiverAlgebra( B ) or
+        #   - IsFpAlgebroidDefinedByQuiverAlgebra( B ) or
+        #   - IsPathCategory( B ) or
+        #   - IsQuotientOfPathCategory( B ) or
+        #   - IsCategoryFromNerveData( B ) or
+        #   - IsCategoryFromDataTables( B ) or
+        #   - (HasIsFiniteCategory( B ) and IsFiniteCategory( B )) or
+        #   - IsFpAlgebroidFromDataTables( B )
         
         B_op := OppositeOfObjectFiniteCategory( B : FinalizeCategory := true );
     else
-        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsCategoryFromNerveData, IsCategoryFromDataTables, IsFinite, IsInitialCategory, IsFpAlgebroidDefinedByQuiverAlgebra }\n" );
+        Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsPathCategory, IsQuotientOfPathCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, (HasIsFiniteCategory and IsFiniteCategory), IsAlgebroidFromDataTables }\n" );
     fi;
     
     PSh := PreSheaves( B_op, D : FinalizeCategory := true );
