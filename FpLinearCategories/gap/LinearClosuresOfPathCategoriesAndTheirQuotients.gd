@@ -118,6 +118,9 @@ DeclareOperation( "QuotientCategory", [ IsLinearClosure, IsDenseList ] );
 DeclareAttribute( "DefiningRelations", IsQuotientCategory );
 DeclareAttribute( "GroebnerBasisOfDefiningRelations", IsQuotientCategory );
 
+
+DeclareProperty( "IsAdmissibleAlgebroid", IsQuotientCategory );
+
 ####################################
 #
 #! @Section Operations

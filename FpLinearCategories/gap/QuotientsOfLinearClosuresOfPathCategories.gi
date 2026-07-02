@@ -552,3 +552,125 @@ InstallGlobalFunction( INSTALL_VIEW_AND_DISPLAY_METHODS_IN_QUOTIENT_CATEGORIES_O
     end );
     
 end );
+
+##
+InstallMethod( IsAdmissibleAlgebroid,
+        [ IsQuotientCategoryOfLinearClosureOfQuotientOfPathCategory ],
+        
+  function( quo_cat )
+    local quo_cat_op, is_admissible;
+    
+    if HasOppositeOfObjectFiniteCategory( quo_cat ) then
+        
+        quo_cat_op := OppositeOfObjectFiniteCategory( quo_cat );
+        
+        if HasIsAdmissibleAlgebroid( quo_cat_op ) then
+            return IsAdmissibleAlgebroid( quo_cat_op );
+        fi;
+        
+    fi;
+    
+    is_admissible := IsAdmissibleAlgebroid( ModelingCategory( quo_cat ) );
+    
+    if HasOppositeOfObjectFiniteCategory( quo_cat ) then
+        
+        quo_cat_op := OppositeOfObjectFiniteCategory( quo_cat );
+        
+        SetIsAdmissibleAlgebroid( quo_cat_op, is_admissible );
+        
+    fi;
+    
+    return is_admissible;
+    
+end );
+
+##
+InstallMethod( IsAdmissibleAlgebroid,
+        [ IsQuotientCategoryOfLinearClosureOfPathCategory ],
+        
+  function( quo_cat )
+    local quo_cat_op, kC, ring, C, q, I, dim_func, current_dim, dim, power, is_admissible;
+    
+    if HasOppositeOfObjectFiniteCategory( quo_cat ) then
+        
+        quo_cat_op := OppositeOfObjectFiniteCategory( quo_cat );
+        
+        if HasIsAdmissibleAlgebroid( quo_cat_op ) then
+            return IsAdmissibleAlgebroid( quo_cat_op );
+        fi;
+        
+    fi;
+    
+    kC := AmbientCategory( quo_cat );
+    
+    ring := UnderlyingRing( kC );
+    
+    C := UnderlyingCategory( kC );
+    
+    q := UnderlyingQuiver( C );
+    
+    I := GroebnerBasisOfDefiningRelations( quo_cat );
+    
+    if IsEmpty( I ) then
+        
+        is_admissible := IsAdmissibleAlgebroid( kC );
+        
+    else
+        
+        dim_func :=
+          function( power )
+            local power_ideal, reduced_gb, leading_monomials, homQ;
+            
+            power_ideal :=
+              Concatenation( List( [ 1 .. NumberOfObjects( q ) ], s ->
+                Concatenation( List( [ 1 .. NumberOfObjects( q ) ], t ->
+                  List( ExternalHomsWithGivenLength( C, power )[s][t], m ->
+                    MorphismConstructor( kC, SetOfObjects( kC )[s], Pair( [ One( ring ) ], [ m ] ), SetOfObjects( kC )[t] ) ) ) ) ) );
+            
+            reduced_gb := ReducedGroebnerBasis( kC, Concatenation( I, power_ideal ) );
+            
+            leading_monomials := List( reduced_gb, g -> SupportMorphisms( g )[1] );
+            
+            homQ := MacaulayMorphisms( C, leading_monomials );
+            
+            return Sum( List( ListOfValues( homQ ), l -> Sum( List( ListOfValues( l ), Length ) ) ) );
+            
+          end;
+        
+        power := BigInt( 2 );
+        
+        current_dim := dim_func( power );
+        
+        # i.e., we can reduce an identity or an arrow using the PowerOfArrowIdeal(A, 2)
+        if current_dim < NumberOfObjects( q ) + NumberOfMorphisms( q ) then
+            return false;
+        fi;
+        
+        while true do
+          
+          power := power + 1;
+          dim := dim_func( power );
+          
+          if dim = current_dim then
+              break;
+          fi;
+          
+          current_dim := dim;
+          
+        od;
+        
+        is_admissible := current_dim = Dimension( quo_cat );
+        
+    fi;
+    
+    if HasOppositeOfObjectFiniteCategory( quo_cat ) then
+        
+        quo_cat_op := OppositeOfObjectFiniteCategory( quo_cat );
+        
+        SetIsAdmissibleAlgebroid( quo_cat_op, is_admissible );
+        
+    fi;
+    
+    return is_admissible;
+    
+end );

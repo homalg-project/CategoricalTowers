@@ -565,3 +565,88 @@ InstallMethodForCompilerForCAP( EvaluateLinearClosureEndomorphism,
     return functor[2][2]( rep_obj, morphism, rep_obj );
     
 end );
+
+##
+InstallOtherMethod( IsAdmissibleAlgebroid,
+        [ IsLinearClosureOfPathCategory ],
+  
+  function( kC )
+    local kC_op, is_admissible;
+    
+    if HasOppositeOfObjectFiniteCategory( kC ) then
+        
+        kC_op := OppositeOfObjectFiniteCategory( kC );
+        
+        if HasIsAdmissibleAlgebroid( kC_op ) then
+            return IsAdmissibleAlgebroid( kC_op );
+        fi;
+        
+    fi;
+    
+    is_admissible := HasFiniteNumberOfMacaulayMorphisms( UnderlyingCategory( kC ), [] );
+    
+    if HasOppositeOfObjectFiniteCategory( kC ) then
+        
+        kC_op := OppositeOfObjectFiniteCategory( kC );
+        
+        SetIsAdmissibleAlgebroid( kC_op, is_admissible );
+        
+    fi;
+    
+    return is_admissible;
+    
+end );
+
+##
+InstallOtherMethod( IsAdmissibleAlgebroid,
+        [ IsLinearClosureOfQuotientOfPathCategory ],
+  
+  function( kC )
+    local kC_op, C, P, k, kP, objs_kP, rels, rel_mors, is_admissible;
+    
+    if HasOppositeOfObjectFiniteCategory( kC ) then
+        
+        kC_op := OppositeOfObjectFiniteCategory( kC );
+        
+        if HasIsAdmissibleAlgebroid( kC_op ) then
+            return IsAdmissibleAlgebroid( kC_op );
+        fi;
+        
+    fi;
+    
+    C := UnderlyingCategory( kC );
+    
+    P := AmbientCategory( C );
+    
+    k := UnderlyingRing( kC );
+    
+    kP := LinearClosure( k, P );
+    
+    objs_kP := SetOfObjects( kP );
+    
+    rels := DefiningRelations( C );
+    
+    rel_mors := List( rels, pair ->
+        SubtractionForMorphisms( kP,
+            MorphismConstructor( kP,
+                objs_kP[ObjectIndex( Source( pair[1] ) )],
+                Pair( [ One( k ) ], [ pair[1] ] ),
+                objs_kP[ObjectIndex( Target( pair[1] ) )] ),
+            MorphismConstructor( kP,
+                objs_kP[ObjectIndex( Source( pair[2] ) )],
+                Pair( [ One( k ) ], [ pair[2] ] ),
+                objs_kP[ObjectIndex( Target( pair[2] ) )] ) ) );
+    
+    is_admissible := IsAdmissibleAlgebroid( QuotientCategory( kP, rel_mors ) );
+    
+    if HasOppositeOfObjectFiniteCategory( kC ) then
+        
+        kC_op := OppositeOfObjectFiniteCategory( kC );
+        
+        SetIsAdmissibleAlgebroid( kC_op, is_admissible );
+        
+    fi;
+    
+    return is_admissible;
+    
+end );
