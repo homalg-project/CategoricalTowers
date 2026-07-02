@@ -1048,6 +1048,38 @@ InstallGlobalFunction( ADD_SUBOBJECT_CLASSIFIER_TO_PRESHEAF_CATEGORY,
 end );
 
 ##
+InstallMethod( AdditionalMonoidalPreSheafOperationNames,
+    "for a category",
+    [ IsCapCategory ],
+
+  function ( B )
+
+    return [ ];
+
+end );
+
+##
+InstallMethod( AdditionalMonoidalPreSheafOperationNames,
+    "for an algebroid defined by a quiver algebra",
+    [ IsFpAlgebroidDefinedByQuiverAlgebra ],
+    
+  function ( B )
+    local operation_names;
+    
+    if not ( HasCounit( B ) and HasComultiplication( B ) ) then
+        return [ ];
+    fi;
+    
+    operation_names := ShallowCopy( CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY );
+    
+    if HasAntipode( B ) then
+        Append( operation_names, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS );
+    fi;
+    
+    return operation_names;
+    
+end );
+##
 InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY,
   function ( PSh )
     
@@ -1685,21 +1717,12 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     list_of_operations_to_install := Intersection( list_of_operations_to_install, list_of_operations );
     
     if HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) then
-        if HasCounit( B_op ) and HasComultiplication( B_op ) then
-            
+        
+        if HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
             Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY );
-            
-            if HasAntipode( B_op ) then
-                
-                Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY_WITH_DUALS );
-                
-            fi;
-            
-        elif HasIsLinearClosureOfACategory( B ) and IsLinearClosureOfACategory( B ) then
-            
-            Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_MONOIDAL_PRESHEAF_CATEGORY );
-            
         fi;
+        
+        Append( list_of_operations_to_install, AdditionalMonoidalPreSheafOperationNames( B_op ) );
         
         list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( D ) );
         

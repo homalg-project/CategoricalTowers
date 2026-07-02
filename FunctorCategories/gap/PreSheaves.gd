@@ -86,6 +86,10 @@ DeclareAttribute( "WellDefinednessForObjectsCheckDataOrFail",
         IsCapCategory );
 
 ##
+DeclareOperation( "AdditionalMonoidalPreSheafOperationNames",
+        [ IsCapCategory ] );
+
+##
 DeclareAttribute( "YonedaEmbeddingDataOfSourceCategory",
         IsPreSheafCategoryOfFpEnrichedCategory );
 
