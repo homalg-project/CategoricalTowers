@@ -613,6 +613,10 @@ InstallMethod( AlgebroidFromDataTables,
         
     end );
     
+    if Length( input_data ) >= 6 and input_data[6] <> fail then
+        SetIsAdmissibleAlgebroid( A, input_data[6] );
+    fi;
+    
     if CAP_NAMED_ARGUMENTS.FinalizeCategory then
        Finalize( A );
     fi;
@@ -1188,22 +1192,25 @@ InstallMethod( OppositeOfObjectFiniteCategory,
           [ IsFpAlgebroidFromDataTables ],
   
   function ( A )
-    local data_tables, A_op;
+    local is_admissible, data_tables, A_op;
     
-    data_tables := NTuple( 5,
+    if HasIsAdmissibleAlgebroid( A ) then
+        is_admissible := IsAdmissibleAlgebroid( A );
+    else
+        is_admissible := CategoryDatum( A )[6];
+    fi;
+    
+    data_tables := NTuple( 6,
                     CategoryDatum( A )[1],
                     OppositeQuiver( UnderlyingQuiver( A ) ),
                     TransposedMat( List( CategoryDatum( A )[3], s -> List( s, hom_st -> List( hom_st, indices -> Reversed( indices ) ) ) ) ),
                     CategoryDatum( A )[5],
-                    CategoryDatum( A )[4] );
+                    CategoryDatum( A )[4],
+                    is_admissible );
     
     A_op := AlgebroidFromDataTables( data_tables : colors := A!.colors, range_of_HomStructure := RangeCategoryOfHomomorphismStructure( A ) );
     
     SetOppositeOfObjectFiniteCategory( A_op, A );
-    
-    if HasIsAdmissibleAlgebroid( A ) then
-        SetIsAdmissibleAlgebroid( A_op, IsAdmissibleAlgebroid( A ) );
-    fi;
     
     return A_op;
     
@@ -1231,7 +1238,7 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
     q1 := UnderlyingQuiver( A_1 );
     q2 := UnderlyingQuiver( A_2 );
     
-    data_tables := NTuple( 5,
+    data_tables := NTuple( 6,
         ring,
         ## quiver
         TensorProductOfFinQuivers( q1, q2 ),
@@ -1314,7 +1321,9 @@ InstallMethodWithCache( TensorProductOfAlgebroids,
                                                 HomomorphismStructureOnObjectsRanks( A_1 )[IndicesOfSources( q1 )[index_1]][i],
                                                 HomomorphismStructureOnObjectsRanks( A_2 )[q][p],
                                                 IdentityMat( HomomorphismStructureOnObjectsRanks( A_2 )[q][p], ring ),
-                                                HomomorphismStructureOnObjectsRanks( A_2 )[q][p] ) ) ) ) ] ) ) ) ) );
+                                                HomomorphismStructureOnObjectsRanks( A_2 )[q][p] ) ) ) ) ] ) ) ) ),
+        
+        fail );
     
     labels_of_bases_elements := LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],
           s_u -> LazyHList( [ 1 .. NumberOfObjects( q1 ) * NumberOfObjects( q2 ) ],
