@@ -6,6 +6,9 @@
 
 # #@if ValueOption( "no_precompiled_code" ) <> true
 
+LoadPackage( "Algebroids", false );
+#! true
+
 LoadPackage( "FunctorCategories", false );
 #! true
 

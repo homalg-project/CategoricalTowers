@@ -3222,7 +3222,7 @@ BindGlobal( "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled", fu
     local sFinSets;
     sFinSets := SkeletalCategoryOfFiniteSets(  : FinalizeCategory := true,
         overhead := true );
-    return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets,
+    return PreSheaves( CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets,
             FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets );
 end;
         
