@@ -1405,7 +1405,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
   FunctionWithNamedArguments(
   [ [ "no_precompiled_code", false ],
-    [ "FinalizeCategory", true ]
+    [ "FinalizeCategory", true ],
+    [ "check_admissibility", false ],
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -2327,14 +2328,19 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    if ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( D ) ) and
-          ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
-            ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
+    if HasIsLinearCategoryOverCommutativeRing( B ) and IsLinearCategoryOverCommutativeRing( B ) then
         
-        ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
+        if HasIsAdmissibleAlgebroid( B ) or CAP_NAMED_ARGUMENTS.check_admissibility then
+            
+            if IsAdmissibleAlgebroid( B ) then
+                
+                ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
+                
+            fi;
+            
+        fi;
         
     fi;
-
     
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     
@@ -4956,11 +4962,8 @@ InstallMethod( SimpleObjects,
     
     B := Source( PSh );
     
-    if not ( ( HasUnderlyingQuiverAlgebra( B ) and IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( B ) ) ) or
-             ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) ) then
-        
+    if not ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) then
         TryNextMethod( );
-        
     fi;
     
     D := Target( PSh );

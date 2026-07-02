@@ -11,6 +11,8 @@ QF := Q[F];
 #! Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )
 A3 := QF / [ QF.ab ];
 #! Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations
+IsAdmissibleAlgebroid( A3 );
+#! true
 PSh := PreSheaves( A3 );
 #! PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )
 #! / relations, Rows( Q ) )
