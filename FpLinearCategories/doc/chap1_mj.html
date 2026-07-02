@@ -321,7 +321,7 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AlgebroidFromDataTables</code>( <var class="Arg">data_tables</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category</p>
 
-<p>Construct an enrichted algebroid <span class="SimpleMath">\(A\)</span> out of the <var class="Arg">data_tables</var> consisting of <span class="SimpleMath">\(7\)</span> entries:</p>
+<p>Construct an enrichted algebroid <span class="SimpleMath">\(A\)</span> out of the <var class="Arg">data_tables</var> consisting of <span class="SimpleMath">\(6\)</span> entries:</p>
 
 
 <ul>
@@ -338,6 +338,9 @@
 
 </li>
 <li><p><var class="Arg">data_tables</var>[5]: an array <span class="SimpleMath">\(L\)</span> containing <code class="code">nr_objs</code> rows and <code class="code">nr_mors</code> columns. The entry <span class="SimpleMath">\(L[i][j]\)</span> contains the matrices of the <span class="SimpleMath">\(k\)</span>-linear maps <span class="SimpleMath">\(\mathrm{Hom}_{A}(m_j,v_i)\)</span> where <span class="SimpleMath">\(u_i\)</span> and <span class="SimpleMath">\(m_j\)</span> are the <span class="SimpleMath">\(i\)</span>'th object and the <span class="SimpleMath">\(j\)</span>'th generating morphism.</p>
+
+</li>
+<li><p><var class="Arg">data_tables</var>[6]: <code class="code">true</code> or <code class="code">false</code> if the admissibility of the algebroid is known, and <code class="code">fail</code> otherwise. When not <code class="code">fail</code>, this value is used to set the property <code class="code">IsAdmissibleAlgebroid</code> on the resulting algebroid.</p>
 
 </li>
 </ul>
@@ -494,7 +497,7 @@ true
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DataTablesOfLinearCategory</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>Returns the 5-tuple data tables of a linear category. The output can be passed to the constructor <code class="code">AlgebroidFromDataTables</code>.</p>
+<p>Returns the 6-tuple data tables of a linear category. The output can be passed to the constructor <code class="code">AlgebroidFromDataTables</code>. The 6th entry is <code class="code">true</code> or <code class="code">false</code> if <code class="code">HasIsAdmissibleAlgebroid</code> holds for the category, and <code class="code">fail</code> otherwise.</p>
 
 <p><a id="X7D03633A7D98026B" name="X7D03633A7D98026B"></a></p>
 

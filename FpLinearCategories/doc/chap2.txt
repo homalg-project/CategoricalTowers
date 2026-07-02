@@ -146,6 +146,8 @@
     [4X[25Xgap>[125X [27XkC := LinearClosure( k, C );[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
     [4X[28Xc:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( kC );[127X[104X
+    [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27Xrels := [ kC.x^10 - kC.x^5, kC.abt - kC.et, kC.y^10 - kC.y^5, kC.x^5, kC.y^5 ];;[127X[104X
     [4X[25Xgap>[125X [27XPerform( rels, Display );[127X[104X
     [4X[28X1*x^10 + (-1)*x^5:(0) → (0)[128X[104X
@@ -157,6 +159,8 @@
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
     [4X[28Xc:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,[128X[104X
     [4X[28X1*a⋅b⋅t + (-1)*e⋅t, 1*y^10 + (-1)*y^5, ... ][128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( quo_kC );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( quo_kC.("0"), quo_kC.("5") );[127X[104X
     [4X[28X<A row module over Q of rank 50>[128X[104X
     [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( quo_kC );[127X[104X
@@ -179,6 +183,8 @@
     [4X[28X<A row module over Q of rank 50>[128X[104X
     [4X[25Xgap>[125X [27XDimension( quo_k_quo_C );[127X[104X
     [4X[28X126[128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( quo_k_quo_C );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XModelingCategory( quo_k_quo_C );[127X[104X
     [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,[128X[104X
     [4X[28Xc:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,[128X[104X

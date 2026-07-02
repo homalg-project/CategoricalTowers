@@ -228,6 +228,8 @@ b:2→4,d:3→4,t:4→5,y:5→5]" ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">kC := LinearClosure( k, C );</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( kC );</span>
+false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">rels := [ kC.x^10 - kC.x^5, kC.abt - kC.et, kC.y^10 - kC.y^5, kC.x^5, kC.y^5 ];;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( rels, Display );</span>
 1*x^10 + (-1)*x^5:(0) → (0)
@@ -239,6 +241,8 @@ c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) )
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3,e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,
 1*a⋅b⋅t + (-1)*e⋅t, 1*y^10 + (-1)*y^5, ... ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( quo_kC );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( quo_kC.("0"), quo_kC.("5") );</span>
 &lt;A row module over Q of rank 50&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A := AlgebroidFromDataTables( quo_kC );</span>
@@ -261,6 +265,8 @@ y^10 = y^5 ] ) / [ 1*[x^5], 1*[y^5] ]
 &lt;A row module over Q of rank 50&gt;
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Dimension( quo_k_quo_C );</span>
 126
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAdmissibleAlgebroid( quo_k_quo_C );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ModelingCategory( quo_k_quo_C );</span>
 Q-LinearClosure( PathCategory( FinQuiver( "q(0,1,2,3,4,5)[x:0→0,s:0→1,a:1→2,
 c:1→3, e:1→4,b:2→4,d:3→4,t:4→5,y:5→5]" ) ) ) / [ 1*x^10 + (-1)*x^5,

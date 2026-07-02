@@ -235,7 +235,7 @@
   [33X[1;0Y[29X[2XAlgebroidFromDataTables[102X( [3Xdata_tables[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X
   
-  [33X[0;0YConstruct  an  enrichted  algebroid [23XA[123X out of the [3Xdata_tables[103X consisting of [23X7[123X
+  [33X[0;0YConstruct  an  enrichted  algebroid [23XA[123X out of the [3Xdata_tables[103X consisting of [23X6[123X
   entries:[133X
   
   [30X    [33X[0;6Y[3Xdata_tables[103X[1] is the commutative ring [23Xk[123X over which [23XA[123X is linear.[133X
@@ -258,6 +258,10 @@
         columns.  The entry [23XL[i][j][123X contains the matrices of the [23Xk[123X-linear maps
         [23X\mathrm{Hom}_{A}(m_j,v_i)[123X  where  [23Xu_i[123X  and [23Xm_j[123X are the [23Xi[123X'th object and
         the [23Xj[123X'th generating morphism.[133X
+  
+  [30X    [33X[0;6Y[3Xdata_tables[103X[6]: [10Xtrue[110X or [10Xfalse[110X if the admissibility of the algebroid is
+        known,  and  [10Xfail[110X  otherwise. When not [10Xfail[110X, this value is used to set
+        the property [10XIsAdmissibleAlgebroid[110X on the resulting algebroid.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FpLinearCategories", false );[127X[104X
@@ -409,8 +413,10 @@
   [33X[1;0Y[29X[2XDataTablesOfLinearCategory[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
   
-  [33X[0;0YReturns  the  5-tuple  data  tables  of a linear category. The output can be
-  passed to the constructor [10XAlgebroidFromDataTables[110X.[133X
+  [33X[0;0YReturns  the  6-tuple  data  tables  of a linear category. The output can be
+  passed  to the constructor [10XAlgebroidFromDataTables[110X. The 6th entry is [10Xtrue[110X or
+  [10Xfalse[110X   if   [10XHasIsAdmissibleAlgebroid[110X  holds  for  the  category,  and  [10Xfail[110X
+  otherwise.[133X
   
   
   [1X1.5 [33X[0;0YGAP categories[133X[101X
