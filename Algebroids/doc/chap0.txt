@@ -7,10 +7,10 @@
                                     quivers [101X
   
   
-                                   2026.06-05
+                                   2026.07-01
   
   
-                                  1 July 2026
+                                  2 July 2026
   
   
                                 Mohamed Barakat
@@ -107,16 +107,15 @@
       2.2-10 SetOfGeneratingMorphisms
       2.2-11 AssignSetOfGeneratingMorphisms
       2.2-12 RelationsOfFpCategoryDefinedByQuiverAlgebra
-      2.2-13 OppositeFpCategoryDefinedByQuiverAlgebra
-      2.2-14 Antipode
-      2.2-15 UnderlyingVertex
-      2.2-16 UnderlyingQuiverAlgebraElement
-      2.2-17 UnderlyingAlgebra
-      2.2-18 Parity
-      2.2-19 POW
-      2.2-20 CategoryFromNerveData
-      2.2-21 TruthMorphismOfTrueToSieveFunctor
-      2.2-22 SieveFunctor
+      2.2-13 Antipode
+      2.2-14 UnderlyingVertex
+      2.2-15 UnderlyingQuiverAlgebraElement
+      2.2-16 UnderlyingAlgebra
+      2.2-17 Parity
+      2.2-18 POW
+      2.2-19 CategoryFromNerveData
+      2.2-20 TruthMorphismOfTrueToSieveFunctor
+      2.2-21 SieveFunctor
     2.3 [33X[0;0YOperations[133X
       2.3-1 TrivialCategory
       2.3-2 \*
@@ -156,16 +155,15 @@
       4.2-10 SetOfGeneratingMorphisms
       4.2-11 AssignSetOfGeneratingMorphisms
       4.2-12 RelationsOfAlgebroid
-      4.2-13 OppositeAlgebroid
-      4.2-14 Antipode
-      4.2-15 UnderlyingVertex
-      4.2-16 UnderlyingQuiverAlgebraElement
-      4.2-17 UnderlyingAlgebra
-      4.2-18 Parity
-      4.2-19 POW
-      4.2-20 DataTablesOfCategory
-      4.2-21 IsomorphismOntoAlgebroidFromDataTables
-      4.2-22 IsomorphismFromAlgebroidFromDataTables
+      4.2-13 Antipode
+      4.2-14 UnderlyingVertex
+      4.2-15 UnderlyingQuiverAlgebraElement
+      4.2-16 UnderlyingAlgebra
+      4.2-17 Parity
+      4.2-18 POW
+      4.2-19 DataTablesOfCategory
+      4.2-20 IsomorphismOntoAlgebroidFromDataTables
+      4.2-21 IsomorphismFromAlgebroidFromDataTables
     4.3 [33X[0;0YOperations[133X
       4.3-1 DecomposeQuiverAlgebraElement
       4.3-2 ApplyToQuiverAlgebraElement

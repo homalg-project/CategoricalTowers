@@ -130,22 +130,14 @@
   [33X[0;0YThe  relations  of  the  finitely  presented  category  [3XC[103X  corresponding  to
   [10XRelationsOfAlgebra( UnderlyingQuiverAlgebra( [3XC[103X[10X ) )[110X.[133X
   
-  [1X2.2-13 OppositeFpCategoryDefinedByQuiverAlgebra[101X
-  
-  [33X[1;0Y[29X[2XOppositeFpCategoryDefinedByQuiverAlgebra[102X( [3XC[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
-  
-  [33X[0;0YThe  finitely  presented  category defined by the opposite of the underlying
-  quiver with relations.[133X
-  
-  [1X2.2-14 Antipode[101X
+  [1X2.2-13 Antipode[101X
   
   [33X[1;0Y[29X[2XAntipode[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YThe antipode of the Hopf finitely presented category [3XB[103X.[133X
   
-  [1X2.2-15 UnderlyingVertex[101X
+  [1X2.2-14 UnderlyingVertex[101X
   
   [33X[1;0Y[29X[2XUnderlyingVertex[102X( [3Xobj[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya vertex in a QPA quiver[133X
@@ -153,7 +145,7 @@
   [33X[0;0YThe  vertex  of the quiver underlying the object [3Xobj[103X in a finitely presented
   category.[133X
   
-  [1X2.2-16 UnderlyingQuiverAlgebraElement[101X
+  [1X2.2-15 UnderlyingQuiverAlgebraElement[101X
   
   [33X[1;0Y[29X[2XUnderlyingQuiverAlgebraElement[102X( [3Xmor[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Yan element in a QPA path algebra[133X
@@ -161,21 +153,21 @@
   [33X[0;0YThe  quiver  algebra  element  underlying  the  morphism  [3Xmor[103X  in a finitely
   presented category.[133X
   
-  [1X2.2-17 UnderlyingAlgebra[101X
+  [1X2.2-16 UnderlyingAlgebra[101X
   
   [33X[1;0Y[29X[2XUnderlyingAlgebra[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya ring[133X
   
   [33X[0;0YThe underlying algebra of the finitely presented category [3XC[103X.[133X
   
-  [1X2.2-18 Parity[101X
+  [1X2.2-17 Parity[101X
   
   [33X[1;0Y[29X[2XParity[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya string ("left" or "right")[133X
   
   [33X[0;0YThe parity of the finitely presented category [3XC[103X.[133X
   
-  [1X2.2-19 POW[101X
+  [1X2.2-18 POW[101X
   
   [33X[1;0Y[29X[2XPOW[102X( [3XC[103X, [3Xn[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category[133X
@@ -183,17 +175,17 @@
   [33X[0;0YThe [3Xn[103X-th power of the finitely presented category [3XC[103X. Admissible values for [3Xn[103X
   are [23X0,1,2[123X.[133X
   
-  [1X2.2-20 CategoryFromNerveData[101X
+  [1X2.2-19 CategoryFromNerveData[101X
   
   [33X[1;0Y[29X[2XCategoryFromNerveData[102X( [3XC[103X ) [32X attribute[133X
   
-  [1X2.2-21 TruthMorphismOfTrueToSieveFunctor[101X
+  [1X2.2-20 TruthMorphismOfTrueToSieveFunctor[101X
   
   [33X[1;0Y[29X[2XTruthMorphismOfTrueToSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
   [33X[0;0YReturn  the  truth  morphism of true from terminal functor to the functor of
-  sieves     from    [10XOppositeFpCategoryDefinedByQuiverAlgebra[110X(    [3XB[103X    )    to
+  sieves       from      [10XOppositeOfObjectFiniteCategory[110X(      [3XB[103X      )      to
   [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
   
   [4X[32X  Example  [32X[104X
@@ -270,13 +262,13 @@
     [4X[28X{ 0,..., 3 } ⱶ[ 0, 4, 6, 7 ]→ { 0,..., 7 }[128X[104X
   [4X[32X[104X
   
-  [1X2.2-22 SieveFunctor[101X
+  [1X2.2-21 SieveFunctor[101X
   
   [33X[1;0Y[29X[2XSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
-  [33X[0;0YReturn  the functor of sieves from [10XOppositeFpCategoryDefinedByQuiverAlgebra[110X(
-  [3XB[103X ) to [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
+  [33X[0;0YReturn  the  functor  of  sieves from [10XOppositeOfObjectFiniteCategory[110X( [3XB[103X ) to
+  [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[a:1->1]" );[127X[104X
