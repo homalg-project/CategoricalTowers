@@ -464,9 +464,8 @@ InstallMethodWithCache( FunctorCategory,
     
     ## building the categorical tower:
     
-    if HasIsInitialCategory( B ) and IsInitialCategory( B ) then
-        B_op := Opposite( B : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
-    elif IsFpCategoryDefinedByQuiverAlgebra( B ) or
+    if ( HasIsInitialCategory( B ) and IsInitialCategory( B ) ) or
+        IsFpCategoryDefinedByQuiverAlgebra( B ) or
         IsFpAlgebroidDefinedByQuiverAlgebra( B ) or
         IsPathCategory( B ) or
         IsQuotientOfPathCategory( B ) or
