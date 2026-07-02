@@ -145,7 +145,7 @@ freyd_B := FreydCategory( add_A );
 #! e:3→3] ) defined by 4 objects and 5 generating morphisms ) )
 IsAbelianCategory( freyd_B );
 #! true
-A_op := OppositeAlgebroid( A );
+A_op := OppositeOfObjectFiniteCategory( A );
 #! Q-algebroid( {0,1,2,3}[a:1→0,b:3→1,c:2→0,d:3→2,e:3→3] ) defined by
 #! 4 objects and 5 generating morphisms
 A_op.("ba");

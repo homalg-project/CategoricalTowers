@@ -35,7 +35,7 @@ t := InterpretMorphismFromDistinguishedObjectToHomomorphismStructureAsMorphism( 
 Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( s ) = ss );
 Assert( 0, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( t ) = tt );
 
-Fop := OppositeFpCategory( F );
+Fop := OppositeOfObjectFiniteCategory( F );
 
 ## The rewriting rule
 K_V := FinSet( [ 1, 2 ] );

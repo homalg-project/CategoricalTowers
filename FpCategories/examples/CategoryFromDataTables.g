@@ -159,11 +159,11 @@ ViewObj( List( mors, DecompositionOfMorphismInCategory ) );
 #! [ [  ], [ (C1)-[(id)]->(C0) ], [ (C0)-[(s)]->(C1) ], [ (C0)-[(t)]->(C1) ],
 #!   [  ], [ (C1)-[(id)]->(C0), (C0)-[(s)]->(C1) ],
 #!   [ (C1)-[(id)]->(C0), (C0)-[(t)]->(C1) ] ]
-C_op := OppositeCategoryFromDataTables( C );
+C_op := OppositeOfObjectFiniteCategory( C );
 #! Opposite(
 #! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
-IsIdenticalObj( OppositeCategoryFromDataTables( C_op ), C );
+IsIdenticalObj( OppositeOfObjectFiniteCategory( C_op ), C );
 #! true
 ViewObj( IndicesOfGeneratingMorphisms( C_op ) );
 #! [ 3, 1, 2 ]

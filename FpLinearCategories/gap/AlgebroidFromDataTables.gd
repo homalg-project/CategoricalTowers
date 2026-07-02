@@ -312,14 +312,6 @@ DeclareAttribute( "DecompositionIndicesOfMorphismInAlgebroid",
         IsMorphismInFpAlgebroidFromDataTables );
 
 #! @Description
-#!  The argument is an algebroid <A>A</A>.
-#!  The ouput is the opposite algebroid $A^{\mathrm{op}}$ constructed as an algebroid from data tables.
-#! @Arguments A
-#! @Returns a &CAP; category
-DeclareAttribute( "OppositeAlgebroid",
-        IsFpAlgebroidFromDataTables );
-
-#! @Description
 #!  The arguments are two algebroids <A>A</A> and <A>B</A>.
 #!  The output is the tensor product algebroid <A>A</A>$\otimes$<A>B</A>.
 #! @Arguments A, B

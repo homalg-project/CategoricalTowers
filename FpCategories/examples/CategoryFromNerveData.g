@@ -116,13 +116,13 @@ Display( HomStructure( tau, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 2, 1, 2 ]→ { 0, 1, 2 }
 Display( HomStructure( idC1, idC1 ) );
 #! { 0, 1, 2 } ⱶ[ 0, 1, 2 ]→ { 0, 1, 2 }
-C_op := OppositeCategoryFromNerveData( C );
+C_op := OppositeOfObjectFiniteCategory( C );
 #! Opposite(
 #! PathCategory( FinQuiver( "Delta(C0,C1)[id:C1→C0,s:C0→C1,t:C0→C1]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0) ] )
 NerveData( C_op ) = NerveTruncatedInDegree2Data( C_op );
 #! true
-IsIdenticalObj( OppositeCategoryFromNerveData( C_op ), C );
+IsIdenticalObj( OppositeOfObjectFiniteCategory( C_op ), C );
 #! true
 Display( IndicesOfGeneratingMorphisms( C_op ) );
 #! [ 3, 1, 2 ]

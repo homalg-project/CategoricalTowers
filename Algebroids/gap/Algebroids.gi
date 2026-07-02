@@ -2175,7 +2175,7 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( OppositeAlgebroid,
+InstallMethod( OppositeOfObjectFiniteCategory,
         "for an algebroid",
         [ IsFpAlgebroidDefinedByQuiverAlgebra and HasUnderlyingQuiver ],
         
@@ -2201,7 +2201,7 @@ InstallMethod( OppositeAlgebroid,
                     over_Z : range_of_HomStructure := range_category
                     );
     
-    SetOppositeAlgebroid( A_op, A );
+    SetOppositeOfObjectFiniteCategory( A_op, A );
     
     if HasIsLinearClosureOfACategory( A ) then
         SetIsLinearClosureOfACategory( A_op, IsLinearClosureOfACategory( A ) );
