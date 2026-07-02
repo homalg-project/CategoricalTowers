@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2026.06-02",
+Version := "2026.07-01",
 
-Date := "2026-06-30",
-Date := "2026-06-30",
+Date := "2026-07-02",
+Date := "2026-07-02",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -108,8 +108,8 @@ Dependencies := rec(
                    [ "Toposes", ">= 2022.05-07" ],
                    [ "FinSetsForCAP", ">= 2022.05-07" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-03" ],
-                   [ "Algebroids", ">= 2026.04-01" ],
-                   [ "FunctorCategories", ">= 2026.04-01" ],
+                   [ "Algebroids", ">= 2026.07-01" ],
+                   [ "FunctorCategories", ">= 2026.07-01" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],
