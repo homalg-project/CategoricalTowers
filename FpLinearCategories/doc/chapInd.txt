@@ -2,7 +2,7 @@
   
   [1XIndex[101X
   
-  [2X\*[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-12 
+  [2X\*[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-11 
   [2XAlgebroidFromDataTables[102X, for IsDenseList 1.4-1 
   [2XAssignSetOfGeneratingMorphisms[102X, for IsFpAlgebroidFromDataTables, IsString 1.3-2 
   [2XAssignSetOfObjects[102X, for IsFpAlgebroidFromDataTables, IsString 1.3-1 
@@ -14,8 +14,8 @@
   [2XDecompositionIndicesOfBasesElements[102X, for IsFpAlgebroidFromDataTables 1.2-7 
   [2XDecompositionIndicesOfMorphismInAlgebroid[102X, for IsMorphismInFpAlgebroidFromDataTables 1.3-9 
   [2XDecompositionOfMorphismInAlgebroid[102X, for IsMorphismInFpAlgebroidFromDataTables 1.3-8 
-  [2XElementaryTensor[102X, for IsMorphismInFpAlgebroidFromDataTables, IsMorphismInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-14 
-      for IsObjectInFpAlgebroidFromDataTables, IsObjectInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-13 
+  [2XElementaryTensor[102X, for IsMorphismInFpAlgebroidFromDataTables, IsMorphismInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-13 
+      for IsObjectInFpAlgebroidFromDataTables, IsObjectInFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-12 
   [2XGroebnerBasis[102X, for IsLinearClosure, IsDenseList 2.2-1 
   [2XIndicesOfSupportMorphisms[102X, for IsMorphismInFpAlgebroidFromDataTables 1.3-5 
   [2XIsAdmissibleAlgebroid[102X, for IsFpAlgebroidFromDataTables 1.1-1 
@@ -48,13 +48,12 @@
   [2XLaTeXStringsOfBasesElements[102X, for IsFpAlgebroidFromDataTables 1.2-9 
   [2XLinearClosure[102X, for IsHomalgRing, IsPathCategory 2.1-11 
   [2XObjectIndex[102X, for IsObjectInFpAlgebroidFromDataTables 1.3-3 
-  [2XOppositeAlgebroid[102X, for IsFpAlgebroidFromDataTables 1.3-10 
   [2XPowerOfArrowIdeal[102X, for IsFpAlgebroidFromDataTables, IsInt 1.2-10 
   [2XQuotientCategory[102X, for IsFpAlgebroidFromDataTables, IsDenseList 1.2-4 
       for IsLinearClosure, IsDenseList 2.1-17 
   [2XReducedGroebnerBasis[102X, for IsLinearClosure, IsDenseList 2.2-2 
   [2XSupportMorphisms[102X, for IsMorphismInFpAlgebroidFromDataTables 1.3-7 
-  [2XTensorProductOfAlgebroids[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-11 
+  [2XTensorProductOfAlgebroids[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-10 
   
   
   -------------------------------------------------------

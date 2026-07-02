@@ -56,11 +56,10 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7D69461A7C7FD3E4">1.3-7 SupportMorphisms</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7F3A10FD782C847A">1.3-8 DecompositionOfMorphismInAlgebroid</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X7CB92D177CF6048E">1.3-9 DecompositionIndicesOfMorphismInAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X811C80287DF0F751">1.3-10 OppositeAlgebroid</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X860F0EEF824A162E">1.3-11 TensorProductOfAlgebroids</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X865BD5277B9C3561"><code>1.3-12 \*</code></a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79D9967884FF2404">1.3-13 ElementaryTensor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X836962827A2919E1">1.3-14 ElementaryTensor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X860F0EEF824A162E">1.3-10 TensorProductOfAlgebroids</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X865BD5277B9C3561"><code>1.3-11 \*</code></a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X79D9967884FF2404">1.3-12 ElementaryTensor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1_mj.html#X836962827A2919E1">1.3-13 ElementaryTensor</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1_mj.html#X86EC0F0A78ECBC10">1.4 <span class="Heading">Constructors</span></a>
 </span>
@@ -275,18 +274,9 @@
 
 <p>The argument is a morphism <var class="Arg">alpha</var> in an algebroid <span class="SimpleMath">\(A\)</span> (over a commutative ring <span class="SimpleMath">\(k\)</span>). The output is a list of pairs <span class="SimpleMath">\(L=[[c_1,l_1],..,[c_n,l_n]]\)</span> where for each <span class="SimpleMath">\(i=1,\dots,n\)</span>, <span class="SimpleMath">\(c_i\)</span> is a non-zero element in <span class="SimpleMath">\(k\)</span> and <span class="SimpleMath">\(l_i\)</span> is either the empty-list or a list of <em>indices</em> of (precomposable) generating morphisms. The output can be used to compute <code class="code">DecompositionOfMorphismInAlgebroid</code>(<var class="Arg">alpha</var>).</p>
 
-<p><a id="X811C80287DF0F751" name="X811C80287DF0F751"></a></p>
-
-<h5>1.3-10 OppositeAlgebroid</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; OppositeAlgebroid</code>( <var class="Arg">A</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
-<p>Returns: a CAP category</p>
-
-<p>The argument is an algebroid <var class="Arg">A</var>. The ouput is the opposite algebroid <span class="SimpleMath">\(A^{\mathrm{op}}\)</span> constructed as an algebroid from data tables.</p>
-
 <p><a id="X860F0EEF824A162E" name="X860F0EEF824A162E"></a></p>
 
-<h5>1.3-11 TensorProductOfAlgebroids</h5>
+<h5>1.3-10 TensorProductOfAlgebroids</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TensorProductOfAlgebroids</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category</p>
@@ -295,7 +285,7 @@
 
 <p><a id="X865BD5277B9C3561" name="X865BD5277B9C3561"></a></p>
 
-<h5><code>1.3-12 \*</code></h5>
+<h5><code>1.3-11 \*</code></h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; \*</code>( <var class="Arg">A</var>, <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category</p>
@@ -304,7 +294,7 @@
 
 <p><a id="X79D9967884FF2404" name="X79D9967884FF2404"></a></p>
 
-<h5>1.3-13 ElementaryTensor</h5>
+<h5>1.3-12 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">a</var>, <var class="Arg">b</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category object</p>
@@ -313,7 +303,7 @@
 
 <p><a id="X836962827A2919E1" name="X836962827A2919E1"></a></p>
 
-<h5>1.3-14 ElementaryTensor</h5>
+<h5>1.3-13 ElementaryTensor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ElementaryTensor</code>( <var class="Arg">f</var>, <var class="Arg">g</var>, <var class="Arg">T</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP category morphism</p>
@@ -460,7 +450,7 @@ Freyd( AdditiveClosure( Q-algebroid( {0,1,2,3}[a:0→1,b:1→3,c:0→2,d:2→3,
 e:3→3] ) defined by 4 objects and 5 generating morphisms ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsAbelianCategory( freyd_B );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op := OppositeAlgebroid( A );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op := OppositeOfObjectFiniteCategory( A );</span>
 Q-algebroid( {0,1,2,3}[a:1→0,b:3→1,c:2→0,d:3→2,e:3→3] ) defined by
 4 objects and 5 generating morphisms
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">A_op.("ba");</span>
