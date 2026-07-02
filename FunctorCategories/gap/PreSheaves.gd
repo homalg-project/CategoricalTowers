@@ -232,6 +232,9 @@ end );
 DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
 
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
+        [ IsCapCategory, IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
+
 #! @Description
 #!  Apply the presheaf <A>F</A> to the morphism <A>mor</A> which is either a generating morphism or an identity morphism.
 #! @Arguments F, mor
