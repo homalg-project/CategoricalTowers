@@ -79,10 +79,8 @@
       for IsQuotientOfPathCategoryObject 7.2-5 
   [2XObjectLabel[102X, for IsFinQuiverObject 1.2-17 
       for IsPathCategoryObject 2.2-5 
-  [2XOppositeCategoryFromDataTables[102X, for IsCategoryFromDataTables 3.1-3 
-  [2XOppositeCategoryFromNerveData[102X, for IsCategoryFromNerveData 6.2-3 
   [2XOppositeFiniteCategory[102X, for IsCapCategory 4.2-6 
-  [2XOppositePathCategory[102X, for IsPathCategory 2.2-1 
+  [2XOppositeOfObjectFiniteCategory[102X, for IsCapCategory 2.2-1 
   [2XOppositeQuiver[102X, for IsFinQuiver 1.2-15 
   [2XOppositeQuotientOfPathCategory[102X, for IsQuotientOfPathCategory 7.2-1 
   [2XPathCategory[102X, for IsFinQuiver 2.1-1 

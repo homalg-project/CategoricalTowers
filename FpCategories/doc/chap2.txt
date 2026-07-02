@@ -54,9 +54,9 @@
   
   [1X2.2 [33X[0;0YAttributes[133X[101X
   
-  [1X2.2-1 OppositePathCategory[101X
+  [1X2.2-1 OppositeOfObjectFiniteCategory[101X
   
-  [33X[1;0Y[29X[2XOppositePathCategory[102X( [3XC[103X ) [32X attribute[133X
+  [33X[1;0Y[29X[2XOppositeOfObjectFiniteCategory[102X( [3XC[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya path category[133X
   
   [33X[0;0YReturns the opposite category of the path category [3XC[103X.[133X
