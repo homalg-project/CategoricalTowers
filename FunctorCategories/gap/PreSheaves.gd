@@ -90,6 +90,10 @@ DeclareOperation( "AdditionalMonoidalPreSheafOperationNames",
         [ IsCapCategory ] );
 
 ##
+DeclareOperation( "AddAdditionalPrecompiledFunctionsToPreSheafCategory",
+        [ IsCapCategory, IsCapCategory, IsPreSheafCategory ] );
+
+##
 DeclareAttribute( "YonedaEmbeddingDataOfSourceCategory",
         IsPreSheafCategoryOfFpEnrichedCategory );
 

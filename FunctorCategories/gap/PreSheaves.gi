@@ -1124,6 +1124,82 @@ InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY,
 end );
 
 ##
+InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
+    "for a category, a category, and a presheaf category",
+    [ IsCapCategory, IsCapCategory, IsPreSheafCategory ],
+    
+  function ( B, D, PSh )
+    
+    return;
+    
+end );
+
+##
+InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
+    "for a data-tables source, a category, and a presheaf category",
+    [ IsCategoryFromDataTables, IsCapCategory, IsPreSheafCategory ],
+    
+  function ( B, D, PSh )
+    
+    if not IsSkeletalCategoryOfFiniteSets( D ) then
+        return;
+    fi;
+    
+    ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
+    
+    ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
+    
+end );
+
+##
+InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
+    "for a quiver algebra source, a category, and a presheaf category",
+    [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory, IsPreSheafCategory ],
+    
+  function ( B, D, PSh )
+    
+    if not IsSkeletalCategoryOfFiniteSets( D ) then
+        return;
+    fi;
+    
+    ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled( PSh );
+    
+    ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
+    
+end );
+
+##
+InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
+    "for an algebroid defined by a quiver algebra, a category, and a presheaf category",
+    [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory, IsPreSheafCategory ],
+    
+  function ( B, D, PSh )
+    local commutative_semiring;
+    
+    commutative_semiring := CommutativeSemiringOfLinearCategory( D );
+    
+    if IsCategoryOfRows( D ) and
+       IsHomalgRing( commutative_semiring ) and
+       HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) and
+       not B!.over_Z then
+        
+        if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
+           ( HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
+             HasCounit( B ) and HasComultiplication( B ) ) then
+            
+            ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( PSh );
+            
+        else
+            
+            ADD_FUNCTIONS_FOR_PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( PSh );
+            
+        fi;
+        
+    fi;
+    
+end );
+
+##
 InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
   function ( PSh )
     local B, auxiliary_indices;
@@ -2265,42 +2341,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     #if false then
     if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         
-        if IsFpCategoryDefinedByQuiverAlgebra( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
-            
-            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsPrecompiled( PSh );
-            
-            ADD_FUNCTIONS_FOR_PreSheavesOfFpCategoryDefinedByQuiverAlgebraInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
-            
-        elif IsCategoryFromDataTables( B ) and IsSkeletalCategoryOfFiniteSets( D ) then
-            
-            ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( PSh );
-            
-            ADD_FUNCTIONS_FOR_PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsSubobjectClassifierPrecompiled( PSh );
-            
-        elif IsFpAlgebroidDefinedByQuiverAlgebra( B ) then
-            
-            commutative_semiring := CommutativeSemiringOfLinearCategory( D );
-            
-            if IsCategoryOfRows( D ) and
-               IsHomalgRing( commutative_semiring ) and
-               HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) and
-               not B!.over_Z then
-                
-                if IsQuotientOfPathAlgebra( UnderlyingQuiverAlgebra( B ) ) or
-                   ( HasIsMonoidalCategory( D ) and IsMonoidalCategory( D ) and
-                     HasCounit( B ) and HasComultiplication( B ) ) then
-                    
-                    ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidWithRelationsInCategoryOfRowsPrecompiled( PSh );
-                    
-                else
-                    
-                    ADD_FUNCTIONS_FOR_PreSheavesOfFreeAlgebroidInCategoryOfRowsPrecompiled( PSh );
-                    
-                fi;
-                
-            fi;
-            
-        fi;
+        AddAdditionalPrecompiledFunctionsToPreSheafCategory( B, D, PSh );
         
     fi;
     
