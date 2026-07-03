@@ -260,6 +260,9 @@ InstallMethod( CreateCoPreSheaf,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( CreateCoPreSheaf,
         "for a copresheaf category and two lists",
         [ IsCoPreSheafCategory and HasRangeCategoryOfHomomorphismStructure, IsList, IsList ],
@@ -307,6 +310,9 @@ InstallMethod( CreateCoPreSheaf,
     return CreateCoPreSheafByValues( coPSh, objects, morphisms );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallOtherMethodForCompilerForCAP( CreateCoPreSheafMorphismByValues,
@@ -569,6 +575,9 @@ InstallMethodWithCache( CoPreSheaves,
 end ) );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( CoPreSheaves,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
@@ -597,6 +606,9 @@ InstallMethodWithCache( CoPreSheaves,
     return coPSh;
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( CoPreSheaves,
@@ -768,6 +780,9 @@ end );
 ####################################
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( ViewString,
         [ IsObjectInCoPreSheafCategory ],
         
@@ -815,6 +830,9 @@ InstallMethod( ViewString,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethod( DisplayString,
         [ IsObjectInCoPreSheafCategory ],
@@ -856,6 +874,9 @@ InstallMethod( DisplayString,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( ViewString,
         [ IsMorphismInCoPreSheafCategory ],
         
@@ -881,6 +902,9 @@ InstallMethod( ViewString,
     return Concatenation( "<", string, ">" );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( DisplayString,

@@ -61,6 +61,9 @@ InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
         "for a functor category with algebroid source",
         [ IsFunctorCategory, IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ],
@@ -204,6 +207,9 @@ InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
     end );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( ApplyObjectInFunctorCategoryToMorphism,
@@ -415,6 +421,8 @@ InstallMethod( AsObjectInFunctorCategory,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( AsObjectInFunctorCategory,
         "for a functor category and two lists",
@@ -467,6 +475,9 @@ InstallMethod( AsObjectInFunctorCategory,
     return AsObjectInFunctorCategoryByValues( Hom, objects, morphisms );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategoryByValues,
@@ -728,6 +739,9 @@ InstallMethodWithCache( FunctorCategory,
 end ) );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( FunctorCategory,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
@@ -757,6 +771,9 @@ InstallMethodWithCache( FunctorCategory,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethod( FunctorCategory,
         "for a CAP category",
@@ -776,11 +793,17 @@ InstallMethod( Hom,
   FunctorCategory );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( Hom,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   FunctorCategory );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -1060,6 +1083,8 @@ end );
 #
 ####################################
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsObjectInFunctorCategory ],
@@ -1108,6 +1133,9 @@ InstallMethod( ViewString,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethod( DisplayString,
         [ IsObjectInFunctorCategory ],
@@ -1148,6 +1176,8 @@ InstallMethod( DisplayString,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsMorphismInFunctorCategory ],
@@ -1174,6 +1204,9 @@ InstallMethod( ViewString,
     return Concatenation( "<", string, ">" );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( DisplayString,
