@@ -23,13 +23,13 @@ ReadPackageOnce( "Algebroids", "gap/CompilerLogic.gi" );
 ReadPackageOnce( "FunctorCategories", "gap/CompilerLogic.gi" );
 #! true
 
-free_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;
+free_category_of_quiver := { quiver, sFinSets } -> CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true );;
 
 category_constructor :=
   function( quiver )
-    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( FreeCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;
+    local sFinSets; sFinSets := SkeletalCategoryOfFiniteSets( : FinalizeCategory := true, overhead := true ); return PreSheaves( CategoryFromDataTables( PathCategory( quiver : range_of_HomStructure := sFinSets, FinalizeCategory := true ) : FinalizeCategory := true ), sFinSets ); end;;
 
-given_arguments := [ RightQuiver( "q(2)[m:1->2]" ) ];;
+given_arguments := [ FinQuiver( "q(2)[m:1->2]" ) ];;
 compiled_category_name := "PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled";;
 package_name := "FunctorCategories";;
 
@@ -53,10 +53,10 @@ CapJitPrecompileCategoryAndCompareResult(
 );;
 
 PreSheavesOfCategoryFromDataTablesInSkeletalFinSetsPrecompiled( given_arguments[1] );
-#! PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )
+#! PreSheaves( PathCategory( FinQuiver( "q(1,2)[m:1→2]" ) ), SkeletalFinSets )
 
 cat := PreSheaves( free_category_of_quiver( given_arguments[1], SkeletalFinSets ) );
-#! PreSheaves( FreeCategory( RightQuiver( "q(2)[m:1->2]" ) ), SkeletalFinSets )
+#! PreSheaves( PathCategory( FinQuiver( "q(1,2)[m:1→2]" ) ), SkeletalFinSets )
 
 cat!.precompiled_functions_added;
 #! true
