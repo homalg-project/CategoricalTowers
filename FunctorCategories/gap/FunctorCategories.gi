@@ -817,13 +817,15 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
   function ( B_op )
     local B, Hom, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
-    fi;
+    Assert( 0, HasIsObjectFiniteCategory( B_op ) and IsObjectFiniteCategory( B_op ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfObjectsOfCategory" ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfGeneratingMorphismsOfCategory" ) );
+    
+    Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
+    
+    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     
     Hom := FunctorCategory( B );
     
@@ -867,13 +869,15 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
   function ( B_op )
     local B, Hom, Yoneda, Yoneda_data;
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
-    fi;
+    Assert( 0, HasIsObjectFiniteCategory( B_op ) and IsObjectFiniteCategory( B_op ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfObjectsOfCategory" ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfGeneratingMorphismsOfCategory" ) );
+    
+    Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
+    
+    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     
     Hom := FunctorCategory( B );
     
