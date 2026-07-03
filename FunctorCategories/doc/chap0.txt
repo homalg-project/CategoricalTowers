@@ -6,7 +6,7 @@
                             [1X Categories of functors [101X
   
   
-                                   2026.07-03
+                                   2026.07-04
   
   
                                   3 July 2026
@@ -53,14 +53,15 @@
       1.2-3 Source
       1.2-4 Target
       1.2-5 OppositeOfSource
-      1.2-6 ValuesOfFunctor
-      1.2-7 ValuesOnAllObjects
-      1.2-8 UnderlyingCapTwoCategoryCell
-      1.2-9 YonedaEmbeddingInFunctorCategory
-      1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory
-      1.2-11 YonedaFibration
-      1.2-12 YonedaProjection
-      1.2-13 YonedaComposition
+      1.2-6 AddAdditionalMonoidalStructureToFunctorCategory
+      1.2-7 ValuesOfFunctor
+      1.2-8 ValuesOnAllObjects
+      1.2-9 UnderlyingCapTwoCategoryCell
+      1.2-10 YonedaEmbeddingInFunctorCategory
+      1.2-11 YonedaEmbeddingOfOppositeOfSourceCategory
+      1.2-12 YonedaFibration
+      1.2-13 YonedaProjection
+      1.2-14 YonedaComposition
     1.3 [33X[0;0YOperations[133X
       1.3-1 DecomposeOnceByRandomEndomorphism
       1.3-2 WeakDirectSumDecomposition

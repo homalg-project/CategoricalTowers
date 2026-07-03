@@ -192,6 +192,8 @@
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA3 := QF / [ QF.ab ];[127X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( A3 );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( A3 );[127X[104X
     [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
     [4X[28X/ relations, Rows( Q ) )[128X[104X
@@ -261,6 +263,8 @@
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
     [4X[25Xgap>[125X [27XA3 := QF / [ QF.ab ];[127X[104X
     [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( A3 );[127X[104X
+    [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( A3 );[127X[104X
     [4X[28XPreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1->2,b:2->3]" ) ) )[128X[104X
     [4X[28X/ relations, Rows( Q ) )[128X[104X

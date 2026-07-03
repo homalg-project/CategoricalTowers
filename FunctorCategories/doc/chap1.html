@@ -37,14 +37,15 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8500B52D8700ECDD">1.2-3 Source</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X86883BF3855ABE04">1.2-4 Target</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X87EDD3657AE933AA">1.2-5 OppositeOfSource</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X823B95D985C7681A">1.2-6 ValuesOfFunctor</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X855A9FA27F70E561">1.2-7 ValuesOnAllObjects</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X793D33887EBC5ED9">1.2-8 UnderlyingCapTwoCategoryCell</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D44A7D7812A9AA5">1.2-9 YonedaEmbeddingInFunctorCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X860DF3247E4FF4C5">1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81A950BF7D4B9E65">1.2-11 YonedaFibration</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B5163DA7DE45534">1.2-12 YonedaProjection</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A16E3987B0DFFA3">1.2-13 YonedaComposition</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X8614EC7187F0FF07">1.2-6 AddAdditionalMonoidalStructureToFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X823B95D985C7681A">1.2-7 ValuesOfFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X855A9FA27F70E561">1.2-8 ValuesOnAllObjects</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X793D33887EBC5ED9">1.2-9 UnderlyingCapTwoCategoryCell</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7D44A7D7812A9AA5">1.2-10 YonedaEmbeddingInFunctorCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X860DF3247E4FF4C5">1.2-11 YonedaEmbeddingOfOppositeOfSourceCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X81A950BF7D4B9E65">1.2-12 YonedaFibration</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7B5163DA7DE45534">1.2-13 YonedaProjection</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap1.html#X7A16E3987B0DFFA3">1.2-14 YonedaComposition</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7DE8E16C7C2D387B">1.3 <span class="Heading">Operations</span></a>
 </span>
@@ -173,9 +174,16 @@
 
 <p>The opposite of the source category of the functor category <var class="Arg">Hom</var>.</p>
 
+<p><a id="X8614EC7187F0FF07" name="X8614EC7187F0FF07"></a></p>
+
+<h5>1.2-6 AddAdditionalMonoidalStructureToFunctorCategory</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; AddAdditionalMonoidalStructureToFunctorCategory</code>( <var class="Arg">Hom</var>, <var class="Arg">B</var>, <var class="Arg">D</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Installs optional monoidal structure on the functor category <var class="Arg">Hom</var> depending on the source category <var class="Arg">B</var> and target category <var class="Arg">D</var>.</p>
+
 <p><a id="X823B95D985C7681A" name="X823B95D985C7681A"></a></p>
 
-<h5>1.2-6 ValuesOfFunctor</h5>
+<h5>1.2-7 ValuesOfFunctor</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOfFunctor</code>( <var class="Arg">F</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a pair of lists</p>
@@ -184,7 +192,7 @@
 
 <p><a id="X855A9FA27F70E561" name="X855A9FA27F70E561"></a></p>
 
-<h5>1.2-7 ValuesOnAllObjects</h5>
+<h5>1.2-8 ValuesOnAllObjects</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; ValuesOnAllObjects</code>( <var class="Arg">eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
@@ -195,28 +203,28 @@
 
 <p><a id="X793D33887EBC5ED9" name="X793D33887EBC5ED9"></a></p>
 
-<h5>1.2-8 UnderlyingCapTwoCategoryCell</h5>
+<h5>1.2-9 UnderlyingCapTwoCategoryCell</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; UnderlyingCapTwoCategoryCell</code>( <var class="Arg">F_or_eta</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor or natural transformation</p>
 
 <p><a id="X7D44A7D7812A9AA5" name="X7D44A7D7812A9AA5"></a></p>
 
-<h5>1.2-9 YonedaEmbeddingInFunctorCategory</h5>
+<h5>1.2-10 YonedaEmbeddingInFunctorCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingInFunctorCategory</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
 
 <p><a id="X860DF3247E4FF4C5" name="X860DF3247E4FF4C5"></a></p>
 
-<h5>1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory</h5>
+<h5>1.2-11 YonedaEmbeddingOfOppositeOfSourceCategory</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaEmbeddingOfOppositeOfSourceCategory</code>( <var class="Arg">Hom</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a CAP functor</p>
 
 <p><a id="X81A950BF7D4B9E65" name="X81A950BF7D4B9E65"></a></p>
 
-<h5>1.2-11 YonedaFibration</h5>
+<h5>1.2-12 YonedaFibration</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaFibration</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a CAP category</p>
@@ -225,7 +233,7 @@
 
 <p><a id="X7B5163DA7DE45534" name="X7B5163DA7DE45534"></a></p>
 
-<h5>1.2-12 YonedaProjection</h5>
+<h5>1.2-13 YonedaProjection</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaProjection</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a CAP category</p>
@@ -234,7 +242,7 @@
 
 <p><a id="X7A16E3987B0DFFA3" name="X7A16E3987B0DFFA3"></a></p>
 
-<h5>1.2-13 YonedaComposition</h5>
+<h5>1.2-14 YonedaComposition</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; YonedaComposition</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
 <p>Returns: a morphism in a CAP category</p>

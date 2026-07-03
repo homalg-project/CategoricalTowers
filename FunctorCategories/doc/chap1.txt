@@ -95,7 +95,14 @@
   
   [33X[0;0YThe opposite of the source category of the functor category [3XHom[103X.[133X
   
-  [1X1.2-6 ValuesOfFunctor[101X
+  [1X1.2-6 AddAdditionalMonoidalStructureToFunctorCategory[101X
+  
+  [33X[1;0Y[29X[2XAddAdditionalMonoidalStructureToFunctorCategory[102X( [3XHom[103X, [3XB[103X, [3XD[103X ) [32X operation[133X
+  
+  [33X[0;0YInstalls  optional  monoidal structure on the functor category [3XHom[103X depending
+  on the source category [3XB[103X and target category [3XD[103X.[133X
+  
+  [1X1.2-7 ValuesOfFunctor[101X
   
   [33X[1;0Y[29X[2XValuesOfFunctor[102X( [3XF[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya pair of lists[133X
@@ -105,7 +112,7 @@
   the  source category of [3XHom[103X. The second is the list of values of the functor
   [3XF[103X on all *generating* morphisms of the source category of [3XHom[103X.[133X
   
-  [1X1.2-7 ValuesOnAllObjects[101X
+  [1X1.2-8 ValuesOnAllObjects[101X
   
   [33X[1;0Y[29X[2XValuesOnAllObjects[102X( [3Xeta[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya list[133X
@@ -115,22 +122,22 @@
   
   [33X[0;0YThe 2-cell underlying the functor object [3XF_or_eta[103X.[133X
   
-  [1X1.2-8 UnderlyingCapTwoCategoryCell[101X
+  [1X1.2-9 UnderlyingCapTwoCategoryCell[101X
   
   [33X[1;0Y[29X[2XUnderlyingCapTwoCategoryCell[102X( [3XF_or_eta[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor or natural transformation[133X
   
-  [1X1.2-9 YonedaEmbeddingInFunctorCategory[101X
+  [1X1.2-10 YonedaEmbeddingInFunctorCategory[101X
   
   [33X[1;0Y[29X[2XYonedaEmbeddingInFunctorCategory[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
-  [1X1.2-10 YonedaEmbeddingOfOppositeOfSourceCategory[101X
+  [1X1.2-11 YonedaEmbeddingOfOppositeOfSourceCategory[101X
   
   [33X[1;0Y[29X[2XYonedaEmbeddingOfOppositeOfSourceCategory[102X( [3XHom[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
   
-  [1X1.2-11 YonedaFibration[101X
+  [1X1.2-12 YonedaFibration[101X
   
   [33X[1;0Y[29X[2XYonedaFibration[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
@@ -142,7 +149,7 @@
   \mathrm{Hom}(a,\psi)[123X. Its target is the constant functor of [23X0[123X-cells [23XB \to H,
   c \mapsto B_0, \psi \mapsto \mathrm{id}_{B_0}[123X.[133X
   
-  [1X1.2-12 YonedaProjection[101X
+  [1X1.2-13 YonedaProjection[101X
   
   [33X[1;0Y[29X[2XYonedaProjection[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
@@ -156,7 +163,7 @@
   \sqcup_{a\in    B}   \mathrm{Hom}(a,c),   \psi   \mapsto   \sqcup_{a\in   B}
   \mathrm{Hom}(a,\psi)[123X.[133X
   
-  [1X1.2-13 YonedaComposition[101X
+  [1X1.2-14 YonedaComposition[101X
   
   [33X[1;0Y[29X[2XYonedaComposition[102X( [3XB[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya morphism in a CAP category[133X
