@@ -905,14 +905,12 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a functor category and a positive integer",
-        [ IsFunctorCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a functor category and a string",
+        [ IsString, IsFunctorCategory ],
         
-  function( Hom, string_as_int )
-    local name, opY, F, opYc;
-    
-    name := NameRNam( string_as_int );
+  function( name, Hom )
+    local opY, F, opYc;
     
     opY := YonedaEmbeddingOfOppositeOfSourceCategory( Hom );
     
@@ -953,6 +951,10 @@ InstallMethod( \.,
     return opYc;
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFunctorCategory );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( YonedaProjection,
