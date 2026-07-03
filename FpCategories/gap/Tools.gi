@@ -679,7 +679,11 @@ InstallMethod( OppositeFiniteCategory,
         "for a finite category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+    [
+        [ "FinalizeCategory", true ],
+    ],
+  function ( CAP_NAMED_ARGUMENTS, C )
     local C_op, defining_triple;
     
     if not ( HasIsFiniteCategory( C ) and IsFiniteCategory( C ) ) then
@@ -700,14 +704,39 @@ InstallMethod( OppositeFiniteCategory,
     
     return C_op;
     
-end );
+end ) );
 
 ##
 InstallMethod( OppositeOfObjectFiniteCategory,
         "for a finite category",
         [ IsCapCategory ],
-
-    OppositeFiniteCategory );
+        
+  FunctionWithNamedArguments(
+    [
+        [ "FinalizeCategory", true ],
+    ],
+  function ( CAP_NAMED_ARGUMENTS, C )
+    local C_op, defining_triple;
+    
+    if not ( HasIsObjectFiniteCategory( C ) and IsObjectFiniteCategory( C ) ) then
+        TryNextMethod( );
+    fi;
+    
+    C_op := Opposite( C : only_primitive_operations_and_hom_structure := true, FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
+    
+    defining_triple := DefiningTripleOfUnderlyingQuiver( C );
+    
+    defining_triple := Triple( defining_triple[1],
+                               defining_triple[2],
+                               List( defining_triple[3], a -> Pair( a[2], a[1] ) ) );
+    
+    SetDefiningTripleOfUnderlyingQuiver( C_op, defining_triple );
+    
+    SetOppositeOfObjectFiniteCategory( C_op, C );
+    
+    return C_op;
+    
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( YonedaNaturalEpimorphisms,
