@@ -82,6 +82,18 @@ DeclareAttribute( "UnderlyingCapTwoCategoryCell",
         IsCellInPreSheafCategory );
 
 ##
+DeclareAttribute( "WellDefinednessForObjectsCheckDataOrFail",
+        IsCapCategory );
+
+##
+DeclareOperation( "AdditionalMonoidalPreSheafOperationNames",
+        [ IsCapCategory ] );
+
+##
+DeclareOperation( "AddAdditionalPrecompiledFunctionsToPreSheafCategory",
+        [ IsCapCategory, IsCapCategory, IsPreSheafCategory ] );
+
+##
 DeclareAttribute( "YonedaEmbeddingDataOfSourceCategory",
         IsPreSheafCategoryOfFpEnrichedCategory );
 
@@ -219,6 +231,9 @@ end );
 #! @Returns a &CAP; morphism
 DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
+
+DeclareOperation( "ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism",
+        [ IsCapCategory, IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ] );
 
 #! @Description
 #!  Apply the presheaf <A>F</A> to the morphism <A>mor</A> which is either a generating morphism or an identity morphism.

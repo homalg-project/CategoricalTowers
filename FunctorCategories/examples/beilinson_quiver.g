@@ -29,6 +29,9 @@ A := kF / [
             kF.y2 * kF.z3 + kF.y3 * kF.z2
           ];;
 
+IsAdmissibleAlgebroid( A );
+# true
+
 PSh := PreSheaves( A );
 
 indec := Shuffle( Concatenation( IndecomposableProjectiveObjects( PSh ), IndecomposableInjectiveObjects( PSh ) ) );

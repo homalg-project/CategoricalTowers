@@ -1286,6 +1286,7 @@ InstallMethod( Algebroid,
     SetIsAbCategory( A, true );
     SetIsLinearCategoryOverCommutativeRing( A, true );
     
+    SetIsObjectFiniteCategory( A, true );
     SetIsFinitelyPresentedLinearCategory( A, true );
     SetUnderlyingQuiver( A, quiver );
     SetUnderlyingAlgebra( A, domain );

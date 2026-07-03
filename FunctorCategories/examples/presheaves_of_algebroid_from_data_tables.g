@@ -24,7 +24,8 @@ kF := k[F];
 A := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );
 #! Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects
 #! and 6 generating morphisms
-SetIsAdmissibleAlgebroid( A, true );
+IsAdmissibleAlgebroid( A );
+#! true
 PSh := PreSheaves( A );
 #! PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined
 #! by 4 objects and 6 generating morphisms, Rows( Q ) )

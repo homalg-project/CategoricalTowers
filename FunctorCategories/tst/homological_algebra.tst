@@ -10,6 +10,8 @@ gap> kF := k[F];
 Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) )
 gap> A := kF / [ kF.x^3, kF.y^2 ];
 Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations
+gap> IsAdmissibleAlgebroid( A );
+true
 gap> PSh := PreSheaves( A );
 PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) ) ) / relations, Rows( Q ) )
 gap> P := DirectSum( List( [ 1 .. 10 ], i -> Random( IndecomposableProjectiveObjects( PSh ) ) ) );;

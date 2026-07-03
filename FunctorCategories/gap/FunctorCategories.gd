@@ -108,6 +108,13 @@ DeclareAttribute( "OppositeOfSource",
         IsFunctorCategory );
 
 #! @Description
+#!  Installs optional monoidal structure on the functor category <A>Hom</A>
+#!  depending on the source category <A>B</A> and target category <A>D</A>.
+#! @Arguments Hom, B, D
+DeclareOperation( "AddAdditionalMonoidalStructureToFunctorCategory",
+        [ IsFunctorCategory, IsCapCategory, IsCapCategory ] );
+
+#! @Description
 #!  The input is functor <A>F</A> in a functor category <A>Hom</A>.
 #!  The output is pair of lists.
 #!  The first is the list of values of the functor <A>F</A> on all objects of the source category of <A>Hom</A>.
