@@ -59,4 +59,5 @@ cat!.precompiled_functions_added;
 
 #! #@fi
 
+# @drop_example_in_Julia
 #! @EndExample

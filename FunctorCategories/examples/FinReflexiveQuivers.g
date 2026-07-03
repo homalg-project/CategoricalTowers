@@ -140,5 +140,6 @@ Perform( subsA, Display );
 #! 
 #! A morphism in FinReflexiveQuivers
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

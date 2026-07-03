@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInAbelianClosure",
 #!  The &GAP; category of objects in an Abelian closure category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInAbelianClosure",
-        IsCellInAbelianClosure and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInAbelianClosure ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in an Abelian closure category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInAbelianClosure",
-        IsCellInAbelianClosure and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInAbelianClosure ) );
 
 ####################################
 #

@@ -122,6 +122,18 @@ InstallMethod( CallFuncList,
 end );
 
 ##
+InstallOtherMethod( \/,
+        "for an object in a copresheaf category and a string",
+        [ IsString, IsObjectInCoPreSheafCategory ],
+        
+  function ( name, F )
+    
+    return F( Source( F ).(name) );
+    
+end );
+
+#= comment for Julia
+##
 InstallMethod( \.,
         "for an object in a copresheaf category and positive integer",
         [ IsObjectInCoPreSheafCategory, IsPosInt ],
@@ -131,7 +143,20 @@ InstallMethod( \.,
     return F( Source( F ).(NameRNam( string_as_int )) );
     
 end );
+# =#
 
+##
+InstallOtherMethod( \/,
+        "for a morphism in a copresheaf category and a string",
+        [ IsString, IsMorphismInCoPreSheafCategory ],
+        
+  function ( name, eta )
+    
+    return eta( Source( Source( eta ) ).(name) );
+    
+end );
+
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for a morphism in a copresheaf category and positive integer",
@@ -142,6 +167,7 @@ InstallMethod( \.,
     return eta( Source( Source( eta ) ).(NameRNam( string_as_int )) );
     
 end );
+# =#
 
 ####################################
 #
@@ -163,6 +189,8 @@ InstallOtherMethodForCompilerForCAP( CreateCoPreSheafByValues,
     
 end );
 
+#= comment for Julia
+# Multiple installations of an object-constructor causes issues in julia (ambiguous number of arguments).
 ##
 InstallMethodForCompilerForCAP( CreateCoPreSheafByValues,
         "for a copresheaf category and two lists",
@@ -174,6 +202,7 @@ InstallMethodForCompilerForCAP( CreateCoPreSheafByValues,
                    Pair( values_of_all_objects, values_of_all_generating_morphisms ) );
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( CreateCoPreSheafByFunctions,
@@ -613,9 +642,13 @@ fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 ##
 InstallMethod( CoPreSheaves,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
     
@@ -715,23 +748,25 @@ end );
 
 ##
 InstallMethod( CoYonedaEmbedding,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return CoYonedaEmbeddingOfSourceCategory( CoPreSheaves( B ) );
     
 end );
 
 ##
-InstallMethod( \.,
-        "for a copresheaf category and a positive integer",
-        [ IsCoPreSheafCategory, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a copresheaf category and a string",
+        [ IsString, IsCoPreSheafCategory ],
         
-  function( coPSh, string_as_int )
-    local name, coY, F, coYc;
-    
-    name := NameRNam( string_as_int );
+  function( name, coPSh )
+    local coY, F, coYc;
     
     coY := CoYonedaEmbeddingOfSourceCategory( coPSh );
     
@@ -772,6 +807,10 @@ InstallMethod( \.,
     return coYc;
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCoPreSheafCategory );
+# =#
 
 ####################################
 #

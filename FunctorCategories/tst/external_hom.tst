@@ -38,6 +38,6 @@ gap> eq3 := ExternalHomOnObjectsEqualizerDataUsingOptimizedCoYonedaLemma( PSh, N
 gap> Equalizer( eq3[2] );
 |336|
 
-#
+gap> # @drop_example_in_Julia
 gap> STOP_TEST( "external_hom" );
 #@fi

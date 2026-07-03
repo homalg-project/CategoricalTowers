@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInCategoryOfDecoratedQuivers",
 #!  The &GAP; category of objects in the category of quivers.
 #! @Arguments obj
 DeclareCategory( "IsObjectInCategoryOfDecoratedQuivers",
-        IsCellInCategoryOfDecoratedQuivers and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInCategoryOfDecoratedQuivers ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of quivers.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInCategoryOfDecoratedQuivers",
-        IsCellInCategoryOfDecoratedQuivers and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCategoryOfDecoratedQuivers ) );
 
 ####################################
 #

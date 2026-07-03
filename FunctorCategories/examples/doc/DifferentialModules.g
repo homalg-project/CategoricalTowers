@@ -8,6 +8,7 @@ LoadPackage( "FunctorCategories" );
 #! @Example
 q := RightQuiver( "q(1)[t:1->1]" );
 #! q(1)[t:1->1]
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the free $\mathbb{Q}$-algebra $B$ of $q$.
@@ -20,6 +21,7 @@ Q := HomalgFieldOfRationals( );
 #! Q
 B := Q[F];
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Define a record that described the $\mathbb{Q}$-linear morphism $\epsilon \colon B \to \mathbb{Q}$ defined by $\epsilon(t) = 0$.
@@ -27,6 +29,7 @@ B := Q[F];
 #! @Example
 counit := rec( t := 0 );
 #! rec( t := 0 )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the tensor product $B \otimes_{\mathbb{Q}} B$.
@@ -35,6 +38,7 @@ counit := rec( t := 0 );
 B2 := B^2;
 #! Algebra( Q, FreeCategory(
 #! RightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Define a record that describes the $\mathbb{Q}$-linear morphism $\Delta \colon B \to B \otimes_{\mathbb{Q}} B$ defined by $\Delta(t) \coloneqq t \otimes 1 + 1 \otimes t$.
@@ -42,6 +46,7 @@ B2 := B^2;
 #! @Example
 comult := rec( t := B2.tx1 + B2.1xt );
 #! rec( t := (1x1)-[{ 1*(tx1) + 1*(1xt) }]->(1x1) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Consider $B$ as a bialgebroid (which is actually a bialgebra) with respect to the counit $\epsilon$ and comultiplication $\Delta$.
@@ -49,6 +54,7 @@ comult := rec( t := B2.tx1 + B2.1xt );
 #! @Example
 AddBialgebroidStructure( B, counit, comult );
 #! Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Retrieve the counit of $B$ as a functor
@@ -58,6 +64,7 @@ counit := Counit( B );
 #! Functor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )
 #! ->
 #! Algebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Apply the functor counit to the (unique) object 1 of $B$.
@@ -65,6 +72,7 @@ counit := Counit( B );
 #! @Example
 ApplyFunctor( counit, B.1 );
 #! <(1)>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! When we apply the functor counit to the morphism $t$ of $B$, we obtain the zero endomorphism of the object $1$ of $B^0$.
@@ -72,6 +80,7 @@ ApplyFunctor( counit, B.1 );
 #! @Example
 ApplyFunctor( counit, B.t );
 #! (1)-[0]->(1)
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Retrieve the comultiplication of $B$ as a functor.
@@ -84,6 +93,7 @@ comult := Comultiplication( B );
 #! RightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations
 ApplyFunctor( comult, B.1 );
 #! <(1x1)>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! When we apply the functor comult to the morphism $t$ of $B$, we obtain the endomorphism $t \otimes 1 + 1 \otimes t$ on the object $1 \times 1$ of $B^2$.
@@ -91,6 +101,7 @@ ApplyFunctor( comult, B.1 );
 #! @Example
 ApplyFunctor( comult, B.t );
 #! (1x1)-[{ 1*(tx1) + 1*(1xt) }]->(1x1)
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Define the underlying record for the antipode $S \colon B \to B$. It sends $t$ to $-t$.
@@ -98,12 +109,14 @@ ApplyFunctor( comult, B.t );
 #! @Example
 antipode := rec( t := -B.t );
 #! rec( t := (1)-[-1*(t)]->(1) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Add the antipode to $B$.
 
 #! @Example
 AddAntipode( B, antipode );
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Get the antipode back as a contravariant functor from $B$ to $B$.
@@ -118,6 +131,7 @@ ApplyFunctor( antipode, B.1 );
 #! <(1)>
 ApplyFunctor( antipode, B.t );
 #! (1)-[-1*(t)]->(1)
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let $A$ be the category with objects the natural numbers and morphisms the matrices with coefficients in $\mathbb{Q}$.
@@ -126,6 +140,7 @@ ApplyFunctor( antipode, B.t );
 #! @Example
 A := MatrixCategory( Q );
 #! Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let $H$ be the category of functors from $B$ to $A$.
@@ -135,6 +150,7 @@ H := FunctorCategory( B, A :
        doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );
 #! FunctorCategory( HopfAlgebra( Q, FreeCategory(
 #! RightQuiver( "q(1)[t:1->1]" ) ) ), Category of matrices over Q )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let $z$ be the zero object in $H$.
@@ -146,6 +162,7 @@ z( B.1 );
 #! <A vector space object over Q of dimension 0>
 z( B.t );
 #! <A morphism in Category of matrices over Q>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let $id_z$ be the identity morphism on $z$.
@@ -159,6 +176,7 @@ DirectSum( z, z );
 #! <(1)->0; (t)->0x0>
 z = DirectSum(z,z);
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Define a HomAlg matrix $\varphi$.
@@ -166,6 +184,7 @@ z = DirectSum(z,z);
 #! @Example
 phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );
 #! <A 3 x 3 matrix over an internal ring>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Finally construct a functor from $B$ to $A$ that sends the unique object $1$ of $B$ to the natural number 3 (representing a $\mathbb{Q}$-vector space of dimension 3) and the morphism $t$ in $B$ to the morphism induced by $\varphi$.
@@ -174,6 +193,7 @@ phi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );
 #! @Example
 V := AsObjectInFunctorCategory( H, [ 3 ], [ phi ] );
 #! <(1)->3; (t)->3x3>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Check whether $V$ is well-defined.
@@ -181,6 +201,7 @@ V := AsObjectInFunctorCategory( H, [ 3 ], [ phi ] );
 #! @Example
 IsWellDefined( V );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! The image of the object $1$ is the 3-dimensional $\mathbb{Q}$-vector space.
@@ -188,6 +209,7 @@ IsWellDefined( V );
 #! @Example
 V( B.1 );
 #! <A vector space object over Q of dimension 3>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! The image of the morphism $t$ is the morphism induced by the matrix $\varphi$.
@@ -201,6 +223,7 @@ Display( V( B.t ) );
 #!   [  1,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Verify that $V$ is not zero.
@@ -208,6 +231,7 @@ Display( V( B.t ) );
 #! @Example
 IsZero( V );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the direct sum $W \coloneqq V \oplus V$.
@@ -228,6 +252,7 @@ Display( W( B.t ) );
 #!   [  0,  0,  0,  1,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the projection $\pi_1$ from $V \oplus V$ to the first summand.
@@ -254,6 +279,7 @@ IsEpimorphism( pi1 );
 #! true
 IsMonomorphism( pi1 );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the kernel object of the projection of $\pi_1$.
@@ -265,6 +291,7 @@ IsWellDefined( V1 );
 #! true
 V1 = V;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the projection $\pi_2$ from $V \oplus V$ to the second summand.
@@ -274,6 +301,7 @@ pi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );
 #! <(1)->6x3>
 pi1 = pi2;
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Next we consider the monoidal structure on the category of functors from $B$ to $A$.
@@ -290,6 +318,7 @@ Display( I( B.t ) );
 #! [ [  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the tensor product $V \otimes V$.
@@ -313,6 +342,7 @@ Display( VV( B.t ) );
 #!   [  0,  0,  1,  0,  0,  0,  1,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the dual $V^{\ast}$ of $V$.
@@ -330,6 +360,7 @@ Display( Vs( B.t ) );
 #!   [   0,  -1,   0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the morphism $V \to V^{\ast\ast}$.
@@ -337,6 +368,7 @@ Display( Vs( B.t ) );
 #! @Example
 epsilon := MorphismToBidual( V );
 #! <(1)->3x3>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Clearly the source of this morphism is (isomorphic to) $V$.
@@ -344,6 +376,7 @@ epsilon := MorphismToBidual( V );
 #! @Example
 Source( epsilon ) = V;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! But its range is also isomorphic to $V$.
@@ -351,6 +384,7 @@ Source( epsilon ) = V;
 #! @Example
 Target( epsilon ) = V;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the internal hom object $\operatorname{Hom}(V,V)$.
@@ -358,6 +392,7 @@ Target( epsilon ) = V;
 #! @Example
 EndV := InternalHom( V, V );
 #! <(1)->9; (t)->9x9>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute $V^{\ast} \otimes V$.
@@ -365,6 +400,7 @@ EndV := InternalHom( V, V );
 #! @Example
 VsV := TensorProductOnObjects( Vs, V );
 #! <(1)->9; (t)->9x9>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute $V \otimes V^{\ast}$.
@@ -372,6 +408,7 @@ VsV := TensorProductOnObjects( Vs, V );
 #! @Example
 VVs := TensorProductOnObjects( V, Vs );
 #! <(1)->9; (t)->9x9>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We have $\operatorname{Hom}(V,V) = V^{\ast} \otimes V$, but not $\operatorname{Hom}(V,V) = V \otimes V^{\ast}$.
@@ -381,6 +418,7 @@ EndV = VsV;
 #! true
 EndV = VVs;
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct an isomorphism $V^{\ast} \otimes V \to V \otimes V^{\ast}$.
@@ -392,4 +430,5 @@ Source( beta ) = VsV;
 #! true
 Target( beta ) = VVs;
 #! true
+# @drop_example_in_Julia
 #! @EndExample

@@ -222,5 +222,6 @@ Perform( subsA, Display );
 #! 
 #! A morphism in FinQuivers
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInFunctorCategory",
 #!  The &GAP; category of objects in a Hom-category of functors between two fixed categories.
 #! @Arguments obj
 DeclareCategory( "IsObjectInFunctorCategory",
-        IsCellInFunctorCategory and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInFunctorCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a Hom-category of functors between two fixed categories.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInFunctorCategory",
-        IsCellInFunctorCategory and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFunctorCategory ) );
 
 ####################################
 #

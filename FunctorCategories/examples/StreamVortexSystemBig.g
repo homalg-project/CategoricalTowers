@@ -133,4 +133,5 @@ Display( ast );
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
 #! / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample

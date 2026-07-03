@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInCategoryOfBouquets",
 #!  The &GAP; category of objects in the category of bouquets.
 #! @Arguments obj
 DeclareCategory( "IsObjectInCategoryOfBouquets",
-        IsCellInCategoryOfBouquets and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInCategoryOfBouquets ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of bouquets.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInCategoryOfBouquets",
-        IsCellInCategoryOfBouquets and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCategoryOfBouquets ) );
 
 ####################################
 #

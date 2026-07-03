@@ -60,4 +60,5 @@ tauI3 := KernelObject( NR( IL( d1 ) ) );
 #! <(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>
 tauI3 = SimpleObjects( PSh )[2];
 #! true
+# @drop_example_in_Julia
 #! @EndExample

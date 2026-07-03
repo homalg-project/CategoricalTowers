@@ -58,4 +58,5 @@ Display( Y1 );
 #! An object in PreSheaves( Algebra( Q, FreeCategory(
 #! RightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations, Rows( Q ) )
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample
