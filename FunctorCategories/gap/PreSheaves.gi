@@ -1298,7 +1298,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         B := Source( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
         NL := NakayamaLeftAdjointData( coPSh )[1];
         
@@ -1386,7 +1386,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         B := Source( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
         NL := NakayamaLeftAdjointData( coPSh );
         
@@ -1422,13 +1422,13 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
     
     AddIndecomposableInjectiveObjects( PSh,
       function( PSh )
-        local B, coPSh;
+        local coPSh, indecomposable_injectives_coPSh;
         
-        B := Source( PSh );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        indecomposable_injectives_coPSh := CallFuncListAtRuntime( IndecomposableInjectiveObjects, [ coPSh ] );
         
-        return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
+        return List( indecomposable_injectives_coPSh, NakayamaRightAdjointData( PSh )[1] );
         
     end );
     
@@ -5148,6 +5148,16 @@ InstallMethod( SimpleObjects,
     od;
     
     return simple_objs;
+    
+end );
+
+##
+InstallMethod( AssociatedCategoryOfCoPreSheaves,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh )
+    
+    return CoPreSheaves( Source( PSh ), Target( PSh ) );
     
 end );
 
