@@ -788,7 +788,7 @@ InstallMethodWithCache( PreSheaves,
         
     fi;
     
-    PSh := CategoryConstructor( category_constructor_options );
+    PSh := CategoryConstructor( category_constructor_options : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     if HasIsFiniteCategory( B ) and IsFiniteCategory( B ) and
        HasIsFiniteCategory( D ) and IsFiniteCategory( D ) then
@@ -848,7 +848,9 @@ InstallMethodWithCache( PreSheaves,
     AddToToDoList( ToDoListEntry( [ [ PSh, "IsFinalized", true ] ], function ( ) IdentityFunctor( PSh )!.UnderlyingFunctor := IdentityFunctor( D ); end ) );
     # =#
     
-    Finalize( PSh );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory then
+      Finalize( PSh );
+    fi;
     
     return PSh;
     
@@ -964,7 +966,7 @@ InstallMethodWithCache( PreSheaves,
               morphism_constructor := morphism_constructor,
               morphism_datum := morphism_datum,
               range_category_of_homomorphism_structure := H,
-              ) );
+              ) : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     ##
     SetSource( PSh_I_I, I );
