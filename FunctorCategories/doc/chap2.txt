@@ -695,6 +695,14 @@
   category   [10XCategoryOfColimitQuivers[110X(  [23XC[123X  ),  provided  [23XC[123X  is  enriched  over
   [10XSkeletalFinSets[110X or over [10XIntervalCategory[110X.[133X
   
+  [1X2.2-12 AssociatedCategoryOfCoPreSheaves[101X
+  
+  [33X[1;0Y[29X[2XAssociatedCategoryOfCoPreSheaves[102X( [3XPSh[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YGiven  the  presheaf  category [3XPSh[103X=[10XPreSheaves[110X( [23XC[123X, [23XV[123X ), return the associated
+  category [10XCoPreSheaves[110X( [23XC[123X, [23XV[123X ).[133X
+  
   
   [1X2.3 [33X[0;0YOperations[133X[101X
   
