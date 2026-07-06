@@ -194,6 +194,14 @@ CapJitAddTypeSignature( "CategoryOfColimitQuiversOfSourceCategory", [ IsPreSheaf
     
 end );
 
+#! @Description
+#!  Given the presheaf category <A>PSh</A>=<C>PreSheaves</C>( $C$, $V$ ), return the
+#!  associated category <C>CoPreSheaves</C>( $C$, $V$ ).
+#! @Arguments PSh
+#! @Returns a &CAP; category
+DeclareAttribute( "AssociatedCategoryOfCoPreSheaves",
+                IsPreSheafCategory );
+
 ####################################
 #
 #! @Section Operations

@@ -97,18 +97,18 @@ InstallOtherMethodForCompilerForCAP( ProjectiveCoverObjectDataOfPreSheaf,
         [ IsPreSheafCategory, IsObjectInPreSheafCategory ],
         
   function ( PSh, F )
-    local C, matrix_cat, k, rF, coker_rF, pre_images, dec;
+    local B, C, matrix_cat, k, rF, coker_rF, pre_images, dec;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     if HasProjectiveCoverObjectDataOfPreSheaf( F ) then
         return ProjectiveCoverObjectDataOfPreSheaf( F );
     fi;
     
+    B := Source( PSh );
     C := Target( PSh );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    if ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and not IsAdmissibleQuiverAlgebra( UnderlyingQuiverAlgebra( Source( PSh ) ) ) ) or
-       ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and not IsAdmissibleAlgebroid( Source( PSh ) ) ) then
+    if not ( HasIsAdmissibleAlgebroid( B ) and IsAdmissibleAlgebroid( B ) ) then
         TryNextMethod( );
     fi;
     

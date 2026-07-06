@@ -31,7 +31,7 @@ DeclareOperation( "NakayamaLeftAdjoint",
 #! @Arguments B
 #! @Group NakayamaLeftAdjoint
 DeclareAttribute( "NakayamaLeftAdjoint",
-        IsFpAlgebroidDefinedByQuiverAlgebra );
+        IsFpAlgebroid );
 #! @InsertChunk NakayamaLeftAdjoint
 
 ##
@@ -49,7 +49,7 @@ DeclareOperation( "NakayamaRightAdjoint",
 #! @Arguments B
 #! @Group NakayamaRightAdjoint
 DeclareAttribute( "NakayamaRightAdjoint",
-        IsFpAlgebroidDefinedByQuiverAlgebra );
+        IsFpAlgebroid );
 #! @InsertChunk NakayamaRightAdjoint
 
 ##

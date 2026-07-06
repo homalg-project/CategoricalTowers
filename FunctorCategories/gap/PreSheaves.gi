@@ -129,6 +129,8 @@ InstallOtherMethod( CreatePreSheaf,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( CreatePreSheaf,
         "for a presheaf category and two lists",
@@ -177,6 +179,9 @@ InstallMethod( CreatePreSheaf,
     return CreatePreSheafByValues( PSh, objects, morphisms );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallOtherMethodForCompilerForCAP( CreatePreSheafMorphismByValues,
@@ -502,6 +507,9 @@ InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
     "for a finitely presented category defined by a quiver algebra",
     [ IsFpCategoryDefinedByQuiverAlgebra ],
@@ -536,7 +544,13 @@ InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
     "for an algebroid defined by a quiver algebra",
     [ IsFpAlgebroidDefinedByQuiverAlgebra ],
@@ -558,6 +572,9 @@ InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
     return Pair( relations, is_respected );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
@@ -1059,6 +1076,9 @@ InstallMethod( AdditionalMonoidalPreSheafOperationNames,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( AdditionalMonoidalPreSheafOperationNames,
     "for an algebroid defined by a quiver algebra",
     [ IsFpAlgebroidDefinedByQuiverAlgebra ],
@@ -1079,6 +1099,10 @@ InstallMethod( AdditionalMonoidalPreSheafOperationNames,
     return operation_names;
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallGlobalFunction( ADD_MONOIDAL_STRUCTURE_TO_PRESHEAF_CATEGORY,
   function ( PSh )
@@ -1152,6 +1176,9 @@ InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
     "for a quiver algebra source, a category, and a presheaf category",
     [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory, IsPreSheafCategory ],
@@ -1168,7 +1195,13 @@ InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
     "for an algebroid defined by a quiver algebra, a category, and a presheaf category",
     [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory, IsPreSheafCategory ],
@@ -1198,6 +1231,9 @@ InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
     fi;
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
@@ -1262,7 +1298,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         B := Source( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
         NL := NakayamaLeftAdjointData( coPSh )[1];
         
@@ -1350,7 +1386,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         B := Source( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
         NL := NakayamaLeftAdjointData( coPSh );
         
@@ -1386,13 +1422,13 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
     
     AddIndecomposableInjectiveObjects( PSh,
       function( PSh )
-        local B, coPSh;
+        local coPSh, indecomposable_injectives_coPSh;
         
-        B := Source( PSh );
+        coPSh := AssociatedCategoryOfCoPreSheaves( PSh );
         
-        coPSh := CoPreSheaves( B, Target( PSh ) );
+        indecomposable_injectives_coPSh := CallFuncListAtRuntime( IndecomposableInjectiveObjects, [ coPSh ] );
         
-        return List( IndecomposableInjectiveObjects( coPSh ), NakayamaRightAdjointData( PSh )[1] );
+        return List( indecomposable_injectives_coPSh, NakayamaRightAdjointData( PSh )[1] );
         
     end );
     
@@ -2351,6 +2387,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
 end ) );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( PreSheaves,
         "for a f.p. category and a category",
         [ IsFpCategoryDefinedByQuiverAlgebra, IsCapCategory ],
@@ -2367,7 +2406,13 @@ InstallMethodWithCache( PreSheaves,
     
 end ) );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( PreSheaves,
         "for an algebroid and a category",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ],
@@ -2383,6 +2428,9 @@ InstallMethodWithCache( PreSheaves,
     return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethodWithCache( PreSheaves,
@@ -2440,6 +2488,9 @@ InstallMethodWithCache( PreSheaves,
 end ) );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( PreSheaves,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
@@ -2474,6 +2525,9 @@ InstallMethodWithCache( PreSheaves,
     return PSh;
     
   end ) );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethodWithCache( PreSheaves,
@@ -3063,6 +3117,9 @@ InstallMethod( UnderlyingCapTwoCategoryCell,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         "for a finitely presented category defined by a quiver algebra, a presheaf category of it, an object in it, and a CAP morphism",
         [ IsFpCategoryDefinedByQuiverAlgebra, IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
@@ -3090,7 +3147,13 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         "for an algebroid defined by a quiver algebra, a presheaf category of it, an object in it, and a CAP morphism",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryMorphism ],
@@ -3122,6 +3185,10 @@ InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategor
                    ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethodForCompilerForCAP( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         "for a category from data tables, a presheaf category of it, an object in it, and a CAP morphism",
@@ -4859,6 +4926,9 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
         [ IsFpCategoryDefinedByQuiverAlgebra ],
         
@@ -4867,6 +4937,9 @@ InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
     return CreatePreSheafByValues( PreSheaves( SimplicialCategoryTruncatedInDegree2 ), NerveTruncatedInDegree2Data( B ) );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethodForCompilerForCAP( NerveTruncatedInDegree2,
@@ -5078,6 +5151,16 @@ InstallMethod( SimpleObjects,
     
 end );
 
+##
+InstallMethod( AssociatedCategoryOfCoPreSheaves,
+        [ IsPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh )
+    
+    return CoPreSheaves( Source( PSh ), Target( PSh ) );
+    
+end );
+
 ####################################
 #
 # View, Print, Display and LaTeX methods:
@@ -5124,6 +5207,8 @@ InstallMethod( ViewString,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
@@ -5173,6 +5258,9 @@ InstallMethod( ViewString,
     return Concatenation( "<", string, ">" );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( DisplayString,
@@ -5245,6 +5333,8 @@ InstallMethod( ViewString,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
@@ -5273,6 +5363,9 @@ InstallMethod( ViewString,
     return Concatenation( "<", string, ">" );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( DisplayString,

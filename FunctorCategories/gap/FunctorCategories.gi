@@ -61,6 +61,9 @@ InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
 end );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
         "for a functor category with algebroid source",
         [ IsFunctorCategory, IsFpAlgebroidDefinedByQuiverAlgebra, IsCapCategory ],
@@ -204,6 +207,9 @@ InstallMethod( AddAdditionalMonoidalStructureToFunctorCategory,
     end );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( ApplyObjectInFunctorCategoryToMorphism,
@@ -415,6 +421,8 @@ InstallMethod( AsObjectInFunctorCategory,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( AsObjectInFunctorCategory,
         "for a functor category and two lists",
@@ -467,6 +475,9 @@ InstallMethod( AsObjectInFunctorCategory,
     return AsObjectInFunctorCategoryByValues( Hom, objects, morphisms );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategoryByValues,
@@ -728,6 +739,9 @@ InstallMethodWithCache( FunctorCategory,
 end ) );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethodWithCache( FunctorCategory,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
@@ -757,6 +771,9 @@ InstallMethodWithCache( FunctorCategory,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethod( FunctorCategory,
         "for a CAP category",
@@ -776,11 +793,17 @@ InstallMethod( Hom,
   FunctorCategory );
 
 ##
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
+
 InstallMethod( Hom,
         "for a CAP category and a homalg field",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsHomalgRing and IsFieldForHomalg ],
         
   FunctorCategory );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
@@ -817,13 +840,15 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
   function ( B_op )
     local B, Hom, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
-    fi;
+    Assert( 0, HasIsObjectFiniteCategory( B_op ) and IsObjectFiniteCategory( B_op ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfObjectsOfCategory" ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfGeneratingMorphismsOfCategory" ) );
+    
+    Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
+    
+    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     
     Hom := FunctorCategory( B );
     
@@ -867,13 +892,15 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
   function ( B_op )
     local B, Hom, Yoneda, Yoneda_data;
     
-    if IsFpCategoryDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    elif IsFpAlgebroidDefinedByQuiverAlgebra( B_op ) then
-        B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
-    else
-        Error( "the input must either be IsFpCategoryDefinedByQuiverAlgebra or is IsFpAlgebroidDefinedByQuiverAlgebra\n" );
-    fi;
+    Assert( 0, HasIsObjectFiniteCategory( B_op ) and IsObjectFiniteCategory( B_op ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfObjectsOfCategory" ) );
+    
+    Assert( 0, CanCompute( B_op, "SetOfGeneratingMorphismsOfCategory" ) );
+    
+    Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
+    
+    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
     
     Hom := FunctorCategory( B );
     
@@ -901,14 +928,12 @@ InstallMethod( YonedaEmbeddingOfOppositeOfSourceCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a functor category and a positive integer",
-        [ IsFunctorCategory, IsPosInt ],
+InstallMethod( \/,
+        "for a functor category and a string",
+        [ IsString, IsFunctorCategory ],
         
-  function( Hom, string_as_int )
-    local name, opY, F, opYc;
-    
-    name := NameRNam( string_as_int );
+  function( name, Hom )
+    local opY, F, opYc;
     
     opY := YonedaEmbeddingOfOppositeOfSourceCategory( Hom );
     
@@ -949,6 +974,10 @@ InstallMethod( \.,
     return opYc;
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFunctorCategory );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( YonedaProjection,
@@ -1054,6 +1083,8 @@ end );
 #
 ####################################
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsObjectInFunctorCategory ],
@@ -1102,6 +1133,9 @@ InstallMethod( ViewString,
     
 end );
 
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
+
 ##
 InstallMethod( DisplayString,
         [ IsObjectInFunctorCategory ],
@@ -1142,6 +1176,8 @@ InstallMethod( DisplayString,
     
 end );
 
+#= comment for Julia (requires Algebroids)
+if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
 InstallMethod( ViewString,
         [ IsMorphismInFunctorCategory ],
@@ -1168,6 +1204,9 @@ InstallMethod( ViewString,
     return Concatenation( "<", string, ">" );
     
 end );
+
+fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
+# =#
 
 ##
 InstallMethod( DisplayString,
