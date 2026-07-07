@@ -78,9 +78,13 @@ end );
 ##
 InstallMethod( NakayamaLeftAdjoint,
         "for a f.p. algebroid with a Hom-structure",
-        [ IsFpAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpAlgebroid ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return NakayamaLeftAdjoint( PreSheaves( B ), CoPreSheaves( B ) );
     
@@ -158,9 +162,13 @@ end );
 ##
 InstallMethod( NakayamaRightAdjoint,
         "for a f.p. algebroid with a Hom-structure",
-        [ IsFpAlgebroid and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsFpAlgebroid ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return NakayamaRightAdjoint( CoPreSheaves( B ), PreSheaves( B ) );
     
@@ -243,9 +251,13 @@ end );
 ##
 InstallMethod( IsbellLeftAdjoint,
         "for a f.p. category or algebroid with a Hom-structure",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return IsbellLeftAdjoint( PreSheaves( B ), CoPreSheaves( B ) );
     
@@ -328,9 +340,13 @@ end );
 ##
 InstallMethod( IsbellRightAdjoint,
         "for a f.p. category or algebroid with a Hom-structure",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return IsbellRightAdjoint( CoPreSheaves( B ), PreSheaves( B ) );
     
@@ -349,21 +365,14 @@ end );
 
 ##
 InstallMethod( IsbellAdjunctionMonad,
-        "for categories of presheaves and copresheaves of a f.p. category or algebroid with a Hom-structure",
-        [ IsPreSheafCategory, IsCoPreSheafCategory ],
-        
-  function ( PSh, coPSh )
-    
-    return PreCompose( IsbellLeftAdjoint( PSh, coPSh ), IsbellRightAdjoint( coPSh, PSh ) );
-    
-end );
-
-##
-InstallMethod( IsbellAdjunctionMonad,
         "for a f.p. category or algebroid with a Hom-structure",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return IsbellAdjunctionMonad( PreSheaves( B ), CoPreSheaves( B ) );
     

@@ -77,6 +77,7 @@ HomStructure( PreCompose( [ u, v, w ] ) )
 #! true
 HomStructure( T, T, 2 * HomStructure( u ) ) = 2 * u;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 #!
 #! @Example
@@ -119,5 +120,6 @@ B := AlgebroidFromDataTables( A );
 #! Q-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms
 IsAdmissibleAlgebroid( B );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

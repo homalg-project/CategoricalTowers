@@ -91,4 +91,5 @@ HC := HomologyObject( s, k );
 #!  RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )>
 IsZero( HC );
 #! true
+# @drop_example_in_Julia
 #! @EndExample

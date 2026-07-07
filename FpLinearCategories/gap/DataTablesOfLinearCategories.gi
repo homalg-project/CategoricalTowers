@@ -11,7 +11,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_LINEAR_CLOSURE_OF_PATH_CATEGORY_OR_QUOT
     local C, q, objs, gmors, external_homs, is_admissible;
     
     if not HasRangeCategoryOfHomomorphismStructure( kC ) then
-        Error( "the linear closure category passed to 'DataTablesOfCategory' must be hom-finite!\n" );
+        Error( "the linear closure category passed to 'DataTablesOfLinearCategory' must be hom-finite!\n" );
     fi;
     
     C := UnderlyingCategory( kC );
@@ -57,7 +57,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_
     local kC, C, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q, is_admissible;
     
     if not HasRangeCategoryOfHomomorphismStructure( quo_kC ) then
-        Error( "the quotient category passed to 'DataTablesOfCategory' must be hom-finite!" );
+        Error( "the quotient category passed to 'DataTablesOfLinearCategory' must be hom-finite!" );
     fi;
     
     if HasIsAdmissibleAlgebroid( quo_kC ) then
@@ -119,7 +119,7 @@ BindGlobal( "DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DAT
     local A, all_objs, support_objs, objs, all_gmors, support_gmors, gmors, q, is_admissible;
     
     if not HasRangeCategoryOfHomomorphismStructure( qA ) then
-        Error( "the quotient category passed to 'DataTablesOfCategory' must be hom-finite!\n" );
+        Error( "the quotient category passed to 'DataTablesOfLinearCategory' must be hom-finite!\n" );
     fi;
     
     if not IsCategoryOfRows( RangeCategoryOfHomomorphismStructure( qA ) ) then

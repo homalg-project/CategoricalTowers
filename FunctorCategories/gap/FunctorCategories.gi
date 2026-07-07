@@ -284,6 +284,18 @@ InstallMethod( CallFuncList,
 end );
 
 ##
+InstallOtherMethod( \/,
+        "for an object in a functor category and a string",
+        [ IsString, IsObjectInFunctorCategory ],
+        
+  function ( name, F )
+    
+    return F( Source( F ).(name) );
+    
+end );
+
+#= comment for Julia
+##
 InstallMethod( \.,
         "for an object in a functor category and positive integer",
         [ IsObjectInFunctorCategory, IsPosInt ],
@@ -293,7 +305,20 @@ InstallMethod( \.,
     return F( Source( F ).(NameRNam( string_as_int )) );
     
 end );
+# =#
 
+##
+InstallOtherMethod( \/,
+        "for a morphism in a functor category and a string",
+        [ IsString, IsMorphismInFunctorCategory ],
+        
+  function ( name, eta )
+    
+    return eta( Source( Source( eta ) ).(name) );
+    
+end );
+
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for a morphism in a functor category and positive integer",
@@ -304,6 +329,7 @@ InstallMethod( \.,
     return eta( Source( Source( eta ) ).(NameRNam( string_as_int )) );
     
 end );
+# =#
 
 ####################################
 #
@@ -325,6 +351,8 @@ InstallOtherMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
     
 end );
 
+#= comment for Julia
+# Multiple installations of an object-constructor causes issues in julia (ambiguous number of arguments).
 ##
 InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
         "for a functor category and two lists",
@@ -336,6 +364,7 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
                    Pair( values_of_all_objects, values_of_all_generating_morphisms ) );
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
@@ -777,9 +806,13 @@ fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 ##
 InstallMethod( FunctorCategory,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( B )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B ) then
+        TryNextMethod( );
+    fi;
     
     return FunctorCategory( B, RangeCategoryOfHomomorphismStructure( B ) );
     
@@ -835,10 +868,14 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B_op )
     local B, Hom, objs, mors, name, Yoneda_on_objs, Yoneda_on_mors;
+    
+    if not HasRangeCategoryOfHomomorphismStructure( B_op ) then
+        TryNextMethod( );
+    fi;
     
     Assert( 0, HasIsObjectFiniteCategory( B_op ) and IsObjectFiniteCategory( B_op ) );
     
@@ -887,7 +924,7 @@ end );
 
 ##
 InstallMethod( YonedaEmbeddingInFunctorCategory,
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function ( B_op )
     local B, Hom, Yoneda, Yoneda_data;
@@ -981,10 +1018,14 @@ INSTALL_DOT_METHOD( IsFunctorCategory );
 
 ##
 InstallMethodForCompilerForCAP( YonedaProjection,
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function ( B )
     local Hom, Yepis, N1, N2, pt;
+    
+    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
+        TryNextMethod( );
+    fi;
     
     Hom := FunctorCategory( B );
     
@@ -1016,10 +1057,14 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaComposition,
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function ( B )
     local Hom, Yepis, H, N1, N2, mu;
+    
+    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
+        TryNextMethod( );
+    fi;
     
     Hom := FunctorCategory( B );
     
@@ -1051,10 +1096,14 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( YonedaFibration,
-        [ IsCapCategory and IsFiniteCategory ],
+        [ IsCapCategory ],
         
   function ( B )
     local Hom, Yepis, H, N0, N1;
+    
+    if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
+        TryNextMethod( );
+    fi;
     
     Hom := FunctorCategory( B );
     

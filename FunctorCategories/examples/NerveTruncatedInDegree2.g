@@ -62,5 +62,6 @@ IntCat := CategoryOfInternalCategories(
 #! SkeletalFinSets ), ObjectMembershipFunction )
 IsWellDefined( N / IntCat );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

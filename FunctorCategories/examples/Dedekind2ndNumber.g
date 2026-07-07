@@ -56,4 +56,5 @@ DiffbCSL := MeetSemilatticeOfSingleDifferences( Dist );
 #! PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )
 Length( SetOfObjects( DiffbCSL ) );
 #! 13
+# @drop_example_in_Julia
 #! @EndExample

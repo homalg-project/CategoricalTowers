@@ -209,5 +209,6 @@ pi = co;
 #! false
 CoimageObject( pi ) = CoimageObject( co );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

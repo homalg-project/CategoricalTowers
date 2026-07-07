@@ -15,6 +15,7 @@ A := GF3[C3C3];
 #! Algebroid( GF(3), FreeCategory(
 #! RightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations
 PopOptions( );
+# @drop_example_in_Julia
 #! @EndExample
 
 #! A representation of the category C3C3 is another way to encode
@@ -66,6 +67,7 @@ comult := Comultiplication( A );
 #! RightQuiver( "qxq(1x1,1x2,2x1,2x2)[1xa:1x1->1x1,1xb:1x1->1x2,1xc:1x2->1x2,
 #! 2xa:2x1->2x1,2xb:2x1->2x2,2xc:2x2->2x2,ax1:1x1->1x1,ax2:1x2->1x2,
 #! bx1:1x1->2x1,bx2:1x2->2x2,cx1:2x1->2x1,cx2:2x2->2x2]" ) ) ) / relations
+# @drop_example_in_Julia
 #! @EndExample
 
 #! @Example
@@ -202,4 +204,5 @@ fortyone(A.b) = TensorProductOnMorphisms( nine(A.b), nine(A.b) );
 #! true
 fortyone(A.c) = TensorProductOnMorphisms( nine(A.c), nine(A.c) );
 #! true
+# @drop_example_in_Julia
 #! @EndExample

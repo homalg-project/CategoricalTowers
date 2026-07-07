@@ -70,5 +70,6 @@ Display( Ys );
 #!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 #! SkeletalFinSets ) given by the above data
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

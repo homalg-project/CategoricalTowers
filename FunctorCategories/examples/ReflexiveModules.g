@@ -90,4 +90,5 @@ IsProjective( V );
 #! false
 IsReflexive( V );
 #! true
+# @drop_example_in_Julia
 #! @EndExample

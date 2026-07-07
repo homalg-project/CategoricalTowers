@@ -32,5 +32,6 @@ Display( p[2] );
 #! 
 #! A morphism in FinQuivers
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

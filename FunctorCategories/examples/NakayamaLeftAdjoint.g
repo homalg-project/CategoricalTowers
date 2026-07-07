@@ -60,4 +60,5 @@ tau_P1 := CokernelObject( IR( NL( d1 ) ) );
 #! <(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>
 tau_P1 = SimpleObjects( PSh )[2];
 #! true
+# @drop_example_in_Julia
 #! @EndExample

@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInFreeDistributiveCompletion",
 #!  The &GAP; category of objects in a free distributive completion category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInFreeDistributiveCompletion",
-        IsCellInFreeDistributiveCompletion and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInFreeDistributiveCompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a free distributive completion category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInFreeDistributiveCompletion",
-        IsCellInFreeDistributiveCompletion and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFreeDistributiveCompletion ) );
 
 ####################################
 #

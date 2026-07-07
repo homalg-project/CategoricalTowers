@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInFiniteCocompletion",
 #!  The &GAP; category of objects in a finite cocompletion category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInFiniteCocompletion",
-        IsCellInFiniteCocompletion and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteCocompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite cocompletion category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInFiniteCocompletion",
-        IsCellInFiniteCocompletion and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteCocompletion ) );
 
 ####################################
 #

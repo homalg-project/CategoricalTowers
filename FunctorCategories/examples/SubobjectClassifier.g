@@ -217,5 +217,6 @@ Perform( L, Display );
 #! A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )
 #! / [ a*a*a = a*a ], SkeletalFinSets )
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

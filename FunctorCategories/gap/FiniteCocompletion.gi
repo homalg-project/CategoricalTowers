@@ -18,9 +18,9 @@ InstallMethodWithCache( FiniteCocompletion,
     name := Concatenation( "FiniteCocompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := IsFiniteCocompletion and IsWrapperCapCategory;
-    category_object_filter := IsObjectInFiniteCocompletion and IsWrapperCapCategoryObject;
-    category_morphism_filter := IsMorphismInFiniteCocompletion and IsWrapperCapCategoryMorphism;
+    category_filter := FilterIntersection( IsFiniteCocompletion, IsWrapperCapCategory );
+    category_object_filter := FilterIntersection( IsObjectInFiniteCocompletion, IsWrapperCapCategoryObject );
+    category_morphism_filter := FilterIntersection( IsMorphismInFiniteCocompletion, IsWrapperCapCategoryMorphism );
     
     ## building the categorical tower:
     
@@ -45,9 +45,13 @@ end );
 ##
 InstallMethod( FiniteCocompletion,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( fp_category )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( fp_category ) then
+        TryNextMethod( );
+    fi;
     
     return FiniteCocompletion( fp_category, RangeCategoryOfHomomorphismStructure( fp_category ) );
     
@@ -68,14 +72,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite cocompletion category and a positive integer",
-        [ IsFiniteCocompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite cocompletion category",
+        [ IsString, IsFiniteCocompletion ],
         
-  function( finite_cocompletion, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, finite_cocompletion )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( finite_cocompletion );
     
@@ -117,6 +119,12 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+##
+INSTALL_DOT_METHOD( IsFiniteCocompletion );
+# =#
+
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for a cell in a finite cocompletion category and a positive integer",
@@ -127,6 +135,7 @@ InstallMethod( \.,
     return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

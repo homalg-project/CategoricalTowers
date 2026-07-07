@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInPreSheafCategoryOfFpEnrichedCategory",
 #!  The &GAP; category of objects in a presheaf category of a finitely presented enriched category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInPreSheafCategoryOfFpEnrichedCategory",
-        IsCellInPreSheafCategoryOfFpEnrichedCategory and
-        IsObjectInPreSheafCategory );
-
+        FilterIntersection( IsObjectInPreSheafCategory, IsCellInPreSheafCategoryOfFpEnrichedCategory ) );
+        
 #! @Description
 #!  The &GAP; category of morphisms in a presheaf category of a finitely presented enriched category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInPreSheafCategoryOfFpEnrichedCategory",
-        IsCellInPreSheafCategoryOfFpEnrichedCategory and
-        IsMorphismInPreSheafCategory );
+        FilterIntersection( IsMorphismInPreSheafCategory, IsCellInPreSheafCategoryOfFpEnrichedCategory ) );
 
 ####################################
 #

@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInCoPreSheafCategory",
 #!  The &GAP; category of objects in a copresheaf category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInCoPreSheafCategory",
-        IsCellInCoPreSheafCategory and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInCoPreSheafCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a copresheaf category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInCoPreSheafCategory",
-        IsCellInCoPreSheafCategory and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCoPreSheafCategory ) );
 
 ####################################
 #

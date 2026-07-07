@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInFiniteCompletion",
 #!  The &GAP; category of objects in a finite completion category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInFiniteCompletion",
-        IsCellInFiniteCompletion and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInFiniteCompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite completion category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInFiniteCompletion",
-        IsCellInFiniteCompletion and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteCompletion ) );
 
 ####################################
 #

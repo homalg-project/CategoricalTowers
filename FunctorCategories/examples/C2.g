@@ -68,4 +68,5 @@ IsProjective( L3 );
 #! true
 IsReflexive( L3 );
 #! false
+# @drop_example_in_Julia
 #! @EndExample

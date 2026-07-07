@@ -61,5 +61,6 @@ Display( LN );
 #! { 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }
 NL = LN;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

@@ -8,6 +8,7 @@ LoadPackage( "FunctorCategories" );
 #! @Example
 q := RightQuiver( "q(1)[t:1->1]" );
 #! q(1)[t:1->1]
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the free $\mathbb{Q}$-algebra $A$ of $q$.
@@ -20,6 +21,7 @@ Q := HomalgFieldOfRationals( );
 #! Q
 QF := Q[F];
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Out of this path algebra construct the algebra $B$ that
@@ -31,6 +33,7 @@ B := QuotientCategory( QF, [ QF.t^3 - IdentityMorphism( QF.1 ) ]
 #! Algebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations
 RelationsOfAlgebroid( B );
 #! [ (1)-[1*(t*t*t) - 1*(1)]->(1) ]
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We define a record that will be used to construct the $\mathbb{Q}$-linear morphism $\epsilon \colon B \to \mathbb{Q}$ defined by $\epsilon(t)=1$.
@@ -38,6 +41,7 @@ RelationsOfAlgebroid( B );
 #! @Example
 counit := rec( t := 1 );
 #! rec( t := 1 )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Next we want to construct the $\mathbb{Q}$-linear morphism $\Delta \colon B \to B \otimes_{\mathbb{Q}} B$
@@ -47,6 +51,7 @@ counit := rec( t := 1 );
 B2 := B^2;
 #! Algebra( Q, FreeCategory( RightQuiver(
 #! "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We define a record that will be used to construct $\Delta$.
@@ -58,6 +63,7 @@ comult := rec( t := PreCompose( B2.tx1, B2.1xt ) );
 #! rec( t := (1x1)-[{ 1*(1xt*tx1) }]->(1x1) )
 PreCompose(B2.1xt, B2.tx1) = PreCompose(B2.tx1, B2.1xt);
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Use the records comult and counit to define a bialgebroid (actually a bialgebra) structure on $B$.
@@ -65,6 +71,7 @@ PreCompose(B2.1xt, B2.tx1) = PreCompose(B2.tx1, B2.1xt);
 #! @Example
 AddBialgebroidStructure( B, counit, comult );
 #! Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Extract comultiplication and counit from $B$, now as functors.
@@ -81,6 +88,7 @@ comult := Comultiplication( B );
 #! ->
 #! Algebra( Q, FreeCategory( RightQuiver(
 #! "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We can apply the comultiplication and counit to objects and morphisms of $B$.
@@ -94,6 +102,7 @@ ApplyFunctor( comult, B.1 );
 #! <(1x1)>
 ApplyFunctor( comult, B.t );
 #! (1x1)-[{ 1*(1xt*tx1) }]->(1x1)
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Next we define an antipode on $B$ as the (anti)endomorphism on $B$ that sends $t$ to $t^2$.
@@ -113,6 +122,7 @@ ApplyFunctor( antipode, B.1 );
 #! <(1)>
 ApplyFunctor( antipode, B.t );
 #! (1)-[{ 1*(t*t) }]->(1)
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let $A$ be the range category of the homomorphism structure of $B$.
@@ -123,6 +133,7 @@ ApplyFunctor( antipode, B.t );
 #! @Example
 A := RangeCategoryOfHomomorphismStructure( B );
 #! Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the category $H$ of functors from $B$ to $A$.
@@ -136,6 +147,7 @@ H := FunctorCategory( B, A :
        doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );
 #! FunctorCategory( HopfAlgebra( Q, FreeCategory(
 #! RightQuiver( "q(1)[t:1->1]" ) ) ) / relations, Category of matrices over Q )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Verify that its zero object $z$ behaves as expected.
@@ -161,6 +173,7 @@ DirectSum( z, z );
 #! <(1)->0; (t)->0x0>
 DirectSum( z, z ) = z;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Now we construct an object in $H$, i.e. a functor from $B$ to $A$.
@@ -169,6 +182,7 @@ DirectSum( z, z ) = z;
 #! @Example
 V0 := 3 / A;
 #! <A vector space object over Q of dimension 3>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! and an endomorphism $\varphi$ on $V_0$.
@@ -182,6 +196,7 @@ V_mor := rec( t := phi / A );
 #! rec( t := <A morphism in Category of matrices over Q> )
 V := AsObjectInFunctorCategory( B, V_obj, V_mor );
 #! <(1)->3; (t)->3x3>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! This functor is indeed well defined.
@@ -189,6 +204,7 @@ V := AsObjectInFunctorCategory( B, V_obj, V_mor );
 #! @Example
 IsWellDefined( V );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Let us see how such a functor can fail to be well defined:
@@ -204,6 +220,7 @@ W := AsObjectInFunctorCategory( B, W_obj, W_mor );
 #! <(1)->3; (t)->3x3>
 IsWellDefined( W );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Display some of the properties of this functor.
@@ -225,6 +242,7 @@ Display( V( B.t ) );
 #! A morphism in Category of matrices over Q
 IsZero( V );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Costruct the direct sum of $V$ with itself.
@@ -245,6 +263,7 @@ Display( VoplusV( B.t ) );
 #!   [  0,  0,  0,  1,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the projection $\pi_1$ from $V \oplus V$ to the first summand and study some of its properties.
@@ -271,6 +290,7 @@ IsEpimorphism( pi1 );
 #! true
 IsMonomorphism( pi1 );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the kernel object $V1$ of $\pi_1$ and check that it is $V$.
@@ -282,6 +302,7 @@ IsWellDefined( V1 );
 #! true
 V1 = V;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the projection $\pi_2$ from $V \oplus V$ to the second summand and check that it is not equal to $\pi_1$.
@@ -291,6 +312,7 @@ pi2 := ProjectionInFactorOfDirectSum( [ V, V ], 2 );
 #! <(1)->6x3>
 pi1 = pi2;
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct another object $U$ in the category of functors from $B$ to $A$.
@@ -324,6 +346,7 @@ Display( U( B.t ) );
 #! A morphism in Category of matrices over Q
 IsZero( U );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! To construct a morphism $\eta$ from $V$ to $U$ in $H$ (i.e. a natural transformation from the functor $V$ to $U$), we first define a HomAlg matrix.
@@ -331,6 +354,7 @@ IsZero( U );
 #! @Example
 eta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );
 #! <A 3 x 2 matrix over an internal ring>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Then we define a record that will be used to define the natural transformation $\eta$.
@@ -340,6 +364,7 @@ eta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );
 #! @Example
 eta := rec( 1 := eta / A );
 #! rec( 1 := <A morphism in Category of matrices over Q> )
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Finally we construct the natural transformation $\eta$ from $V$ to $U$ as a morphism in the category of functors from $B$ to $A$.
@@ -347,6 +372,7 @@ eta := rec( 1 := eta / A );
 #! @Example
 eta := AsMorphismInFunctorCategory( V, eta, U );
 #! <(1)->3x2>
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We check that $\eta$ is well defined.
@@ -354,6 +380,7 @@ eta := AsMorphismInFunctorCategory( V, eta, U );
 #! @Example
 IsWellDefined( eta );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We retrieve the component of $\eta$ at the object 1 of $B$.
@@ -367,6 +394,7 @@ Display( eta( B.1 ) );
 #!   [  -1,  -1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! We study some of the properties of $\eta$.
@@ -376,6 +404,7 @@ IsEpimorphism( eta );
 #! true
 IsMonomorphism( eta );
 #! false
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the kernel object of $\eta$.
@@ -397,6 +426,7 @@ C := CokernelObject( iota );
 #! <(1)->2; (t)->2x2>
 C = U;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Since $B$ is a bialgebra, $H$ becomes a monoidal category.
@@ -413,6 +443,7 @@ Display( I( B.t ) );
 #! [ [  1 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! It turns out that $I$ is equal to $K$.
@@ -420,6 +451,7 @@ Display( I( B.t ) );
 #! @Example
 I = K;
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Construct the tensor product $V \otimes V$.
@@ -443,6 +475,7 @@ Display( VV( B.t ) );
 #!   [  1,  0,  0,  0,  0,  0,  0,  0,  0 ] ]
 #! 
 #! A morphism in Category of matrices over Q
+# @drop_example_in_Julia
 #! @EndExample
 
 #! Compute the dual object of $U$.
@@ -481,4 +514,5 @@ Source( beta ) = UsU;
 #! true
 Target( beta ) = UUs;
 #! true
+# @drop_example_in_Julia
 #! @EndExample

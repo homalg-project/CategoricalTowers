@@ -48,4 +48,5 @@ Display( Target( section ) );
 #! An object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory(
 #! FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )
 #! given by the above data
+# @drop_example_in_Julia
 #! @EndExample

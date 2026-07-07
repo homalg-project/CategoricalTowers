@@ -36,5 +36,6 @@ N.id;
 #! |3| → |31|
 Display( N.id );
 #! { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

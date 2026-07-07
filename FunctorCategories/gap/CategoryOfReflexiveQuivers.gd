@@ -28,15 +28,13 @@ DeclareCategory( "IsCellInCategoryOfReflexiveQuivers",
 #!  The &GAP; category of objects in the category of reflexive quivers.
 #! @Arguments obj
 DeclareCategory( "IsObjectInCategoryOfReflexiveQuivers",
-        IsCellInCategoryOfReflexiveQuivers and
-        IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInCategoryOfReflexiveQuivers ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in the category of reflexive quivers.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInCategoryOfReflexiveQuivers",
-        IsCellInCategoryOfReflexiveQuivers and
-        IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInCategoryOfReflexiveQuivers ) );
 
 ####################################
 #

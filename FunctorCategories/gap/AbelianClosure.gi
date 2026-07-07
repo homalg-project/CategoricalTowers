@@ -128,8 +128,6 @@ InstallMethod( \/,
     
 end );
 
-INSTALL_DOT_METHOD( IsAbelianClosure );
-
 ##
 InstallOtherMethod( \/,
         "for a string and a cell in an Abelian closure category",
@@ -141,5 +139,7 @@ InstallOtherMethod( \/,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsAbelianClosure );
 INSTALL_DOT_METHOD( IsCellInAbelianClosure );
-
+# =#

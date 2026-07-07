@@ -4,12 +4,14 @@
 # Implementations
 #
 
+#= comment for Julia
 ##
 InstallOtherMethod( QUO,
-        [ IsMatrix, IsCapCategory and HasCommutativeSemiringOfLinearCategory ],
+        [ IsMatrix, FilterIntersection( IsCapCategory, HasCommutativeSemiringOfLinearCategory ) ],
         
   function ( mat, A )
     
     return HomalgMatrix( mat, CommutativeSemiringOfLinearCategory( A ) ) / A;
     
 end );
+# =#

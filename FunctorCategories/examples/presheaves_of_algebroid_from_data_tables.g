@@ -140,5 +140,6 @@ Display( P );
 #! the above data
 IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );
 #! true
+# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk
