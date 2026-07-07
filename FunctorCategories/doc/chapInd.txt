@@ -142,28 +142,28 @@
   [2XIsFiniteCompletion[102X, for IsCapCategory 9.3-1 
   [2XIsFreeDistributiveCompletion[102X, for IsCapCategory 11.3-1 
   [2XIsFunctorCategory[102X, for IsCapCategory 1.4-1 
-  [2XIsMorphismInAbelianClosure[102X, for IsCellInAbelianClosure andIsCapCategoryMorphism 10.4-4 
-  [2XIsMorphismInCategoryOfBouquets[102X, for IsCellInCategoryOfBouquets andIsCapCategoryMorphism 4.5-4 
-  [2XIsMorphismInCategoryOfDecoratedQuivers[102X, for IsCellInCategoryOfDecoratedQuivers andIsCapCategoryMorphism 8.5-4 
-  [2XIsMorphismInCategoryOfQuivers[102X, for IsCellInCategoryOfQuivers andIsCapCategoryMorphism 5.5-4 
-  [2XIsMorphismInCategoryOfReflexiveQuivers[102X, for IsCellInCategoryOfReflexiveQuivers andIsCapCategoryMorphism 7.5-4 
-  [2XIsMorphismInCoPreSheafCategory[102X, for IsCellInCoPreSheafCategory andIsCapCategoryMorphism 13.1-4 
-  [2XIsMorphismInFiniteCocompletion[102X, for IsCellInFiniteCocompletion andIsCapCategoryMorphism 3.3-4 
-  [2XIsMorphismInFiniteCompletion[102X, for IsCellInFiniteCompletion andIsCapCategoryMorphism 9.3-4 
-  [2XIsMorphismInFreeDistributiveCompletion[102X, for IsCellInFreeDistributiveCompletion andIsCapCategoryMorphism 11.3-4 
-  [2XIsMorphismInFunctorCategory[102X, for IsCellInFunctorCategory andIsCapCategoryMorphism 1.4-4 
-  [2XIsMorphismInPreSheafCategoryOfFpEnrichedCategory[102X, for IsCellInPreSheafCategoryOfFpEnrichedCategory andIsMorphismInPreSheafCategory 2.4-4 
-  [2XIsObjectInAbelianClosure[102X, for IsCellInAbelianClosure andIsCapCategoryObject 10.4-3 
-  [2XIsObjectInCategoryOfBouquets[102X, for IsCellInCategoryOfBouquets andIsCapCategoryObject 4.5-3 
-  [2XIsObjectInCategoryOfDecoratedQuivers[102X, for IsCellInCategoryOfDecoratedQuivers andIsCapCategoryObject 8.5-3 
-  [2XIsObjectInCategoryOfQuivers[102X, for IsCellInCategoryOfQuivers andIsCapCategoryObject 5.5-3 
-  [2XIsObjectInCategoryOfReflexiveQuivers[102X, for IsCellInCategoryOfReflexiveQuivers andIsCapCategoryObject 7.5-3 
-  [2XIsObjectInCoPreSheafCategory[102X, for IsCellInCoPreSheafCategory andIsCapCategoryObject 13.1-3 
-  [2XIsObjectInFiniteCocompletion[102X, for IsCellInFiniteCocompletion andIsCapCategoryObject 3.3-3 
-  [2XIsObjectInFiniteCompletion[102X, for IsCellInFiniteCompletion andIsCapCategoryObject 9.3-3 
-  [2XIsObjectInFreeDistributiveCompletion[102X, for IsCellInFreeDistributiveCompletion andIsCapCategoryObject 11.3-3 
-  [2XIsObjectInFunctorCategory[102X, for IsCellInFunctorCategory andIsCapCategoryObject 1.4-3 
-  [2XIsObjectInPreSheafCategoryOfFpEnrichedCategory[102X, for IsCellInPreSheafCategoryOfFpEnrichedCategory andIsObjectInPreSheafCategory 2.4-3 
+  [2XIsMorphismInAbelianClosure[102X, for FilterIntersection( IsCapCategoryMorphism 10.4-4 
+  [2XIsMorphismInCategoryOfBouquets[102X, for FilterIntersection( IsCapCategoryMorphism 4.5-4 
+  [2XIsMorphismInCategoryOfDecoratedQuivers[102X, for FilterIntersection( IsCapCategoryMorphism 8.5-4 
+  [2XIsMorphismInCategoryOfQuivers[102X, for FilterIntersection( IsCapCategoryMorphism 5.5-4 
+  [2XIsMorphismInCategoryOfReflexiveQuivers[102X, for FilterIntersection( IsCapCategoryMorphism 7.5-4 
+  [2XIsMorphismInCoPreSheafCategory[102X, for FilterIntersection( IsCapCategoryMorphism 13.1-4 
+  [2XIsMorphismInFiniteCocompletion[102X, for FilterIntersection( IsCapCategoryMorphism 3.3-4 
+  [2XIsMorphismInFiniteCompletion[102X, for FilterIntersection( IsCapCategoryMorphism 9.3-4 
+  [2XIsMorphismInFreeDistributiveCompletion[102X, for FilterIntersection( IsCapCategoryMorphism 11.3-4 
+  [2XIsMorphismInFunctorCategory[102X, for FilterIntersection( IsCapCategoryMorphism 1.4-4 
+  [2XIsMorphismInPreSheafCategoryOfFpEnrichedCategory[102X, for FilterIntersection( IsMorphismInPreSheafCategory 2.4-4 
+  [2XIsObjectInAbelianClosure[102X, for FilterIntersection( IsCapCategoryObject 10.4-3 
+  [2XIsObjectInCategoryOfBouquets[102X, for FilterIntersection( IsCapCategoryObject 4.5-3 
+  [2XIsObjectInCategoryOfDecoratedQuivers[102X, for FilterIntersection( IsCapCategoryObject 8.5-3 
+  [2XIsObjectInCategoryOfQuivers[102X, for FilterIntersection( IsCapCategoryObject 5.5-3 
+  [2XIsObjectInCategoryOfReflexiveQuivers[102X, for FilterIntersection( IsCapCategoryObject 7.5-3 
+  [2XIsObjectInCoPreSheafCategory[102X, for FilterIntersection( IsCapCategoryObject 13.1-3 
+  [2XIsObjectInFiniteCocompletion[102X, for FilterIntersection( IsCapCategoryObject 3.3-3 
+  [2XIsObjectInFiniteCompletion[102X, for FilterIntersection( IsCapCategoryObject 9.3-3 
+  [2XIsObjectInFreeDistributiveCompletion[102X, for FilterIntersection( IsCapCategoryObject 11.3-3 
+  [2XIsObjectInFunctorCategory[102X, for FilterIntersection( IsCapCategoryObject 1.4-3 
+  [2XIsObjectInPreSheafCategoryOfFpEnrichedCategory[102X, for FilterIntersection( IsObjectInPreSheafCategory 2.4-3 
   [2XIsomorphismFromImageOfYonedaEmbeddingOfSourceIntoSource[102X, for IsPreSheafCategory 12.2-8 
   [2XIsomorphismFromSourceIntoImageOfYonedaEmbeddingOfSource[102X, for IsPreSheafCategory 12.2-7 
   [2XIsPreSheafCategoryOfFpEnrichedCategory[102X, for IsPreSheafCategory 2.4-1 

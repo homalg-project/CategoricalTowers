@@ -112,6 +112,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( T, T, 2 * HomStructure( u ) ) = 2 * u;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -154,5 +155,6 @@
     [4X[28XQ-algebroid( {o}[x:o→o,y:o→o] ) defined by 1 object and 2 generating morphisms[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( B );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   

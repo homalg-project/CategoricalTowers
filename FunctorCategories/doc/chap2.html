@@ -83,8 +83,8 @@
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7D6A79907FA8C87F">2.4-1 IsPreSheafCategoryOfFpEnrichedCategory</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A0304637E934E63">2.4-2 IsCellInPreSheafCategoryOfFpEnrichedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X869C3AEE85A01110">2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X81AF24BF84DADFA5">2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X7A0860667EA96C6E">2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2.html#X8162A8C57AC7F3C5">2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2.html#X7D9044767BEB1523">2.5 <span class="Heading">Global variables</span></a>
 </span>
@@ -350,6 +350,7 @@ PreSheaves( Algebroid( Q, FreeCategory( RightQuiver( "q(3)[a:1-&gt;2,b:2-&gt;3]"
 [ &lt;(1)-&gt;1, (2)-&gt;0, (3)-&gt;0; (a)-&gt;0x1, (b)-&gt;0x0&gt;,
   &lt;(1)-&gt;0, (2)-&gt;1, (3)-&gt;0; (a)-&gt;1x0, (b)-&gt;0x1&gt;,
   &lt;(1)-&gt;0, (2)-&gt;0, (3)-&gt;1; (a)-&gt;0x0, (b)-&gt;1x0&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -483,6 +484,7 @@ a:1-&gt;2,b:2-&gt;4,c:1-&gt;3,d:3-&gt;4,y:4-&gt;4]" ) ) ) / relations, Rows( Q )
 the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 
@@ -615,6 +617,7 @@ y:4→4] ) defined by 4 objects and 6 generating morphisms, Rows( Q ) ) given by
 the above data
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X80048E1182551690" name="X80048E1182551690"></a></p>
@@ -687,6 +690,7 @@ PreSheaves( PathCategory( FinQuiver(
 SkeletalFinSets ), ObjectMembershipFunction )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsWellDefined( N / IntCat );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p>We compute the nerve of the full subcategory of the simplicial category <span class="Math">\Delta</span> on the objects <span class="Math">[0], [1], [2]</span>.</p>
@@ -724,6 +728,7 @@ true
 |3| → |31|
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Display( N.id );</span>
 { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p>We compute the nerve of the full subcategory of the simplicial category <span class="Math">\Delta</span> on the objects <span class="Math">[0], [1]</span>.</p>
@@ -788,6 +793,7 @@ true
 { 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">NL = LN;</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X87B457D77A0B8836" name="X87B457D77A0B8836"></a></p>
@@ -897,7 +903,7 @@ true
 
 <p>The <strong class="pkg">GAP</strong> category of cells in a presheaf category of a finitely presented enriched category.</p>
 
-<p><a id="X869C3AEE85A01110" name="X869C3AEE85A01110"></a></p>
+<p><a id="X7A0860667EA96C6E" name="X7A0860667EA96C6E"></a></p>
 
 <h5>2.4-3 IsObjectInPreSheafCategoryOfFpEnrichedCategory</h5>
 
@@ -906,7 +912,7 @@ true
 
 <p>The <strong class="pkg">GAP</strong> category of objects in a presheaf category of a finitely presented enriched category.</p>
 
-<p><a id="X81AF24BF84DADFA5" name="X81AF24BF84DADFA5"></a></p>
+<p><a id="X8162A8C57AC7F3C5" name="X8162A8C57AC7F3C5"></a></p>
 
 <h5>2.4-4 IsMorphismInPreSheafCategoryOfFpEnrichedCategory</h5>
 
@@ -1142,6 +1148,7 @@ Image of &lt;(1)&gt;:
 A morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1-&gt;1]" ) )
 / [ a*a*a = a*a ], SkeletalFinSets )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X811C52E07B3BE2A4" name="X811C52E07B3BE2A4"></a></p>
@@ -1283,6 +1290,7 @@ Image of &lt;(o)&gt;:
 
 A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p>Stream-vortex-system: Study the colimit completion of a cyclic monoid</p>
@@ -1419,6 +1427,7 @@ Image of &lt;(o)&gt;:
 A morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o-&gt;o]" ) )
 / [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X7EF1F1847C6C6973" name="X7EF1F1847C6C6973"></a></p>
@@ -1646,6 +1655,7 @@ true
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoimageObject( pi ) = CoimageObject( co );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X813922347AE64B28" name="X813922347AE64B28"></a></p>
@@ -1862,6 +1872,7 @@ true
 false
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoimageObject( pi ) = CoimageObject( co );</span>
 true
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X83AF88FC800DB182" name="X83AF88FC800DB182"></a></p>
@@ -1917,6 +1928,7 @@ given by the above data
 An object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory(
 FinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 <p><a id="X84C4B0777C30C29B" name="X84C4B0777C30C29B"></a></p>
@@ -1982,6 +1994,7 @@ A morphism in Rows( Q )
 An object in PreSheaves( Algebra( Q, FreeCategory(
 RightQuiver( "q(1)[a:1-&gt;1,b:1-&gt;1]" ) ) ) / relations, Rows( Q ) )
 given by the above data
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 

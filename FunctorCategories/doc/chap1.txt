@@ -246,6 +246,7 @@
     [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
     [4X[28XSkeletalFinSets ) given by the above data[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -337,6 +338,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
     [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct  the  free  [23X\mathbb{Q}[123X-algebra  [23XA[123X  of  [23Xq[123X.  It is isomorphic to the
@@ -349,6 +351,7 @@
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XQF := Q[F];[127X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YOut  of  this  path  algebra construct the algebra [23XB[123X that is obtained as the
@@ -360,6 +363,7 @@
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations[128X[104X
     [4X[25Xgap>[125X [27XRelationsOfAlgebroid( B );[127X[104X
     [4X[28X[ (1)-[1*(t*t*t) - 1*(1)]->(1) ][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe  define  a  record  that  will be used to construct the [23X\mathbb{Q}[123X-linear
@@ -368,6 +372,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcounit := rec( t := 1 );[127X[104X
     [4X[28Xrec( t := 1 )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YNext we want to construct the [23X\mathbb{Q}[123X-linear morphism [23X\Delta \colon B \to
@@ -378,6 +383,7 @@
     [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
     [4X[28X"qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe  define  a  record  that  will  be used to construct [23X\Delta[123X. Note that we
@@ -389,6 +395,7 @@
     [4X[28Xrec( t := (1x1)-[{ 1*(1xt*tx1) }]->(1x1) )[128X[104X
     [4X[25Xgap>[125X [27XPreCompose(B2.1xt, B2.tx1) = PreCompose(B2.tx1, B2.1xt);[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YUse  the  records  comult  and  counit  to  define a bialgebroid (actually a
@@ -397,6 +404,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit, comult );[127X[104X
     [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YExtract comultiplication and counit from [23XB[123X, now as functors.[133X
@@ -413,6 +421,7 @@
     [4X[28X->[128X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver([128X[104X
     [4X[28X"qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe can apply the comultiplication and counit to objects and morphisms of [23XB[123X.[133X
@@ -426,6 +435,7 @@
     [4X[28X<(1x1)>[128X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( comult, B.t );[127X[104X
     [4X[28X(1x1)-[{ 1*(1xt*tx1) }]->(1x1)[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YNext  we define an antipode on [23XB[123X as the (anti)endomorphism on [23XB[123X that sends [23Xt[123X
@@ -445,6 +455,7 @@
     [4X[28X<(1)>[128X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( antipode, B.t );[127X[104X
     [4X[28X(1)-[{ 1*(t*t) }]->(1)[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet  [23XA[123X  be  the range category of the homomorphism structure of [23XB[123X. It is the
@@ -455,6 +466,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XA := RangeCategoryOfHomomorphismStructure( B );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct the category [23XH[123X of functors from [23XB[123X to [23XA[123X. An object in this category
@@ -467,6 +479,7 @@
     [4X[25X>[125X [27X       doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );[127X[104X
     [4X[28XFunctorCategory( HopfAlgebra( Q, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(1)[t:1->1]" ) ) ) / relations, Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YVerify that its zero object [23Xz[123X behaves as expected.[133X
@@ -492,6 +505,7 @@
     [4X[28X<(1)->0; (t)->0x0>[128X[104X
     [4X[25Xgap>[125X [27XDirectSum( z, z ) = z;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YNow  we construct an object in [23XH[123X, i.e. a functor from [23XB[123X to [23XA[123X. To this end we
@@ -500,6 +514,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XV0 := 3 / A;[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0Yand an endomorphism [23X\varphi[123X on [23XV_0[123X.[133X
@@ -513,6 +528,7 @@
     [4X[28Xrec( t := <A morphism in Category of matrices over Q> )[128X[104X
     [4X[25Xgap>[125X [27XV := AsObjectInFunctorCategory( B, V_obj, V_mor );[127X[104X
     [4X[28X<(1)->3; (t)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YThis functor is indeed well defined.[133X
@@ -520,6 +536,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( V );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet us see how such a functor can fail to be well defined:[133X
@@ -535,6 +552,7 @@
     [4X[28X<(1)->3; (t)->3x3>[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( W );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YDisplay some of the properties of this functor.[133X
@@ -556,6 +574,7 @@
     [4X[28XA morphism in Category of matrices over Q[128X[104X
     [4X[25Xgap>[125X [27XIsZero( V );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCostruct the direct sum of [23XV[123X with itself.[133X
@@ -576,6 +595,7 @@
     [4X[28X  [  0,  0,  0,  1,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct  the  projection  [23X\pi_1[123X  from  [23XV \oplus V[123X to the first summand and
@@ -603,6 +623,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsMonomorphism( pi1 );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct the kernel object [23XV1[123X of [23X\pi_1[123X and check that it is [23XV[123X.[133X
@@ -614,6 +635,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XV1 = V;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct  the  projection  [23X\pi_2[123X  from [23XV \oplus V[123X to the second summand and
@@ -624,6 +646,7 @@
     [4X[28X<(1)->6x3>[128X[104X
     [4X[25Xgap>[125X [27Xpi1 = pi2;[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct another object [23XU[123X in the category of functors from [23XB[123X to [23XA[123X.[133X
@@ -657,6 +680,7 @@
     [4X[28XA morphism in Category of matrices over Q[128X[104X
     [4X[25Xgap>[125X [27XIsZero( U );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YTo construct a morphism [23X\eta[123X from [23XV[123X to [23XU[123X in [23XH[123X (i.e. a natural transformation
@@ -665,6 +689,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xeta := HomalgMatrix( [ 1, 0,  0, 1,  -1, -1 ], 3, 2, Q );[127X[104X
     [4X[28X<A 3 x 2 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YThen   we  define  a  record  that  will  be  used  to  define  the  natural
@@ -675,6 +700,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xeta := rec( 1 := eta / A );[127X[104X
     [4X[28Xrec( 1 := <A morphism in Category of matrices over Q> )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YFinally  we  construct  the  natural  transformation  [23X\eta[123X  from [23XV[123X to [23XU[123X as a
@@ -683,6 +709,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xeta := AsMorphismInFunctorCategory( V, eta, U );[127X[104X
     [4X[28X<(1)->3x2>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe check that [23X\eta[123X is well defined.[133X
@@ -690,6 +717,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( eta );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe retrieve the component of [23X\eta[123X at the object 1 of [23XB[123X.[133X
@@ -703,6 +731,7 @@
     [4X[28X  [  -1,  -1 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe study some of the properties of [23X\eta[123X.[133X
@@ -712,6 +741,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsMonomorphism( eta );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct the kernel object of [23X\eta[123X.[133X
@@ -733,6 +763,7 @@
     [4X[28X<(1)->2; (t)->2x2>[128X[104X
     [4X[25Xgap>[125X [27XC = U;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YSince  [23XB[123X  is a bialgebra, [23XH[123X becomes a monoidal category. First we obtain the
@@ -749,6 +780,7 @@
     [4X[28X[ [  1 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YIt turns out that [23XI[123X is equal to [23XK[123X.[133X
@@ -756,6 +788,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XI = K;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct the tensor product [23XV \otimes V[123X.[133X
@@ -779,6 +812,7 @@
     [4X[28X  [  1,  0,  0,  0,  0,  0,  0,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the dual object of [23XU[123X.[133X
@@ -817,6 +851,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XTarget( beta ) = UUs;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -828,6 +863,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xq := RightQuiver( "q(1)[t:1->1]" );[127X[104X
     [4X[28Xq(1)[t:1->1][128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct  the  free  [23X\mathbb{Q}[123X-algebra  [23XB[123X  of  [23Xq[123X.  It is isomorphic to the
@@ -840,6 +876,7 @@
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XB := Q[F];[127X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YDefine  a  record  that  described  the  [23X\mathbb{Q}[123X-linear morphism [23X\epsilon
@@ -848,6 +885,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcounit := rec( t := 0 );[127X[104X
     [4X[28Xrec( t := 0 )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct the tensor product [23XB \otimes_{\mathbb{Q}} B[123X.[133X
@@ -856,6 +894,7 @@
     [4X[25Xgap>[125X [27XB2 := B^2;[127X[104X
     [4X[28XAlgebra( Q, FreeCategory([128X[104X
     [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YDefine  a record that describes the [23X\mathbb{Q}[123X-linear morphism [23X\Delta \colon
@@ -865,6 +904,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xcomult := rec( t := B2.tx1 + B2.1xt );[127X[104X
     [4X[28Xrec( t := (1x1)-[{ 1*(tx1) + 1*(1xt) }]->(1x1) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConsider  [23XB[123X as a bialgebroid (which is actually a bialgebra) with respect to
@@ -873,6 +913,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XAddBialgebroidStructure( B, counit, comult );[127X[104X
     [4X[28XBialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YRetrieve the counit of [23XB[123X as a functor[133X
@@ -882,6 +923,7 @@
     [4X[28XFunctor from Bialgebra( Q, FreeCategory( RightQuiver( "q(1)[t:1->1]" ) ) )[128X[104X
     [4X[28X->[128X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "*(1)[]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YApply the functor counit to the (unique) object 1 of [23XB[123X.[133X
@@ -889,6 +931,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( counit, B.1 );[127X[104X
     [4X[28X<(1)>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWhen  we apply the functor counit to the morphism [23Xt[123X of [23XB[123X, we obtain the zero
@@ -897,6 +940,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( counit, B.t );[127X[104X
     [4X[28X(1)-[0]->(1)[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YRetrieve the comultiplication of [23XB[123X as a functor.[133X
@@ -909,6 +953,7 @@
     [4X[28XRightQuiver( "qxq(1x1)[1xt:1x1->1x1,tx1:1x1->1x1]" ) ) ) / relations[128X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( comult, B.1 );[127X[104X
     [4X[28X<(1x1)>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWhen  we  apply  the  functor  comult  to the morphism [23Xt[123X of [23XB[123X, we obtain the
@@ -917,6 +962,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( comult, B.t );[127X[104X
     [4X[28X(1x1)-[{ 1*(tx1) + 1*(1xt) }]->(1x1)[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YDefine  the  underlying record for the antipode [23XS \colon B \to B[123X. It sends [23Xt[123X
@@ -925,12 +971,14 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xantipode := rec( t := -B.t );[127X[104X
     [4X[28Xrec( t := (1)-[-1*(t)]->(1) )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YAdd the antipode to [23XB[123X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XAddAntipode( B, antipode );[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YGet the antipode back as a contravariant functor from [23XB[123X to [23XB[123X.[133X
@@ -945,6 +993,7 @@
     [4X[28X<(1)>[128X[104X
     [4X[25Xgap>[125X [27XApplyFunctor( antipode, B.t );[127X[104X
     [4X[28X(1)-[-1*(t)]->(1)[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet  [23XA[123X  be  the  category with objects the natural numbers and morphisms the
@@ -954,6 +1003,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XA := MatrixCategory( Q );[127X[104X
     [4X[28XCategory of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet [23XH[123X be the category of functors from [23XB[123X to [23XA[123X.[133X
@@ -963,6 +1013,7 @@
     [4X[25X>[125X [27X       doctrines := [ "IsRigidSymmetricClosedMonoidalCategory" ] );[127X[104X
     [4X[28XFunctorCategory( HopfAlgebra( Q, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(1)[t:1->1]" ) ) ), Category of matrices over Q )[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet [23Xz[123X be the zero object in [23XH[123X.[133X
@@ -974,6 +1025,7 @@
     [4X[28X<A vector space object over Q of dimension 0>[128X[104X
     [4X[25Xgap>[125X [27Xz( B.t );[127X[104X
     [4X[28X<A morphism in Category of matrices over Q>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YLet [23Xid_z[123X be the identity morphism on [23Xz[123X.[133X
@@ -987,6 +1039,7 @@
     [4X[28X<(1)->0; (t)->0x0>[128X[104X
     [4X[25Xgap>[125X [27Xz = DirectSum(z,z);[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YDefine a HomAlg matrix [23X\varphi[123X.[133X
@@ -994,6 +1047,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xphi := HomalgMatrix( [ 0, 1, 0,  0, 0, 1,  1, 0, 0 ], 3, 3, Q );[127X[104X
     [4X[28X<A 3 x 3 matrix over an internal ring>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YFinally  construct a functor from [23XB[123X to [23XA[123X that sends the unique object [23X1[123X of [23XB[123X
@@ -1004,6 +1058,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XV := AsObjectInFunctorCategory( H, [ 3 ], [ phi ] );[127X[104X
     [4X[28X<(1)->3; (t)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCheck whether [23XV[123X is well-defined.[133X
@@ -1011,6 +1066,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( V );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YThe image of the object [23X1[123X is the 3-dimensional [23X\mathbb{Q}[123X-vector space.[133X
@@ -1018,6 +1074,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XV( B.1 );[127X[104X
     [4X[28X<A vector space object over Q of dimension 3>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YThe image of the morphism [23Xt[123X is the morphism induced by the matrix [23X\varphi[123X.[133X
@@ -1031,6 +1088,7 @@
     [4X[28X  [  1,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YVerify that [23XV[123X is not zero.[133X
@@ -1038,6 +1096,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XIsZero( V );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the direct sum [23XW \coloneqq V \oplus V[123X.[133X
@@ -1058,6 +1117,7 @@
     [4X[28X  [  0,  0,  0,  1,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the projection [23X\pi_1[123X from [23XV \oplus V[123X to the first summand.[133X
@@ -1084,6 +1144,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XIsMonomorphism( pi1 );[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the kernel object of the projection of [23X\pi_1[123X.[133X
@@ -1095,6 +1156,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XV1 = V;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the projection [23X\pi_2[123X from [23XV \oplus V[123X to the second summand.[133X
@@ -1104,6 +1166,7 @@
     [4X[28X<(1)->6x3>[128X[104X
     [4X[25Xgap>[125X [27Xpi1 = pi2;[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YNext  we  consider the monoidal structure on the category of functors from [23XB[123X
@@ -1120,6 +1183,7 @@
     [4X[28X[ [  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the tensor product [23XV \otimes V[123X.[133X
@@ -1143,6 +1207,7 @@
     [4X[28X  [  0,  0,  1,  0,  0,  0,  1,  0,  0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the dual [23XV^{\ast}[123X of [23XV[123X.[133X
@@ -1160,6 +1225,7 @@
     [4X[28X  [   0,  -1,   0 ] ][128X[104X
     [4X[28X[128X[104X
     [4X[28XA morphism in Category of matrices over Q[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the morphism [23XV \to V^{\ast\ast}[123X.[133X
@@ -1167,6 +1233,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xepsilon := MorphismToBidual( V );[127X[104X
     [4X[28X<(1)->3x3>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YClearly the source of this morphism is (isomorphic to) [23XV[123X.[133X
@@ -1174,6 +1241,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XSource( epsilon ) = V;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YBut its range is also isomorphic to [23XV[123X.[133X
@@ -1181,6 +1249,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XTarget( epsilon ) = V;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute the internal hom object [23X\operatorname{Hom}(V,V)[123X.[133X
@@ -1188,6 +1257,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XEndV := InternalHom( V, V );[127X[104X
     [4X[28X<(1)->9; (t)->9x9>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute [23XV^{\ast} \otimes V[123X.[133X
@@ -1195,6 +1265,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XVsV := TensorProductOnObjects( Vs, V );[127X[104X
     [4X[28X<(1)->9; (t)->9x9>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YCompute [23XV \otimes V^{\ast}[123X.[133X
@@ -1202,6 +1273,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XVVs := TensorProductOnObjects( V, Vs );[127X[104X
     [4X[28X<(1)->9; (t)->9x9>[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe   have   [23X\operatorname{Hom}(V,V)   =   V^{\ast}   \otimes   V[123X,   but  not
@@ -1212,6 +1284,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XEndV = VVs;[127X[104X
     [4X[28Xfalse[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YConstruct an isomorphism [23XV^{\ast} \otimes V \to V \otimes V^{\ast}[123X.[133X
@@ -1223,6 +1296,7 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XTarget( beta ) = VVs;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -1241,6 +1315,7 @@
     [4X[28XAlgebroid( GF(3), FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(2)[a:1->1,b:1->2,c:2->2]" ) ) ) / relations[128X[104X
     [4X[25Xgap>[125X [27XPopOptions( );[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YA  representation  of  the  category  C3C3 is another way to encode a module
@@ -1291,6 +1366,7 @@
     [4X[28XRightQuiver( "qxq(1x1,1x2,2x1,2x2)[1xa:1x1->1x1,1xb:1x1->1x2,1xc:1x2->1x2,[128X[104X
     [4X[28X2xa:2x1->2x1,2xb:2x1->2x2,2xc:2x2->2x2,ax1:1x1->1x1,ax2:1x2->1x2,[128X[104X
     [4X[28Xbx1:1x1->2x1,bx2:1x2->2x2,cx1:2x1->2x1,cx2:2x2->2x2]" ) ) ) / relations[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -1427,5 +1503,6 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xfortyone(A.c) = TensorProductOnMorphisms( nine(A.c), nine(A.c) );[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
