@@ -10,9 +10,9 @@ SetPackageInfo( rec(
 
 PackageName := "PresheafCategories",
 Subtitle := "Categories of (co)presheaves",
-Version := "2026.07-02",
-Date := "2026-07-07",
-Date := "2026-07-07",
+Version := "2026.07-03",
+Date := "2026-07-08",
+Date := "2026-07-08",
 License := "GPL-2.0-or-later",
 
 Persons := [
