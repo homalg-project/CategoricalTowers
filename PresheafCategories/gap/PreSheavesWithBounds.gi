@@ -266,11 +266,7 @@ InstallMethod( PreSheavesWithBounds,
         category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( PSh );
     fi;
     
-    xPSh := CategoryConstructor( category_constructor_options
-                #= comment for Julia
-                : overhead := CAP_NAMED_ARGUMENTS.overhead
-                # =#
-                );
+    xPSh := CategoryConstructor( category_constructor_options : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetSource( xPSh, C );
     SetTarget( xPSh, D );
