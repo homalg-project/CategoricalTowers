@@ -276,10 +276,14 @@ end );
 DeclareOperationWithCache( "PreSheaves",
         [ IsCapCategory, IsHomalgRing ] );
 
+DeclareAttribute( "PreSheavesOfFpEnrichedCategory",
+        IsFpAlgebroid );
+
 DeclareOperationWithCache( "PreSheavesOfFpEnrichedCategory",
         [ IsCapCategory, IsCapCategory ] );
 
 CapJitAddTypeSignature( "PreSheavesOfFpEnrichedCategory", [ IsCapCategory, IsCapCategory ], IsPreSheafCategoryOfFpEnrichedCategory );
+
 
 ## Helper functions used to populate a presheaf category with operations after construction.
 ## Each installs a coherent group of CAP operations into PSh.

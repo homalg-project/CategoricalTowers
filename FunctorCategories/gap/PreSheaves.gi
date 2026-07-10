@@ -2391,6 +2391,26 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
 end ) );
 
 ##
+InstallMethod( PreSheavesOfFpEnrichedCategory,
+        "for a f.p. category and a category",
+        [ IsFpAlgebroid ],
+        
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
+    local D;
+    
+    D := RangeCategoryOfHomomorphismStructure( B );
+    
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    
+end ) );
+
+##
 #= comment for Julia (requires Algebroids)
 if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 
