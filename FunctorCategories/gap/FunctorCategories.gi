@@ -673,7 +673,7 @@ InstallMethodWithCache( FunctorCategory,
         #   - (HasIsFiniteCategory( B ) and IsFiniteCategory( B )) or
         #   - IsFpAlgebroidFromDataTables( B )
         
-        B_op := OppositeOfObjectFiniteCategory( B : FinalizeCategory := true );
+        B_op := OppositeOfObjectFiniteCategory( B );
     else
         Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsPathCategory, IsQuotientOfPathCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, (HasIsFiniteCategory and IsFiniteCategory), IsAlgebroidFromDataTables }\n" );
     fi;
@@ -885,7 +885,7 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataInFunctorCategory,
     
     Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
     
-    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
+    B := OppositeOfObjectFiniteCategory( B_op );
     
     Hom := FunctorCategory( B );
     
@@ -937,7 +937,7 @@ InstallMethod( YonedaEmbeddingInFunctorCategory,
     
     Assert( 0, ApplicableMethod( OppositeOfObjectFiniteCategory, [ B_op ] ) <> fail );
     
-    B := OppositeOfObjectFiniteCategory( B_op : FinalizeCategory := true );
+    B := OppositeOfObjectFiniteCategory( B_op );
     
     Hom := FunctorCategory( B );
     
