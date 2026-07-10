@@ -33,7 +33,7 @@ InstallMethod( PreSheavesWithBounds,
         is_computable := false;
     elif type_of_boundedness = "both" then
         name := "PreSheavesWithLowerAndUpperBounds( ";
-        is_computable := true;
+        is_computable := D!.is_computable;
     else
         Error( "the 3rd argument `type_of_boundedness` must be either \"lower\", \"upper\", or \"both\"\n" );
     fi;
