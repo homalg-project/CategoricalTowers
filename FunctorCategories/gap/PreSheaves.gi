@@ -2307,6 +2307,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
+    #= comment for Julia (rely on computing a cover of representables which is not yet available in FunctorCategories.jl)
     if IsSkeletalCategoryOfFiniteSets( D ) or
        IsCategoryOfRows( D ) or
        IsCategoryOfColumns( D ) or
@@ -2315,6 +2316,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         ADD_PROJECTIVE_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
+    # =#
     
     if HasRangeCategoryOfHomomorphismStructure( PSh ) and
        ## in the following we require (1) that the range category D of the presheaf category
