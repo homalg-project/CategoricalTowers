@@ -1355,13 +1355,13 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         mu := List( [ 1 .. N ], i -> Concatenation(
                 List( [ 1 .. N ], j ->
-                  List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                    PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
+                  List( [ 1 .. Length( auxiliary_indices[i][j] ) ], s ->
+                    PostComposeList( D, Concatenation( List( auxiliary_indices[i][j][s], index -> vals_P[2][index] ), [ gens[j] ] ) ) ) ) ) );
         
         nu := List( [ 1 .. N ], i -> Concatenation(
                 List( [ 1 .. N ], j ->
-                  List( [ 1 .. Length( auxiliary_indices[i,j] ) ], s ->
-                    PostComposeList( D, Concatenation( List( auxiliary_indices[i,j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
+                  List( [ 1 .. Length( auxiliary_indices[i][j] ) ], s ->
+                    PostComposeList( D, Concatenation( List( auxiliary_indices[i][j][s], index -> vals_G[2][index] ), [ ells[j] ] ) ) ) ) ) );
         
         delta := List( [ 1 .. N ], i -> Concatenation( List( [ 1 .. N ], j -> ListWithIdenticalEntries( Length( auxiliary_indices[i][j] ), Target( vals_tP[j] ) ) ) ) );
         
