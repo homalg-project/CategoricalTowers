@@ -1308,7 +1308,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         NR_on_mors := NR[2];
         
-        mono_coPSh := MonomorphismIntoInjectiveEnvelopeObject( coPSh, NL( F ) );
+        mono_coPSh := CallFuncListAtRuntime( MonomorphismIntoInjectiveEnvelopeObject,  [ coPSh, NL( F ) ] );
         
         mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
         
