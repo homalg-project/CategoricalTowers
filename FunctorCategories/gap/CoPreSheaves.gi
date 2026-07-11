@@ -191,6 +191,8 @@ end );
 
 #= comment for Julia
 # Multiple installations of an object-constructor causes issues in julia (ambiguous number of arguments).
+# It would be much better to implement the object-constructor of CoPreSheaves properly without letting it delegate to CreateCoPreSheafByValues which would have
+# multiple convenience methods.
 ##
 InstallMethodForCompilerForCAP( CreateCoPreSheafByValues,
         "for a copresheaf category and two lists",

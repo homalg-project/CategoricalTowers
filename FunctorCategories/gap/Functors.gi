@@ -33,8 +33,7 @@ InstallMethodForCompilerForCAP( NakayamaLeftAdjointData,
       function ( F )
         
         return CreateCoPreSheafByValues( coPSh,
-                       ValuesOfPreSheaf( F )[1],
-                       List( ValuesOfPreSheaf( F )[2], m -> DualOnMorphisms( H, m ) ) );
+                    Pair( ValuesOfPreSheaf( F )[1], List( ValuesOfPreSheaf( F )[2], m -> DualOnMorphisms( H, m ) ) ) );
         
     end;
     
