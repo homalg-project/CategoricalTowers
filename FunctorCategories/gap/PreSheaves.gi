@@ -1442,6 +1442,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
   FunctionWithNamedArguments(
   [ [ "no_precompiled_code", false ],
     [ "FinalizeCategory", true ],
+    [ "overhead", true ],
     [ "check_admissibility", false ],
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
@@ -1948,7 +1949,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         option_record.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( D );
     fi;
     
-    PSh := CategoryConstructor( option_record );
+    PSh := CategoryConstructor( option_record : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetSource( PSh, B );
     SetTarget( PSh, D );
@@ -2426,7 +2427,7 @@ InstallMethodWithCache( PreSheaves,
   ],
   function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 
@@ -2449,7 +2450,7 @@ InstallMethodWithCache( PreSheaves,
   ],
   function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 
@@ -2469,7 +2470,7 @@ InstallMethodWithCache( PreSheaves,
   ],
   function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 
@@ -2486,7 +2487,7 @@ InstallMethodWithCache( PreSheaves,
   ],
   function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 
@@ -2507,7 +2508,7 @@ InstallMethodWithCache( PreSheaves,
         TryNextMethod( );
     fi;
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 
@@ -2566,7 +2567,7 @@ InstallMethodWithCache( PreSheaves,
   ],
   function( CAP_NAMED_ARGUMENTS, B, D )
     
-    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
+    return PreSheavesOfFpEnrichedCategory( B, D : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
 

@@ -456,7 +456,8 @@ InstallMethodWithCache( CoPreSheaves,
         
   FunctionWithNamedArguments(
   [ [ "no_precompiled_code", false ],
-    [ "FinalizeCategory", true ]
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -495,7 +496,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     ## building the categorical tower:
     
-    Hom := FunctorCategory( B, D : FinalizeCategory := true );
+    Hom := FunctorCategory( B, D : FinalizeCategory := true, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     O := Opposite( Hom : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     
@@ -585,7 +586,7 @@ InstallMethodWithCache( CoPreSheaves,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              : FinalizeCategory := false, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetSource( coPSh, B );
     SetTarget( coPSh, D );

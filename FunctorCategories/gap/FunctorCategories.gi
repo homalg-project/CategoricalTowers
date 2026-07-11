@@ -621,7 +621,8 @@ InstallMethodWithCache( FunctorCategory,
         
   FunctionWithNamedArguments(
   [ [ "no_precompiled_code", false ],
-    [ "FinalizeCategory", true ]
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -678,7 +679,7 @@ InstallMethodWithCache( FunctorCategory,
         Error( "the first argument must be in { IsFpCategoryDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra, IsPathCategory, IsQuotientOfPathCategory, IsCategoryFromNerveData, IsCategoryFromDataTables, (HasIsFiniteCategory and IsFiniteCategory), IsAlgebroidFromDataTables }\n" );
     fi;
     
-    PSh := PreSheaves( B_op, D : FinalizeCategory := true );
+    PSh := PreSheaves( B_op, D : FinalizeCategory := true, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     ## from the raw object data to the object in the modeling category
     modeling_tower_object_constructor :=
