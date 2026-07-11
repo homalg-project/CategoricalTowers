@@ -645,15 +645,24 @@ InstallMethod( CoPreSheaves,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( B )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
     
     if not HasRangeCategoryOfHomomorphismStructure( B ) then
         TryNextMethod( );
     fi;
     
-    return CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    return CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) :
+              FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory,
+              overhead := CAP_NAMED_ARGUMENTS.overhead,
+              no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
