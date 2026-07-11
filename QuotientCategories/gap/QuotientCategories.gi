@@ -77,6 +77,7 @@ InstallMethod( QuotientCategory,
   FunctionWithNamedArguments(
   [
     [ "FinalizeCategory", true ],
+    [ "overhead", true ],
   ],
   function( CAP_NAMED_ARGUMENTS, record )
     local congruence_func, ambient_cat, name, category_filter, category_object_filter, category_morphism_filter,
@@ -105,7 +106,7 @@ InstallMethod( QuotientCategory,
       
       record.congruence_func := { alpha, beta } -> congruence_func( SubtractionForMorphisms( ambient_cat, alpha, beta ) );
       
-      return QuotientCategory( record : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
+      return QuotientCategory( record : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead );
       
     fi;
      
@@ -287,7 +288,7 @@ InstallMethod( QuotientCategory,
                    supports_empty_limits := supports_empty_limits,
                    create_func_bool := create_func_bool,
                    create_func_object := create_func_object,
-                   create_func_morphism := create_func_morphism ) );
+                   create_func_morphism := create_func_morphism ) : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetAmbientCategory( quotient_cat, ambient_cat );
     
