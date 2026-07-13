@@ -631,11 +631,18 @@ InstallOtherMethod( AlgebroidFromDataTables,
   
   FunctionWithNamedArguments(
   [
-    [ "colors", fail ]
+    [ "colors", fail ],
+    [ "range_of_HomStructure", fail ],
+    [ "eager", false ],
+    [ "FinalizeCategory", true ],
   ],
   function ( CAP_NAMED_ARGUMENTS, C )
     
-    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C ) : colors := CAP_NAMED_ARGUMENTS.colors );
+    return AlgebroidFromDataTables( DataTablesOfLinearCategory( C )
+              : colors := CAP_NAMED_ARGUMENTS.colors,
+                range_of_HomStructure := CAP_NAMED_ARGUMENTS.range_of_HomStructure,
+                eager := CAP_NAMED_ARGUMENTS.eager,
+                FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
     
 end ) );
 

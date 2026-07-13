@@ -191,6 +191,8 @@ end );
 
 #= comment for Julia
 # Multiple installations of an object-constructor causes issues in julia (ambiguous number of arguments).
+# It would be much better to implement the object-constructor of CoPreSheaves properly without letting it delegate to CreateCoPreSheafByValues which would have
+# multiple convenience methods.
 ##
 InstallMethodForCompilerForCAP( CreateCoPreSheafByValues,
         "for a copresheaf category and two lists",
@@ -456,7 +458,8 @@ InstallMethodWithCache( CoPreSheaves,
         
   FunctionWithNamedArguments(
   [ [ "no_precompiled_code", false ],
-    [ "FinalizeCategory", true ]
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ]
   ],
   function ( CAP_NAMED_ARGUMENTS, B, D )
     local name, category_filter, category_object_filter, category_morphism_filter,
@@ -495,7 +498,7 @@ InstallMethodWithCache( CoPreSheaves,
     
     ## building the categorical tower:
     
-    Hom := FunctorCategory( B, D : FinalizeCategory := true );
+    Hom := FunctorCategory( B, D : FinalizeCategory := true, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     O := Opposite( Hom : only_primitive_operations_and_hom_structure := true, FinalizeCategory := true );
     
@@ -585,7 +588,7 @@ InstallMethodWithCache( CoPreSheaves,
                    modeling_tower_morphism_constructor := modeling_tower_morphism_constructor,
                    modeling_tower_morphism_datum := modeling_tower_morphism_datum,
                    only_primitive_operations := true )
-              : FinalizeCategory := false );
+              : FinalizeCategory := false, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetSource( coPSh, B );
     SetTarget( coPSh, D );
@@ -644,15 +647,24 @@ InstallMethod( CoPreSheaves,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( B )
+  FunctionWithNamedArguments(
+  [
+    [ "FinalizeCategory", true ],
+    [ "overhead", true ],
+    [ "no_precompiled_code", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
     
     if not HasRangeCategoryOfHomomorphismStructure( B ) then
         TryNextMethod( );
     fi;
     
-    return CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) );
+    return CoPreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) :
+              FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory,
+              overhead := CAP_NAMED_ARGUMENTS.overhead,
+              no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
-end );
+end ) );
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

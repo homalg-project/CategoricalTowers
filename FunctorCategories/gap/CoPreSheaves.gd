@@ -199,6 +199,13 @@ DeclareOperation( "ApplyMorphismInCoPreSheafCategoryToObject",
 #
 ####################################
 
+#! @Arguments B
+#! @Group CoPreSheaves
+DeclareAttribute( "CoPreSheaves",
+        IsCapCategory );
+
+CapJitAddTypeSignature( "CoPreSheaves", [ IsCapCategory ], IsCoPreSheafCategory );
+
 #! @Description
 #!  Construct the category <C>CoPreSheaves(</C> <A>B</A>, <A>D</A> <C>)</C>=
 #!  <C>FunctorCategory(</C> <A>B</A>, <A>D</A> <C>)^op</C> of copresheaves
@@ -216,13 +223,6 @@ CapJitAddTypeSignature( "CoPreSheaves", [ IsCapCategory, IsCapCategory ], IsCoPr
 #! @Group CoPreSheaves
 DeclareOperationWithCache( "CoPreSheaves",
         [ IsCapCategory, IsHomalgRing ] );
-
-#! @Arguments B
-#! @Group CoPreSheaves
-DeclareOperationWithCache( "CoPreSheaves",
-        [ IsCapCategory ] );
-
-CapJitAddTypeSignature( "CoPreSheaves", [ IsCapCategory ], IsCoPreSheafCategory );
 
 DeclareOperation( "CreateCoPreSheafByValues", [ IsCoPreSheafCategory, IsList, IsList ] );
 

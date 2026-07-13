@@ -33,7 +33,7 @@ InstallMethod( PreSheavesWithBounds,
         is_computable := false;
     elif type_of_boundedness = "both" then
         name := "PreSheavesWithLowerAndUpperBounds( ";
-        is_computable := true;
+        is_computable := D!.is_computable;
     else
         Error( "the 3rd argument `type_of_boundedness` must be either \"lower\", \"upper\", or \"both\"\n" );
     fi;
@@ -266,11 +266,7 @@ InstallMethod( PreSheavesWithBounds,
         category_constructor_options.commutative_semiring_of_linear_category := CommutativeSemiringOfLinearCategory( PSh );
     fi;
     
-    xPSh := CategoryConstructor( category_constructor_options
-                #= comment for Julia
-                : overhead := CAP_NAMED_ARGUMENTS.overhead
-                # =#
-                );
+    xPSh := CategoryConstructor( category_constructor_options : overhead := CAP_NAMED_ARGUMENTS.overhead );
     
     SetSource( xPSh, C );
     SetTarget( xPSh, D );
@@ -280,7 +276,7 @@ InstallMethod( PreSheavesWithBounds,
         
         AddIsEqualForObjects( xPSh,
           function( xPSh, F, G )
-            local D, PSh, F_datum, G_datum, F_func, G_func, func;
+            local D, PSh, F_datum, G_datum, F_func, G_func, func, l, u;
             
             D := Target( xPSh );
             
@@ -304,14 +300,17 @@ InstallMethod( PreSheavesWithBounds,
                 
             end;
             
-            return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
+            l := Minimum( F_datum[2][1], G_datum[2][1] );
+            u := Maximum( F_datum[2][2], G_datum[2][2] );
+            
+            return ForAll( [ l .. u ], func );
             
         end, 2 * OperationWeight( D, "IsEqualForObjects" ) );
         
         AddIsEqualForMorphisms( xPSh,
           function( xPSh, phi, psi )
             local D, PSh, F, G, F_datum, G_datum, F_func, G_func,
-                  phi_datum, psi_datum, phi_func, psi_func, func;
+                  phi_datum, psi_datum, phi_func, psi_func, func, l, u;
             
             D := Target( xPSh );
             
@@ -344,14 +343,17 @@ InstallMethod( PreSheavesWithBounds,
                 
             end;
             
-            return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
+            l := Minimum( F_datum[2][1], G_datum[2][1] );
+            u := Maximum( F_datum[2][2], G_datum[2][2] );
+            
+            return ForAll( [ l .. u ], func );
             
         end, 2 * OperationWeight( D, "IsEqualForMorphisms" ) );
         
         AddIsCongruentForMorphisms( xPSh,
           function( xPSh, phi, psi )
             local D, PSh, F, G, F_datum, G_datum, F_func, G_func,
-                  phi_datum, psi_datum, phi_func, psi_func, func;
+                  phi_datum, psi_datum, phi_func, psi_func, func, l, u;
             
             D := Target( xPSh );
             
@@ -384,14 +386,19 @@ InstallMethod( PreSheavesWithBounds,
                 
             end;
             
-            return ForAll( [ Minimum( F_datum[2][1], G_datum[2][1] ) .. Maximum( F_datum[2][2], G_datum[2][2] ) ], func );
+            l := Minimum( F_datum[2][1], G_datum[2][1] );
+            u := Maximum( F_datum[2][2], G_datum[2][2] );
+            
+            return ForAll( [ l .. u ], func );
             
         end, 2 * OperationWeight( D, "IsCongruentForMorphisms" ) );
         
     else
         
+        #= comment for Julia
         SetCachingOfCategoryCrisp( PSh );
         SetCachingOfCategoryCrisp( xPSh );
+        # =#
         
         AddIsEqualForObjects( xPSh,
           function( xPSh, F, G )

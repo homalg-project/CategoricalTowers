@@ -202,6 +202,13 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
     
     full!.Objects := L;
     
+    AddSetOfObjectsOfCategory( full,
+      function( cat )
+        
+        return List( L, obj -> AsSubcategoryCell( cat, obj ) );
+        
+    end );
+    
     AddIsWellDefinedForObjects( full,
       function( cat, a )
         
@@ -228,17 +235,19 @@ InstallGlobalFunction( FullSubcategoryGeneratedByListOfObjects,
       
     fi;
     
-    SetSetOfKnownObjects( full, List( L, obj -> CallFuncListAtRuntime( AsSubcategoryCell, [ full, obj ] ) ) );
-    
     return full;
     
 end ) );
 
 ##
+InstallOtherMethod( SetOfKnownObjects,
+          [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects ],
+  SetOfObjects );
+
+##
 InstallMethod( \[\],
           [ IsCapFullSubcategoryGeneratedByFiniteNumberOfObjects, IsInt ],
-  { full, i } -> SetOfKnownObjects( full )[ i ]
-);
+  { full, i } -> SetOfObjects( full )[ i ] );
 
 ##
 InstallMethod( FullSubcategoryOfIndecomposableProjectiveObjects,

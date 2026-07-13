@@ -192,7 +192,7 @@ InstallMethod( DataTablesOfLinearCategory,
           
         if (IsPathCategory( C ) or IsQuotientOfPathCategory( C ))  then
           
-          return DATA_TABLES_OF_CATEGORY_FOR_LINEAR_CLOSURE_OF_PATH_CATEGORY_OR_QUOTIENT_OF_PATH_CATEGORY( kC );
+          return CallFuncListAtRuntime( DATA_TABLES_OF_CATEGORY_FOR_LINEAR_CLOSURE_OF_PATH_CATEGORY_OR_QUOTIENT_OF_PATH_CATEGORY, [ kC ] );
           
         fi;
         
@@ -202,13 +202,13 @@ InstallMethod( DataTablesOfLinearCategory,
         
         if IsFpAlgebroidFromDataTables( C ) then
             
-            return DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DATA_TABLES( kC );
+            return CallFuncListAtRuntime( DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_ALGEBROID_FROM_DATA_TABLES, [ kC ] );
             
         elif IsLinearClosure( C ) then
             
             if IsPathCategory( UnderlyingCategory( C ) ) or IsQuotientOfPathCategory( UnderlyingCategory( C ) ) then
                 
-                return DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY_OR_QUOTIENT_OF_PATH_CATEGORY( kC );
+                return CallFuncListAtRuntime( DATA_TABLES_OF_CATEGORY_FOR_QUOTIENT_CATEGORY_OF_LINEAR_CLOSURE_OF_PATH_CATEGORY_OR_QUOTIENT_OF_PATH_CATEGORY, [ kC ] );
                 
             fi;
             
