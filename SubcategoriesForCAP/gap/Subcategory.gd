@@ -87,11 +87,27 @@ DeclareOperation( "Subcategory",
 DeclareOperation( "AsSubcategoryObject",
                   [ IsCapSubcategory, IsCapCategoryObject ] );
 
+CapJitAddTypeSignature( "AsSubcategoryObject", [ IsCapSubcategory, IsCapCategoryObject ],
+  function ( input_types )
+    
+    Assert( 0, AmbientCategory( input_types[1].category ) = input_types[2].category );
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
 
-#! @Arguments source, mor, range
 #! @Arguments D, morphism
 DeclareOperation( "AsSubcategoryMorphism",
                   [ IsCapSubcategory, IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
+
+CapJitAddTypeSignature( "AsSubcategoryMorphism", [ IsCapSubcategory, IsCapCategoryMorphism ],
+  function ( input_types )
+    
+    Assert( 0, AmbientCategory( input_types[1].category ) = input_types[2].category );
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
 
 #! @Arguments D, cell
 DeclareOperation( "AsSubcategoryCell",
