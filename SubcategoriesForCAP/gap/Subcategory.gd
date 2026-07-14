@@ -73,6 +73,13 @@ DeclareAttribute( "SetOfKnownObjects",
 DeclareAttribute( "AmbientCategory",
         IsCapSubcategory );
 
+CapJitAddTypeSignature( "AmbientCategory", [ IsCapSubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
