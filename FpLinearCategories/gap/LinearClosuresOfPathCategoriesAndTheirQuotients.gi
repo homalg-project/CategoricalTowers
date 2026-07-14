@@ -602,7 +602,7 @@ InstallOtherMethod( IsAdmissibleAlgebroid,
         [ IsLinearClosureOfQuotientOfPathCategory ],
   
   function( kC )
-    local kC_op, C, P, k, kP, objs_kP, rels, rel_mors, is_admissible;
+    local kC_op, C, P, k, kP, objs_kP, rels, rel_mors, quo_kP, is_admissible;
     
     if HasOppositeOfObjectFiniteCategory( kC ) then
         
@@ -622,22 +622,27 @@ InstallOtherMethod( IsAdmissibleAlgebroid,
     
     kP := LinearClosure( k, P );
     
-    objs_kP := SetOfObjects( kP );
+    objs_kP := CallFuncListAtRuntime( SetOfObjects, [ kP ] );
     
     rels := DefiningRelations( C );
     
     rel_mors := List( rels, pair ->
-        SubtractionForMorphisms( kP,
-            MorphismConstructor( kP,
-                objs_kP[ObjectIndex( Source( pair[1] ) )],
-                Pair( [ One( k ) ], [ pair[1] ] ),
-                objs_kP[ObjectIndex( Target( pair[1] ) )] ),
-            MorphismConstructor( kP,
-                objs_kP[ObjectIndex( Source( pair[2] ) )],
-                Pair( [ One( k ) ], [ pair[2] ] ),
-                objs_kP[ObjectIndex( Target( pair[2] ) )] ) ) );
+        CallFuncListAtRuntime( SubtractionForMorphisms,
+            [ kP,
+              CallFuncListAtRuntime(
+                    MorphismConstructor, [ kP,
+                    objs_kP[ObjectIndex( Source( pair[1] ) )],
+                    Pair( [ One( k ) ], [ pair[1] ] ),
+                    objs_kP[ObjectIndex( Target( pair[1] ) )] ] ),
+              CallFuncListAtRuntime(
+                    MorphismConstructor, [ kP,
+                    objs_kP[ObjectIndex( Source( pair[2] ) )],
+                    Pair( [ One( k ) ], [ pair[2] ] ),
+                    objs_kP[ObjectIndex( Target( pair[2] ) )] ] ) ] ) );
     
-    is_admissible := IsAdmissibleAlgebroid( QuotientCategory( kP, rel_mors ) );
+    quo_kP := CallFuncListAtRuntime( QuotientCategory, [ kP, rel_mors ] );
+    
+    is_admissible := CallFuncListAtRuntime( IsAdmissibleAlgebroid, [ quo_kP ] );
     
     if HasOppositeOfObjectFiniteCategory( kC ) then
         
