@@ -59,6 +59,20 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY" );
 DeclareAttribute( "UnderlyingCell",
         IsCellInASubcategory );
 
+CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInASubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInASubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The set of known objects of the subcategory <A>A</A>.
 #! @Arguments A
