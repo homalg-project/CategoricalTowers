@@ -22,7 +22,6 @@ DeclareCategory( "IsCapSubcategory",
 DeclareCategory( "IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms",
         IsCapSubcategory );
 
-
 #! @Description
 #!  The &GAP; category of cells in a subcategory.
 DeclareCategory( "IsCellInASubcategory",
@@ -84,11 +83,21 @@ DeclareAttribute( "AmbientCategory",
 DeclareOperation( "Subcategory",
                   [ IsCapCategory, IsString ] );
 
-#! @Arguments D, c
+#! @Arguments D, object
+DeclareOperation( "AsSubcategoryObject",
+                  [ IsCapSubcategory, IsCapCategoryObject ] );
+
+
+#! @Arguments source, mor, range
+#! @Arguments D, morphism
+DeclareOperation( "AsSubcategoryMorphism",
+                  [ IsCapSubcategory, IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
+
+#! @Arguments D, cell
 DeclareOperation( "AsSubcategoryCell",
                   [ IsCapSubcategory, IsCapCategoryCell ] );
 
-#! @Arguments source, mor, range
+#! @Arguments source, morphism, target
 DeclareOperation( "AsSubcategoryCell",
                   [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
 

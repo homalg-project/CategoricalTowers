@@ -24,17 +24,14 @@ InstallValue( CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY,
    ] );
 
 ##
-InstallMethod( AsSubcategoryCell,
+InstallMethodForCompilerForCAP( AsSubcategoryObject,
         "for a CAP category and a CAP object",
         [ IsCapSubcategory, IsCapCategoryObject ],
         
   function( D, object )
     
-    if not IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) then
-        
-        Error( "the given object should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
-        
-    fi;
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( object ), AmbientCategory( D ) ) );
     
     return CreateCapCategoryObjectWithAttributes( D,
                                                   UnderlyingCell, object );
@@ -42,27 +39,40 @@ InstallMethod( AsSubcategoryCell,
 end );
 
 ##
+InstallMethodForCompilerForCAP( AsSubcategoryMorphism,
+        "for two CAP objects in a subcategory and a CAP morphism",
+        [ IsCapSubcategory, IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ],
+        
+  function( D, source, morphism, target )
+    
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    Assert( 0, IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) );
+    
+    return CreateCapCategoryMorphismWithAttributes( D,
+                                                    source,
+                                                    target,
+                                                    UnderlyingCell, morphism );
+    
+end );
+
+##
+InstallMethod( AsSubcategoryCell,
+        "for a CAP category and a CAP object",
+        [ IsCapSubcategory, IsCapCategoryObject ],
+        
+  { D, object } -> AsSubcategoryObject( D, object )
+  
+);
+
+##
 InstallMethod( AsSubcategoryCell,
         "for two CAP objects in a subcategory and a CAP morphism",
         [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ],
         
-  function( source, morphism, range )
-    local D;
-    
-    D := CapCategory( source );
-    
-    if not IsIdenticalObj( CapCategory( morphism ), AmbientCategory( D ) ) then
-        
-        Error( "the given morphism should belong to the ambient category: ", Name( AmbientCategory( D ) ), "\n" );
-        
-    fi;
-    
-    return CreateCapCategoryMorphismWithAttributes( D,
-                                                    source,
-                                                    range,
-                                                    UnderlyingCell, morphism );
-    
-end );
+  { source, morphism, target } ->
+        AsSubcategoryMorphism( CapCategory( source ), source, morphism, target )
+  
+);
 
 ##
 InstallMethod( AsSubcategoryCell,
@@ -71,11 +81,10 @@ InstallMethod( AsSubcategoryCell,
         
   function( D, morphism )
     
-    return AsSubcategoryCell(
-                   AsSubcategoryCell( D, Source( morphism ) ),
-                   morphism,
-                   AsSubcategoryCell( D, Target( morphism ) )
-                   );
+    return AsSubcategoryMorphism( D,
+                  AsSubcategoryObject( D, Source( morphism ) ),
+                  morphism,
+                  AsSubcategoryObject( D, Target( morphism ) ) );
     
 end );
 
@@ -110,9 +119,9 @@ InstallMethod( Subcategory,
          category_filter := CAP_NAMED_ARGUMENTS.category_filter,
          category_object_filter := CAP_NAMED_ARGUMENTS.category_object_filter,
          category_morphism_filter := CAP_NAMED_ARGUMENTS.category_morphism_filter,
-         object_constructor := { cat, obj } -> AsSubcategoryCell( cat, obj ),
+         object_constructor := { cat, obj } -> AsSubcategoryObject( cat, obj ),
          object_datum := { cat, obj } -> UnderlyingCell( obj ),
-         morphism_constructor := { cat, source, mor, range } -> AsSubcategoryCell( source, mor, range ),
+         morphism_constructor := { cat, source, mor, target } -> AsSubcategoryMorphism( cat, source, mor, target ),
          morphism_datum := { cat, mor } -> UnderlyingCell( mor ),
          underlying_category_getter_string := "AmbientCategory",
          underlying_category := C,
