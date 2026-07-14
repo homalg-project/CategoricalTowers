@@ -103,6 +103,7 @@ InstallMethod( Subcategory,
     [ "is_full", false ],
     [ "is_additive", false ],
     [ "additional_operations_to_install", Immutable( [ ] ) ],
+    [ "only_primitively_installed_operations_of_ambient_category", true ],
     [ "properties", Immutable( [ ] ) ],
     [ "supports_empty_limits", false ],
     [ "FinalizeCategory", true ],
@@ -146,7 +147,11 @@ InstallMethod( Subcategory,
         Append( list_of_operations_to_install, CAP_INTERNAL_METHOD_NAME_LIST_FOR_ADDITIVE_FULL_SUBCATEGORY );
     fi;
     
-    list_of_operations_to_install := Intersection( list_of_operations_to_install, ListPrimitivelyInstalledOperationsOfCategory( C ) );
+    if CAP_NAMED_ARGUMENTS.only_primitively_installed_operations_of_ambient_category then
+        list_of_operations_to_install := Intersection( list_of_operations_to_install, ListPrimitivelyInstalledOperationsOfCategory( C ) );
+    else
+        list_of_operations_to_install := Intersection( list_of_operations_to_install, ListInstalledOperationsOfCategory( C ) );
+    fi;
     
     skip := [ "MultiplyWithElementOfCommutativeSemiringForMorphisms",
               ];

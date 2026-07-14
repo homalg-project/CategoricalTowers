@@ -100,6 +100,22 @@ end );
 #
 ####################################
 
+#! @Description
+#!  Constructs a subcategory of C with name 'name'.
+#!  It supports the following options:
+#!  * 'is_full'
+#!  * 'is_additive'
+#!  * 'additional_operations_to_install': a list of strings with names of CAP operations
+#!     supported by the ambient category to additionally install in the subcategory.
+#!  * 'only_primitively_installed_operations_of_ambient_category': either 'true' or 'false'.
+#!     Decides, whether to consider only primitive operations or all installed operations of the ambient category,
+#!     when installing additional operations via "additional_operations_to_install" in the subcategory.
+#!  * 'properties'
+#!  * 'supports_empty_limits'
+#!  * 'FinalizeCategory'
+#!  * 'category_filter'
+#!  * 'category_object_filter'
+#!  * 'category_morphism_filter'
 #! @Arguments C, name
 DeclareOperation( "Subcategory",
                   [ IsCapCategory, IsString ] );
