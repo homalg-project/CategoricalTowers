@@ -139,7 +139,7 @@ DeclareOperation( "AsSubcategoryCell",
                   [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
 
 #= comment for Julia
-#! @Arguments c, D
+#! @Arguments cell, D
 DeclareOperation( "\/",
                 [ IsCapCategoryCell, IsCapSubcategory ] );
 # =#
