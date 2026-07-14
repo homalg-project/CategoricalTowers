@@ -539,7 +539,7 @@ end );
 BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SOURCE",
   
   function ( PSh )
-    local B, T, Yoneda_data, obj_func, mor_func, data, Y, U;
+    local B, T, Yoneda_data, obj_func, mor_func, B_objs, T_objs, data, Y, U;
     
     if not IsCategoryOfRows( Target( PSh ) ) then
       Error( "the range of presheaves category must be a category of rows" );
@@ -555,7 +555,10 @@ BindGlobal( "SET_ISOMORPHISMS_BETWEEN_SOURCE_AND_IMAGE_OF_YONEDA_EMBEDDING_OF_SO
     
     mor_func := { s, m, r } -> AsSubcategoryCell( T, Yoneda_data[2]( UnderlyingCell( s ), m, UnderlyingCell( r ) ) );
     
-    data := AdditiveFunctorDataFromValuesOnBasisMorphisms( B, T, obj_func , mor_func : is_full := true, known_values_on_objects := [ SetOfObjects( B ), SetOfKnownObjects( T ) ] );
+    B_objs := CallFuncListAtRuntime( SetOfObjects, [ B ] );
+    T_objs := CallFuncListAtRuntime( SetOfObjects, [ T ] );
+    
+    data := AdditiveFunctorDataFromValuesOnBasisMorphisms( B, T, obj_func , mor_func : is_full := true, known_values_on_objects := [ B_objs, T_objs ] );
     
     Y := CapFunctor( "Yoneda isomorphism", B, T );
     AddObjectFunction( Y, data[1] );
