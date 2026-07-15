@@ -1072,9 +1072,9 @@ InstallMethod( LaTeXStringsOfBasesElements,
                                   ListN( labels,
                                     function ( l )
                                       if l[2] = 1 then
-                                        return Concatenation( "{", l[1], "}" );
+                                        return Concatenation( LATEX_LBRACE, l[1], LATEX_RBRACE );
                                       else
-                                        return Concatenation( "{", l[1], "}^{", String( l[2] ), "}" );
+                                        return Concatenation( LATEX_LBRACE, l[1], LATEX_RBRACE, "^", LATEX_LBRACE, String( l[2] ), LATEX_RBRACE );
                                       fi;
                                     end ), "" );
                         
@@ -1531,50 +1531,53 @@ InstallMethod( DisplayString,
 ##
 InstallMethod( LaTeXOutput,
           [ IsMorphismInFpAlgebroidFromDataTables ],
-  
-  function ( alpha )
-    local A, q, i, j, coeffs, support, string;
-    
-    A := CapCategory( alpha );
-    q := UnderlyingQuiver( A );
-    
-    i := ObjectIndex( Source( alpha ) );
-    j := ObjectIndex( Target( alpha ) );
-    
-    coeffs := CoefficientsList( alpha );
-    support := IndicesOfSupportMorphisms( alpha );
-    
-    if IsEmpty( support ) then
-        string := "0";
-    else
-        coeffs := List( coeffs{support},
-                    function ( c )
-                      
-                      if c in [ 1, -1 ] then
-                          return ReplacedString( LaTeXOutput( c ), "1", "" );
-                      else
-                          return Concatenation( LaTeXOutput( c ), "\\cdot " );
-                      fi;
-                      
-                    end );
+  FunctionWithNamedArguments(
+    [ [ "OnlyDatum", false ] ],
+    function ( CAP_NAMED_ARGUMENTS, alpha )
+      local A, q, i, j, coeffs, support, string;
+      
+      A := CapCategory( alpha );
+      q := UnderlyingQuiver( A );
+      
+      i := ObjectIndex( Source( alpha ) );
+      j := ObjectIndex( Target( alpha ) );
+      
+      coeffs := CoefficientsList( alpha );
+      support := IndicesOfSupportMorphisms( alpha );
+      
+      if IsEmpty( support ) then
+          string := "0";
+      else
+          coeffs := List( coeffs{support},
+                      function ( c )
+                        
+                        if c in [ 1, -1 ] then
+                            return ReplacedString( LaTeXOutput( c ), "1", "" );
+                        else
+                            return Concatenation( LaTeXOutput( c ), "\\cdot " );
+                        fi;
+                        
+                      end );
+          
+          string := LaTeXStringsOfBasesElements( A )[i][j]{support};
+          
+          string := ReplacedString( JoinStringsWithSeparator( ListN( coeffs, string, { c, l } -> Concatenation( c, l ) ), " + " ), "+ -", "- " );
+      fi;
+      
+      if CAP_NAMED_ARGUMENTS.OnlyDatum = true then
         
-        string := LaTeXStringsOfBasesElements( A )[i][j]{support};
+        return string;
         
-        string := ReplacedString( JoinStringsWithSeparator( ListN( coeffs, string, { c, l } -> Concatenation( c, l ) ), " + " ), "+ -", "- " );
-    fi;
-    
-    if ValueOption( "OnlyDatum" ) = true then
+      else
+        
+        return Concatenation(
+                  LATEX_LBRACE, LaTeXOutput( Source( alpha ) ), LATEX_RBRACE, "-\\left(",
+                  LATEX_LBRACE, string, LATEX_RBRACE, "\\right)\\rightarrow",
+                  LATEX_LBRACE, LaTeXOutput( Target( alpha ) ), LATEX_RBRACE );
       
-      return string;
+      fi;
       
-    else
-      
-      return Concatenation(
-                "{", LaTeXOutput( Source( alpha ) ), "}-\\left(",
-                "{", string, "}\\right)\\rightarrow",
-                "{", LaTeXOutput( Target( alpha ) ), "}" );
-    
-    fi;
-    
-end );
+    end
+  )
+);
 
