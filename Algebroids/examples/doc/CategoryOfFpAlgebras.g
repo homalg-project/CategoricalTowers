@@ -12,7 +12,7 @@ Alg_F := CategoryOfFpAlgebras( F );
 Display( Alg_F );
 #! A CAP category with name CategoryOfFpAlgebras( GF(2) ):
 #! 
-#! 31 primitive operations were used to derive 151 operations for this category \
+#! 31 primitive operations were used to derive 159 operations for this category \
 #! which algorithmically
 #! * IsBicartesianCategory
 #! * IsFiniteCocompleteCategory
