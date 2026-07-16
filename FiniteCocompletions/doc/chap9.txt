@@ -75,7 +75,7 @@
     [4X[28XFiniteColimitCompletionWithStrictCoproducts([128X[104X
     [4X[28XPathCategory( FinQuiver( "q(P,L)[b:P→L]" ) ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X18 primitive operations were used to derive 67 operations for this category[128X[104X
+    [4X[28X18 primitive operations were used to derive 71 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsCocartesianCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
@@ -583,7 +583,7 @@
     [4X[28XA CAP category with name[128X[104X
     [4X[28XFiniteColimitCompletionWithStrictCoproducts( Opposite( SkeletalFinSets ) ):[128X[104X
     [4X[28X[128X[104X
-    [4X[28X23 primitive operations were used to derive 110 operations for this category[128X[104X
+    [4X[28X23 primitive operations were used to derive 118 operations for this category[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
     [4X[28X* IsBicartesianCategory[128X[104X
     [4X[28Xand not yet algorithmically[128X[104X
