@@ -15,8 +15,11 @@ ReadPackage( "Toposes", "gap/ToposDerivedMethods.semiautogen.gi" );
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gi" );
 
-## Tools
-ReadPackage( "Toposes", "gap/Tools.gi" );
+#= comment for Julia
+if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
+    ReadPackage( "Toposes", "gap/ToolsUsingDigraphs.gi" );
+fi;
+# =#
 
 ## DPO
 ReadPackage( "Toposes", "gap/DPO.gi" );

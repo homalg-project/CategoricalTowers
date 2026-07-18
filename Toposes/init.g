@@ -11,8 +11,7 @@ ReadPackage( "Toposes", "gap/ToposMethodRecordDeclarations.autogen.gd" );
 ## Category of relations
 ReadPackage( "Toposes", "gap/CategoryOfRelations.gd" );
 
-## Tools
-ReadPackage( "Toposes", "gap/Tools.gd" );
+ReadPackage( "Toposes", "gap/ToolsUsingDigraphs.gd" );
 
 ## DPO
 ReadPackage( "Toposes", "gap/DPO.gd" );
