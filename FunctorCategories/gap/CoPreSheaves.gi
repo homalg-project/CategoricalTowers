@@ -1034,10 +1034,12 @@ end );
 InstallMethod( LaTeXOutput,
           [ IsMorphismInCoPreSheafCategory ],
           
-  function( eta )
-    local only_datum, objs, v_objs, i, datum;
-    
-    only_datum := ValueOption( "OnlyDatum" );
+  FunctionWithNamedArguments(
+  [
+    [ "OnlyDatum", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, eta )
+    local objs, v_objs, i, datum;
     
     objs := SetOfObjects( Source( Source( eta ) ) );
     
@@ -1058,7 +1060,7 @@ InstallMethod( LaTeXOutput,
     
     datum := Concatenation( datum, "\\end{array}" );
     
-    if only_datum = true then
+    if CAP_NAMED_ARGUMENTS.OnlyDatum = true then
       
       return datum;
       
@@ -1074,4 +1076,4 @@ InstallMethod( LaTeXOutput,
     
     fi;
     
-end );
+end ) );
