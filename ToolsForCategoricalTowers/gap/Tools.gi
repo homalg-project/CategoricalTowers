@@ -888,7 +888,7 @@ end );
 ##
 InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
   function( name_of_cap_operation, list_of_installed_operations )
-    local info, with_given_operation_name, info_of_with_given, with_given_object_name, pair, list;
+    local info, with_given_operation_name, info_of_with_given, with_given_object_name, minimal_list, list;
     
     info := CAP_INTERNAL_METHOD_NAME_RECORD.(name_of_cap_operation);
     
@@ -898,7 +898,8 @@ InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
              IsList( info.with_given_without_given_name_pair ) and
              Length( info.with_given_without_given_name_pair ) = 2 and
              name_of_cap_operation = info.with_given_without_given_name_pair[1] and
-             IsBound( CAP_INTERNAL_METHOD_NAME_RECORD.(info.with_given_without_given_name_pair[2]).with_given_object_name ) ) then
+             IsBound( info.output_source_getter_preconditions ) and
+             IsBound( info.output_range_getter_preconditions ) ) then
         
         return [ name_of_cap_operation ];
         
@@ -911,31 +912,42 @@ InstallGlobalFunction( CAP_INTERNAL_CORRESPONDING_WITH_GIVEN_OBJECTS_METHOD,
     
     with_given_operation_name := info.with_given_without_given_name_pair[2];
     
+    if not with_given_operation_name in list_of_installed_operations then
+        Error( "unable to find \"", with_given_operation_name, "\" in list_of_installed_operations\n" );
+    fi;
+    
     info_of_with_given := CAP_INTERNAL_METHOD_NAME_RECORD.(with_given_operation_name);
     
     Assert( 0, IsBound( info_of_with_given.is_with_given ) );
     Assert( 0, info_of_with_given.is_with_given = true );
-    Assert( 0, IsBound( info_of_with_given.with_given_object_name ) );
     
-    with_given_object_name := info_of_with_given.with_given_object_name;
+    minimal_list := [ with_given_operation_name ];
+    
+    if IsBound( info_of_with_given.with_given_object_name ) then
+        
+        with_given_object_name := info_of_with_given.with_given_object_name;
+        
+        if not with_given_object_name in list_of_installed_operations then
+            Error( "unable to find \"", with_given_object_name, "\" in list_of_installed_operations\n" );
+        fi;
+        
+        Add( minimal_list, with_given_object_name );
+        
+    fi;
     
     Assert( 0, IsBound( info.output_source_getter_preconditions ) );
     Assert( 0, IsBound( info.output_range_getter_preconditions ) );
-    
-    if not with_given_object_name in list_of_installed_operations then
-        Error( "unable to find \"", with_given_object_name, "\" in `list_of_installed_operations`\n" );
-    elif not with_given_operation_name in list_of_installed_operations then
-        Error( "unable to find \"", with_given_operation_name, "\" in `list_of_installed_operations`\n" );
-    fi;
-    
-    pair := [ with_given_object_name, with_given_operation_name ];
     
     list := SortedList( Concatenation(
                     List( info.output_source_getter_preconditions, e -> e[1] ),
                     List( info.output_range_getter_preconditions, e -> e[1] ),
                     [ with_given_operation_name ] ) );
     
-    Assert( 0, IsSubset( list, pair ) );
+    if not IsSubset( list_of_installed_operations, list ) then
+        Error( "unable to find \"", Difference( list, list_of_installed_operations )[1], "\" in list_of_installed_operations\n" );
+    fi;
+    
+    Assert( 0, IsSubset( list, minimal_list ) );
     
     return list;
     
