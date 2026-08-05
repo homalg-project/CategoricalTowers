@@ -8,6 +8,8 @@ LoadPackage( "SubcategoriesForCAP", false );
 #! true
 LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02", false );
 #! true
+LoadPackage( "SliceCategories" );
+#! true
 
 zz := HomalgRingOfIntegers( );;
 
