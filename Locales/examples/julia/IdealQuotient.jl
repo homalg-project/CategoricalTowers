@@ -9,6 +9,8 @@ LoadPackage( "Locales" )
 
 LoadPackage( "LazyCategories" )
 
+LoadPackage( "SliceCategories" )
+
 Q = HomalgFieldOfRationalsInSingular( )
 
 R = Q["x,y"]

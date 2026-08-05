@@ -3,6 +3,8 @@
 #! @Example
 LoadPackage( "SubcategoriesForCAP", ">= 2024.02-11", false );
 #! true
+LoadPackage( "SliceCategories" );
+#! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
 R := Q["x,y"];

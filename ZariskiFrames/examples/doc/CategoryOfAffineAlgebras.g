@@ -12,8 +12,8 @@ Display( AffAlg_Z );
 #! 
 #! 27 primitive operations were used to derive 175 operations for this category \
 #! which algorithmically
-#! * IsFiniteCocompleteCategory
 #! * IsSymmetricMonoidalCategory
+#! * IsFiniteCocompleteCategory
 #! * IsCodistributiveCategory
 #! and furthermore mathematically
 #! * IsSymmetricMonoidalCategoryStructureGivenByCoproduct

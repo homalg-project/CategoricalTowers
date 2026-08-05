@@ -1,3 +1,4 @@
+
 #! @BeginChunk CategoryOfFpAlgebras
 
 #! @Example
@@ -15,8 +16,8 @@ Display( Alg_F );
 #! 31 primitive operations were used to derive 159 operations for this category \
 #! which algorithmically
 #! * IsBicartesianCategory
-#! * IsFiniteCocompleteCategory
 #! * IsSymmetricMonoidalCategory
+#! * IsFiniteCocompleteCategory
 T := TerminalObject( Alg_F );
 #! <An object in CategoryOfFpAlgebras( GF(2) )>
 Display( T );

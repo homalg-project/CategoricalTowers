@@ -5,6 +5,8 @@ LoadPackage( "Locales" );
 #! @Example
 LoadPackage( "SubcategoriesForCAP", ">= 2020.10-02" );
 #! true
+LoadPackage( "SliceCategories" );
+#! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
 R := Q["x"] / "x^2";

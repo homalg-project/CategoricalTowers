@@ -9,6 +9,8 @@ LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
 #! true
 LoadPackage( "LazyCategories", ">= 2020.05.01" );
 #! true
+LoadPackage( "SliceCategories" );
+#! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q
 R := Q["x,y"];

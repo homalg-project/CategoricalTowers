@@ -56,8 +56,8 @@ Display( Alg_F );
 #! 31 primitive operations were used to derive 159 operations for this category \
 #! which algorithmically
 #! * IsBicartesianCategory
-#! * IsFiniteCocompleteCategory
 #! * IsSymmetricMonoidalCategory
+#! * IsFiniteCocompleteCategory
 q := FinQuiver( "q(o)[x:o->o,y:o->o]" );
 #! FinQuiver( "q(o)[x:o→o,y:o→o]" )
 P := PathCategory( q );
