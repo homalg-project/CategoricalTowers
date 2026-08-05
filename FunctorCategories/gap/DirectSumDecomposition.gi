@@ -9,8 +9,12 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
         "for an object in a Hom-category",
         [ IsObjectInFunctorCategory ],
         
-  function ( F )
-    local d, endbas, k, n, random, b, alpha, i, alpha2, keremb;
+    FunctionWithNamedArguments(
+    [
+        [ "random", true ],
+    ],
+    function ( CAP_NAMED_ARGUMENTS, F )
+        local d, endbas, k, n, b, alpha, i, alpha2, keremb;
     
     d := Maximum( List( ValuesOfFunctor( F )[1], ObjectDatum ) );
     
@@ -26,12 +30,9 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     
     n := Int( Log2( Float( d ) ) ) + 1;
     
-    ## the default is true
-    random := not IsIdenticalObj( ValueOption( "random" ), false );
-    
     for b in Reversed( [ 2 .. Length( endbas ) ] ) do
         
-        if random then
+        if CAP_NAMED_ARGUMENTS.random then
             alpha := endbas[b] + Random( k ) * endbas[b-1];
         else
             alpha := endbas[b] + endbas[b-1];
@@ -63,15 +64,19 @@ InstallMethod( DecomposeOnceByRandomEndomorphism,
     
     return fail;
     
-end );
+end ) );
 
 ##
 InstallMethod( WeakDirectSumDecomposition,
         "for an object in a Hom-category",
         [ IsObjectInFunctorCategory ],
         
-  function ( F )
-    local queue, summands, eta, result;
+    FunctionWithNamedArguments(
+    [
+        [ "random", true ],
+    ],
+    function ( CAP_NAMED_ARGUMENTS, F )
+        local queue, summands, eta, result;
     
     queue := [ IdentityMorphism( F ) ];
     
@@ -81,7 +86,7 @@ InstallMethod( WeakDirectSumDecomposition,
         
         eta := Remove( queue );
         
-        result := DecomposeOnceByRandomEndomorphism( Source( eta ) );
+        result := DecomposeOnceByRandomEndomorphism( Source( eta ) : random := CAP_NAMED_ARGUMENTS.random );
         
         if result = fail then
             Add( summands, eta );
@@ -93,4 +98,4 @@ InstallMethod( WeakDirectSumDecomposition,
     
     return summands;
     
-end );
+end ) );
