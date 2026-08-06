@@ -55,8 +55,8 @@
     [4X[28X[128X[104X
     [4X[28X27 primitive operations were used to derive 175 operations for this category \[128X[104X
     [4X[28Xwhich algorithmically[128X[104X
-    [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsSymmetricMonoidalCategory[128X[104X
+    [4X[28X* IsFiniteCocompleteCategory[128X[104X
     [4X[28X* IsCodistributiveCategory[128X[104X
     [4X[28Xand furthermore mathematically[128X[104X
     [4X[28X* IsSymmetricMonoidalCategoryStructureGivenByCoproduct[128X[104X
