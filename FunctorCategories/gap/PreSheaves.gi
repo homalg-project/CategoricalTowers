@@ -3503,6 +3503,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     map_of_sources_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][1] );
     map_of_targets_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][2] );
     
+    # G2J:julia-only map_of_sources_C := List( map_of_sources_C, Int );
+    # G2J:julia-only map_of_targets_C := List( map_of_targets_C, Int );
+    
     objs := SetOfObjects( C );
     mors := SetOfGeneratingMorphisms( C );
     
