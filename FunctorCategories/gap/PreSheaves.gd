@@ -492,9 +492,15 @@ DeclareAttribute( "OptimizedCoYonedaLemmaCoequalizerPair",
 DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCompletion",
         [ IsCapCategory, IsObjectInPreSheafCategory, IsObjectInFiniteStrictCoproductCompletion ] );
 
+DeclareOperation( "ApplyPreSheafToObjectInFiniteStrictCoproductCompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsCapCategory, IsObjectInFiniteStrictCoproductCompletion ] );
+
 #! @Arguments PSh, presheaf, mor
 DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion",
         [ IsCapCategory, IsObjectInPreSheafCategory, IsMorphismInFiniteStrictCoproductCompletion ] );
+
+DeclareOperation( "ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion",
+        [ IsCapCategory, IsObjectInPreSheafCategory, IsCapCategory, IsMorphismInFiniteStrictCoproductCompletion ] );
 
 #! @Description
 #!  Construct the category of categories internal to the monoidal or cartesian category <A>C</A>.
