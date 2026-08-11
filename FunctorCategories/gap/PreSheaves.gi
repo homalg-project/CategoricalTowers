@@ -1987,7 +1987,9 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
     fi;
     
     ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY( PSh );
-      
+
+    ADD_CONJUNCTION_DERIVED_LATTICE_PROPERTIES( PSh );
+
     ADD_FUNCTIONS_FOR_WELL_DEFINED_TO_PRESHEAF_CATEGORY( PSh );
     
     if HasRangeCategoryOfHomomorphismStructure( D ) and
