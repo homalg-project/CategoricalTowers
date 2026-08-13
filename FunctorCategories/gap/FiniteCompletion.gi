@@ -69,7 +69,7 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
   function( finite_completion )
     local Y;
     
-    Y := CoYonedaEmbedding( UnderlyingCategory( finite_completion ) );
+    Y := CoYonedaEmbeddingOfSourceCategory( ModelingCategory( finite_completion ) );
     
     return PreCompose( Y, WrappingFunctor( finite_completion ) );
     
