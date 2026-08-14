@@ -470,7 +470,9 @@ InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
         values := ValuesOfPreSheaf( F );
         F := CapFunctor( AmbientCategory( OppositeOfSource( PSh ) ), values[1], values[2], D );
         
-        return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
+        return ForAll( relations, m -> IsCongruentForMorphisms( D,
+                                            CallFuncListAtRuntime( ApplyFunctor, [ F, m[1] ] ),
+                                            CallFuncListAtRuntime( ApplyFunctor, [ F, m[2] ] ) ) );
         
       end;
       
