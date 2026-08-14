@@ -2898,16 +2898,14 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( CategoryOfInternalCategories,
-        "for a CAP category",
-        [ IsCapCategory ],
+InstallOtherMethod( CategoryOfInternalCategories,
+        "for a presheaf category of a f.p. enriched category and a category",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsCapCategory ],
         
-  function ( H )
-    local Delta2, sH, membership_func;
+  function ( sH, H )
+    local Delta2, membership_func;
     
     Delta2 := SimplicialCategoryTruncatedInDegree2;
-    
-    sH := PreSheaves( Delta2, H );
     
     membership_func :=
       function ( sH, N )
@@ -2961,6 +2959,22 @@ InstallMethod( CategoryOfInternalCategories,
     end;
     
     return FullSubcategoryByObjectMembershipFunction( sH, membership_func );
+    
+end );
+
+##
+InstallMethod( CategoryOfInternalCategories,
+        "for a category",
+        [ IsCapCategory ],
+        
+  function ( H )
+    local Delta2, sH;
+    
+    Delta2 := SimplicialCategoryTruncatedInDegree2;
+    
+    sH := PreSheaves( Delta2, H );
+    
+    return CategoryOfInternalCategories( sH, H );
     
 end );
 
