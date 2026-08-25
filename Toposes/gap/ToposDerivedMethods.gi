@@ -737,7 +737,7 @@ AddDerivationToCAP( RelativeTruthMorphismOfFalseWithGivenObjects,
     
 end );
 
-## ¬_a: Pa ⭇ Pa
+## ¬_a: Pa → Pa
 AddDerivationToCAP( RelativeTruthMorphismOfNotWithGivenObjects,
         "",
         [ [ ExponentialOnMorphismsWithGivenExponentials, 1 ],
