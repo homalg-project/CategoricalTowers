@@ -54,6 +54,10 @@ DeclareAttribute( "BaseOfFibration",
         IsZariskiFrameOrCoframe );
 
 #!
+DeclareOperation( "NumberOfRelations",
+        [ IsObjectInZariskiFrameOrCoframe ] );
+
+#!
 DeclareAttribute( "BaseOfFibration",
         IsObjectInZariskiFrameOrCoframe );
 

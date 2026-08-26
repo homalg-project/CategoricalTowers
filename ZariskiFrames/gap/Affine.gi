@@ -13,6 +13,8 @@ InstallMethod( UnderlyingListOfRadicalColumns,
     local L;
     
     L := UnderlyingListOfColumns( A );
+
+    L := List( L, BasisOfRows );
     
     L := List( L, RadicalSubobjectOp );
     

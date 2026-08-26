@@ -12,12 +12,12 @@
 #  we send the following diagram in A^op ⊗ A
 #                     _
 #          _          X⊗f         _
-#          X⊗U  ---------------≻  X⊗V
+#          X⊗U  --------------→  X⊗V
 #      _    |                      |  _
 #      g⊗U  |                      |  g⊗V
 #           |         _            |
 #          _⋎         Y⊗f         _⋎
-#          Y⊗U  ---------------≻  Y⊗V
+#          Y⊗U  --------------→  Y⊗V
 #
 #  to the diagram in k-rows:
 #

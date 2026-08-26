@@ -189,6 +189,6 @@ DeclareOperation( "ExtendFunctorToFpCategoryData",
         [ IsPathCategory, IsList, IsCapCategory ] );
 
 DeclareOperation( "ExtendContravariantFunctorToFpCategoryData",
-        [ IsPathCategory, IsList, IsCapCategory ] );
+        [ IsPathCategory, IsList, IsCapCategory, IsList ] );
 
 DeclareGlobalFunction( "CAP_INTERNAL_EXTRACT_STRING_OF_PATH" );
