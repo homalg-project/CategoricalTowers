@@ -2089,7 +2089,7 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( CapFunctor,
+InstallMethod( CreateFunctor,
         "for an algebroid, two lists, and a CAP category",
         [ IsFpAlgebroidDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory ],
         

@@ -616,4 +616,17 @@ DeclareOperation( "AllCoproducts",
 # =#
 #% G2J:julia-only @DeclareFilterDispatchedOperation( "AllCoproducts" )
 
+#= comment for Julia
+#! @Description
+#!  The arguments are a &CAP; category <A>A</A>, a list <A>imgs_of_objs</A> of the images of the objects of <A>A</A> in <A>C</A>,
+#!  a list <A>imgs_of_gmors</A> of the images of the generating morphisms of <A>A</A> in <A>C</A>, and a &CAP; category <A>C</A>.
+#!  The output is the functor <A>A</A> $\to$ <A>C</A> determined by these images.
+#!  Declared centrally here since it is installed on unrelated filters by several packages (e.g. Locales, FpLinearCategories).
+#! @Arguments A, imgs_of_objs, imgs_of_gmors, C
+#! @Returns a &CAP; functor
+DeclareOperation( "CreateFunctor",
+        [ IsCapCategory, IsList, IsList, IsCapCategory ] );
+# =#
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "CreateFunctor" )
+
 DeclareOperation( "OneMutable", [ IsCapCategoryMorphism ] );
