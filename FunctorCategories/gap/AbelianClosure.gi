@@ -22,9 +22,9 @@ InstallMethodWithCache( AbelianClosure,
     name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" );
     
     ##
-    category_filter := FilterIntersection( IsAbelianClosure, IsWrapperCapCategory );
-    category_object_filter := FilterIntersection( IsObjectInAbelianClosure, IsWrapperCapCategoryObject );
-    category_morphism_filter := FilterIntersection( IsMorphismInAbelianClosure, IsWrapperCapCategoryMorphism );
+    category_filter := IsAbelianClosure;
+    category_object_filter := IsObjectInAbelianClosure;
+    category_morphism_filter := IsMorphismInAbelianClosure;
     
     ## building the categorical tower:
     
