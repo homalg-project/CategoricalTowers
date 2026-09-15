@@ -276,25 +276,6 @@ DeclareAttribute( "DecompositionIndicesOfAllMorphisms",
 DeclareAttribute( "CategoryFromNerveData",
         IsFpCategoryDefinedByQuiverAlgebra );
 
-DeclareAttribute( "EmbeddingOfSieveFunctor", IsFpCategoryDefinedByQuiverAlgebra );
-
-#! @Description
-#!  Return the truth morphism of true from terminal functor
-#!  to the functor of sieves from <C>OppositeOfObjectFiniteCategory</C>( <A>B</A> )
-#!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
-#! @Arguments B
-#! @Returns a &CAP; functor
-DeclareAttribute( "TruthMorphismOfTrueToSieveFunctor", IsFpCategoryDefinedByQuiverAlgebra );
-#! @InsertChunk SieveFunctor
-
-#! @Description
-#!  Return the functor of sieves from <C>OppositeOfObjectFiniteCategory</C>( <A>B</A> )
-#!  to <C>RangeCategoryOfHomomorphismStructure</C>( <A>B</A> ).
-#! @Arguments B
-#! @Returns a &CAP; functor
-DeclareAttribute( "SieveFunctor", IsFpCategoryDefinedByQuiverAlgebra );
-#! @InsertChunk SieveFunctor
-
 DeclareAttribute( "AssociatedFreeCategory",
         IsPathCategory );
 
