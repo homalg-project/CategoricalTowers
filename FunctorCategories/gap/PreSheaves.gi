@@ -1291,7 +1291,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
     
     AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
       function( PSh, F )
-        local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+        local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, NL_F, mono_coPSh, mono;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
@@ -1310,7 +1310,9 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         NR_on_mors := NR[2];
         
-        mono_coPSh := CallFuncListAtRuntime( MonomorphismIntoInjectiveEnvelopeObject,  [ coPSh, NL( F ) ] );
+        NL_F := CallFuncListAtRuntime( NL, [ F ] );
+        
+        mono_coPSh := CallFuncListAtRuntime( MonomorphismIntoInjectiveEnvelopeObject,  [ coPSh, NL_F ] );
         
         mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
         
