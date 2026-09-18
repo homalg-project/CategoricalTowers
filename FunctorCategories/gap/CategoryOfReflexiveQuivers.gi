@@ -23,8 +23,7 @@ InstallOtherMethodForCompilerForCAP( CreateReflexiveQuiver,
             IsList( quadruple[4] ) and
             ForAll( quadruple[4], IsList ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, quadruple );
+    return ObjectConstructor( category_of_quivers, quadruple );
     
 end );
 
@@ -55,10 +54,7 @@ InstallOtherMethodForCompilerForCAP( CreateReflexiveQuiverMorphism,
         
   function ( category_of_quivers, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
-                   source,
-                   range,
-                   DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, images );
+    return MorphismConstructor( category_of_quivers, source, images, range );
     
 end );
 
@@ -106,7 +102,10 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
                               IsBigInt,
                               IsBigInt ) ) );
     
-    object_constructor := CreateReflexiveQuiver;
+    object_constructor :=
+        { category_of_quivers, quadruple } ->
+            CreateCapCategoryObjectWithAttributes( category_of_quivers,
+                DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets, quadruple );
     
     object_datum := { Quivers, o } -> DefiningQuadrupleOfReflexiveQuiverEnrichedOverSkeletalFinSets( o );
     
@@ -116,7 +115,12 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
               CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf( IsBigInt ) );
     
-    morphism_constructor := CreateReflexiveQuiverMorphism;
+    morphism_constructor :=
+        { category_of_quivers, source, images, range } ->
+            CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+                source,
+                range,
+                DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets, images );
     
     morphism_datum := { Quivers, m } -> DefiningPairOfReflexiveQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
