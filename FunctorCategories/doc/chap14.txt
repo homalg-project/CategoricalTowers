@@ -2,38 +2,150 @@
   [1X14  [33X[0;0YQuotient  categories  of  algebroids  from  data tables using presheaves[101X
   [1Xcategories[133X[101X
   
+  [33X[0;0YLet  [23XA[123X  be  an  algebroid  over  a  commutative ring [23Xk[123X, given by finite data
+  tables,   and   let   [23XI[123X  be  the  two-sided  ideal  generated  by  morphisms
+  [23X\alpha_i:t_i\to  u_i[123X,  where  [23Xt_i[123X  and [23Xu_i[123X are objects of [23XA[123X. The aim of this
+  construction  is  to  realize  the quotient algebroid [23XA/I[123X as a quotient of a
+  presheaf  associated  with  [23XA[123X.  More  precisely, the ideal [23XI[123X gives rise to a
+  subpresheaf  [23XF_I\subseteq  F_A[123X,  and the Hom-bifunctor of [23XA/I[123X is realized as
+  the quotient presheaf [23XF_A/F_I[123X.[133X
+  
+  [33X[0;0YMore precisely, regard the Hom-bifunctor of [23XA[123X as the presheaf[133X
+  
+  
+  [24X[33X[0;6YF_A \in \mathrm{PSh}(A^{\mathrm{op}}\otimes_k A)[133X
+  
+  [124X
+  
+  [33X[0;0Ydetermined  by  its  values  on  the  objects  and  generating  morphisms of
+  [23XA^{\mathrm{op}}\otimes_k A[123X: For two objects [23Xu[123X and [23Xt[123X of [23XA[123X, we have[133X
+  
+  
+  [24X[33X[0;6YF_A(u^{\mathrm{op}}\otimes t)=\operatorname{Hom}_A(t,u).[133X
+  
+  [124X
+  
+  [33X[0;0YFor objects [23Xs,t,u,v[123X of [23XA[123X and morphisms [23Xf:s\to t[123X and [23Xg:u\to v[123X, the elementary
+  tensor       [23Xg^{\mathrm{op}}\otimes       f:v^{\mathrm{op}}\otimes      s\to
+  u^{\mathrm{op}}\otimes t[123X is mapped contravariantly to[133X
+  
+  
+  [24X[33X[0;6Y\operatorname{Hom}_A(t,u)\longrightarrow\operatorname{Hom}_A(s,v),    \qquad
+  h\longmapsto g\circ h\circ f.[133X
+  
+  [124X
+  
+  [33X[0;0YThe  left  and  right  actions commute by associativity, as displayed in the
+  following  diagram.  Thus  [23XF_A[123X is [23XA[123X, through its Hom-modules and composition
+  maps,    regarded    as    a    module   over   the   enveloping   algebroid
+  [23XA^{\mathrm{op}}\otimes_k A[123X.[133X
+  
+  [33X[0;0YFor  an  object  [23Xx[123X  of  [23XA^{\mathrm{op}}\otimes_k A[123X, let [23XP_x[123X denote its image
+  under  the  Yoneda  embedding.  Such representable presheaves are projective
+  objects. By the Yoneda lemma, every relation [23X\alpha_i[123X determines a morphism[133X
+  
+  
+  [24X[33X[0;6Y\lambda_{\alpha_i}:P_{u_i^{\mathrm{op}}\otimes t_i}\longrightarrow F_A.[133X
+  
+  [124X
+  
+  [33X[0;0YThe  family  of  morphisms  [23X\lambda_{\alpha_i}[123X  induces  a morphism from the
+  direct sum of their source objects,[133X
+  
+  
+  [24X[33X[0;6Y\tau:\bigoplus_i P_{u_i^{\mathrm{op}}\otimes t_i}\longrightarrow F_A.[133X
+  
+  [124X
+  
+  [33X[0;0YDefine the ideal presheaf [23XF_I[123X and the quotient presheaf [23XF_{A/I}[123X by[133X
+  
+  
+  [24X[33X[0;6YF_I:=\operatorname{im}(\tau),\qquad
+  F_{A/I}:=F_A/F_I=\operatorname{coker}(\tau).[133X
+  
+  [124X
+  
+  [33X[0;0YFor  [23Xx=v^{\mathrm{op}}\otimes s[123X, the quotient sequence and its evaluation at
+  [23Xx[123X   fit   into  the  following  commutative  diagram  with  exact  rows.  At
+  [23Xv^{\mathrm{op}}\otimes  s[123X,  the  value  of  [23XF_I[123X  is  precisely the submodule
+  [23XI(s,v)\subseteq\operatorname{Hom}_A(s,v)[123X spanned by all compatible two-sided
+  composites of the [23X\alpha_i[123X. Hence[133X
+  
+  
+  [24X[33X[0;6YF_{A/I}(v^{\mathrm{op}}\otimes      s)     =\operatorname{Hom}_A(s,v)/I(s,v)
+  =\operatorname{Hom}_{A/I}(s,v).[133X
+  
+  [124X
+  
+  [33X[0;0YThus  [23XF_{A/I}[123X  is the Hom-bifunctor of the quotient algebroid, regarded as a
+  presheaf on [23XA^{\mathrm{op}}\otimes_k A[123X via the quotient functor [23XA\to A/I[123X.[133X
+  
+  [33X[0;0YThis  description  is  the mathematical basis of the method [10XQuotientCategory[110X
+  for  algebroids  defined  by  data tables in the package [5XFpLinearCategories[105X.
+  Indeed,  for  a  morphism [23Xm:s\to v[123X in [23XA[123X, set [23Xx:=v^{\mathrm{op}}\otimes s[123X and
+  let  [23X\pi:F_A\to  F_{A/I}[123X be the cokernel projection. Membership in the ideal
+  is characterized by[133X
+  
+  
+  [24X[33X[0;6Ym\in I(s,v) \quad\Longleftrightarrow\quad \lambda_m(x)\text{ factors through
+  }\tau(x) \quad\Longleftrightarrow\quad \pi(x)\circ\lambda_m(x)=0.[133X
+  
+  [124X
+  
+  [33X[0;0YWhen  these  equivalent conditions hold, the factorization is represented by
+  the dashed lift in the following commutative diagram. Since composition in [23XA[123X
+  is  encoded by finite matrices, this criterion is decided by linear algebra.
+  Over  a  field,  the  quotient Hom-modules are computed as cokernels. Over a
+  more  general computable ring, membership is decided by a lift through [23X\tau[123X,
+  and   quotient  Hom-modules  are  represented  in  the  corresponding  Freyd
+  category.  Thus  taking  a further quotient of an algebroid already given by
+  data  tables  is  computed  directly  by linear algebra, without computing a
+  noncommutative  Groebner  basis  or  applying  a  path-reduction  algorithm.
+  Constructing  those  data  tables  from an earlier path presentation may, of
+  course, have required a Groebner basis.[133X
+  
   
   [1X14.1 [33X[0;0YAttributes[133X[101X
   
   [1X14.1-1 AlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAlgebroidAsObjectInPreSheavesCategory[102X( [3XA[103X ) [32X attribute[133X
-  [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
   
-  [33X[0;0YThe  argument is an algebroid [23XA[123X over a commutative ring [23Xk[123X. The output is the
-  presheaf  object  [23XF_{A}\in \mathrm{PSh}(A^{\mathrm{op}}\otimes A)[123X which maps
-  an   object   [23Xu^{\mathrm{op}}\otimes   t  \in  A^{\mathrm{op}}\otimes  A[123X  to
-  [23X\mathrm{Hom}_B(t,u)   \in   k\mbox{-}\mathrm{rows}[123X   and   maps  a  morphism
-  [23Xg^{\mathrm{op}}\otimes      f     :     v^{\mathrm{op}}\otimes     s     \to
-  u^{\mathrm{op}}\otimes  t \in A^{\mathrm{op}}\otimes A[123X to [23Xf\bullet(-)\bullet
-  g  =\mathrm{Hom}_B(f,g):  \mathrm{Hom}_B(t,u)  \to  \mathrm{Hom}_B(s,v)  \in
-  k\mbox{-}\mathrm{rows}[123X.[133X
+  [33X[0;0YThe  argument  is  an algebroid [23XA[123X over a commutative ring [23Xk[123X, defined by data
+  tables.  The  output  is  the  presheaf [23XF_A[123X defined in the introduction: the
+  Hom-bifunctor  of  [23XA[123X,  regarded  as  a  module over its enveloping algebroid
+  [23XA^{\mathrm{op}}\otimes_k A[123X.[133X
   
   [1X14.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
   
-  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:  t  \to  u[123X  in an algebroid [23XA[123X over a
-  commutative      ring      [23Xk[123X.     The     output     is     the     morphism
-  [23X\lambda_{\alpha}:P_{u^{\mathrm{op}}\otimes     t}     \to     F_{A}[123X    where
-  [23XP_{u^{\mathrm{op}}\otimes  t}[123X is the image of [23Xu^{\mathrm{op}}\otimes t[123X under
-  the     Yoneda    embdding    [23XA^{\mathrm{op}}\otimes    A    \hookrightarrow
-  \mathrm{PSh}(A^{\mathrm{op}}\otimes  A)[123X;  and  [23X\lambda_{\alpha}[123X the image of
-  [23X\alpha[123X    under    the    natural    isomorphism   [23X\mathrm{Hom}_{A}(t,u)   =
-  F_{A}(u^{\mathrm{op}}\otimes                    t)                    \simeq
-  \mathrm{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes
-  A)}(P_{u^{\mathrm{op}}\otimes t},F_{A})[123X.[133X
+  [33X[0;0YThe  argument  is  a  morphism  [23X\alpha:t\to  u[123X  in  an  algebroid  [23XA[123X  over a
+  commutative  ring  [23Xk[123X,  where  [23Xt[123X  and  [23Xu[123X  are objects of [23XA[123X. The output is the
+  morphism of presheaves[133X
+  
+  
+  [24X[33X[0;6Y\lambda_\alpha:P_{u^{\mathrm{op}}\otimes t}\longrightarrow F_A[133X
+  
+  [124X
+  
+  [33X[0;0Ycorresponding to [23X\alpha[123X under the Yoneda isomorphism[133X
+  
+  
+  [24X[33X[0;6Y\operatorname{Hom}_A(t,u)=F_A(u^{\mathrm{op}}\otimes                      t)
+  \cong\operatorname{Hom}_{\mathrm{PSh}(A^{\mathrm{op}}\otimes_k           A)}
+  (P_{u^{\mathrm{op}}\otimes t},F_A).[133X
+  
+  [124X
+  
+  [33X[0;0YHere [23XP_{u^{\mathrm{op}}\otimes t}[123X is the representable presheaf given by the
+  Yoneda    embedding.    Pointwise,    the   image   of   [23X\lambda_\alpha[123X   at
+  [23Xv^{\mathrm{op}}\otimes   s[123X  consists  of  the  linear  combinations  of  all
+  compatible  composites [23Xg\circ\alpha\circ f:s\to v[123X, where [23Xs,v[123X are objects and
+  [23Xf,g[123X are morphisms in [23XA[123X. This is exactly the [23X(s,v)[123X-component of the two-sided
+  ideal generated by [23X\alpha[123X.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
