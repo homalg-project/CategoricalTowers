@@ -22,12 +22,12 @@ end );
 ##
 InstallMethod( CreateQuiver,
         "for a category of quivers, an integer, and a list of pairs of integers",
-        [ IsCategoryOfQuivers, IsInt, IsList ],
+        [ IsCategoryOfQuivers, IsBigInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
     local arr;
     
-    if ForAll( arrows, IsInt ) then
+    if ForAll( arrows, IsBigInt ) then
         Assert( 0, IsEvenInt( Length( arrows ) ) );
         arr := List( [ 1 .. Length( arrows ) / 2 ], i -> Pair( arrows[2 * i - 1], arrows[2 * i] ) );
     else
@@ -35,7 +35,7 @@ InstallMethod( CreateQuiver,
     fi;
     
     return CreateQuiver( category_of_quivers,
-                   Triple( n, Length( arr ), arr ) );
+                   Triple( n, BigInt( Length( arr ) ), arr ) );
     
 end );
 
@@ -89,12 +89,12 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 3,
-              IsInt,
-              IsInt,
+              IsBigInt,
+              IsBigInt,
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfNTupleOf( 2,
-                              IsInt,
-                              IsInt ) ) );
+                              IsBigInt,
+                              IsBigInt ) ) );
     
     object_constructor := CreateQuiver;
     
@@ -103,8 +103,8 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
-              CapJitDataTypeOfListOf( IsInt ) );
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
     morphism_constructor := CreateQuiverMorphism;
     
@@ -256,7 +256,7 @@ FinQuivers!.Name := "FinQuivers";
 ##
 InstallMethod( CreateQuiver,
         "for an integer, and a list of pairs of integers",
-        [ IsInt, IsList ],
+        [ IsBigInt, IsList ],
         
   function ( n, arrows )
     
@@ -291,7 +291,7 @@ InstallMethod( Subobject,
     
     source := CreateQuiver( CapCategory( quiver ),
                       Length( vertices ),
-                      List( arrows_as_pairs, a -> -1 + [ SafePosition( vertices, a[1] ), SafePosition( vertices, a[2] ) ] ) );
+                      List( arrows_as_pairs, a -> -1 + [ BigInt( SafePosition( vertices, a[1] ) ), BigInt( SafePosition( vertices, a[2] ) ) ] ) );
     
     subquiver := CreateQuiverMorphism( source, vertices, arrows, quiver );
     
