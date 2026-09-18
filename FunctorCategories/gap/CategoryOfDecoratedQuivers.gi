@@ -470,12 +470,14 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of decorated quivers",
-        [ IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism ],
+        "for a monomorphism in a category of decorated quivers",
+        [ IsMorphismInCategoryOfDecoratedQuivers ],
         
   function ( monomorphism )
     local DecoratedQuivers, decoration_of_vertices, decoration_of_arrows,
           decorated_quiver, vertices, arrows, morphism, str, arrows_as_pairs, i;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     DecoratedQuivers := CapCategory( monomorphism );
     
