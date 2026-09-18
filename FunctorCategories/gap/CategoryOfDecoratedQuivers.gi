@@ -219,9 +219,9 @@ InstallMethod( CreateDecoratedQuiver,
     if ForAll( arrows_with_decoration, IsList ) then
         arr := [ List( arrows_with_decoration, e -> e{[ 1, 2 ]} ), List( arrows_with_decoration, e -> e[3] ) ];
     else
-        Assert( 0, 0 = Length( arrows_with_decoration ) mod 3 );
-        arr := [ List( [ 1 .. Length( arrows_with_decoration ) / 3 ], i -> Pair( arrows_with_decoration[3 * i - 2], arrows_with_decoration[3 * i - 1] ) ),
-                 List( [ 1 .. Length( arrows_with_decoration ) / 3 ], i -> arrows_with_decoration[3 * i] ) ];
+        Assert( 0, 0 = RemInt( Length( arrows_with_decoration ), 3 ) );
+        arr := [ List( [ 1 .. QuoInt( Length( arrows_with_decoration ), 3 ) ], i -> Pair( arrows_with_decoration[3 * i - 2], arrows_with_decoration[3 * i - 1] ) ),
+                 List( [ 1 .. QuoInt( Length( arrows_with_decoration ), 3 ) ], i -> arrows_with_decoration[3 * i] ) ];
     fi;
     
     return CreateDecoratedQuiver( category_of_quivers,
