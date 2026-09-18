@@ -371,14 +371,12 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of finite reflexive quivers and a positive integer",
-        [ IsCategoryOfReflexiveQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of finite reflexive quivers",
+        [ IsString, IsCategoryOfReflexiveQuivers ],
         
-  function ( category_of_quivers, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_quivers )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_quivers );
     
@@ -392,7 +390,7 @@ InstallMethod( \.,
         name := "id";
     fi;
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfReflexiveQuivers( Yc ) then
         
@@ -429,16 +427,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of finite reflexive quivers and a positive integer",
-        [ IsObjectInCategoryOfReflexiveQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of finite reflexive quivers",
+        [ IsString, IsObjectInCategoryOfReflexiveQuivers ],
         
-  function ( reflexive_quiver, string_as_int )
-    local datum, n, m, loops, arrows, name;
+  function ( name, reflexive_quiver )
+    local datum, n, m, loops, arrows;
     
     datum := ObjectDatum( reflexive_quiver );
-    
-    name := NameRNam( string_as_int );
     
     n := datum[1];
     
@@ -465,16 +461,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of finite reflexive quivers and a positive integer",
-        [ IsMorphismInCategoryOfReflexiveQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of finite reflexive quivers",
+        [ IsString, IsMorphismInCategoryOfReflexiveQuivers ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" or name = "C0" then
         return MapOfFinSets( Source( mor ).V, datum[1], Target( mor ).V );
@@ -486,9 +480,15 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfReflexiveQuivers );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfReflexiveQuivers );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfReflexiveQuivers );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfReflexiveQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfReflexiveQuivers and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
