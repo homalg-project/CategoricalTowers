@@ -95,7 +95,7 @@ if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
 
 ##
 AddDerivationToCAP( SetOfGeneratingMorphismsOfCategory,
-        "",
+        "SetOfGeneratingMorphismsOfCategory using DigraphReflexiveTransitiveReduction",
         [ [ SetOfObjectsOfCategory, 1 ],
           [ IsHomSetInhabited, 1 ],
           [ UniqueMorphism, 4 ] ],
