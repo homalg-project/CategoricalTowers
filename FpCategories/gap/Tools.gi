@@ -22,7 +22,7 @@ end );
 
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
-        [ IsCapCategory and HasOppositeCategory ],
+        [ WasCreatedAsOppositeCategory ],
         
   function( cat_op )
     
