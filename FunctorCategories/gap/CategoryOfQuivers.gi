@@ -499,11 +499,13 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of quivers",
-        [ IsMorphismInCategoryOfQuivers and IsMonomorphism ],
+        "for a monomorphism in a category of quivers",
+        [ IsMorphismInCategoryOfQuivers ],
         
   function ( monomorphism )
     local quiver, vertices, arrows, str, arrows_as_pairs, i;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     quiver := Target( monomorphism );
     
