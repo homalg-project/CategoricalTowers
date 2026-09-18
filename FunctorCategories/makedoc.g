@@ -21,6 +21,7 @@ AutoDoc( rec(
         LaTeXOptions := rec(
             LateExtraPreamble := """
                 \usepackage{mathtools}
+                \usepackage{tikz-cd}
                 \DeclareUnicodeCharacter{2205}{\ensuremath{\emptyset}}
                 \DeclareUnicodeCharacter{2C76}{\ensuremath{\vdash}\!\!}
                 \DeclareUnicodeCharacter{2192}{\ensuremath{\!\!\rightarrow\!}}
