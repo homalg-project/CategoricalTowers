@@ -346,20 +346,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of quivers and a positive integer",
-        [ IsCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of quivers",
+        [ IsString, IsCategoryOfQuivers ],
         
-  function ( category_of_quivers, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_quivers )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_quivers );
     
     Y := EmbeddingOfUnderlyingCategory( category_of_quivers );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfQuivers( Yc ) then
         
@@ -396,16 +394,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of quivers and a positive integer",
-        [ IsObjectInCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of quivers",
+        [ IsString, IsObjectInCategoryOfQuivers ],
         
-  function ( quiver, string_as_int )
-    local datum, n, m, arrows, name;
+  function ( name, quiver )
+    local datum, n, m, arrows;
     
     datum := ObjectDatum( quiver );
-    
-    name := NameRNam( string_as_int );
     
     n := datum[1];
     
@@ -428,16 +424,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of quivers and a positive integer",
-        [ IsMorphismInCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of quivers",
+        [ IsString, IsMorphismInCategoryOfQuivers ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return MapOfFinSets( Source( mor ).V, datum[1], Target( mor ).V );
@@ -449,9 +443,15 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfQuivers );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfQuivers );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfQuivers );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfQuivers and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
