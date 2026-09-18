@@ -546,11 +546,13 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of finite reflexive quivers",
-        [ IsMorphismInCategoryOfReflexiveQuivers and IsMonomorphism ],
+        "for a monomorphism in a category of finite reflexive quivers",
+        [ IsMorphismInCategoryOfReflexiveQuivers ],
         
   function ( monomorphism )
     local reflexive_quiver, vertices, loops, arrows, str, arrows_as_pairs, i, arrowhead;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     reflexive_quiver := Target( monomorphism );
     
