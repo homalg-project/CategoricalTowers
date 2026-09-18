@@ -19,7 +19,7 @@ InstallOtherMethodForCompilerForCAP( CreateReflexiveQuiver,
     Assert( 0,
             Length( quadruple ) = 4 and
             IsList( quadruple[3] ) and
-            ForAll( quadruple[3], IsInt ) and
+            ForAll( quadruple[3], IsBigInt ) and
             IsList( quadruple[4] ) and
             ForAll( quadruple[4], IsList ) );
     
@@ -31,12 +31,12 @@ end );
 ##
 InstallMethod( CreateReflexiveQuiver,
         "for a category of finite reflexive quivers, an integer, a list of integers, and a list of pairs of integers",
-        [ IsCategoryOfReflexiveQuivers, IsInt, IsList, IsList ],
+        [ IsCategoryOfReflexiveQuivers, IsBigInt, IsList, IsList ],
         
   function ( category_of_quivers, n, loops, arrows )
     local arr;
     
-    if ForAll( arrows, IsInt ) then
+    if ForAll( arrows, IsBigInt ) then
         Assert( 0, IsEvenInt( Length( arrows ) ) );
         arr := List( [ 1 .. Length( arrows ) / 2 ], i -> Pair( arrows[2 * i - 1], arrows[2 * i] ) );
     else
@@ -98,13 +98,13 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 4,
-              IsInt,
-              IsInt,
-              CapJitDataTypeOfListOf( IsInt ),
+              IsBigInt,
+              IsBigInt,
+              CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfNTupleOf( 2,
-                              IsInt,
-                              IsInt ) ) );
+                              IsBigInt,
+                              IsBigInt ) ) );
     
     object_constructor := CreateReflexiveQuiver;
     
@@ -113,8 +113,8 @@ InstallMethod( CategoryOfReflexiveQuiversEnrichedOver,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
-              CapJitDataTypeOfListOf( IsInt ) );
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
     morphism_constructor := CreateReflexiveQuiverMorphism;
     
@@ -269,7 +269,7 @@ FinReflexiveQuivers!.Name := "FinReflexiveQuivers";
 ##
 InstallMethod( CreateReflexiveQuiver,
         "for an integer, a list of integers, and a list of pairs of integers",
-        [ IsInt, IsList, IsList ],
+        [ IsBigInt, IsList, IsList ],
         
   function ( n, loops, arrows )
     
