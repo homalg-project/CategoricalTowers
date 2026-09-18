@@ -65,7 +65,12 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsSkeletalCategoryOfFiniteSets ],
         
-  function ( category_of_skeletal_finsets )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, category_of_skeletal_finsets )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
@@ -239,16 +244,18 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
             [ "UnderlyingCategory",
               ] );
     
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );
         ADD_FUNCTIONS_FOR_FinQuiversAsCCCPrecompiled( Quivers );
     fi;
     
-    Finalize( Quivers );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory = true then
+        Finalize( Quivers );
+    fi;
     
     return Quivers;
     
-end );
+end ) );
 
 ##
 BindGlobal( "FinQuivers",
