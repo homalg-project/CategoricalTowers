@@ -575,7 +575,7 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category of quivers",
         [ IsObjectInCategoryOfQuivers ],
         
@@ -586,13 +586,13 @@ InstallMethod( Display,
     
     arrows := datum[3];
     
-    Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
+    return Concatenation( "( ", PrintString( FinSet( datum[1] ) ), ", {",
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ), "," ), " } )\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category of quivers",
         [ IsMorphismInCategoryOfQuivers ],
         
@@ -601,12 +601,11 @@ InstallMethod( Display,
 
     F := UnderlyingCategory( CapCategory( mor ) );
     
-    Print( "Image of ", StringView( F.V ), ":\n" );
-    Display( mor.V );
-    
-    Print( "\nImage of ", StringView( F.A ), ":\n" );
-    Display( mor.A );
-    
-    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
+    return Concatenation(
+            "Image of ", ViewString( F.V ), ":\n",
+            DisplayString( mor.V ),
+            "\nImage of ", ViewString( F.A ), ":\n",
+            DisplayString( mor.A ),
+            "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );
