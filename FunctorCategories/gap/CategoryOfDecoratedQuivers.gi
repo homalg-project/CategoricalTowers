@@ -332,20 +332,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of decorated quivers and a positive integer",
-        [ IsCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of decorated quivers",
+        [ IsString, IsCategoryOfDecoratedQuivers ],
         
-  function ( category_of_quivers, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_quivers )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_quivers );
     
     Y := EmbeddingOfUnderlyingCategory( category_of_quivers );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfDecoratedQuivers( Yc ) then
         
@@ -382,36 +380,36 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of decorated quivers and a positive integer",
-        [ IsObjectInCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of decorated quivers",
+        [ IsString, IsObjectInCategoryOfDecoratedQuivers ],
         
-  function ( decorated_quiver, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function ( name, decorated_quiver )
     
     return Source( ObjectDatum( ModelingObject( CapCategory( decorated_quiver ), decorated_quiver ) ) ).(name);
     
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of decorated quivers and a positive integer",
-        [ IsMorphismInCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of decorated quivers",
+        [ IsString, IsMorphismInCategoryOfDecoratedQuivers ],
         
-  function ( mor, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function ( name, mor )
     
     return MorphismDatum( ModelingMorphism( CapCategory( mor ), mor ) ).(name);
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfDecoratedQuivers );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfDecoratedQuivers );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfDecoratedQuivers );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfDecoratedQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
