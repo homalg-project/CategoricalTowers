@@ -553,7 +553,7 @@ InstallMethod( SvgString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category of decorated quivers",
         [ IsObjectInCategoryOfDecoratedQuivers ],
         
@@ -570,17 +570,17 @@ InstallMethod( Display,
     
     decoration_of_arrows := DecorationOfArrows( decorated_fin_quivers );
     
-    Print( "( {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[1][1] ], i ->
-                   Concatenation( " ", String( -1 + i ), " := \"", decoration_of_vertices[1 + datum[2][1][i]], "\"" ) ) ),
-           " }, {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[1][2] ], i ->
-                   Concatenation( " ", String( -1 + i ), " := [ ", String( arrows[i][1] ), ", ", String( arrows[i][2] ), ", \"", decoration_of_arrows[1 + datum[2][2][i]], "\" ]" ) ) ), " } )\n" );
+    return Concatenation( "( {",
+         JoinStringsWithSeparator( List( [ 1 .. datum[1][1] ], i ->
+           Concatenation( " ", String( -1 + i ), " := \"", decoration_of_vertices[1 + datum[2][1][i]], "\"" ) ), ", " ),
+         " }, {",
+         JoinStringsWithSeparator( List( [ 1 .. datum[1][2] ], i ->
+           Concatenation( " ", String( -1 + i ), " := [ ", String( arrows[i][1] ), ", ", String( arrows[i][2] ), ", \"", decoration_of_arrows[1 + datum[2][2][i]], "\" ]" ) ), ", " ), " } )\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category of decorated quivers",
         [ IsMorphismInCategoryOfDecoratedQuivers ],
         
@@ -589,12 +589,11 @@ InstallMethod( Display,
     
     objs := SetOfObjects( UnderlyingCategory( AmbientCategory( ModelingCategory( CapCategory( mor ) ) ) ) );
     
-    Print( "Image of ", StringView( objs[1] ), ":\n" );
-    Display( mor.V );
-    
-    Print( "\nImage of ", StringView( objs[2] ), ":\n" );
-    Display( mor.A );
-    
-    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
+    return Concatenation(
+            "Image of ", ViewString( objs[1] ), ":\n",
+            DisplayString( mor.V ),
+            "\nImage of ", ViewString( objs[2] ), ":\n",
+            DisplayString( mor.A ),
+            "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );
