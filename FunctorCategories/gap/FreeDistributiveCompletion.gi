@@ -59,9 +59,11 @@ end );
 ##
 InstallMethod( FreeDistributiveCompletion,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( fp_category )
+    
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( fp_category ) );
     
     return FreeDistributiveCompletion( fp_category, RangeCategoryOfHomomorphismStructure( fp_category ) );
     
