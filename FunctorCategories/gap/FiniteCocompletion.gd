@@ -16,7 +16,7 @@
 #!  The &GAP; category of a finite cocompletion category.
 #! @Arguments category
 DeclareCategory( "IsFiniteCocompletion",
-        IsCapCategory );
+        IsWrapperCapCategory );
 
 #! @Description
 #!  The &GAP; category of cells in a finite cocompletion category.
@@ -28,13 +28,13 @@ DeclareCategory( "IsCellInFiniteCocompletion",
 #!  The &GAP; category of objects in a finite cocompletion category.
 #! @Arguments obj
 DeclareCategory( "IsObjectInFiniteCocompletion",
-        FilterIntersection( IsCapCategoryObject, IsCellInFiniteCocompletion ) );
+        FilterIntersection( IsWrapperCapCategoryObject, IsCellInFiniteCocompletion ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a finite cocompletion category.
 #! @Arguments mor
 DeclareCategory( "IsMorphismInFiniteCocompletion",
-        FilterIntersection( IsCapCategoryMorphism, IsCellInFiniteCocompletion ) );
+        FilterIntersection( IsWrapperCapCategoryMorphism, IsCellInFiniteCocompletion ) );
 
 ####################################
 #

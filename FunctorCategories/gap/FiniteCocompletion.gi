@@ -18,9 +18,9 @@ InstallMethodWithCache( FiniteCocompletion,
     name := Concatenation( "FiniteCocompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := FilterIntersection( IsFiniteCocompletion, IsWrapperCapCategory );
-    category_object_filter := FilterIntersection( IsObjectInFiniteCocompletion, IsWrapperCapCategoryObject );
-    category_morphism_filter := FilterIntersection( IsMorphismInFiniteCocompletion, IsWrapperCapCategoryMorphism );
+    category_filter := IsFiniteCocompletion;
+    category_object_filter := IsObjectInFiniteCocompletion;
+    category_morphism_filter := IsMorphismInFiniteCocompletion;
     
     ## building the categorical tower:
     

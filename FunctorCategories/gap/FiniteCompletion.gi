@@ -18,9 +18,9 @@ InstallMethodWithCache( FiniteCompletion,
     name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := IsFiniteCompletion and IsWrapperCapCategory;
-    category_object_filter := IsObjectInFiniteCompletion and IsWrapperCapCategoryObject;
-    category_morphism_filter := IsMorphismInFiniteCompletion and IsWrapperCapCategoryMorphism;
+    category_filter := IsFiniteCompletion;
+    category_object_filter := IsObjectInFiniteCompletion;
+    category_morphism_filter := IsMorphismInFiniteCompletion;
     
     ## building the categorical tower:
     
