@@ -787,7 +787,7 @@ InstallOtherMethod( \/,
     
     F := SourceOfFunctor( coY );
     
-    coYc := coY( F.(name) );
+    coYc := CallFuncListAtRuntime( ApplyFunctor, [ coY, F.(name) ] );
     
     if IsObjectInPreSheafCategory( coYc ) then
         
