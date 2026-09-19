@@ -92,7 +92,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( abelian_closure );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, F.(name) ] );
     
     if IsObjectInAbelianClosure( Yc ) then
         

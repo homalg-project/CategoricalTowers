@@ -76,20 +76,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite completion category and a positive integer",
-        [ IsFiniteCompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite completion category",
+        [ IsString, IsFiniteCompletion ],
         
-  function( finite_completion, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, finite_completion )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( finite_completion );
     
     Y := EmbeddingOfUnderlyingCategory( finite_completion );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, F.(name) ] );
     
     if IsObjectInFiniteCompletion( Yc ) then
         
@@ -125,6 +123,11 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteCompletion );
+# =#
+
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for a cell in a finite completion category and a positive integer",
@@ -135,6 +138,7 @@ InstallMethod( \.,
     return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

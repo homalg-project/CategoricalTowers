@@ -83,7 +83,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( finite_cocompletion );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, F.(name) ] );
     
     if IsObjectInFiniteCocompletion( Yc ) then
         
@@ -124,17 +124,19 @@ end );
 INSTALL_DOT_METHOD( IsFiniteCocompletion );
 # =#
 
-#= comment for Julia
 ##
-InstallMethod( \.,
-        "for a cell in a finite cocompletion category and a positive integer",
-        [ IsCellInFiniteCocompletion, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a cell in a finite cocompletion category",
+        [ IsString, IsCellInFiniteCocompletion ],
         
-  function( cell, string_as_int )
+  function( name, cell )
     
-    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
+    return UnderlyingCell( cell ).(name);
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCellInFiniteCocompletion );
 # =#
 
 ##
