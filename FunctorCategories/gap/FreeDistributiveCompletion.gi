@@ -18,9 +18,9 @@ InstallMethodWithCache( FreeDistributiveCompletion,
     name := Concatenation( "FreeDistributiveCompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := IsFreeDistributiveCompletion and IsWrapperCapCategory;
-    category_object_filter := IsObjectInFreeDistributiveCompletion and IsWrapperCapCategoryObject;
-    category_morphism_filter := IsMorphismInFreeDistributiveCompletion and IsWrapperCapCategoryMorphism;
+    category_filter := IsFreeDistributiveCompletion;
+    category_object_filter := IsObjectInFreeDistributiveCompletion;
+    category_morphism_filter := IsMorphismInFreeDistributiveCompletion;
     
     ## building the categorical tower:
     
