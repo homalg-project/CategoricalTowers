@@ -16,7 +16,7 @@ InstallOtherMethodForCompilerForCAP( CreateBouquet,
   function ( category_of_bouquets, triple )
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
-    Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsInt ) );
+    Assert( 0, Length( triple ) = 3 and IsBigInt( triple[1] ) and IsBigInt( triple[2] ) and IsList( triple[3] ) and ForAll( triple[3], IsBigInt ) );
     
     return CreateCapCategoryObjectWithAttributes( category_of_bouquets,
                    DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, triple );
@@ -26,7 +26,7 @@ end );
 ##
 InstallMethod( CreateBouquet,
         "for a category of bouquets, an integer, and a list of integers",
-        [ IsCategoryOfBouquets, IsInt, IsList ],
+        [ IsCategoryOfBouquets, IsBigInt, IsList ],
         
   function ( category_of_bouquets, n, loops )
     
@@ -85,9 +85,9 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 3,
-              IsInt,
-              IsInt,
-              CapJitDataTypeOfListOf( IsInt ) );
+              IsBigInt,
+              IsBigInt,
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
     object_constructor := CreateBouquet;
     
@@ -96,8 +96,8 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
-              CapJitDataTypeOfListOf( IsInt ) );
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
     morphism_constructor := CreateBouquetMorphism;
     
@@ -246,8 +246,8 @@ FinBouquets!.Name := "FinBouquets";
 
 ##
 InstallMethod( CreateBouquet,
-        "for an integer, and a list of pairs of integers",
-        [ IsInt, IsList ],
+        "for an integer, and a list of integers",
+        [ IsBigInt, IsList ],
         
   function ( n, loops )
     
