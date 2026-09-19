@@ -338,20 +338,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of bouquets and a positive integer",
-        [ IsCategoryOfBouquets, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of bouquets",
+        [ IsString, IsCategoryOfBouquets ],
         
-  function ( category_of_bouquets, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_bouquets )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_bouquets );
     
     Y := EmbeddingOfUnderlyingCategory( category_of_bouquets );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfBouquets( Yc ) then
         
@@ -388,16 +386,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of bouquets and a positive integer",
-        [ IsObjectInCategoryOfBouquets, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of bouquets",
+        [ IsString, IsObjectInCategoryOfBouquets ],
         
-  function ( bouquet, string_as_int )
-    local datum, n, m, loops, name;
+  function ( name, bouquet )
+    local datum, n, m, loops;
     
     datum := ObjectDatum( bouquet );
-    
-    name := NameRNam( string_as_int );
     
     n := datum[1];
     
@@ -418,16 +414,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of bouquets and a positive integer",
-        [ IsMorphismInCategoryOfBouquets, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of bouquets",
+        [ IsString, IsMorphismInCategoryOfBouquets ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "P" then
         return MapOfFinSets( Source( mor ).P, datum[1], Target( mor ).P );
@@ -439,9 +433,15 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfBouquets );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfBouquets );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfBouquets );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfBouquets );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfBouquets and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
