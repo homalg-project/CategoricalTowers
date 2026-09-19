@@ -3587,8 +3587,8 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    return ObjectConstructor( C_hat,
-                   Pair( Pair( V, A ), Pair( s, t ) ) );
+    return CallFuncListAtRuntime( ObjectConstructor,
+                 [ C_hat, Pair( Pair( V, A ), Pair( s, t ) ) ] );
     
 end );
 
@@ -3766,9 +3766,11 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local F_VAst;
+    local C_hat, F_VAst;
     
-    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    F_VAst := CallFuncListAtRuntime( ObjectDatum, [ C_hat, CoYonedaLemmaOnObjects( PSh, F ) ] );
     
     return Pair( F_VAst[1][1],
                  [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list
