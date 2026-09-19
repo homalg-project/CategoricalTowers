@@ -18,8 +18,7 @@ InstallOtherMethodForCompilerForCAP( CreateBouquet,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, Length( triple ) = 3 and IsBigInt( triple[1] ) and IsBigInt( triple[2] ) and IsList( triple[3] ) and ForAll( triple[3], IsBigInt ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_bouquets,
-                   DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, triple );
+    return ObjectConstructor( category_of_bouquets, triple );
     
 end );
 
@@ -42,10 +41,7 @@ InstallOtherMethodForCompilerForCAP( CreateBouquetMorphism,
         
   function ( category_of_bouquets, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_bouquets,
-                   source,
-                   range,
-                   DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets, images );
+    return MorphismConstructor( category_of_bouquets, source, images, range );
     
 end );
 
@@ -89,7 +85,10 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
               IsBigInt,
               CapJitDataTypeOfListOf( IsBigInt ) );
     
-    object_constructor := CreateBouquet;
+    object_constructor :=
+        { category_of_bouquets, triple } ->
+            CreateCapCategoryObjectWithAttributes( category_of_bouquets,
+                DefiningTripleOfBouquetEnrichedOverSkeletalFinSets, triple );
     
     object_datum := { Bouquets, o } -> DefiningTripleOfBouquetEnrichedOverSkeletalFinSets( o );
     
@@ -99,7 +98,12 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
               CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf( IsBigInt ) );
     
-    morphism_constructor := CreateBouquetMorphism;
+    morphism_constructor :=
+        { category_of_bouquets, source, images, range } ->
+            CreateCapCategoryMorphismWithAttributes( category_of_bouquets,
+                source,
+                range,
+                DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets, images );
     
     morphism_datum := { Bouquets, m } -> DefiningPairOfBouquetMorphismEnrichedOverSkeletalFinSets( m );
     
