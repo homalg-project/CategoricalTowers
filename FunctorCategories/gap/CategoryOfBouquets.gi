@@ -489,11 +489,13 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of bouquets",
-        [ IsMorphismInCategoryOfBouquets and IsMonomorphism ],
+        "for a monomorphism in a category of bouquets",
+        [ IsMorphismInCategoryOfBouquets ],
         
   function ( monomorphism )
     local bouquet, vertices, loops, str, vertices_of_loops, i;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     bouquet := Target( monomorphism );
     
