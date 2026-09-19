@@ -49,9 +49,13 @@ end );
 ##
 InstallMethod( FiniteCompletion,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( fp_category )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( fp_category ) then
+        TryNextMethod( );
+    fi;
     
     return FiniteCompletion( fp_category, RangeCategoryOfHomomorphismStructure( fp_category ) );
     
