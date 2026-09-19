@@ -1920,6 +1920,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         if HasIsSkeletalCategory( B ) and IsSkeletalCategory( B ) then
             Add( properties, "IsSkeletalCategory" );
+            # Locales/gap/Poset.gi: InstallTrueMethod( IsPosetCategory, IsThinCategory and IsSkeletalCategory ) is commented out in Julia
+            Add( properties, "IsPosetCategory" );
         fi;
         
     fi;
