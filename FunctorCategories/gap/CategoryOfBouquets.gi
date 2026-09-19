@@ -559,7 +559,7 @@ InstallMethod( SvgString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category of bouquets",
         [ IsObjectInCategoryOfBouquets ],
         
@@ -570,13 +570,13 @@ InstallMethod( Display,
     
     loops := datum[3];
     
-    Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " ↦ ", String( loops[i] ) ) ) ), " } )\n" );
+    return Concatenation( "( ", PrintString( FinSet( datum[1] ) ), ", {",
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " ↦ ", String( loops[i] ) ) ), "," ), " } )\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category of bouquets",
         [ IsMorphismInCategoryOfBouquets ],
         
@@ -585,12 +585,11 @@ InstallMethod( Display,
 
     F := UnderlyingCategory( CapCategory( mor ) );
     
-    Print( "Image of ", StringView( F.P ), ":\n" );
-    Display( mor.P );
-    
-    Print( "\nImage of ", StringView( F.L ), ":\n" );
-    Display( mor.L );
-    
-    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
+    return Concatenation(
+                "Image of ", ViewString( F.P ), ":\n",
+                DisplayString( mor.P ),
+                "\nImage of ", ViewString( F.L ), ":\n",
+                DisplayString( mor.L ),
+                "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );
