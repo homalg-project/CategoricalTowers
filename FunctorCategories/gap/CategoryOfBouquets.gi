@@ -116,9 +116,13 @@ InstallMethod( CategoryOfBouquetsEnrichedOver,
     
     F := PathCategory( QuiverOfCategoryOfBouquets : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
+    F := CallFuncListAtRuntime( CategoryFromDataTables, [ F ] : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
-    F_hat := FiniteCocompletion( F : FinalizeCategory := true );
+    F_hat := FiniteCocompletion( F
+                    #= comment for Julia
+                    : FinalizeCategory := true
+                    # =#
+                    );
 
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( F ), category_of_skeletal_finsets ) );
     
