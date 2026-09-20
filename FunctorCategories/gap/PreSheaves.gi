@@ -3616,7 +3616,6 @@ InstallMethod( CoYonedaLemmaOnObjects,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
@@ -3760,7 +3759,6 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
                    range );
     
 end );
-# =#
 
 ##
 InstallMethod( CoYonedaLemmaOnMorphisms,
