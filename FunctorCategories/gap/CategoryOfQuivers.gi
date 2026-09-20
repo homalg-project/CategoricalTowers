@@ -14,8 +14,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiver,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsList ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, triple );
+    return ObjectConstructor( category_of_quivers, triple );
     
 end );
 
@@ -46,10 +45,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
         
   function ( category_of_quivers, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
-                   source,
-                   range,
-                   DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, images );
+    return MorphismConstructor( category_of_quivers, source, images, range );
     
 end );
 
@@ -96,7 +92,9 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
                               IsBigInt,
                               IsBigInt ) ) );
     
-    object_constructor := CreateQuiver;
+    object_constructor :=
+        { Quivers, triple } -> CreateCapCategoryObjectWithAttributes( Quivers,
+                                    DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, triple );
     
     object_datum := { Quivers, o } -> DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( o );
     
@@ -106,7 +104,12 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
               CapJitDataTypeOfListOf( IsBigInt ),
               CapJitDataTypeOfListOf( IsBigInt ) );
     
-    morphism_constructor := CreateQuiverMorphism;
+    morphism_constructor :=
+        { Quivers, source, images, range } ->
+                CreateCapCategoryMorphismWithAttributes( Quivers,
+                        source,
+                        range,
+                        DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, images );
     
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
