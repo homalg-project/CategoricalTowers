@@ -43,7 +43,7 @@ InstallMethod( CreateReflexiveQuiver,
     fi;
     
     return CreateReflexiveQuiver( category_of_quivers,
-                   NTuple( 4, n, Length( arr ), loops, arr ) );
+                   NTuple( 4, n, BigInt( Length( arr ) ), loops, arr ) );
     
 end );
 
