@@ -344,15 +344,10 @@ InstallOtherMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
         
   function ( Hom, values_of_functor )
     
-    return CreateCapCategoryObjectWithAttributes( Hom,
-                   Source, Source( Hom ),
-                   Target, Target( Hom ),
-                   ValuesOfFunctor, values_of_functor );
+    return ObjectConstructor( Hom, values_of_functor );
     
 end );
 
-#= comment for Julia
-# Multiple installations of an object-constructor causes issues in julia (ambiguous number of arguments).
 ##
 InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
         "for a functor category and two lists",
@@ -364,7 +359,6 @@ InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByValues,
                    Pair( values_of_all_objects, values_of_all_generating_morphisms ) );
     
 end );
-# =#
 
 ##
 InstallMethodForCompilerForCAP( AsObjectInFunctorCategoryByFunctions,
@@ -515,10 +509,7 @@ InstallOtherMethodForCompilerForCAP( AsMorphismInFunctorCategoryByValues,
         
   function ( Hom, source, values_on_all_objects, range )
     
-    return CreateCapCategoryMorphismWithAttributes( Hom,
-                   source,
-                   range,
-                   ValuesOnAllObjects, values_on_all_objects );
+    return MorphismConstructor( Hom, source, values_on_all_objects, range );
     
 end );
 
@@ -647,7 +638,14 @@ InstallMethodWithCache( FunctorCategory,
               CapJitDataTypeOfListOf( CapJitDataTypeOfObjectOfCategory( D ) ),
               CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) ) );
     
-    object_constructor := AsObjectInFunctorCategoryByValues;
+    object_constructor :=
+        function( Hom, values_of_functor )
+          
+          return CreateCapCategoryObjectWithAttributes( Hom,
+                        Source, Source( Hom ),
+                        Target, Target( Hom ),
+                        ValuesOfFunctor, values_of_functor );
+        end;
     
     object_datum := { Hom, o } -> ValuesOfFunctor( o );
     
@@ -655,7 +653,14 @@ InstallMethodWithCache( FunctorCategory,
     morphism_datum_type :=
       CapJitDataTypeOfListOf( CapJitDataTypeOfMorphismOfCategory( D ) );
     
-    morphism_constructor := AsMorphismInFunctorCategoryByValues;
+    morphism_constructor :=
+        function( Hom, source, values_on_all_objects, range )
+          
+          return CreateCapCategoryMorphismWithAttributes( Hom,
+                        source,
+                        range,
+                        ValuesOnAllObjects, values_on_all_objects );
+        end;
     
     morphism_datum := { Hom, m } -> ValuesOnAllObjects( m );
     
