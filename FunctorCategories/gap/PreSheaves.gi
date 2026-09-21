@@ -3991,7 +3991,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         hom := ObjectDatum( H, HomC_srcC_objC );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, IsBigInt( hom ) );
+        Assert( 0, IsInt( hom ) or IsBigInt( hom ) );
         
         ## Hom_H(𝟙, Hom_C(o', o))
         HomH_d_HomC_srcC_objC := ExactCoverWithGlobalElements( H,
