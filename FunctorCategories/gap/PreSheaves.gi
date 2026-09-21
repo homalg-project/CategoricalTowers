@@ -3345,10 +3345,11 @@ InstallMethod( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         
     fi;
     
-    return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
-                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Target( morB ) ),
-                   morB_op,
-                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
+    return CallFuncListAtRuntime(
+                FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) ),
+                [ ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Target( morB ) ),
+                  morB_op,
+                  ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) ] );
     
 end );
 
