@@ -28,9 +28,18 @@ InstallMethodWithCache( AbelianClosure,
     
     ## building the categorical tower:
     
-    L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    L := FiniteCompletion( algebroid, range_category_of_hom_structure
+            #= comment for julia
+            : FinalizeCategory := true, overhead := false
+            # =#
+            );
     
-    A := FreydCategory( L : FinalizeCategory := true );
+    A := CallFuncListAtRuntime( FreydCategory,
+            [ L ]
+            #= comment for julia
+            : FinalizeCategory := true
+            # =#
+            );
     
     ##
     abelian_closure :=
