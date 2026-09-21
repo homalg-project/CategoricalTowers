@@ -175,12 +175,9 @@ Display( omega );
 #!     3 := [ 1, 1 ], 4 := [ 1, 1 ] } )
 HomStructure( A, omega );
 #! |5|
-subsA := ListOfSubobjects( A );
-#! [ <A monomorphism in FinQuivers>,
-#!   <A monomorphism in FinQuivers>,
-#!   <A monomorphism in FinQuivers>,
-#!   <A monomorphism in FinQuivers>,
-#!   <A monomorphism in FinQuivers> ]
+subsA := ListOfSubobjects( A );;
+Length( subsA );
+#! 5
 Perform( subsA, Display );
 #! Image of <(V)>:
 #! ∅ ⱶ[  ]→ { 0, 1 }
@@ -222,6 +219,5 @@ Perform( subsA, Display );
 #! 
 #! A morphism in FinQuivers
 #! given by the above data
-# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

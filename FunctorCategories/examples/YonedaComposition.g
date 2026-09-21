@@ -11,7 +11,7 @@ Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
 #!                    is:C2→C1,it:C2→C1,
 #!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
-DefiningRelations( Delta2 );
+ViewObj( DefiningRelations( Delta2 ) );
 #! [ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
 #!   [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
 #!   [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
@@ -70,6 +70,6 @@ Display( Ys );
 #!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
 #! SkeletalFinSets ) given by the above data
-# @drop_example_in_Julia
+# @drop_example_in_Julia (manually moved)
 #! @EndExample
 #! @EndChunk

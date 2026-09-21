@@ -11,7 +11,7 @@ Delta2 := SimplicialCategoryTruncatedInDegree( 2 );
 #!                    is:C2→C1,it:C2→C1,
 #!                    ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )
 #! / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ]
-DefiningRelations( Delta2 );
+ViewObj( DefiningRelations( Delta2 ) );
 #! [ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
 #!   [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],
 #!   [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],
@@ -51,7 +51,12 @@ N.id;
 #! |3| → |31|
 Display( N.id );
 #! { 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }
-IntCat := CategoryOfInternalCategories(
+PSh := CapCategory( N );
+#! PreSheaves( PathCategory( FinQuiver( "Delta(C0,C1,C2)[id:C1→C0,
+#! s:C0→C1,t:C0→C1,is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,
+#! mu:C1→C2]" ) ) / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],
+#! SkeletalFinSets )
+IntCat := CategoryOfInternalCategories( PSh,
                   RangeCategoryOfHomomorphismStructure( Delta2 ) );
 #! FullSubcategoryByObjectMembershipFunction(
 #! PreSheaves( PathCategory( FinQuiver(
@@ -62,6 +67,5 @@ IntCat := CategoryOfInternalCategories(
 #! SkeletalFinSets ), ObjectMembershipFunction )
 IsWellDefined( N / IntCat );
 #! true
-# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk

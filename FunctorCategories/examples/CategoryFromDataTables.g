@@ -61,6 +61,6 @@ Display( LN );
 #! { 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }
 NL = LN;
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (Computing N succeeds but takes a long time in Julia (HomStructure on 31x31 morphisms where Size(SimplicialCategoryTruncatedInDegree2) = 31).)
 #! @EndExample
 #! @EndChunk

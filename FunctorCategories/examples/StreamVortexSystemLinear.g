@@ -5,17 +5,16 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-q := RightQuiver( "q(o)[x:o->o]" );
-#! q(o)[x:o->o]
-F := FreeCategory( q );
-#! FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
+q := FinQuiver( "q(o)[x:o->o]" );
+#! FinQuiver( "q(o)[x:o→o]" )
+F := PathCategory( q );
+#! PathCategory( FinQuiver( "q(o)[x:o→o]" ) )
 C := F / [ [ F.x^(3+4), F.x^3 ] ];
-#! FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )
-#! / [ x*x*x*x*x*x*x = x*x*x ]
+#! PathCategory( FinQuiver( "q(o)[x:o→o]" ) ) / [ x^7 = x^3 ]
 Q := HomalgFieldOfRationals( );
 #! Q
 QC := Q[C];
-#! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o]" ) ) / [ x^7 = x^3 ] )
 QC := AlgebroidFromDataTables( QC );
 #! Q-algebroid( {o}[x:o→o] ) defined by 1 object and 1 generating morphism
 x := QC.x;

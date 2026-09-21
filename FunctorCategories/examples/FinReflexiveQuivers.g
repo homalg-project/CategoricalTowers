@@ -49,9 +49,9 @@ Display( iso );
 #! 
 #! A morphism in FinReflexiveQuivers
 #! given by the above data
-s := FinReflexiveQuivers.s;
-#! <A split monomorphism in
-#!  FinReflexiveQuivers>
+s := FinReflexiveQuivers.s;;
+IsSplitMonomorphism( s );
+#! true
 Display( s );
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 0 ]→ { 0, 1 }
@@ -61,9 +61,9 @@ Display( s );
 #! 
 #! A morphism in FinReflexiveQuivers
 #! given by the above data
-t := FinReflexiveQuivers.t;
-#! <A split monomorphism in
-#!  FinReflexiveQuivers>
+t := FinReflexiveQuivers.t;;
+IsSplitMonomorphism( t );
+#! true
 Display( t );
 #! Image of <(C0)>:
 #! { 0 } ⱶ[ 1 ]→ { 0, 1 }
@@ -73,9 +73,9 @@ Display( t );
 #! 
 #! A morphism in FinReflexiveQuivers
 #! given by the above data
-l := FinReflexiveQuivers.l;
-#! <A split epimorphism in
-#!  FinReflexiveQuivers>
+l := FinReflexiveQuivers.l;;
+IsSplitEpimorphism( l );
+#! true
 Display( l );
 #! Image of <(C0)>:
 #! { 0, 1 } ⱶ[ 0, 0 ]→ { 0 }
@@ -93,12 +93,9 @@ Display( omega );
 #!     3 := [ 1, 1 ], 4 := [ 1 ] } )
 HomStructure( A, omega );
 #! |5|
-subsA := ListOfSubobjects( A );
-#! [ <A monomorphism in FinReflexiveQuivers>,
-#!   <A monomorphism in FinReflexiveQuivers>,
-#!   <A monomorphism in FinReflexiveQuivers>,
-#!   <A monomorphism in FinReflexiveQuivers>,
-#!   <A monomorphism in FinReflexiveQuivers> ]
+subsA := ListOfSubobjects( A );;
+Length( subsA );
+#! 5
 Perform( subsA, Display );
 #! Image of <(C0)>:
 #! ∅ ⱶ[  ]→ { 0, 1 }
@@ -140,6 +137,5 @@ Perform( subsA, Display );
 #! 
 #! A morphism in FinReflexiveQuivers
 #! given by the above data
-# @drop_example_in_Julia
 #! @EndExample
 #! @EndChunk
