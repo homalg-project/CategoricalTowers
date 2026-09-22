@@ -602,6 +602,34 @@ InstallMethod( OppositeOfObjectFiniteCategory,
 end );
 
 ##
+InstallOtherMethod( CreateFunctor,
+        "for a category from data tables, two lists, and a category",
+        [ IsCategoryFromDataTables, IsList, IsList, IsCapCategory ],
+        
+  function( C, imgs_of_objs, imgs_of_gmors, D )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( C ), " -> ", Name( D ) ), C, D );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs[1 + IndexOfObject( obj )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return PreComposeList( D, F_s, imgs_of_gmors{1 + DecompositionIndicesOfMorphism( C, mor )}, F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
 InstallOtherMethod( DecompositionIndicesOfMorphism,
         "for a category from data tables and a morphism therein",
         [ IsCategoryFromDataTables, IsMorphismInCategoryFromDataTables ],
