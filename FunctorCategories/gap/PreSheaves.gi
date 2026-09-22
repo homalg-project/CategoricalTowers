@@ -3010,8 +3010,8 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
       function ( source, mor, target )
         local source_on_objs, target_on_objs;
         
-        source_on_objs := ObjectDatum( PSh, source )[1];
-        target_on_objs := ObjectDatum( PSh, target )[1];
+        source_on_objs := CallFuncListAtRuntime( ObjectDatum, [ PSh, source ] )[1];
+        target_on_objs := CallFuncListAtRuntime( ObjectDatum, [ PSh, target ] )[1];
         
         return CreatePreSheafMorphismByValues( PSh,
                        source,
