@@ -3846,7 +3846,6 @@ InstallMethod( EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
         "for a category of colimit quivers and an object therein",
@@ -3940,10 +3939,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
     
     C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    return AssociatedCoequalizerPairInPreSheaves( C_hat, CoYonedaLemmaOnObjects( PSh, F ) );
+    return CallFuncListAtRuntime( AssociatedCoequalizerPairInPreSheaves, [ C_hat, CoYonedaLemmaOnObjects( PSh, F ) ] );
     
 end );
-# =#
 
 ##
 InstallMethod( CoYonedaLemmaCoequalizerPair,
