@@ -436,9 +436,13 @@ DeclareOperation( "MorphismFromCoproductOfRepresentables",
 DeclareAttribute( "MaximalMorphismFromRepresentable",
         IsObjectInPreSheafCategory );
 
+#= comment for Julia
 #! @Arguments F
 DeclareAttribute( "CoveringListOfRepresentables",
         IsObjectInPreSheafCategory );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "CoveringListOfRepresentables" )
 
 #! @Arguments F
 DeclareAttribute( "CoveringListOfRepresentablesUsingSplits",
@@ -456,9 +460,13 @@ DeclareOperation( "SectionAndComplementByCoveringListOfRepresentables",
 DeclareAttribute( "SectionFromOptimizedCoYonedaProjectiveObjectIntoCoYonedaProjectiveObject",
         IsObjectInPreSheafCategory );
 
+#= comment for Julia
 #! @Arguments F
 DeclareOperation( "RetractionByCoveringListOfRepresentables",
         [ IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ] );
+# =#
+
+#% G2J:julia-only @DeclareFilterDispatchedOperation( "RetractionByCoveringListOfRepresentables" )
 
 #! @Arguments F
 DeclareAttribute( "RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject",
