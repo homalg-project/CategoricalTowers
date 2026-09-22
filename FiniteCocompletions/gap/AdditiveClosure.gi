@@ -89,13 +89,13 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         
         functor_on_obj := List( [ 1 .. Length( L ) ], i -> functor_on_objects( L[i] ) );
         
-        return DirectSum( strict_additive_category, functor_on_obj );
+        return CallFuncListAtRuntime( DirectSum, [ strict_additive_category, functor_on_obj ] );
         
     end;
 
     extended_functor_on_morphisms :=
       function( source, morSC, target )
-        local S, T, s, t, source_diagram, target_diagram, listlist, functor_on_mor;
+        local S, T, s, t, source_diagram, target_diagram, source_diagram_obj, target_diagram_obj, listlist, functor_on_mor;
         
         S := ObjectDatum( SC, Source( morSC ) );
         T := ObjectDatum( SC, Target( morSC ) );
@@ -106,11 +106,14 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
         source_diagram := List( [ 1 .. s ], i -> functor_on_objects( S[i] ) );
         target_diagram := List( [ 1 .. t ], j -> functor_on_objects( T[j] ) );
         
-        if not IsEqualForObjects( strict_additive_category, source, DirectSum( strict_additive_category, source_diagram ) ) then
+        source_diagram_obj := CallFuncListAtRuntime( DirectSum, [ strict_additive_category, source_diagram ] );
+        target_diagram_obj := CallFuncListAtRuntime( DirectSum, [ strict_additive_category, target_diagram ] );
+        
+        if not CallFuncListAtRuntime( IsEqualForObjects, [ strict_additive_category, source, source_diagram_obj ] ) then
             Error( "source and DirectSum( source_diagram ) do not coincide\n" );
         fi;
         
-        if not IsEqualForObjects( strict_additive_category, target, DirectSum( strict_additive_category, target_diagram ) ) then
+        if not CallFuncListAtRuntime( IsEqualForObjects, [ strict_additive_category, target, target_diagram_obj ] ) then
             Error( "target and DirectSum( target_diagram ) do not coincide\n" );
         fi;
         
@@ -121,12 +124,13 @@ InstallMethodForCompilerForCAP( ExtendFunctorToFiniteStrictCoproductCompletionDa
                 List( [ 1 .. t ], j ->
                       functor_on_morphisms( source_diagram[i], listlist[i][j], target_diagram[j] ) ) );
         
-        return MorphismBetweenDirectSumsWithGivenDirectSums( strict_additive_category,
-                       source,
-                       source_diagram,
-                       functor_on_mor,
-                       target_diagram,
-                       target );
+        return CallFuncListAtRuntime( MorphismBetweenDirectSumsWithGivenDirectSums,
+                       [ strict_additive_category,
+                         source,
+                         source_diagram,
+                         functor_on_mor,
+                         target_diagram,
+                         target ] );
         
     end;
     
