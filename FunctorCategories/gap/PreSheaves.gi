@@ -2358,7 +2358,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             unit := UnitOfIsbellAdjunction( PSh );
             
-            return IsIsomorphism( PSh, unit( F ) );
+            return IsIsomorphism( PSh, CallFuncListAtRuntime( ApplyNaturalTransformation, [ unit, F ] ) );
             
         end );
         
