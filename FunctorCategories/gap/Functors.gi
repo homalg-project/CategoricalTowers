@@ -407,8 +407,7 @@ InstallMethodForCompilerForCAP( UnitOfIsbellAdjunctionData,
     Yoneda := YonedaEmbeddingDataOfSourceCategory( PSh )[1];
     coYoneda := CoYonedaEmbeddingDataOfSourceCategory( coPSh )[1];
     
-    return
-      function( IdPShF, F, Fvv )
+    return function( IdPShF, F, Fvv )
         local Fv, unit;
         
         Fv := O( F );
