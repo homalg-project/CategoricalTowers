@@ -19,7 +19,11 @@ InstallMethod( EnrichmentSpecificFiniteStrictCoproductCompletion,
         Error( "the second category `H` must coincide with the range category of homomorphism structure of the first category `C`\n" );
     fi;
     
-    return AdditiveClosure( C : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory );
+    return AdditiveClosure( C
+                #= comment for Julia (the main method does not support this option yet)
+                : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory
+                # =#
+                );
     
 end ) );
 
