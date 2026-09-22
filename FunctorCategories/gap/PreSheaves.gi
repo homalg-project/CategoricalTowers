@@ -3939,6 +3939,9 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
     
     C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetCategoryOfPreSheavesOfUnderlyingCategory( C_hat, PSh );
+    
     return CallFuncListAtRuntime( AssociatedCoequalizerPairInPreSheaves, [ C_hat, CoYonedaLemmaOnObjects( PSh, F ) ] );
     
 end );
