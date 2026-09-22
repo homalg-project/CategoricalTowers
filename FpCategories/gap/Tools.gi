@@ -9,17 +9,6 @@
 InstallTrueMethod( IsObjectFiniteCategory, IsFinitelyPresentedCategory );
 InstallTrueMethod( IsFinitelyPresentedCategory, IsFiniteCategory );
 
-#= comment for Julia
-##
-InstallMethod( SetOfGeneratingMorphisms,
-        [ IsCapCategory and IsInitialCategory ],
-        
-  function( I )
-    
-    return [ ];
-    
-end );
-
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
         [ WasCreatedAsOppositeCategory ],
@@ -33,7 +22,6 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
                          ObjectConstructor( cat_op, Source( mor ) ) ) );
     
 end );
-# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
