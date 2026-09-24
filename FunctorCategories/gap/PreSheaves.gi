@@ -5318,19 +5318,19 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidFromDataTables, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( F )
-    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
+  function ( B, F )
+    local PSh, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
     
     PSh := CapCategory( F );
-     
-    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( CapCategory( F ) );
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
@@ -5360,19 +5360,19 @@ end );
 #= comment for Julia (requires Algebroids)
 if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( F )
-    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
+  function ( B, F )
+    local PSh, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
     
     PSh := CapCategory( F );
-     
-    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( CapCategory( F ) );
     
     vertices := List( SetOfObjects( B ), UnderlyingVertex );
     
@@ -5411,6 +5411,30 @@ end );
 
 fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 # =#
+
+##
+InstallMethod( ViewString,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+  function ( F )
+    local PSh, B;
+    
+    PSh := CapCategory( F );
+    
+    B := Source( PSh );
+    
+    if IsFpAlgebroid( B ) then
+        
+        return ViewString( B, F );
+        
+    fi;
+    
+    #= comment for Julia: falls through to CAP's adjective-aware (e.g. "projective") generic ViewString
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<An object in ", Name( CapCategory( F ) ), ">" );
+    
+end );
 
 ##
 InstallMethod( DisplayString,
@@ -5453,19 +5477,19 @@ InstallMethod( DisplayString,
 end );
 
 ##
-InstallMethod( ViewString,
-        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidFromDataTables, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( eta )
-    local PSh, B, vertices, s_dim, r_dim, string;
+  function ( B, eta )
+    local PSh, vertices, s_dim, r_dim, string;
     
     PSh := CapCategory( eta );
     
-    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( PSh );
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
@@ -5486,15 +5510,17 @@ end );
 #= comment for Julia (requires Algebroids)
 if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
-InstallMethod( ViewString,
-        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( eta )
+  function ( B, eta )
     local PSh, vertices, s_dim, r_dim, string;
     
     PSh := CapCategory( eta );
     
-    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
     
@@ -5516,6 +5542,31 @@ end );
 
 fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 # =#
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( eta )
+    local PSh, B;
+    
+    PSh := CapCategory( eta );
+    
+    B := Source( PSh );
+    
+    if IsFpAlgebroid( B ) then
+        
+        return ViewString( B, eta );
+        
+    fi;
+    
+    #= comment for Julia: falls through to CAP's adjective-aware (e.g. "monomorphism") generic ViewString
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<A morphism in ", Name( CapCategory( eta ) ), ">" );
+    
+end );
 
 ##
 InstallMethod( DisplayString,
