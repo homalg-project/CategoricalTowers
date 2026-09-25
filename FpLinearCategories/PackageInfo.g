@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "FpLinearCategories",
 Subtitle := "Finitely presented linear categories by generating quivers and relations",
-Version := "2026.09-01",
-Date := "2026-09-18",
+Version := "2026.09-02",
+Date := "2026-09-25",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -85,7 +85,7 @@ PackageDoc := rec(
 Dependencies := rec(
   GAP := ">= 4.13.0",
   NeededOtherPackages := [ [ "CAP", ">= 2026.07-03" ],
-                           [ "FpCategories", ">= 2025.07-01" ],
+                           [ "FpCategories", ">= 2026.09-02" ],
                            [ "QuotientCategories", ">= 2026.04-01" ],
                            [ "LinearClosuresForCAP", ">= 2026.06-01" ],
                            [ "AdditiveClosuresForCAP", ">= 2026.04-02" ],
