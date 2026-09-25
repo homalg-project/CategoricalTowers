@@ -720,6 +720,17 @@
   The output is a list of lists of pairs. Each pair consists of a sublist [23XI[123X of
   [10X[ 1 .. l ][110X and the coproduct of the sublist objs{I}.[133X
   
+  [1X2.9-9 CreateFunctor[101X
+  
+  [33X[1;0Y[29X[2XCreateFunctor[102X( [3XA[103X, [3Ximgs_of_objs[103X, [3Ximgs_of_gmors[103X, [3XC[103X ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
+  
+  [33X[0;0YThe arguments are a CAP category [3XA[103X, a list [3Ximgs_of_objs[103X of the images of the
+  objects  of  [3XA[103X  in  [3XC[103X,  a list [3Ximgs_of_gmors[103X of the images of the generating
+  morphisms of [3XA[103X in [3XC[103X, and a CAP category [3XC[103X. The output is the functor [3XA[103X [23X\to[123X [3XC[103X
+  determined by these images. Declared centrally here since it is installed on
+  unrelated filters by several packages (e.g. Locales, FpLinearCategories).[133X
+  
   
   [1X2.10 [33X[0;0YAdd-methods[133X[101X
   

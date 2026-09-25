@@ -87,6 +87,7 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7BF4ED2F7A33C7D4">2.9-6 UniversalMorphismFromColimitWithGivenColimit</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7EECADD181D183AD">2.9-7 PositionsOfSublist</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X7D1D6DDB7E650BD2">2.9-8 AllCoproducts</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap2_mj.html#X79CFE1067962567D">2.9-9 CreateFunctor</a></span>
 </div></div>
 <div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap2_mj.html#X85C8C80F785AEB5E">2.10 <span class="Heading">Add-methods</span></a>
 </span>
@@ -975,6 +976,15 @@ true
 <p>Returns: a list of objects</p>
 
 <p>The input is a cocartesian category <var class="Arg">cat</var> and a list <var class="Arg">objs</var> of objects therein of length <span class="SimpleMath">\(l\)</span>, such that the list of all possible finite coproducts is finite. The output is a list of lists of pairs. Each pair consists of a sublist <span class="SimpleMath">\(I\)</span> of <code class="code">[ 1 .. l ]</code> and the coproduct of the sublist objs{I}.</p>
+
+<p><a id="X79CFE1067962567D" name="X79CFE1067962567D"></a></p>
+
+<h5>2.9-9 CreateFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; CreateFunctor</code>( <var class="Arg">A</var>, <var class="Arg">imgs_of_objs</var>, <var class="Arg">imgs_of_gmors</var>, <var class="Arg">C</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p>The arguments are a CAP category <var class="Arg">A</var>, a list <var class="Arg">imgs_of_objs</var> of the images of the objects of <var class="Arg">A</var> in <var class="Arg">C</var>, a list <var class="Arg">imgs_of_gmors</var> of the images of the generating morphisms of <var class="Arg">A</var> in <var class="Arg">C</var>, and a CAP category <var class="Arg">C</var>. The output is the functor <var class="Arg">A</var> <span class="SimpleMath">\(\to\)</span> <var class="Arg">C</var> determined by these images. Declared centrally here since it is installed on unrelated filters by several packages (e.g. Locales, FpLinearCategories).</p>
 
 <p><a id="X85C8C80F785AEB5E" name="X85C8C80F785AEB5E"></a></p>
 

@@ -6,10 +6,10 @@
                          [1X Tools for CategoricalTowers [101X
   
   
-                                   2026.08-03
+                                   2026.09-01
   
   
-                                 31 August 2026
+                               26 September 2026
   
   
                                 Mohamed Barakat
@@ -81,6 +81,7 @@
       2.9-6 UniversalMorphismFromColimitWithGivenColimit
       2.9-7 PositionsOfSublist
       2.9-8 AllCoproducts
+      2.9-9 CreateFunctor
     2.10 [33X[0;0YAdd-methods[133X
       2.10-1 AddBiasedRelativeWeakFiberProduct
       2.10-2 AddColimit
