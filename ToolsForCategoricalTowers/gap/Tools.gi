@@ -740,6 +740,20 @@ InstallOtherMethod( Colimit,
 end );
 
 ##
+InstallOtherMethod( CapFunctor,
+        "for a category, two lists, and another category",
+        [ IsCapCategory, IsList, IsList, IsCapCategory ],
+
+  CreateFunctor );
+
+##
+InstallOtherMethod( CapFunctor,
+        "for a category, two lists, and another category",
+        [ IsCapCategory, IsRecord, IsRecord, IsCapCategory ],
+
+  CreateFunctor );
+
+##
 InstallMethodForCompilerForCAP( PreComposeFunctorsByData,
         [ IsCapCategory, IsList, IsList ],
         

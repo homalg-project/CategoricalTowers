@@ -1531,7 +1531,7 @@ InstallMethod( CapFunctor,
 end );
 
 ##
-InstallMethod( CapFunctor,
+InstallMethod( CreateFunctor,
         "for a f.p category, two lists, and a CAP category",
         [ IsFpCategoryDefinedByQuiverAlgebra, IsList, IsList, IsCapCategory ],
         

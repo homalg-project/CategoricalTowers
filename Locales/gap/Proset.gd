@@ -166,12 +166,6 @@ DeclareOperation( "AreIsomorphicForObjectsIfIsHomSetInhabited",
 DeclareOperation( "UniqueMorphism",
         [ IsCapCategoryObject, IsCapCategoryObject ] );
 
-#= comment for Julia
-DeclareOperation( "CreateFunctor",
-        [ IsCapCategory, IsList, IsList, IsCapCategory ] );
-# =#
-#% G2J:julia-only @DeclareFilterDispatchedOperation( "CreateFunctor" );
-
 # @Section Tools
 
 DeclareGlobalVariable( "PREORDERED_SET_METHOD_NAME_RECORD" );

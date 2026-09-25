@@ -18,9 +18,9 @@ InstallMethodWithCache( FiniteCompletion,
     name := Concatenation( "FiniteCompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := IsFiniteCompletion and IsWrapperCapCategory;
-    category_object_filter := IsObjectInFiniteCompletion and IsWrapperCapCategoryObject;
-    category_morphism_filter := IsMorphismInFiniteCompletion and IsWrapperCapCategoryMorphism;
+    category_filter := IsFiniteCompletion;
+    category_object_filter := IsObjectInFiniteCompletion;
+    category_morphism_filter := IsMorphismInFiniteCompletion;
     
     ## building the categorical tower:
     
@@ -49,9 +49,13 @@ end );
 ##
 InstallMethod( FiniteCompletion,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( fp_category )
+    
+    if not HasRangeCategoryOfHomomorphismStructure( fp_category ) then
+        TryNextMethod( );
+    fi;
     
     return FiniteCompletion( fp_category, RangeCategoryOfHomomorphismStructure( fp_category ) );
     
@@ -65,27 +69,25 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
   function( finite_completion )
     local Y;
     
-    Y := CoYonedaEmbedding( UnderlyingCategory( finite_completion ) );
+    Y := CoYonedaEmbeddingOfSourceCategory( ModelingCategory( finite_completion ) );
     
     return PreCompose( Y, WrappingFunctor( finite_completion ) );
     
 end );
 
 ##
-InstallMethod( \.,
-        "for a finite completion category and a positive integer",
-        [ IsFiniteCompletion, IsPosInt ],
+InstallMethod( \/,
+        "for a string and a finite completion category",
+        [ IsString, IsFiniteCompletion ],
         
-  function( finite_completion, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, finite_completion )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( finite_completion );
     
     Y := EmbeddingOfUnderlyingCategory( finite_completion );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, F.(name) ] );
     
     if IsObjectInFiniteCompletion( Yc ) then
         
@@ -121,6 +123,11 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsFiniteCompletion );
+# =#
+
+#= comment for Julia
 ##
 InstallMethod( \.,
         "for a cell in a finite completion category and a positive integer",
@@ -131,6 +138,7 @@ InstallMethod( \.,
     return UnderlyingCell( cell ).(NameRNam( string_as_int ));
     
 end );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,

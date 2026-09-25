@@ -86,15 +86,6 @@ InstallOtherMethod( CreateFunctor,
     
 end );
 
-#= comment for Julia
-##
-InstallOtherMethod( CapFunctor,
-        "for a thin category, two lists, and the interval category",
-        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
-
-  CreateFunctor );
-# =#
-
 ##
 InstallMethod( DisplayString,
         "for a morphism in a proset",

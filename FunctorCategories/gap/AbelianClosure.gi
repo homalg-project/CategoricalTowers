@@ -22,15 +22,24 @@ InstallMethodWithCache( AbelianClosure,
     name := Concatenation( "AbelianClosure( ", Name( algebroid ), " )" );
     
     ##
-    category_filter := FilterIntersection( IsAbelianClosure, IsWrapperCapCategory );
-    category_object_filter := FilterIntersection( IsObjectInAbelianClosure, IsWrapperCapCategoryObject );
-    category_morphism_filter := FilterIntersection( IsMorphismInAbelianClosure, IsWrapperCapCategoryMorphism );
+    category_filter := IsAbelianClosure;
+    category_object_filter := IsObjectInAbelianClosure;
+    category_morphism_filter := IsMorphismInAbelianClosure;
     
     ## building the categorical tower:
     
-    L := FiniteCompletion( algebroid, range_category_of_hom_structure : FinalizeCategory := true, overhead := false );
+    L := FiniteCompletion( algebroid, range_category_of_hom_structure
+            #= comment for julia
+            : FinalizeCategory := true, overhead := false
+            # =#
+            );
     
-    A := FreydCategory( L : FinalizeCategory := true );
+    A := CallFuncListAtRuntime( FreydCategory,
+            [ L ]
+            #= comment for julia
+            : FinalizeCategory := true
+            # =#
+            );
     
     ##
     abelian_closure :=
@@ -92,7 +101,7 @@ InstallMethod( \/,
     
     Y := EmbeddingOfUnderlyingCategory( abelian_closure );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, F.(name) ] );
     
     if IsObjectInAbelianClosure( Yc ) then
         

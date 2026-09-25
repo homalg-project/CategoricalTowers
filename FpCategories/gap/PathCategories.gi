@@ -836,7 +836,7 @@ InstallMethod( OppositeOfObjectFiniteCategory,
 end );
 
 ##
-InstallOtherMethod( CapFunctor,
+InstallOtherMethod( CreateFunctor,
         "for a path category, two lists, and a category",
         [ IsPathCategory, IsList, IsList, IsCapCategory ],
         

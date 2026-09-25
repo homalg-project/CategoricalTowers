@@ -326,7 +326,7 @@ InstallMethod( OppositeOfObjectFiniteCategory,
 end );
 
 ##
-InstallOtherMethod( CapFunctor,
+InstallOtherMethod( CreateFunctor,
         "for a quotient of a path category, two lists, and a category",
         [ IsQuotientOfPathCategory, IsList, IsList, IsCapCategory ],
         
@@ -354,7 +354,7 @@ InstallOtherMethod( CapFunctor,
 end );
 
 ##
-InstallOtherMethod( CapFunctor,
+InstallOtherMethod( CreateFunctor,
         "for a quotient of a path category, two records, and a category",
         [ IsQuotientOfPathCategory, IsRecord, IsRecord, IsCapCategory ],
         
