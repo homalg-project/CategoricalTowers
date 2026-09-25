@@ -219,9 +219,9 @@ InstallMethod( CreateDecoratedQuiver,
     if ForAll( arrows_with_decoration, IsList ) then
         arr := [ List( arrows_with_decoration, e -> e{[ 1, 2 ]} ), List( arrows_with_decoration, e -> e[3] ) ];
     else
-        Assert( 0, 0 = Length( arrows_with_decoration ) mod 3 );
-        arr := [ List( [ 1 .. Length( arrows_with_decoration ) / 3 ], i -> Pair( arrows_with_decoration[3 * i - 2], arrows_with_decoration[3 * i - 1] ) ),
-                 List( [ 1 .. Length( arrows_with_decoration ) / 3 ], i -> arrows_with_decoration[3 * i] ) ];
+        Assert( 0, 0 = RemInt( Length( arrows_with_decoration ), 3 ) );
+        arr := [ List( [ 1 .. QuoInt( Length( arrows_with_decoration ), 3 ) ], i -> Pair( arrows_with_decoration[3 * i - 2], arrows_with_decoration[3 * i - 1] ) ),
+                 List( [ 1 .. QuoInt( Length( arrows_with_decoration ), 3 ) ], i -> arrows_with_decoration[3 * i] ) ];
     fi;
     
     return CreateDecoratedQuiver( category_of_quivers,
@@ -332,20 +332,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of decorated quivers and a positive integer",
-        [ IsCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of decorated quivers",
+        [ IsString, IsCategoryOfDecoratedQuivers ],
         
-  function ( category_of_quivers, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_quivers )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_quivers );
     
     Y := EmbeddingOfUnderlyingCategory( category_of_quivers );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfDecoratedQuivers( Yc ) then
         
@@ -382,36 +380,36 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of decorated quivers and a positive integer",
-        [ IsObjectInCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of decorated quivers",
+        [ IsString, IsObjectInCategoryOfDecoratedQuivers ],
         
-  function ( decorated_quiver, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function ( name, decorated_quiver )
     
     return Source( ObjectDatum( ModelingObject( CapCategory( decorated_quiver ), decorated_quiver ) ) ).(name);
     
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of decorated quivers and a positive integer",
-        [ IsMorphismInCategoryOfDecoratedQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of decorated quivers",
+        [ IsString, IsMorphismInCategoryOfDecoratedQuivers ],
         
-  function ( mor, string_as_int )
-    local name;
-    
-    name := NameRNam( string_as_int );
+  function ( name, mor )
     
     return MorphismDatum( ModelingMorphism( CapCategory( mor ), mor ) ).(name);
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfDecoratedQuivers );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfDecoratedQuivers );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfDecoratedQuivers );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfDecoratedQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
@@ -472,12 +470,14 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of decorated quivers",
-        [ IsMorphismInCategoryOfDecoratedQuivers and IsMonomorphism ],
+        "for a monomorphism in a category of decorated quivers",
+        [ IsMorphismInCategoryOfDecoratedQuivers ],
         
   function ( monomorphism )
     local DecoratedQuivers, decoration_of_vertices, decoration_of_arrows,
           decorated_quiver, vertices, arrows, morphism, str, arrows_as_pairs, i;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     DecoratedQuivers := CapCategory( monomorphism );
     
@@ -555,7 +555,7 @@ InstallMethod( SvgString,
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category of decorated quivers",
         [ IsObjectInCategoryOfDecoratedQuivers ],
         
@@ -572,17 +572,17 @@ InstallMethod( Display,
     
     decoration_of_arrows := DecorationOfArrows( decorated_fin_quivers );
     
-    Print( "( {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[1][1] ], i ->
-                   Concatenation( " ", String( -1 + i ), " := \"", decoration_of_vertices[1 + datum[2][1][i]], "\"" ) ) ),
-           " }, {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[1][2] ], i ->
-                   Concatenation( " ", String( -1 + i ), " := [ ", String( arrows[i][1] ), ", ", String( arrows[i][2] ), ", \"", decoration_of_arrows[1 + datum[2][2][i]], "\" ]" ) ) ), " } )\n" );
+    return Concatenation( "( {",
+         JoinStringsWithSeparator( List( [ 1 .. datum[1][1] ], i ->
+           Concatenation( " ", String( -1 + i ), " := \"", decoration_of_vertices[1 + datum[2][1][i]], "\"" ) ), ", " ),
+         " }, {",
+         JoinStringsWithSeparator( List( [ 1 .. datum[1][2] ], i ->
+           Concatenation( " ", String( -1 + i ), " := [ ", String( arrows[i][1] ), ", ", String( arrows[i][2] ), ", \"", decoration_of_arrows[1 + datum[2][2][i]], "\" ]" ) ), ", " ), " } )\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category of decorated quivers",
         [ IsMorphismInCategoryOfDecoratedQuivers ],
         
@@ -591,12 +591,11 @@ InstallMethod( Display,
     
     objs := SetOfObjects( UnderlyingCategory( AmbientCategory( ModelingCategory( CapCategory( mor ) ) ) ) );
     
-    Print( "Image of ", StringView( objs[1] ), ":\n" );
-    Display( mor.V );
-    
-    Print( "\nImage of ", StringView( objs[2] ), ":\n" );
-    Display( mor.A );
-    
-    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
+    return Concatenation(
+            "Image of ", ViewString( objs[1] ), ":\n",
+            DisplayString( mor.V ),
+            "\nImage of ", ViewString( objs[2] ), ":\n",
+            DisplayString( mor.A ),
+            "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );

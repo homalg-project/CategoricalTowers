@@ -14,28 +14,27 @@ InstallOtherMethodForCompilerForCAP( CreateQuiver,
     #% CAP_JIT_DROP_NEXT_STATEMENT
     Assert( 0, Length( triple ) = 3 and IsList( triple[3] ) and ForAll( triple[3], IsList ) );
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, triple );
+    return ObjectConstructor( category_of_quivers, triple );
     
 end );
 
 ##
 InstallMethod( CreateQuiver,
         "for a category of quivers, an integer, and a list of pairs of integers",
-        [ IsCategoryOfQuivers, IsInt, IsList ],
+        [ IsCategoryOfQuivers, IsBigInt, IsList ],
         
   function ( category_of_quivers, n, arrows )
     local arr;
     
-    if ForAll( arrows, IsInt ) then
+    if ForAll( arrows, IsBigInt ) then
         Assert( 0, IsEvenInt( Length( arrows ) ) );
-        arr := List( [ 1 .. Length( arrows ) / 2 ], i -> Pair( arrows[2 * i - 1], arrows[2 * i] ) );
+        arr := List( [ 1 .. QuoInt( Length( arrows ), 2 ) ], i -> Pair( arrows[2 * i - 1], arrows[2 * i] ) );
     else
         arr := arrows;
     fi;
     
     return CreateQuiver( category_of_quivers,
-                   Triple( n, Length( arr ), arr ) );
+                   Triple( n, BigInt( Length( arr ) ), arr ) );
     
 end );
 
@@ -46,10 +45,7 @@ InstallOtherMethodForCompilerForCAP( CreateQuiverMorphism,
         
   function ( category_of_quivers, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
-                   source,
-                   range,
-                   DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, images );
+    return MorphismConstructor( category_of_quivers, source, images, range );
     
 end );
 
@@ -69,7 +65,12 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
         "for a category of sekelal finite sets",
         [ IsSkeletalCategoryOfFiniteSets ],
         
-  function ( category_of_skeletal_finsets )
+  FunctionWithNamedArguments(
+  [
+    [ "no_precompiled_code", false ],
+    [ "FinalizeCategory", true ],
+  ],
+  function ( CAP_NAMED_ARGUMENTS, category_of_skeletal_finsets )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_datum_type, object_constructor, object_datum,
           morphism_datum_type, morphism_constructor, morphism_datum,
@@ -89,24 +90,31 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     ##
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 3,
-              IsInt,
-              IsInt,
+              IsBigInt,
+              IsBigInt,
               CapJitDataTypeOfListOf(
                       CapJitDataTypeOfNTupleOf( 2,
-                              IsInt,
-                              IsInt ) ) );
+                              IsBigInt,
+                              IsBigInt ) ) );
     
-    object_constructor := CreateQuiver;
+    object_constructor :=
+        { Quivers, triple } -> CreateCapCategoryObjectWithAttributes( Quivers,
+                                    DefiningTripleOfQuiverEnrichedOverSkeletalFinSets, triple );
     
     object_datum := { Quivers, o } -> DefiningTripleOfQuiverEnrichedOverSkeletalFinSets( o );
     
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
-              CapJitDataTypeOfListOf( IsInt ) );
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
-    morphism_constructor := CreateQuiverMorphism;
+    morphism_constructor :=
+        { Quivers, source, images, range } ->
+                CreateCapCategoryMorphismWithAttributes( Quivers,
+                        source,
+                        range,
+                        DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets, images );
     
     morphism_datum := { Quivers, m } -> DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets( m );
     
@@ -114,9 +122,13 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
     
     F := PathCategory( QuiverOfCategoryOfQuivers : range_of_HomStructure := category_of_skeletal_finsets, FinalizeCategory := true );
     
-    F := CategoryFromDataTables( F : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
+    F := CallFuncListAtRuntime( CategoryFromDataTables, [ F ] : set_category_attribute_resolving_functions := true, FinalizeCategory := true );
     
-    F_hat := FiniteCocompletion( F : FinalizeCategory := true );
+    F_hat := FiniteCocompletion( F
+                #= comment for Julia (this named-arg is not yet supported)
+                : FinalizeCategory := true
+                # =#
+                );
     
     Assert( 0, IsIdenticalObj( RangeCategoryOfHomomorphismStructure( F ), category_of_skeletal_finsets ) );
     
@@ -236,16 +248,18 @@ InstallMethod( CategoryOfQuiversEnrichedOver,
             [ "UnderlyingCategory",
               ] );
     
-    if ValueOption( "no_precompiled_code" ) <> true then
+    if CAP_NAMED_ARGUMENTS.no_precompiled_code <> true then
         ADD_FUNCTIONS_FOR_FinQuiversPrecompiled( Quivers );
         ADD_FUNCTIONS_FOR_FinQuiversAsCCCPrecompiled( Quivers );
     fi;
     
-    Finalize( Quivers );
+    if CAP_NAMED_ARGUMENTS.FinalizeCategory = true then
+        Finalize( Quivers );
+    fi;
     
     return Quivers;
     
-end );
+end ) );
 
 ##
 BindGlobal( "FinQuivers",
@@ -256,7 +270,7 @@ FinQuivers!.Name := "FinQuivers";
 ##
 InstallMethod( CreateQuiver,
         "for an integer, and a list of pairs of integers",
-        [ IsInt, IsList ],
+        [ IsBigInt, IsList ],
         
   function ( n, arrows )
     
@@ -291,7 +305,7 @@ InstallMethod( Subobject,
     
     source := CreateQuiver( CapCategory( quiver ),
                       Length( vertices ),
-                      List( arrows_as_pairs, a -> -1 + [ SafePosition( vertices, a[1] ), SafePosition( vertices, a[2] ) ] ) );
+                      List( arrows_as_pairs, a -> -1 + [ BigInt( SafePosition( vertices, a[1] ) ), BigInt( SafePosition( vertices, a[2] ) ) ] ) );
     
     subquiver := CreateQuiverMorphism( source, vertices, arrows, quiver );
     
@@ -336,20 +350,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a category of quivers and a positive integer",
-        [ IsCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a category of quivers",
+        [ IsString, IsCategoryOfQuivers ],
         
-  function ( category_of_quivers, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function ( name, category_of_quivers )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( category_of_quivers );
     
     Y := EmbeddingOfUnderlyingCategory( category_of_quivers );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y, name / F ] );
     
     if IsObjectInCategoryOfQuivers( Yc ) then
         
@@ -386,16 +398,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for an object in a category of quivers and a positive integer",
-        [ IsObjectInCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a category of quivers",
+        [ IsString, IsObjectInCategoryOfQuivers ],
         
-  function ( quiver, string_as_int )
-    local datum, n, m, arrows, name;
+  function ( name, quiver )
+    local datum, n, m, arrows;
     
     datum := ObjectDatum( quiver );
-    
-    name := NameRNam( string_as_int );
     
     n := datum[1];
     
@@ -418,16 +428,14 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for a morphism in a category of quivers and a positive integer",
-        [ IsMorphismInCategoryOfQuivers, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a morphism in a category of quivers",
+        [ IsString, IsMorphismInCategoryOfQuivers ],
         
-  function ( mor, string_as_int )
-    local datum, name;
+  function ( name, mor )
+    local datum;
     
     datum := MorphismDatum( mor );
-    
-    name := NameRNam( string_as_int );
     
     if name = "V" then
         return MapOfFinSets( Source( mor ).V, datum[1], Target( mor ).V );
@@ -439,9 +447,15 @@ InstallMethod( \.,
     
 end );
 
+#= comment for Julia
+INSTALL_DOT_METHOD( IsCategoryOfQuivers );
+INSTALL_DOT_METHOD( IsObjectInCategoryOfQuivers );
+INSTALL_DOT_METHOD( IsMorphismInCategoryOfQuivers );
+
 ##
 MakeShowable( [ "image/svg+xml" ], IsObjectInCategoryOfQuivers );
 MakeShowable( [ "image/svg+xml" ], IsMorphismInCategoryOfQuivers and IsMonomorphism );
+# =#
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
@@ -489,11 +503,13 @@ end );
 
 ##
 InstallOtherMethod( DotVertexLabelledDigraph,
-        "for a morphism in a category of quivers",
-        [ IsMorphismInCategoryOfQuivers and IsMonomorphism ],
+        "for a monomorphism in a category of quivers",
+        [ IsMorphismInCategoryOfQuivers ],
         
   function ( monomorphism )
     local quiver, vertices, arrows, str, arrows_as_pairs, i;
+    
+    Assert( 0, IsMonomorphism( monomorphism ) );
     
     quiver := Target( monomorphism );
     
@@ -565,7 +581,7 @@ end );
 ####################################
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a category of quivers",
         [ IsObjectInCategoryOfQuivers ],
         
@@ -576,13 +592,13 @@ InstallMethod( Display,
     
     arrows := datum[3];
     
-    Print( "( ", StringPrint( FinSet( datum[1] ) ), ", {",
-           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ) ), " } )\n" );
+    return Concatenation( "( ", PrintString( FinSet( datum[1] ) ), ", {",
+           JoinStringsWithSeparator( List( [ 1 .. datum[2] ], i -> Concatenation( " ", String( -1 + i ), " := ", String( arrows[i] ) ) ), "," ), " } )\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a category of quivers",
         [ IsMorphismInCategoryOfQuivers ],
         
@@ -591,12 +607,11 @@ InstallMethod( Display,
 
     F := UnderlyingCategory( CapCategory( mor ) );
     
-    Print( "Image of ", StringView( F.V ), ":\n" );
-    Display( mor.V );
-    
-    Print( "\nImage of ", StringView( F.A ), ":\n" );
-    Display( mor.A );
-    
-    Print( "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
+    return Concatenation(
+            "Image of ", ViewString( F.V ), ":\n",
+            DisplayString( mor.V ),
+            "\nImage of ", ViewString( F.A ), ":\n",
+            DisplayString( mor.A ),
+            "\nA morphism in ", Name( CapCategory( mor ) ), " given by the above data\n" );
     
 end );

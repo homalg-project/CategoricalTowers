@@ -69,12 +69,12 @@ CapJitAddTypeSignature( "DefiningTripleOfQuiverEnrichedOverSkeletalFinSets", [ I
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 3,
-                   IsInt,
-                   IsInt,
+                   IsBigInt,
+                   IsBigInt,
                    CapJitDataTypeOfListOf(
                            CapJitDataTypeOfNTupleOf( 2,
-                                   IsInt,
-                                   IsInt ) ) );
+                                   IsBigInt,
+                                   IsBigInt ) ) );
     
 end );
 
@@ -86,8 +86,8 @@ CapJitAddTypeSignature( "DefiningPairOfQuiverMorphismEnrichedOverSkeletalFinSets
     Assert( 0, IsCategoryOfQuivers( input_types[1].category ) );
     
     return CapJitDataTypeOfNTupleOf( 2,
-                   CapJitDataTypeOfListOf( IsInt ),
-                   CapJitDataTypeOfListOf( IsInt ) );
+                   CapJitDataTypeOfListOf( IsBigInt ),
+                   CapJitDataTypeOfListOf( IsBigInt ) );
     
 end );
 
