@@ -2579,10 +2579,12 @@ InstallMethodWithCache( PreSheaves,
     
 end ) );
 
+#% G2J:julia-only @FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory )
+
 ##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
-        [ FilterIntersection( IsCapCategory, IsInitialCategory ), IsCapCategory ],
+        [ FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory ), IsCapCategory ],
         
   FunctionWithNamedArguments(
   [
