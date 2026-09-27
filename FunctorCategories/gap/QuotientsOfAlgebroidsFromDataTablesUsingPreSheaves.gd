@@ -149,6 +149,14 @@
 
 #! @Description
 #!  The argument is an algebroid $A$ over a commutative ring $k$, defined by
+#!  data tables.  The output is its enveloping algebroid
+#!  $A^{\mathrm{op}}\otimes_k A$.
+#! @Arguments A
+#! @Returns a &CAP; category
+DeclareAttribute( "EnvelopingAlgebroid", IsFpAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is an algebroid $A$ over a commutative ring $k$, defined by
 #!  data tables.  The output is the presheaf $F_A$ defined in the introduction:
 #!  the Hom-bifunctor of $A$, regarded as a module over its enveloping
 #!  algebroid $A^{\mathrm{op}}\otimes_k A$.
