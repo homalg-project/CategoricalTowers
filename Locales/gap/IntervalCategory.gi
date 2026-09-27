@@ -38,6 +38,24 @@ InstallGlobalFunction( "CreateIntervalCategory",
     SetIsCategoryWithDecidableLifts( IntervalCategory, true );
     SetIsCategoryWithDecidableColifts( IntervalCategory, true );
     
+    ## BicartesianCategories.gi: InstallTrueMethod( IsFiniteBicompleteCategory, IsFiniteCompleteCategory and IsFiniteCocompleteCategory );
+    #= comment for Julia
+    Assert( 0, IsFiniteBicompleteCategory( IntervalCategory ) );
+    # =#
+    SetIsFiniteBicompleteCategory( IntervalCategory, true );
+    
+    ## Poset.gi: InstallTrueMethod( IsPosetCategory, IsThinCategory and IsSkeletalCategory );
+    #= comment for Julia
+    Assert( 0, IsPosetCategory( IntervalCategory ) );
+    # =#
+    SetIsPosetCategory( IntervalCategory, true );
+    
+    ## BooleanAlgebra.gi, Lattice.gi: Composition of multiple TrueMethods
+    #= comment for Julia
+    Assert( 0, IsDistributiveBicartesianProset( IntervalCategory ) );
+    # =#
+    SetIsDistributiveBicartesianProset( IntervalCategory, true );
+    
     ##
     AddObjectConstructor( IntervalCategory,
       function( cat, truth_value )

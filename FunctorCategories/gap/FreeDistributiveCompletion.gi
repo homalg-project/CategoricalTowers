@@ -18,15 +18,23 @@ InstallMethodWithCache( FreeDistributiveCompletion,
     name := Concatenation( "FreeDistributiveCompletion( ", Name( fp_category ), " )" );
     
     ##
-    category_filter := IsFreeDistributiveCompletion and IsWrapperCapCategory;
-    category_object_filter := IsObjectInFreeDistributiveCompletion and IsWrapperCapCategoryObject;
-    category_morphism_filter := IsMorphismInFreeDistributiveCompletion and IsWrapperCapCategoryMorphism;
+    category_filter := IsFreeDistributiveCompletion;
+    category_object_filter := IsObjectInFreeDistributiveCompletion;
+    category_morphism_filter := IsMorphismInFreeDistributiveCompletion;
     
     ## building the categorical tower:
     
-    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
+    finite_completion := FiniteCompletion( fp_category, range_category_of_hom_structure
+                            #= comment for julia (Temporarily)
+                            : overhead := false
+                            # =#
+                            );
     
-    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure : overhead := false, FinalizeCategory := true );
+    finite_cocompletion := FiniteCocompletion( finite_completion, range_category_of_hom_structure
+                            #= comment for julia (Temporarily)
+                            : overhead := false
+                            # =#
+                            );
     
     ##
     free_distributive_completion :=
@@ -51,9 +59,11 @@ end );
 ##
 InstallMethod( FreeDistributiveCompletion,
         "for a CAP category",
-        [ IsCapCategory and HasRangeCategoryOfHomomorphismStructure ],
+        [ IsCapCategory ],
         
   function( fp_category )
+    
+    Assert( 0, HasRangeCategoryOfHomomorphismStructure( fp_category ) );
     
     return FreeDistributiveCompletion( fp_category, RangeCategoryOfHomomorphismStructure( fp_category ) );
     
@@ -78,20 +88,18 @@ InstallMethod( EmbeddingOfUnderlyingCategory,
 end );
 
 ##
-InstallMethod( \.,
-        "for a free distributive completion category and a positive integer",
-        [ IsFreeDistributiveCompletion, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a free distributive completion category",
+        [ IsString, IsFreeDistributiveCompletion ],
         
-  function( free_distributive_completion, string_as_int )
-    local name, F, Y, Yc;
-    
-    name := NameRNam( string_as_int );
+  function( name, free_distributive_completion )
+    local F, Y, Yc;
     
     F := UnderlyingCategory( free_distributive_completion );
     
     Y := EmbeddingOfUnderlyingCategory( free_distributive_completion );
     
-    Yc := Y( F.(name) );
+    Yc := CallFuncListAtRuntime( ApplyFunctor, [ Y,  F.(name) ] );
     
     if IsObjectInFreeDistributiveCompletion( Yc ) then
         
@@ -128,15 +136,32 @@ InstallMethod( \.,
 end );
 
 ##
-InstallMethod( \.,
-        "for a cell in a free distributive completion category and a positive integer",
-        [ IsCellInFreeDistributiveCompletion, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and an object in a free distributive completion category",
+        [ IsString, IsObjectInFreeDistributiveCompletion ],
         
-  function( cell, string_as_int )
+  function( name, object )
     
-    return UnderlyingCell( cell ).(NameRNam( string_as_int ));
+    return UnderlyingCell( object ).(name);
     
 end );
+
+##
+InstallOtherMethod( \/,
+        "for a string and a morphism in a free distributive completion category",
+        [ IsString, IsMorphismInFreeDistributiveCompletion ],
+        
+  function( name, morphism )
+    
+    return UnderlyingCell( morphism ).(name);
+    
+end );
+
+#=
+INSTALL_DOT_METHOD( IsFreeDistributiveCompletion );
+INSTALL_DOT_METHOD( IsObjectInFreeDistributiveCompletion );
+INSTALL_DOT_METHOD( IsMorphismInFreeDistributiveCompletion );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( SetOfObjects,
