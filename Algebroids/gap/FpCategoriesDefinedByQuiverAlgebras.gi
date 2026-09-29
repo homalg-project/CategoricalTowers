@@ -1824,6 +1824,20 @@ InstallMethod( PrintObj,
 end );
 
 ##
+InstallMethod( PrintString,
+        "for an object in a f.p category",
+        [ IsObjectInFpCategoryDefinedByQuiverAlgebra ],
+        
+  ViewString );
+
+##
+InstallMethod( PrintString,
+        "for a morphism in a f.p category",
+        [ IsMorphismInFpCategoryDefinedByQuiverAlgebra ],
+        
+  ViewString );
+
+##
 InstallMethod( Display,
         "for an object in a f.p category",
         [ IsObjectInFpCategoryDefinedByQuiverAlgebra ],
