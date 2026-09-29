@@ -2580,6 +2580,7 @@ InstallMethodWithCache( PreSheaves,
 end ) );
 
 #% G2J:julia-only @FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory )
+#% G2J:julia-only @FilterIntersection( IsPreSheafCategoryOfFpEnrichedCategory, IsTerminalCategory )
 
 ##
 InstallMethodWithCache( PreSheaves,
