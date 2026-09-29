@@ -2175,8 +2175,19 @@ InstallMethod( DisplayString,
         [ IsObjectInFiniteStrictCoproductCompletion ],
         
   function ( a )
+    local datum, entries;
     
-    return Concatenation( StringDisplay( ObjectDatum( a ) ), "\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
+    datum := ObjectDatum( a );
+    
+    if datum[1] = 0 then
+        entries := " ";
+    else
+        entries := Concatenation( " ", JoinStringsWithSeparator( List( datum[2], PrintString ), ", " ), " " );
+    fi;
+    
+    return Concatenation(
+              "[ ", String( datum[1] ), ", [", entries, "] ]",
+              "\n\nAn object in ", Name( CapCategory( a ) ), " given by the above data\n" );
     
 end );
 

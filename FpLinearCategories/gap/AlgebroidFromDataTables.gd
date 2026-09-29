@@ -219,6 +219,24 @@ end );
 #! @Returns a list
 KeyDependentOperation( "PowerOfArrowIdeal", IsFpAlgebroidFromDataTables, IsInt, ReturnTrue );
 
+#! @Description
+#!  The argument is an algebroid $A$ over a commutative ring $k$.
+#!  The output is the presheaf $F_A$ defined by the Hom-bifunctor of $A$,
+#!  regarded as a module over its enveloping algebroid $A^{\mathrm{op}}\otimes_k A$.
+#!  See the documentation of the <C>FunctorCategories</C> package for details.
+#! @Arguments A
+#! @Returns a &CAP; category object
+DeclareAttribute( "AlgebroidAsObjectInPreSheavesCategory", IsFpAlgebroidFromDataTables );
+
+#! @Description
+#!  The argument is a morphism $\alpha:t\to u$ in an algebroid $A$ over a
+#!  commutative ring $k$, where $t$ and $u$ are objects of $A$.
+#!  The output is the morphism of presheaves associated to $\alpha$.
+#!  See the documentation in the <C>FunctorCategories</C> package for details.
+#! @Arguments alpha
+#! @Returns a &CAP; category morphism
+DeclareAttribute( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory", IsMorphismInFpAlgebroidFromDataTables );
+
 ####################################
 #
 #! @Section Properties

@@ -1034,6 +1034,28 @@ InstallMethod( PrintObj,
 end );
 
 ##
+InstallMethod( PrintString,
+        "for an object in a category from nerve data",
+        [ IsObjectInCategoryFromNerveData ],
+        
+  function( obj )
+    
+    return Concatenation( ViewString( obj ), "\n" );
+    
+end );
+
+##
+InstallMethod( PrintString,
+        "for a morphism in a category from nerve data",
+        [ IsMorphismInCategoryFromNerveData ],
+        
+  function( mor )
+    
+    return Concatenation( ViewString( mor ), "\n" );
+    
+end );
+
+##
 InstallMethod( DisplayString,
         "for an object in a category from nerve data",
         [ IsObjectInCategoryFromNerveData ],
