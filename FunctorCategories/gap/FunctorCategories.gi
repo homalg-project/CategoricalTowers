@@ -1023,17 +1023,17 @@ INSTALL_DOT_METHOD( IsFunctorCategory );
 # =#
 
 ##
-InstallMethodForCompilerForCAP( YonedaProjection,
-        [ IsCapCategory ],
+InstallOtherMethodForCompilerForCAP( YonedaProjection,
+        [ IsCapCategory, IsCapCategory ],
         
-  function ( B )
-    local Hom, Yepis, N1, N2, pt;
+  function ( Hom, B )
+    local Yepis, N1, N2, pt;
+    
+    Assert( 0, IsIdenticalObj( Hom, FunctorCategory( B ) ) );
     
     if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
         TryNextMethod( );
     fi;
-    
-    Hom := FunctorCategory( B );
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -1058,6 +1058,19 @@ InstallMethodForCompilerForCAP( YonedaProjection,
     SetIsEpimorphism( pt, true );
     
     return pt;
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaProjection,
+        [ IsCapCategory ],
+        
+  function ( B )
+    local Hom;
+    
+    Hom := FunctorCategory( B );
+    
+    return CallFuncListAtRuntime( YonedaProjection, [ Hom, B ] );
     
 end );
 
