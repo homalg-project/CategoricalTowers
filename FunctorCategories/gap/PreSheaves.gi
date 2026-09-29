@@ -470,7 +470,9 @@ InstallMethod( WellDefinednessForObjectsCheckDataOrFail,
         values := ValuesOfPreSheaf( F );
         F := CapFunctor( AmbientCategory( OppositeOfSource( PSh ) ), values[1], values[2], D );
         
-        return ForAll( relations, m -> IsCongruentForMorphisms( D, F( m[1] ), F( m[2] ) ) );
+        return ForAll( relations, m -> IsCongruentForMorphisms( D,
+                                            CallFuncListAtRuntime( ApplyFunctor, [ F, m[1] ] ),
+                                            CallFuncListAtRuntime( ApplyFunctor, [ F, m[2] ] ) ) );
         
       end;
       
@@ -1289,7 +1291,7 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
     
     AddMonomorphismIntoInjectiveEnvelopeObject( PSh,
       function( PSh, F )
-        local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, mono_coPSh, mono;
+        local B, coPSh, NL, NR, NR_on_objs, NR_on_mors, NL_F, mono_coPSh, mono;
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
         if HasMonomorphismIntoInjectiveEnvelopeObject( F ) then
@@ -1308,7 +1310,9 @@ InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
         
         NR_on_mors := NR[2];
         
-        mono_coPSh := CallFuncListAtRuntime( MonomorphismIntoInjectiveEnvelopeObject,  [ coPSh, NL( F ) ] );
+        NL_F := CallFuncListAtRuntime( NL, [ F ] );
+        
+        mono_coPSh := CallFuncListAtRuntime( MonomorphismIntoInjectiveEnvelopeObject,  [ coPSh, NL_F ] );
         
         mono := NR_on_mors( NR_on_objs( Source( mono_coPSh ) ), mono_coPSh, NR_on_objs( Target( mono_coPSh ) ) );
         
@@ -1920,6 +1924,8 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
         if HasIsSkeletalCategory( B ) and IsSkeletalCategory( B ) then
             Add( properties, "IsSkeletalCategory" );
+            # Locales/gap/Poset.gi: InstallTrueMethod( IsPosetCategory, IsThinCategory and IsSkeletalCategory ) is commented out in Julia
+            Add( properties, "IsPosetCategory" );
         fi;
         
     fi;
@@ -2309,7 +2315,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         
     fi;
     
-    #= comment for Julia (rely on computing a cover of representables which is not yet available in FunctorCategories.jl)
     if IsSkeletalCategoryOfFiniteSets( D ) or
        IsCategoryOfRows( D ) or
        IsCategoryOfColumns( D ) or
@@ -2318,7 +2323,6 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
         ADD_PROJECTIVE_STRUCTURE_TO_PRESHEAF_CATEGORY( PSh );
         
     fi;
-    # =#
     
     if HasRangeCategoryOfHomomorphismStructure( PSh ) and
        ## in the following we require (1) that the range category D of the presheaf category
@@ -2356,7 +2360,7 @@ InstallMethodWithCache( PreSheavesOfFpEnrichedCategory,
             
             unit := UnitOfIsbellAdjunction( PSh );
             
-            return IsIsomorphism( PSh, unit( F ) );
+            return IsIsomorphism( PSh, CallFuncListAtRuntime( ApplyNaturalTransformation, [ unit, F ] ) );
             
         end );
         
@@ -2575,10 +2579,12 @@ InstallMethodWithCache( PreSheaves,
     
 end ) );
 
+#% G2J:julia-only @FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory )
+
 ##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
-        [ FilterIntersection( IsCapCategory, IsInitialCategory ), IsCapCategory ],
+        [ FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory ), IsCapCategory ],
         
   FunctionWithNamedArguments(
   [
@@ -2821,7 +2827,6 @@ InstallMethodWithCache( PreSheaves,
     
   end ) );
 
-#= comment for julia (clash with a method in PresheafCategories package)
 ##
 InstallMethod( PreSheaves,
         "for a CAP category",
@@ -2838,8 +2843,6 @@ InstallMethod( PreSheaves,
     return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead, no_precompiled_code := CAP_NAMED_ARGUMENTS.no_precompiled_code );
     
 end ) );
-# =#
-
 
 ##
 InstallMethod( FiniteStrictCoproductCompletionOfSourceCategory,
@@ -2894,16 +2897,14 @@ InstallMethodForCompilerForCAP( SetOfGeneratingMorphisms,
 end );
 
 ##
-InstallMethod( CategoryOfInternalCategories,
-        "for a CAP category",
-        [ IsCapCategory ],
+InstallOtherMethod( CategoryOfInternalCategories,
+        "for a presheaf category of a f.p. enriched category and a category",
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsCapCategory ],
         
-  function ( H )
-    local Delta2, sH, membership_func;
+  function ( sH, H )
+    local Delta2, membership_func;
     
     Delta2 := SimplicialCategoryTruncatedInDegree2;
-    
-    sH := PreSheaves( Delta2, H );
     
     membership_func :=
       function ( sH, N )
@@ -2960,6 +2961,22 @@ InstallMethod( CategoryOfInternalCategories,
     
 end );
 
+##
+InstallMethod( CategoryOfInternalCategories,
+        "for a category",
+        [ IsCapCategory ],
+        
+  function ( H )
+    local Delta2, sH;
+    
+    Delta2 := SimplicialCategoryTruncatedInDegree2;
+    
+    sH := PreSheaves( Delta2, H );
+    
+    return CategoryOfInternalCategories( sH, H );
+    
+end );
+
 ####################################
 #
 # Methods for attributes
@@ -2994,8 +3011,8 @@ InstallMethodForCompilerForCAP( YonedaEmbeddingDataOfSourceCategory,
       function ( source, mor, target )
         local source_on_objs, target_on_objs;
         
-        source_on_objs := ObjectDatum( PSh, source )[1];
-        target_on_objs := ObjectDatum( PSh, target )[1];
+        source_on_objs := CallFuncListAtRuntime( ObjectDatum, [ PSh, source ] )[1];
+        target_on_objs := CallFuncListAtRuntime( ObjectDatum, [ PSh, target ] )[1];
         
         return CreatePreSheafMorphismByValues( PSh,
                        source,
@@ -3327,10 +3344,11 @@ InstallMethod( ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToMorphism,
         
     fi;
     
-    return FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) )(
-                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Target( morB ) ),
-                   morB_op,
-                   ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) );
+    return CallFuncListAtRuntime(
+                FunctorMorphismOperation( UnderlyingCapTwoCategoryCell( PSh, F ) ),
+                [ ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Target( morB ) ),
+                  morB_op,
+                  ApplyObjectInPreSheafCategoryOfFpEnrichedCategoryToObject( PSh, F, Source( morB ) ) ] );
     
 end );
 
@@ -3474,11 +3492,11 @@ end );
 
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsCapCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( PSh, F )
+  function ( PSh, UC, F )
     local C, H, defining_triple, nr_objs, nr_mors, arrows, map_of_sources_C, map_of_targets_C, objs, mors,
-          UC, F_vals, V_list_of_objects_in_UC, A_list_of_objects_in_UC,
+          F_vals, V_list_of_objects_in_UC, A_list_of_objects_in_UC,
           s_list_of_morphisms_in_UC, t_list_of_morphisms_in_UC, s, t, V, A, C_hat;
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
@@ -3501,10 +3519,11 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     map_of_sources_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][1] );
     map_of_targets_C := List( [ 0 .. nr_mors - 1 ], m -> arrows[1 + m][2] );
     
+    # G2J:julia-only map_of_sources_C := List( map_of_sources_C, Int );
+    # G2J:julia-only map_of_targets_C := List( map_of_targets_C, Int );
+    
     objs := SetOfObjects( C );
     mors := SetOfGeneratingMorphisms( C );
-    
-    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     F_vals := ValuesOfPreSheaf( F );
     
@@ -3585,8 +3604,21 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
     
     C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    return ObjectConstructor( C_hat,
-                   Pair( Pair( V, A ), Pair( s, t ) ) );
+    return CallFuncListAtRuntime( ObjectConstructor,
+                 [ C_hat, Pair( Pair( V, A ), Pair( s, t ) ) ] );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnObjects,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( PSh, F )
+    local UC;
+    
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    return CallFuncListAtRuntime( CoYonedaLemmaOnObjects, [ PSh, UC, F ] );
     
 end );
 
@@ -3600,7 +3632,6 @@ InstallMethod( CoYonedaLemmaOnObjects,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
         [ IsPreSheafCategoryOfFpEnrichedCategory,
@@ -3744,7 +3775,6 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaOnMorphisms,
                    range );
     
 end );
-# =#
 
 ##
 InstallMethod( CoYonedaLemmaOnMorphisms,
@@ -3764,9 +3794,11 @@ InstallOtherMethodForCompilerForCAP( CoequalizerDataOfPreSheafUsingCoYonedaLemma
         [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
   function ( PSh, F )
-    local F_VAst;
+    local C_hat, F_VAst;
     
-    F_VAst := ObjectDatum( FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh ), CoYonedaLemmaOnObjects( PSh, F ) );
+    C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
+    
+    F_VAst := CallFuncListAtRuntime( ObjectDatum, [ C_hat, CoYonedaLemmaOnObjects( PSh, F ) ] );
     
     return Pair( F_VAst[1][1],
                  [ F_VAst[2][1], F_VAst[2][2] ] ); ## turn the pair F_VAst[2] into a list
@@ -3815,7 +3847,6 @@ InstallMethod( EmbeddingFunctorOfFiniteStrictCoproductCompletionIntoPreSheaves,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( AssociatedCoequalizerPairInPreSheaves,
         "for a category of colimit quivers and an object therein",
@@ -3909,10 +3940,12 @@ InstallOtherMethodForCompilerForCAP( CoYonedaLemmaCoequalizerPair,
     
     C_hat := FiniteColimitCompletionWithStrictCoproductsOfSourceCategory( PSh );
     
-    return AssociatedCoequalizerPairInPreSheaves( C_hat, CoYonedaLemmaOnObjects( PSh, F ) );
+    #% CAP_JIT_DROP_NEXT_STATEMENT
+    SetCategoryOfPreSheavesOfUnderlyingCategory( C_hat, PSh );
+    
+    return CallFuncListAtRuntime( AssociatedCoequalizerPairInPreSheaves, [ C_hat, CoYonedaLemmaOnObjects( PSh, F ) ] );
     
 end );
-# =#
 
 ##
 InstallMethod( CoYonedaLemmaCoequalizerPair,
@@ -3958,7 +3991,7 @@ InstallMethodForCompilerForCAP( MorphismFromRepresentableByYonedaLemma,
         hom := ObjectDatum( H, HomC_srcC_objC );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, IsInt( hom ) );
+        Assert( 0, IsInt( hom ) or IsBigInt( hom ) );
         
         ## Hom_H(𝟙, Hom_C(o', o))
         HomH_d_HomC_srcC_objC := ExactCoverWithGlobalElements( H,
@@ -4328,7 +4361,6 @@ InstallMethod( MaximalMorphismFromRepresentable,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
         [ FilterIntersection( IsCapCategory, IsAbelianCategory ), IsPreSheafCategory, IsObjectInPreSheafCategory ],
@@ -4389,7 +4421,6 @@ InstallOtherMethodForCompilerForCAP( CoveringListOfRepresentables,
     return cover;
     
 end );
-# =#
 
 ##
 InstallMethod( CoveringListOfRepresentables,
@@ -4538,7 +4569,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
   function ( PSh, covering_list, F )
     local C, H, d, defining_triple, nr_objs, objs, UC,
           F_on_objs, embs, cover, sources, source, targets, target,
-          sections, section, complement_sources, complements, complement;
+          sections, section, complement_sources, complements, complement, coproduct_obj;
     
     C := Source( PSh );
     H := RangeCategoryOfHomomorphismStructure( PSh );
@@ -4565,7 +4596,7 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
         F_o := ObjectDatum( H, F_on_objs[1 + o] );
         
         #% CAP_JIT_DROP_NEXT_STATEMENT
-        Assert( 0, IsInt( F_o ) );
+        Assert( 0, IsInt( F_o ) or IsBigInt( F_o ) );
         
         source_diagram_o := ListWithIdenticalEntries( c_o, d );
         
@@ -4598,14 +4629,14 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
                              objs[1 + o],
                              cover[1 + o][2] ) );
     
-    source := Coproduct( UC, sources );
+    source := CallFuncListAtRuntime( Coproduct, [ UC, sources ] );
     
     targets := List( [ 0 .. nr_objs - 1 ], o ->
                      TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
                              objs[1 + o],
                              cover[1 + o][3] ) );
     
-    target := Coproduct( UC, targets );
+    target := CallFuncListAtRuntime( Coproduct, [ UC, targets ] );
     
     sections := List( [ 0 .. nr_objs - 1 ], o ->
                       TensorizeObjectWithMorphismInRangeCategoryOfHomomorphismStructure( H, UC,
@@ -4614,12 +4645,13 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
                               cover[1 + o][4],
                               targets[1 + o] ) );
     
-    section := CoproductFunctorialWithGivenCoproducts( UC,
-                       source,
-                       sources,
-                       sections,
-                       targets,
-                       target );
+    section := CallFuncListAtRuntime( CoproductFunctorialWithGivenCoproducts,
+                                          [ UC,
+                                            source,
+                                            sources,
+                                            sections,
+                                            targets,
+                                            target ] );
     
     complement_sources := List( [ 0 .. nr_objs - 1 ], o ->
                                 TensorizeObjectWithObjectInRangeCategoryOfHomomorphismStructure( H, UC,
@@ -4633,12 +4665,15 @@ InstallOtherMethodForCompilerForCAP( SectionAndComplementByCoveringListOfReprese
                                  cover[1 + o][5],
                                  targets[1 + o] ) );
     
-    complement := CoproductFunctorialWithGivenCoproducts( UC,
-                          Coproduct( UC, complement_sources ),
-                          complement_sources,
-                          complements,
-                          targets,
-                          target );
+    coproduct_obj := CallFuncListAtRuntime( Coproduct, [ UC, complement_sources ] );
+    
+    complement := CallFuncListAtRuntime( CoproductFunctorialWithGivenCoproducts,
+                                          [ UC,
+                                            coproduct_obj,
+                                            complement_sources,
+                                            complements,
+                                            targets,
+                                            target ] );
     
     #% CAP_JIT_DROP_NEXT_STATEMENT
     SetIsSplitMonomorphism( section, true );
@@ -4764,7 +4799,6 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
     
 end );
 
-#= comment for Julia
 ##
 InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
         [ FilterIntersection( IsCapCategory, IsAbelianCategory ), IsPreSheafCategory, IsList, IsObjectInPreSheafCategory ],
@@ -4826,7 +4860,6 @@ InstallOtherMethodForCompilerForCAP( RetractionByCoveringListOfRepresentables,
                            V ) );
     
 end );
-# =#
 
 ##
 InstallOtherMethodForCompilerForCAP( RetractionFromCoYonedaProjectiveObjectOntoOptimizedCoYonedaProjectiveObject,
@@ -4946,19 +4979,16 @@ InstallMethod( OptimizedCoYonedaLemmaCoequalizerPair,
     
 end );
 
-#= comment for Julia
 ##
 InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCompletion,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCompletion ],
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategory, IsObjectInFiniteStrictCoproductCompletion ],
         
-  function ( PSh, G, object )
-    local UC, object_data;
+  function ( PSh, G, UC, object )
+    local object_data;
     
     ## TODO:
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to an object (in UC)
-    
-    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     object_data := ObjectDatum( UC, object );
     
@@ -4967,18 +4997,29 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductComp
 end );
 
 ##
-InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion,
-        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInFiniteStrictCoproductCompletion ],
+InstallMethodForCompilerForCAP( ApplyPreSheafToObjectInFiniteStrictCoproductCompletion,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsObjectInFiniteStrictCoproductCompletion ],
         
-  function ( PSh, G, morphism )
-    local UC, G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
+  function ( PSh, G, object )
+    local UC;
+    
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    return CallFuncListAtRuntime( ApplyPreSheafToObjectInFiniteStrictCoproductCompletion, [ PSh, G, UC, object ] );
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsCapCategory, IsMorphismInFiniteStrictCoproductCompletion ],
+        
+  function ( PSh, G, UC, morphism )
+    local G_on_source_diagram, G_on_range_diagram, D, G_on_source, G_on_range,
           morphism_data, map, mor, G_mor, prj, cmp;
     
     ## TODO:
     ## this code should be produced by something similar to ExtendFunctorToFiniteStrictProductCompletion:
     ## Apply Hom(-,G) to a morphism (in UC)
-    
-    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
     
     G_on_source_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Source( morphism ) );
     G_on_range_diagram := ApplyPreSheafToObjectInFiniteStrictCoproductCompletion( PSh, G, Target( morphism ) );
@@ -5013,7 +5054,19 @@ InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCo
                    G_on_source );
     
 end );
-# =#
+
+##
+InstallMethodForCompilerForCAP( ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion,
+        [ IsPreSheafCategoryOfFpEnrichedCategory, IsObjectInPreSheafCategoryOfFpEnrichedCategory, IsMorphismInFiniteStrictCoproductCompletion ],
+        
+  function ( PSh, G, morphism )
+    local UC;
+    
+    UC := FiniteStrictCoproductCompletionOfSourceCategory( PSh );
+    
+    return CallFuncListAtRuntime( ApplyPreSheafToMorphismInFiniteStrictCoproductCompletion, [ PSh, G, UC, morphism ] );
+    
+end );
 
 ##
 #= comment for Julia (requires Algebroids)
@@ -5262,19 +5315,19 @@ end );
 ####################################
 
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidFromDataTables, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( F )
-    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
+  function ( B, F )
+    local PSh, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
     
     PSh := CapCategory( F );
-     
-    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( CapCategory( F ) );
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
@@ -5304,19 +5357,19 @@ end );
 #= comment for Julia (requires Algebroids)
 if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
-InstallMethod( ViewString,
-        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( F )
-    local PSh, B, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
+  function ( B, F )
+    local PSh, vertices, v_dim, v_string, arrows, a_dim, a_string, string;
     
     PSh := CapCategory( F );
-     
-    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( CapCategory( F ) );
     
     vertices := List( SetOfObjects( B ), UnderlyingVertex );
     
@@ -5355,6 +5408,30 @@ end );
 
 fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 # =#
+
+##
+InstallMethod( ViewString,
+        [ IsObjectInPreSheafCategoryOfFpEnrichedCategory ],
+  function ( F )
+    local PSh, B;
+    
+    PSh := CapCategory( F );
+    
+    B := Source( PSh );
+    
+    if IsFpAlgebroid( B ) then
+        
+        return ViewString( B, F );
+        
+    fi;
+    
+    #= comment for Julia: falls through to CAP's adjective-aware (e.g. "projective") generic ViewString
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<An object in ", Name( CapCategory( F ) ), ">" );
+    
+end );
 
 ##
 InstallMethod( DisplayString,
@@ -5397,19 +5474,19 @@ InstallMethod( DisplayString,
 end );
 
 ##
-InstallMethod( ViewString,
-        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidFromDataTables, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( eta )
-    local PSh, B, vertices, s_dim, r_dim, string;
+  function ( B, eta )
+    local PSh, vertices, s_dim, r_dim, string;
     
     PSh := CapCategory( eta );
     
-    if not ( IsFpAlgebroidFromDataTables( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
-    
-    B := Source( PSh );
     
     vertices := LabelsOfObjects( UnderlyingQuiver( B ) );
     
@@ -5430,15 +5507,17 @@ end );
 #= comment for Julia (requires Algebroids)
 if IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" ) then
 ##
-InstallMethod( ViewString,
-        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+InstallOtherMethod( ViewString,
+        [ IsFpAlgebroidDefinedByQuiverAlgebra, IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function ( eta )
+  function ( B, eta )
     local PSh, vertices, s_dim, r_dim, string;
     
     PSh := CapCategory( eta );
     
-    if not ( IsFpAlgebroidDefinedByQuiverAlgebra( Source( PSh ) ) and ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) ) then
+    Assert( 0, IsIdenticalObj( B, Source( PSh ) ) );
+    
+    if not ForAny( [ IsMatrixCategory, IsCategoryOfRows ], is -> is( Target( PSh ) ) ) then
         TryNextMethod();
     fi;
     
@@ -5460,6 +5539,31 @@ end );
 
 fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 # =#
+
+##
+InstallMethod( ViewString,
+        [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
+        
+  function ( eta )
+    local PSh, B;
+    
+    PSh := CapCategory( eta );
+    
+    B := Source( PSh );
+    
+    if IsFpAlgebroid( B ) then
+        
+        return ViewString( B, eta );
+        
+    fi;
+    
+    #= comment for Julia: falls through to CAP's adjective-aware (e.g. "monomorphism") generic ViewString
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<A morphism in ", Name( CapCategory( eta ) ), ">" );
+    
+end );
 
 ##
 InstallMethod( DisplayString,
@@ -5538,10 +5642,12 @@ end );
 InstallMethod( LaTeXOutput,
         [ IsMorphismInPreSheafCategoryOfFpEnrichedCategory ],
         
-  function( eta )
-    local only_datum, objs, v_objs, i, datum;
-    
-    only_datum := ValueOption( "OnlyDatum" );
+  FunctionWithNamedArguments(
+  [
+    [ "OnlyDatum", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, eta )
+    local objs, v_objs, i, datum;
     
     objs := SetOfObjects( Source( Source( eta ) ) );
     
@@ -5562,7 +5668,7 @@ InstallMethod( LaTeXOutput,
     
     datum := Concatenation( datum, "\\end{array}" );
     
-    if only_datum = true then
+    if CAP_NAMED_ARGUMENTS.OnlyDatum = true then
       
       return datum;
       
@@ -5578,4 +5684,4 @@ InstallMethod( LaTeXOutput,
     
     fi;
     
-end );
+end ) );

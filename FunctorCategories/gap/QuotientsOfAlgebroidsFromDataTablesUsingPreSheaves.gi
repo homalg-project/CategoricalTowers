@@ -4,8 +4,18 @@
 # Implementations
 #
 
+# For A return its enveloping algebroid A^op ⊗ A
+##
+InstallMethod( EnvelopingAlgebroid,
+          [ IsFpAlgebroidFromDataTables ],
+  function ( A )
+    
+    return TensorProductOfAlgebroids( OppositeOfObjectFiniteCategory( A ), A );
+    
+end );
+
 #
-#  Interpret an algebroid from data tables A as an object in PreSheaves(A^op ⊗ A, k-rows).
+#  Interpret an algebroid defined by data tables A as an object in PreSheaves(A^op ⊗ A, k-rows).
 #
 #  For two morphims: g: X --> Y in A^op   &  f: U --> V in A
 #
@@ -53,9 +63,9 @@ InstallMethod( AlgebroidAsObjectInPreSheavesCategory,
                        _ConcatenationLazyHLists_( LazyHList( [ 1 .. nr_gmors ], l -> LazyHList( [ 1 .. nr_objs ],
                         r -> HomomorphismStructureOnMorphisms( A, IdentityMorphism( SetOfObjects( A )[r] ), SetOfGeneratingMorphisms( A )[l] ) ) ) ) ] );
     
-    PSh := PreSheaves( TensorProductOfAlgebroids( OppositeOfObjectFiniteCategory( A ), A ) );
-    
-    return ObjectConstructor( PSh, Pair( images_of_objs, images_of_gmorphisms ) );
+    PSh := PreSheaves( EnvelopingAlgebroid( A ) );
+
+    return CallFuncListAtRuntime( ObjectConstructor, [ PSh, Pair( images_of_objs, images_of_gmorphisms ) ] );
     
 end );
 
@@ -64,16 +74,22 @@ InstallMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
           [ IsMorphismInFpAlgebroidFromDataTables ],
           
   function ( m )
-    local A, A_op, T;
+    local A, F_A, PSh, target_op, elementary_tensor;
     
     A := CapCategory( m );
-    A_op := OppositeOfObjectFiniteCategory( A );
-    T := TensorProductOfAlgebroids( A_op, A );
     
-    return MorphismFromRepresentableByYonedaLemma(
-                PreSheaves( T ),
-                ElementaryTensor( SetOfObjects( A_op )[ObjectIndex( Target( m ) )], Source( m ), T ),
+    F_A := AlgebroidAsObjectInPreSheavesCategory( A );
+    
+    PSh := CapCategory( F_A );
+    
+    target_op := CallFuncListAtRuntime( SetOfObjects, [ OppositeOfObjectFiniteCategory( A ) ] )[ObjectIndex( Target( m ) )];
+    
+    elementary_tensor := CallFuncListAtRuntime( ElementaryTensor, [ target_op, Source( m ), Source( PSh ) ] );
+    
+    return CallFuncListAtRuntime( MorphismFromRepresentableByYonedaLemma,
+              [ PSh,
+                elementary_tensor,
                 InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure( A, m ),
-                AlgebroidAsObjectInPreSheavesCategory( A ) );
+                F_A ] );
     
 end );
