@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2026.09-06",
+Version := "2026.09-07",
 
 Date := "2026-09-29",
 Date := "2026-09-29",
@@ -98,11 +98,11 @@ Dependencies := rec(
                    [ "ToolsForCategoricalTowers", ">= 2026.09-01" ],
                    [ "Toposes", ">= 2025.12-02" ],
                    [ "FinSetsForCAP", ">= 2025.12-08" ],
-                   [ "FpCategories", ">= 2026.07-02" ],
+                   [ "FpCategories", ">= 2026.09-03" ],
                    [ "Locales", ">= 2025.02-04" ],
                    [ "PresheafCategories", ">= 2026.09-01" ],
-                   [ "FiniteCocompletions", ">= 2026.05-10" ],
-                   [ "Algebroids", ">= 2026.07-04" ],
+                   [ "FiniteCocompletions", ">= 2026.09-01" ],
+                   [ "Algebroids", ">= 2026.09-02" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-01" ],
                    [ "SliceCategories", ">= 2026.04-01" ],
                    ],
