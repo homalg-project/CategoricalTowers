@@ -249,6 +249,11 @@ DeclareOperation( "ApplyMorphismInFunctorCategoryToObject",
 #
 ####################################
 
+#! @Arguments B
+#! @Group FunctorCategory
+DeclareAttribute( "FunctorCategory",
+        IsCapCategory );
+
 #! @Description
 #!  Construct the category <C>FunctorCategory(</C> <A>B</A>, <A>D</A> <C>)</C>=
 #!  <C>Hom(</C> <A>B</A>, <A>D</A> <C>)</C> of functors from the small category
@@ -264,11 +269,6 @@ DeclareOperationWithCache( "FunctorCategory",
 #! @Group FunctorCategory
 DeclareOperationWithCache( "FunctorCategory",
         [ IsCapCategory, IsHomalgRing ] );
-
-#! @Arguments B
-#! @Group FunctorCategory
-DeclareOperationWithCache( "FunctorCategory",
-        [ IsCapCategory ] );
 
 #! @Arguments B, D
 #! @Group FunctorCategory
