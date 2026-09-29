@@ -838,6 +838,20 @@ InstallMethod( PrintObj,
 end );
 
 ##
+InstallMethod( PrintString,
+        "for an object in a category from data tables",
+        [ IsObjectInCategoryFromDataTables ],
+        
+  ViewString );
+
+##
+InstallMethod( PrintString,
+        "for a morphism in a category from data tables",
+        [ IsMorphismInCategoryFromDataTables ],
+        
+  ViewString );
+
+##
 InstallMethod( DisplayString,
         "for an object in a category from data tables",
         [ IsObjectInCategoryFromDataTables ],
