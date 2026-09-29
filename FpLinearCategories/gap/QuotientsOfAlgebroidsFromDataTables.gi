@@ -4,34 +4,38 @@
 # Implementations
 #
 
+## See FunctorCategories/gap/QuotientsOfAlgebroidsFromDataTablesUsingPreSheaves.gi
+##
+InstallOtherMethod( AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory,
+        [ IsMorphismInFpAlgebroid ],
+        
+  function ( m )
+    
+    Error( "this operation is installed for `IsMorphismInFpAlgebroidFromDataTables` in the package `FunctorCategories >= v2023.12-01`, please load that package first!\n" );
+    
+end );
+
 ##
 InstallOtherMethod( QuotientCategory,
-        [ IsFpAlgebroidFromDataTables, IsDenseList ],
-  
-  function ( A, relations )
-    local A_op, A_as_presheaf, eager, PSh, tau, S, H, pi, congruence_func, name, quo_A, FinalizeCategory, range_of_HomStructure, ring;
-    
-    if not IsPackageMarkedForLoading( "FunctorCategories", "2023.12-01" ) then
+        [ IsFpAlgebroidFromDataTables, IsDenseList, IsCapCategoryObject ],
         
-        Error( "the package `FunctorCategories` with version at least V2023.12-01 is required for this method!\n" );
-        
-    fi;
+  function ( A, relations, A_as_presheaf )
+    local A_op, PSh, tau, S, H, pi, congruence_func, name, quo_A, range_of_HomStructure, ring;
     
     A_op := OppositeOfObjectFiniteCategory( A );
     
-    A_as_presheaf := ValueGlobal( "AlgebroidAsObjectInPreSheavesCategory" )( A : eager := false );
-    
     PSh := CapCategory( A_as_presheaf );
     
-    tau := UniversalMorphismFromDirectSum( PSh, A_as_presheaf,
-              List( relations, rel -> ValueGlobal( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory" )( rel ) ) );
+    tau := UniversalMorphismFromDirectSum( PSh,
+                A_as_presheaf,
+                List( relations, rel -> AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( rel ) ) );
     
     S := Source( PSh );
     H := Target( PSh );
     
     if HasIsAbelianCategory( H ) and IsAbelianCategory( H ) then
         
-        pi := CokernelProjection( PSh, tau );
+        pi := CokernelProjection(  PSh, tau );
         
         congruence_func :=
           function ( m )
@@ -39,7 +43,7 @@ InstallOtherMethod( QuotientCategory,
             
             obj := ElementaryTensor( SetOfObjects( A_op )[ObjectIndex( Target( m ) )], Source( m ), S );
             
-            return IsZeroForMorphisms( H, PreCompose( H, ValueGlobal( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory" )( m )( obj ), pi( obj ) ) );
+            return IsZeroForMorphisms( H, PreCompose( H, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), pi( obj ) ) );
             
         end;
         
@@ -51,7 +55,7 @@ InstallOtherMethod( QuotientCategory,
             
             obj := ElementaryTensor( SetOfObjects( A_op )[ObjectIndex( Target( m ) )], Source( m ), S );
             
-            return IsLiftable( H, ValueGlobal( "AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory" )( m )( obj ), tau( obj ) );
+            return IsLiftable( H, AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory( m )( obj ), tau( obj ) );
             
         end;
         
@@ -280,6 +284,37 @@ InstallOtherMethod( QuotientCategory,
     Finalize( quo_A );
     
     return quo_A;
+    
+end );
+
+## See FunctorCategories/gap/QuotientsOfAlgebroidsFromDataTablesUsingPreSheaves.gi
+##
+InstallOtherMethod( AlgebroidAsObjectInPreSheavesCategory,
+          [ IsFpAlgebroid ],
+          
+  function ( A )
+    
+    Error( "this operation is installed for `IsFpAlgebroidFromDataTables` in the package `FunctorCategories >= v2023.12-01`, please load that package first!\n" );
+    
+end );
+
+##
+InstallMethod( QuotientCategory,
+        [ IsFpAlgebroidFromDataTables, IsDenseList ],
+  
+  function ( A, relations )
+    local A_as_presheaf;
+    
+    #= comment for Julia
+    if not IsPackageMarkedForLoading( "FunctorCategories", "2023.12-01" ) then
+        Error( "the package `FunctorCategories` with version at least V2023.12-01 is required for this method!\n" );
+    fi;
+    # =#
+    
+    A_as_presheaf := AlgebroidAsObjectInPreSheavesCategory( A );
+    
+    return CallFuncListAtRuntime( QuotientCategory,
+              [ A, relations, A_as_presheaf ] );
     
 end );
 
