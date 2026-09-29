@@ -1,7 +1,7 @@
 name: FiniteCocompletions
-version: "2026.08-02"
+version: "2026.09-01"
 license: "GPL-2.0-or-later"
-date: 2026-08-31
+date: 2026-09-29
 description: |
     Finite (co)product/(co)limit (co)completions
 
@@ -48,7 +48,7 @@ needed-pkgs:
       version: ">= 2025.12-04"
       url: "https://homalg-project.github.io/pkg/Locales"
     - name: "FpCategories"
-      version: ">= 2025.12-05"
+      version: ">= 2026.09-03"
       url: "https://homalg-project.github.io/pkg/FpCategories"
     - name: "AdditiveClosuresForCAP"
       version: ">= 2026.06-02"
@@ -66,11 +66,11 @@ packageinfo: https://homalg-project.github.io/CategoricalTowers/FiniteCocompleti
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.08-02/FiniteCocompletions-2026.08-02.tar.gz
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.09-01/FiniteCocompletions-2026.09-01.tar.gz
     - name: .zip
-      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.08-02/FiniteCocompletions-2026.08-02.zip
+      url: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.09-01/FiniteCocompletions-2026.09-01.zip
 
-pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.08-02/FiniteCocompletions-2026.08-02-manual.pdf
+pdf: https://github.com/homalg-project/CategoricalTowers/releases/download/FiniteCocompletions-2026.09-01/FiniteCocompletions-2026.09-01-manual.pdf
 
 abstract: |
 
@@ -81,10 +81,10 @@ keywords: |
     finite coproduct cocompletions, finite product completions, finite colimit cocompletions, finite limit completions.
 citeas: |
     <p class='BibEntry'>
-    [<span class='BibKey'>BT31</span>]   <b class='BibAuthor'>Barakat, M. and Talleux, M.</b>,
+    [<span class='BibKey'>BT29</span>]   <b class='BibAuthor'>Barakat, M. and Talleux, M.</b>,
      <i class='BibTitle'>FiniteCocompletions, Finite (co)product/(co)limit (co)completions,
-             Version 2026.08-02</i>
-     (<span class='BibYear'>8-31</span>)<br />
+             Version 2026.09-01</i>
+     (<span class='BibYear'>9-29</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://homalg-project.github.io/pkg/FiniteCocompletions">https://homalg-project.github.io/pkg/FiniteCocompletions</a></span>.
     </p>
@@ -95,9 +95,9 @@ bibtex: |
       author =           {Barakat, M. and Talleux, M.},
       title =            {{FiniteCocompletions},  {Finite  (co)product/(co)limit
                           (co)completions},                            {V}ersion
-                          2026.08\texttt{\symbol{45}}02},
+                          2026.09\texttt{\symbol{45}}01},
       month =            {6\texttt{\symbol{45}}},
-      year =             {8\texttt{\symbol{45}}31},
+      year =             {9\texttt{\symbol{45}}29},
       note =             {GAP package},
       howpublished =     {\href
                           {https://homalg-project.github.io/pkg/FiniteCocompletions}
@@ -107,6 +107,6 @@ bibtex: |
       keywords =         {finite   coproduct   cocompletions,   finite   product
                           completions,   finite  colimit  cocompletions,  finite
                           limit completions},
-      printedkey =       {BT31}
+      printedkey =       {BT29}
     }
 
