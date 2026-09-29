@@ -39,8 +39,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X865644DA7A507FBB">4.2-7 YonedaFibrationAsNaturalTransformation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X862D49ED796CA1DE">4.2-8 YonedaProjectionAsNaturalEpimorphism</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X865CDAC97884FB7B">4.2-9 YonedaCompositionAsNaturalEpimorphism</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F4082A98513DCD4">4.2-10 NaturalTransformation</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83B40D197C13837A">4.2-11 QuiverStringOfDigraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7C6099C0861389D2">4.2-10 SieveFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X814E389180F2A2A3">4.2-11 TruthMorphismOfTrueToSieveFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7E71572181F4C8C7">4.2-12 EmbeddingOfSieveFunctor</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7F4082A98513DCD4">4.2-13 NaturalTransformation</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X83B40D197C13837A">4.2-14 QuiverStringOfDigraph</a></span>
 </div></div>
 </div>
 
@@ -289,9 +292,36 @@ Functor from PathCategory( FinQuiver(
 / [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -&gt; SkeletalFinSets
 </pre></div>
 
+<p><a id="X7C6099C0861389D2" name="X7C6099C0861389D2"></a></p>
+
+<h5>4.2-10 SieveFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; SieveFunctor</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP functor</p>
+
+<p>Return the functor of sieves from <code class="code">OppositeOfObjectFiniteCategory</code>( <var class="Arg">B</var> ) to <code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ).</p>
+
+<p><a id="X814E389180F2A2A3" name="X814E389180F2A2A3"></a></p>
+
+<h5>4.2-11 TruthMorphismOfTrueToSieveFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TruthMorphismOfTrueToSieveFunctor</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP natural transformation</p>
+
+<p>Return the truth morphism of true from the terminal functor to the functor of sieves from <code class="code">OppositeOfObjectFiniteCategory</code>( <var class="Arg">B</var> ) to <code class="code">RangeCategoryOfHomomorphismStructure</code>( <var class="Arg">B</var> ).</p>
+
+<p><a id="X7E71572181F4C8C7" name="X7E71572181F4C8C7"></a></p>
+
+<h5>4.2-12 EmbeddingOfSieveFunctor</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; EmbeddingOfSieveFunctor</code>( <var class="Arg">B</var> )</td><td class="tdright">(&nbsp;attribute&nbsp;)</td></tr></table></div>
+<p>Returns: a CAP natural transformation</p>
+
+<p>Return the embedding of <code class="code">SieveFunctor</code>( <var class="Arg">B</var> ) into the functor <span class="Math">c \mapsto \mathrm{Hom}(\mathrm{Hom}(-,c),\Omega)</span>.</p>
+
 <p><a id="X7F4082A98513DCD4" name="X7F4082A98513DCD4"></a></p>
 
-<h5>4.2-10 NaturalTransformation</h5>
+<h5>4.2-13 NaturalTransformation</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( <var class="Arg">eta</var>, <var class="Arg">F</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; NaturalTransformation</code>( <var class="Arg">F</var>, <var class="Arg">eta</var>, <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
@@ -301,7 +331,7 @@ Functor from PathCategory( FinQuiver(
 
 <p><a id="X83B40D197C13837A" name="X83B40D197C13837A"></a></p>
 
-<h5>4.2-11 QuiverStringOfDigraph</h5>
+<h5>4.2-14 QuiverStringOfDigraph</h5>
 
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; QuiverStringOfDigraph</code>( <var class="Arg">D</var>, <var class="Arg">name_of_quiver</var>, <var class="Arg">prefix_of_name_of_morphisms</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a string</p>

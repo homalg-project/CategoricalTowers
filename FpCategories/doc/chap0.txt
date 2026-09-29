@@ -6,10 +6,10 @@
       [1X Finitely presented categories by generating quivers and relations [101X
   
   
-                                   2026.09-02
+                                   2026.09-03
   
   
-                               25 September 2026
+                               29 September 2026
   
   
                                 Mohamed Barakat
@@ -129,8 +129,11 @@
       4.2-7 YonedaFibrationAsNaturalTransformation
       4.2-8 YonedaProjectionAsNaturalEpimorphism
       4.2-9 YonedaCompositionAsNaturalEpimorphism
-      4.2-10 NaturalTransformation
-      4.2-11 QuiverStringOfDigraph
+      4.2-10 SieveFunctor
+      4.2-11 TruthMorphismOfTrueToSieveFunctor
+      4.2-12 EmbeddingOfSieveFunctor
+      4.2-13 NaturalTransformation
+      4.2-14 QuiverStringOfDigraph
   5 [33X[0;0YPrecompilation[133X
     5.1 [33X[0;0YPrecompileCategoryFromNerveData[133X
     5.2 [33X[0;0YPrecompileCategoryFromDataTables[133X

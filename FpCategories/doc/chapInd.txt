@@ -25,6 +25,7 @@
   [2XDataTablesOfCategory[102X, for IsCapCategory 4.2-2 
   [2XDefiningRelations[102X, for IsQuotientOfPathCategory 7.2-3 
   [2XDefiningTripleOfUnderlyingQuiver[102X, for IsCapCategory 4.2-1 
+  [2XEmbeddingOfSieveFunctor[102X, for IsCapCategory 4.2-12 
   [2XExternalHoms[102X, for IsFinQuiver 1.2-14 
   [2XFinQuiver[102X, for IsList 1.1-1 
   [2XGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-1 
@@ -65,8 +66,8 @@
       for IsPathCategoryMorphism 2.2-9 
   [2XMorphismLength[102X, for IsPathCategoryMorphism 2.2-6 
   [2XMorphismSupport[102X, for IsPathCategoryMorphism 2.2-7 
-  [2XNaturalTransformation[102X, for IsCapFunctor, IsList, IsCapFunctor 4.2-10 
-      for IsRecord, IsCapFunctor, IsCapFunctor 4.2-10 
+  [2XNaturalTransformation[102X, for IsCapFunctor, IsList, IsCapFunctor 4.2-13 
+      for IsRecord, IsCapFunctor, IsCapFunctor 4.2-13 
   [2XNerveData[102X, for IsCategoryFromNerveData 6.2-1 
   [2XNerveTruncatedInDegree2AsFunctor[102X, for IsCapCategory 4.2-4 
   [2XNerveTruncatedInDegree2Data[102X, for IsCapCategory 4.2-3 
@@ -86,18 +87,20 @@
   [2XPathCategory[102X, for IsFinQuiver 2.1-1 
   [2XQuiverDatum[102X, for IsFinQuiver 1.2-1 
   [2XQuiverName[102X, for IsFinQuiver 1.2-2 
-  [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 4.2-11 
+  [2XQuiverStringOfDigraph[102X, for IsDigraph, IsString, IsString 4.2-14 
   [2XQuotientCategory[102X, for IsPathCategory, IsDenseList 7.3-1 
   [2XRandomFinQuiver[102X, for IsInt, IsInt, IsBool 1.1-4 
   [2XReducedGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-3 
   [2XReducedGroebnerBasisWithGivenGroebnerBasis[102X, for IsPathCategory, IsDenseList 2.4-2 
   [2XSetOfMorphisms[102X, for IsFinQuiver 1.2-13 
   [2XSetOfObjects[102X, for IsFinQuiver 1.2-12 
+  [2XSieveFunctor[102X, for IsCapCategory 4.2-10 
   [2XSimplicialCategoryTruncatedInDegree[102X 8.1-1 
   [2XSize[102X, for IsCapCategory 4.1-1 
       for IsCategoryFromDataTables 3.1-2 
       for IsCategoryFromNerveData 6.2-2 
   [2XTensorProductOfFinQuivers[102X, for IsFinQuiver, IsFinQuiver 1.1-5 
+  [2XTruthMorphismOfTrueToSieveFunctor[102X, for IsCapCategory 4.2-11 
   [2XUnderlyingQuiver[102X, for IsPathCategory 2.2-3 
   [2XYonedaCompositionAsNaturalEpimorphism[102X, for IsCapCategory 4.2-9 
   [2XYonedaFibrationAsNaturalTransformation[102X, for IsCapCategory 4.2-7 

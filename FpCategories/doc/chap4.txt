@@ -239,7 +239,32 @@
     [4X[28X/ [ s⋅id = i d(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ] -> SkeletalFinSets[128X[104X
   [4X[32X[104X
   
-  [1X4.2-10 NaturalTransformation[101X
+  [1X4.2-10 SieveFunctor[101X
+  
+  [33X[1;0Y[29X[2XSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP functor[133X
+  
+  [33X[0;0YReturn  the  functor  of  sieves from [10XOppositeOfObjectFiniteCategory[110X( [3XB[103X ) to
+  [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
+  
+  [1X4.2-11 TruthMorphismOfTrueToSieveFunctor[101X
+  
+  [33X[1;0Y[29X[2XTruthMorphismOfTrueToSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
+  
+  [33X[0;0YReturn  the  truth morphism of true from the terminal functor to the functor
+  of     sieves     from     [10XOppositeOfObjectFiniteCategory[110X(     [3XB[103X     )    to
+  [10XRangeCategoryOfHomomorphismStructure[110X( [3XB[103X ).[133X
+  
+  [1X4.2-12 EmbeddingOfSieveFunctor[101X
+  
+  [33X[1;0Y[29X[2XEmbeddingOfSieveFunctor[102X( [3XB[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP natural transformation[133X
+  
+  [33X[0;0YReturn  the  embedding  of  [10XSieveFunctor[110X(  [3XB[103X  )  into  the functor [23Xc \mapsto
+  \mathrm{Hom}(\mathrm{Hom}(-,c),\Omega)[123X.[133X
+  
+  [1X4.2-13 NaturalTransformation[101X
   
   [33X[1;0Y[29X[2XNaturalTransformation[102X( [3Xeta[103X, [3XF[103X, [3XG[103X ) [32X operation[133X
   [33X[1;0Y[29X[2XNaturalTransformation[102X( [3XF[103X, [3Xeta[103X, [3XG[103X ) [32X operation[133X
@@ -248,7 +273,7 @@
   [33X[0;0YConstruct,   using   the   record   (or  list)  of  images  [3Xeta[103X,  a  natural
   transformation from the functor [3XF[103X to the parallel functor [3XG[103X.[133X
   
-  [1X4.2-11 QuiverStringOfDigraph[101X
+  [1X4.2-14 QuiverStringOfDigraph[101X
   
   [33X[1;0Y[29X[2XQuiverStringOfDigraph[102X( [3XD[103X, [3Xname_of_quiver[103X, [3Xprefix_of_name_of_morphisms[103X ) [32X operation[133X
   [6XReturns:[106X  [33X[0;10Ya string[133X
