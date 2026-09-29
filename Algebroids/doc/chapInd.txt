@@ -156,11 +156,9 @@
       for IsFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra 2.2-8 
       for IsObjectInFpAlgebroidDefinedByQuiverAlgebra, IsObjectInFpAlgebroidDefinedByQuiverAlgebra 4.2-9 
       for IsObjectInFpCategoryDefinedByQuiverAlgebra, IsObjectInFpCategoryDefinedByQuiverAlgebra 2.2-9 
-  [2XSieveFunctor[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-21 
   [2XSize[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-3 
   [2XTrivialAlgebroid[102X, for IsHomalgRing, IsString 4.3-3 
   [2XTrivialCategory[102X, for IsString 2.3-1 
-  [2XTruthMorphismOfTrueToSieveFunctor[102X, for IsFpCategoryDefinedByQuiverAlgebra 2.2-20 
   [2XTwist[102X, for IsFpAlgebroidDefinedByQuiverAlgebra, IsFpAlgebroidDefinedByQuiverAlgebra 6.3-1 
   [2XUnderlyingAlgebra[102X, for IsFpAlgebroidDefinedByQuiverAlgebra 4.2-16 
       for IsFpCategoryDefinedByQuiverAlgebra 2.2-16 
