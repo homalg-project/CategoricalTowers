@@ -6,7 +6,7 @@
   [2XAddAdditionalMonoidalStructureToFunctorCategory[102X, for IsFunctorCategory, IsCapCategory, IsCapCategory 1.2-6 
   [2XAddIsReflexive[102X, for IsCapCategory, IsFunction 16.1-1 
       for IsCapCategory, IsFunction, IsInt 16.1-1 
-  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsFpAlgebroidFromDataTables 14.1-1 
+  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsFpAlgebroidFromDataTables 14.1-2 
   [2XApplyMorphismInCoPreSheafCategoryToObject[102X, for IsCoPreSheafCategory, IsMorphismInCoPreSheafCategory, IsCapCategoryObject 13.3-3 
   [2XApplyMorphismInFunctorCategoryToObject[102X, for IsFunctorCategory, IsMorphismInFunctorCategory, IsCapCategoryObject 1.3-5 
   [2XApplyMorphismInPreSheafCategoryOfFpEnrichedCategoryToObject[102X, for IsPreSheafCategoryOfFpEnrichedCategory, IsMorphismInPreSheafCategoryOfFpEnrichedCategory, IsCapCategoryObject 2.3-4 
@@ -33,7 +33,7 @@
   [2XAssociatedCategoryOfCoPreSheaves[102X, for IsPreSheafCategory 2.2-12 
   [2XAssociatedCoequalizerPairInPreSheaves[102X, for IsObjectInCategoryOfColimitQuivers 2.1-23 
       for IsObjectInFiniteColimitCompletionWithStrictCoproducts 2.1-24 
-  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInFpAlgebroidFromDataTables 14.1-2 
+  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInFpAlgebroidFromDataTables 14.1-3 
   [2XCategoryOfBouquetsEnrichedOver[102X, for IsCapCategory 4.1-1 
   [2XCategoryOfColimitQuiversOfSourceCategory[102X, for IsPreSheafCategory 2.2-11 
   [2XCategoryOfDecoratedQuivers[102X, for IsObjectInCategoryOfQuivers, IsList, IsList 8.1-1 
@@ -96,6 +96,7 @@
       for IsFiniteCocompletion 3.2-2 
       for IsFiniteCompletion 9.2-2 
       for IsFreeDistributiveCompletion 11.2-2 
+  [2XEnvelopingAlgebroid[102X, for IsFpAlgebroidFromDataTables 14.1-1 
   [2XEpimorphismFromSomeProjectiveObjectUsingSplits[102X, for IsObjectInPreSheafCategory 2.1-15 
   [2XEquivalenceFromFullSubcategoryOfProjectivesObjectsIntoAdditiveClosureOfSource[102X, for IsPreSheafCategory 12.2-9 
   [2XFinBouquets[102X 4.4-2 

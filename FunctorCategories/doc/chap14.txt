@@ -107,7 +107,15 @@
   
   [1X14.1 [33X[0;0YAttributes[133X[101X
   
-  [1X14.1-1 AlgebroidAsObjectInPreSheavesCategory[101X
+  [1X14.1-1 EnvelopingAlgebroid[101X
+  
+  [33X[1;0Y[29X[2XEnvelopingAlgebroid[102X( [3XA[103X ) [32X attribute[133X
+  [6XReturns:[106X  [33X[0;10Ya CAP category[133X
+  
+  [33X[0;0YThe  argument  is  an algebroid [23XA[123X over a commutative ring [23Xk[123X, defined by data
+  tables. The output is its enveloping algebroid [23XA^{\mathrm{op}}\otimes_k A[123X.[133X
+  
+  [1X14.1-2 AlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAlgebroidAsObjectInPreSheavesCategory[102X( [3XA[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category object[133X
@@ -117,7 +125,7 @@
   Hom-bifunctor  of  [23XA[123X,  regarded  as  a  module over its enveloping algebroid
   [23XA^{\mathrm{op}}\otimes_k A[123X.[133X
   
-  [1X14.1-2 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[101X
+  [1X14.1-3 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[101X
   
   [33X[1;0Y[29X[2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X( [3Xalpha[103X ) [32X attribute[133X
   [6XReturns:[106X  [33X[0;10Ya CAP category morphism[133X
