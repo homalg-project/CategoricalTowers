@@ -6,10 +6,10 @@
    [1X Finitely presented linear categories by generating quivers and relations [101X
   
   
-                                   2026.09-02
+                                   2026.09-03
   
   
-                               25 September 2026
+                               29 September 2026
   
   
                                 Mohamed Barakat
@@ -56,6 +56,8 @@
       1.2-8 LabelsOfBasesElements
       1.2-9 LaTeXStringsOfBasesElements
       1.2-10 PowerOfArrowIdeal
+      1.2-11 AlgebroidAsObjectInPreSheavesCategory
+      1.2-12 AssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory
     1.3 [33X[0;0YOperations[133X
       1.3-1 AssignSetOfObjects
       1.3-2 AssignSetOfGeneratingMorphisms

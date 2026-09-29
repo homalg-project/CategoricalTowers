@@ -3,9 +3,11 @@
   [1XIndex[101X
   
   [2X\*[102X, for IsFpAlgebroidFromDataTables, IsFpAlgebroidFromDataTables 1.3-11 
+  [2XAlgebroidAsObjectInPreSheavesCategory[102X, for IsFpAlgebroidFromDataTables 1.2-11 
   [2XAlgebroidFromDataTables[102X, for IsDenseList 1.4-1 
   [2XAssignSetOfGeneratingMorphisms[102X, for IsFpAlgebroidFromDataTables, IsString 1.3-2 
   [2XAssignSetOfObjects[102X, for IsFpAlgebroidFromDataTables, IsString 1.3-1 
+  [2XAssociatedMorphismIntoAlgebroidAsObjectInPreSheavesCategory[102X, for IsMorphismInFpAlgebroidFromDataTables 1.2-12 
   [2XBasesElements[102X, for IsFpAlgebroidFromDataTables 1.2-6 
   [2XCategoryDatum[102X, for IsFpAlgebroidFromDataTables 1.2-5 
   [2XCoefficientsList[102X, for IsMorphismInFpAlgebroidFromDataTables 1.3-4 
