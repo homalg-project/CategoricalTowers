@@ -856,16 +856,14 @@ InstallMethodWithCache( PreSheaves,
     
   end ) );
 
-#= comment for Julia (clash with other installations on the same filters in FunctorCategories)
-
 # Filters can not be defined inside functions in Julia, hence we define it here and retrieve it in the function:
-#% G2J:julia-only @FilterIntersection( IsCapCategory, IsInitialCategory )
+#% G2J:julia-only @FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory )
 #% G2J:julia-only @FilterIntersection( IsPreSheafCategory, IsTerminalCategory )
 
 ##
 InstallMethodWithCache( PreSheaves,
         "for two CAP categories",
-        [ FilterIntersection( IsCapCategory, IsInitialCategory ), IsCapCategory ],
+        [ FilterIntersection( IsCapCategory, IsFiniteCategory, IsInitialCategory ), IsCapCategory ],
         
   FunctionWithNamedArguments(
   [
@@ -1103,7 +1101,6 @@ InstallMethod( PreSheaves,
     return PreSheaves( B, RangeCategoryOfHomomorphismStructure( B ) : FinalizeCategory := CAP_NAMED_ARGUMENTS.FinalizeCategory, overhead := CAP_NAMED_ARGUMENTS.overhead );
     
 end ) );
-# =#
 
 ####################################
 #

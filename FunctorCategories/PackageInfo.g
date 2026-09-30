@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2026.09-07",
+Version := "2026.09-08",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -100,7 +100,7 @@ Dependencies := rec(
                    [ "FinSetsForCAP", ">= 2025.12-08" ],
                    [ "FpCategories", ">= 2026.09-03" ],
                    [ "Locales", ">= 2025.02-04" ],
-                   [ "PresheafCategories", ">= 2026.09-01" ],
+                   [ "PresheafCategories", ">= 2026.09-02" ],
                    [ "FiniteCocompletions", ">= 2026.09-01" ],
                    [ "Algebroids", ">= 2026.09-02" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-01" ],
