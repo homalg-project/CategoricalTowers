@@ -1075,17 +1075,15 @@ InstallMethodForCompilerForCAP( YonedaProjection,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaComposition,
-        [ IsCapCategory ],
+InstallOtherMethodForCompilerForCAP( YonedaComposition,
+        [ IsCapCategory, IsCapCategory ],
         
-  function ( B )
-    local Hom, Yepis, H, N1, N2, mu;
+  function ( Hom, B )
+    local Yepis, H, N1, N2, mu;
     
     if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
         TryNextMethod( );
     fi;
-    
-    Hom := FunctorCategory( B );
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -1114,17 +1112,28 @@ InstallMethodForCompilerForCAP( YonedaComposition,
 end );
 
 ##
-InstallMethodForCompilerForCAP( YonedaFibration,
+InstallMethodForCompilerForCAP( YonedaComposition,
         [ IsCapCategory ],
         
   function ( B )
-    local Hom, Yepis, H, N0, N1;
+    local Hom;
+    
+    Hom := FunctorCategory( B );
+    
+    return CallFuncListAtRuntime( YonedaComposition, [ Hom, B ] );
+    
+end );
+
+##
+InstallOtherMethodForCompilerForCAP( YonedaFibration,
+        [ IsCapCategory, IsCapCategory ],
+        
+  function ( Hom, B )
+    local Yepis, H, N0, N1;
     
     if not ( HasIsFiniteCategory( B ) and IsFiniteCategory( B ) ) then
         TryNextMethod( );
     fi;
-    
-    Hom := FunctorCategory( B );
     
     Yepis := YonedaNaturalEpimorphisms( B );
     
@@ -1142,6 +1151,19 @@ InstallMethodForCompilerForCAP( YonedaFibration,
                    N1, ## The Yoneda functor B → H, c ↦ Hom(-, c), ψ ↦ Hom(-, ψ)
                    Yepis[6],
                    N0 ); ## The constant functor of 0-cells
+    
+end );
+
+##
+InstallMethodForCompilerForCAP( YonedaFibration,
+        [ IsCapCategory ],
+        
+  function ( B )
+    local Hom;
+    
+    Hom := FunctorCategory( B );
+    
+    return CallFuncListAtRuntime( YonedaFibration, [ Hom, B ] );
     
 end );
 
