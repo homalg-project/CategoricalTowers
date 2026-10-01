@@ -3,7 +3,9 @@
 #! @Example
 LoadPackage( "FunctorCategories", false );
 #! true
-T := FiniteCompletion( InitialCategory( ) );
+I := InitialCategory( );
+#! InitialCategory( )
+T := FiniteCompletion( I );
 #! FiniteCompletion( InitialCategory( ) )
 H := RangeCategoryOfHomomorphismStructure( T );
 #! PreSheaves( InitialCategory( ), InitialCategory( ) )
@@ -81,5 +83,5 @@ IsEqualForMorphisms( id_z, fn_z );
 #! true
 IsCongruentForMorphisms( id_z, fn_z );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (manually moved)
 #! @EndExample

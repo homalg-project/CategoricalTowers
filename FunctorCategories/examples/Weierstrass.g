@@ -26,7 +26,7 @@ Display( cmat3 );
 #!   [   0,   0,   1,   0,   0,  -5 ],
 #!   [   0,   0,   0,   1,   0,   0 ],
 #!   [   0,   0,   0,   0,   1,   3 ] ]
-cmat := Q * DiagMat( [ cmat1, cmat1, cmat3 ] );
+cmat := DiagMat( Q, [ cmat1, cmat1, cmat3 ] );
 #! <An unevaluated 10 x 10 matrix over an internal ring>
 n := NrRows( cmat );
 #! 10
@@ -106,7 +106,8 @@ Display( G );
 #! An object in PreSheaves(
 #! Algebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,
 #! Rows( Q ) ) given by the above data
-cy := ProjectionOntoCoequalizer( CoYonedaLemmaCoequalizerPair( G )[2] );
+p := CoYonedaLemmaCoequalizerPair( G );;
+cy := ProjectionOntoCoequalizer( p[2] );
 #! <(o)->60x10>
 pi := EpimorphismFromSomeProjectiveObject( G );
 #! <(o)->18x10>
@@ -209,6 +210,6 @@ pi = co;
 #! false
 CoimageObject( pi ) = CoimageObject( co );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (manually moved)
 #! @EndExample
 #! @EndChunk

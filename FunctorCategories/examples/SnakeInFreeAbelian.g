@@ -26,7 +26,7 @@ b := A.b;
 c := A.c;
 #! <A morphism in AbelianClosure( Algebroid( Q, FreeCategory(
 #!  RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )>
-IsZero( PreCompose( [ a, b, c ] ) );
+IsZeroForMorphisms( PreCompose( [ a, b, c ] ) );
 #! true
 d := CokernelProjection( a );
 #! <An epimorphism in AbelianClosure( Algebroid( Q, FreeCategory(
@@ -91,5 +91,5 @@ HC := HomologyObject( s, k );
 #!  RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )>
 IsZero( HC );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (requires Algebroids and GeneralizedMorphismsForCAP)
 #! @EndExample

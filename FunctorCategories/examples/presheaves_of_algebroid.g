@@ -141,6 +141,6 @@ Display( P );
 #! the above data
 IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample
 #! @EndChunk

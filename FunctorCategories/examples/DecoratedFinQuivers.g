@@ -58,6 +58,6 @@ Display( omega );
 #!     18 := [ 3, 3, "blue" ], 19 := [ 3, 3, "blue" ], 20 := [ 2, 2, "green" ],
 #!     21 := [ 3, 2, "green" ], 22 := [ 2, 3, "green" ], 23 := [ 3, 3, "green" ],
 #!     24 := [ 3, 3, "green" ] } )
-# @drop_example_in_Julia
+# @drop_example_in_Julia (requires SliceCategories which is not yet transpiled to Julia)
 #! @EndExample
 #! @EndChunk

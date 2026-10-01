@@ -204,5 +204,5 @@ fortyone(A.b) = TensorProductOnMorphisms( nine(A.b), nine(A.b) );
 #! true
 fortyone(A.c) = TensorProductOnMorphisms( nine(A.c), nine(A.c) );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (requires Algebroids)
 #! @EndExample

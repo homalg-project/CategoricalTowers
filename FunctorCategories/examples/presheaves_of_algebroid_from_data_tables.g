@@ -12,24 +12,33 @@
 LoadPackage( "FunctorCategories" );
 
 #! @Example
-q := RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );
-#! q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]
-F := FreeCategory( q );
-#! FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) )
+q := FinQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );
+#! FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4]" )
+F := PathCategory( q );
+#! PathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4]" ) )
 k := HomalgFieldOfRationals( );
 #! Q
 kF := k[F];
-#! Algebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,
-#! y:4->4]" ) ) )
-A := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,
+#! y:4→4]" ) ) )
+quo_kF := kF / [ kF.x^3, kF.y^2 ];
+#! Q-LinearClosure( PathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,
+#! y:4→4]" ) ) ) / [ 1*x^3, 1*y^2 ]
+Dimension( quo_kF );
+#! 29
+IsAdmissibleAlgebroid( quo_kF );
+#! true
+A := AlgebroidFromDataTables( quo_kF );
 #! Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects
 #! and 6 generating morphisms
+Dimension( A );
+#! 29
 IsAdmissibleAlgebroid( A );
 #! true
 PSh := PreSheaves( A );
 #! PreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined
 #! by 4 objects and 6 generating morphisms, Rows( Q ) )
-P := PSh.4;
+P := PSh.("4");
 #! <(1)->12, (2)->2, (3)->2, (4)->2; (x)->12x12, (a)->2x12, (b)->2x2,
 #! (c)->2x12, (d)->2x2, (y)->2x2>
 IsProjective( P );
@@ -140,6 +149,6 @@ Display( P );
 #! the above data
 IsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );
 #! true
-# @drop_example_in_Julia
+# @drop_example_in_Julia (manually moved)
 #! @EndExample
 #! @EndChunk
