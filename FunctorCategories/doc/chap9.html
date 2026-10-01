@@ -133,7 +133,9 @@
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteCompletion( InitialCategory( ) );</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">I := InitialCategory( );</span>
+InitialCategory( )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">T := FiniteCompletion( I );</span>
 FiniteCompletion( InitialCategory( ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">H := RangeCategoryOfHomomorphismStructure( T );</span>
 PreSheaves( InitialCategory( ), InitialCategory( ) )
@@ -211,7 +213,7 @@ true
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">IsCongruentForMorphisms( id_z, fn_z );</span>
 true
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia (manually moved)</span>
 </pre></div>
 
 

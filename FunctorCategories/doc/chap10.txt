@@ -53,7 +53,7 @@
     [4X[25Xgap>[125X [27Xc := A.c;[127X[104X
     [4X[28X<A morphism in AbelianClosure( Algebroid( Q, FreeCategory([128X[104X
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )>[128X[104X
-    [4X[25Xgap>[125X [27XIsZero( PreCompose( [ a, b, c ] ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsZeroForMorphisms( PreCompose( [ a, b, c ] ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27Xd := CokernelProjection( a );[127X[104X
     [4X[28X<An epimorphism in AbelianClosure( Algebroid( Q, FreeCategory([128X[104X
@@ -118,7 +118,7 @@
     [4X[28X RightQuiver( "q(4)[a:1->2,b:2->3,c:3->4]" ) ) ) / relations )>[128X[104X
     [4X[25Xgap>[125X [27XIsZero( HC );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires Algebroids and GeneralizedMorphismsForCAP)[127X[104X
   [4X[32X[104X
   
   

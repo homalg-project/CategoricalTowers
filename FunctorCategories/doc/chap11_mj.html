@@ -136,6 +136,8 @@
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "Digraphs", false );</span>
+true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">LoadPackage( "FunctorCategories", false );</span>
 true
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">pq := FinQuiver( "quiver(p,q)" );</span>
@@ -187,7 +189,7 @@ MeetSemilatticeOfSingleDifferences( FreeDistributiveCompletion(
 PosetOfCategory( PathCategory( FinQuiver( "quiver(p,q)[]" ) ) ) ) )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( SetOfObjects( DiffbCSL ) );</span>
 13
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia (requires Digraphs)</span>
 </pre></div>
 
 

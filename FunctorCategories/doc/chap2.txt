@@ -217,7 +217,7 @@
     [4X[28X[ <(1)->1, (2)->0, (3)->0; (a)->0x1, (b)->0x0>,[128X[104X
     [4X[28X  <(1)->0, (2)->1, (3)->0; (a)->1x0, (b)->0x1>,[128X[104X
     [4X[28X  <(1)->0, (2)->0, (3)->1; (a)->0x0, (b)->1x0> ][128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires Algebroids)[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
@@ -350,28 +350,37 @@
     [4X[28Xthe above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires Algebroids)[127X[104X
   [4X[32X[104X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );[127X[104X
-    [4X[28Xq(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4][128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,y:4->4]" );[127X[104X
+    [4X[28XFinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4]" ) )[128X[104X
     [4X[25Xgap>[125X [27Xk := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XkF := k[F];[127X[104X
-    [4X[28XAlgebroid( Q, FreeCategory( RightQuiver( "q(4)[x:1->1,a:1->2,b:2->4,c:1->3,d:3->4,[128X[104X
-    [4X[28Xy:4->4]" ) ) )[128X[104X
-    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( kF / [ kF.x^3, kF.y^2 ] );[127X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,[128X[104X
+    [4X[28Xy:4→4]" ) ) )[128X[104X
+    [4X[25Xgap>[125X [27Xquo_kF := kF / [ kF.x^3, kF.y^2 ];[127X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(1,2,3,4)[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,[128X[104X
+    [4X[28Xy:4→4]" ) ) ) / [ 1*x^3, 1*y^2 ][128X[104X
+    [4X[25Xgap>[125X [27XDimension( quo_kF );[127X[104X
+    [4X[28X29[128X[104X
+    [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( quo_kF );[127X[104X
+    [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27XA := AlgebroidFromDataTables( quo_kF );[127X[104X
     [4X[28XQ-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined by 4 objects[128X[104X
     [4X[28Xand 6 generating morphisms[128X[104X
+    [4X[25Xgap>[125X [27XDimension( A );[127X[104X
+    [4X[28X29[128X[104X
     [4X[25Xgap>[125X [27XIsAdmissibleAlgebroid( A );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XPSh := PreSheaves( A );[127X[104X
     [4X[28XPreSheaves( Q-algebroid( {1,2,3,4}[x:1→1,a:1→2,b:2→4,c:1→3,d:3→4,y:4→4] ) defined[128X[104X
     [4X[28Xby 4 objects and 6 generating morphisms, Rows( Q ) )[128X[104X
-    [4X[25Xgap>[125X [27XP := PSh.4;[127X[104X
+    [4X[25Xgap>[125X [27XP := PSh.("4");[127X[104X
     [4X[28X<(1)->12, (2)->2, (3)->2, (4)->2; (x)->12x12, (a)->2x12, (b)->2x2,[128X[104X
     [4X[28X(c)->2x12, (d)->2x2, (y)->2x2>[128X[104X
     [4X[25Xgap>[125X [27XIsProjective( P );[127X[104X
@@ -482,7 +491,7 @@
     [4X[28Xthe above data[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( MonomorphismIntoSomeInjectiveObject( P ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (manually moved)[127X[104X
   [4X[32X[104X
   
   [1X2.2-7 NerveTruncatedInDegree2[101X
@@ -506,7 +515,7 @@
     [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
     [4X[28X                   ps:C1→C2,pt:C1→C2,mu:C1→C2]" ) )[128X[104X
     [4X[28X/ [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ][128X[104X
-    [4X[25Xgap>[125X [27XDefiningRelations( Delta2 );[127X[104X
+    [4X[25Xgap>[125X [27XViewObj( DefiningRelations( Delta2 ) );[127X[104X
     [4X[28X[ [ s⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
     [4X[28X  [ t⋅id:(C0) → (C0), id(C0):(C0) → (C0) ],[128X[104X
     [4X[28X  [ ps⋅is:(C1) → (C1), id(C1):(C1) → (C1) ],[128X[104X
@@ -546,7 +555,12 @@
     [4X[28X|3| → |31|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( N.id );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
-    [4X[25Xgap>[125X [27XIntCat := CategoryOfInternalCategories([127X[104X
+    [4X[25Xgap>[125X [27XPSh := CapCategory( N );[127X[104X
+    [4X[28XPreSheaves( PathCategory( FinQuiver( "Delta(C0,C1,C2)[id:C1→C0,[128X[104X
+    [4X[28Xs:C0→C1,t:C0→C1,is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,[128X[104X
+    [4X[28Xmu:C1→C2]" ) ) / [ s⋅id = id(C0), t⋅id = id(C0), ps⋅is = id(C1), ... ],[128X[104X
+    [4X[28XSkeletalFinSets )[128X[104X
+    [4X[25Xgap>[125X [27XIntCat := CategoryOfInternalCategories( PSh,[127X[104X
     [4X[25X>[125X [27X                  RangeCategoryOfHomomorphismStructure( Delta2 ) );[127X[104X
     [4X[28XFullSubcategoryByObjectMembershipFunction([128X[104X
     [4X[28XPreSheaves( PathCategory( FinQuiver([128X[104X
@@ -557,14 +571,18 @@
     [4X[28XSkeletalFinSets ), ObjectMembershipFunction )[128X[104X
     [4X[25Xgap>[125X [27XIsWellDefined( N / IntCat );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
   [23X\Delta[123X on the objects [23X[0], [1], [2][123X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XDelta2 := CategoryFromNerveData( SimplicialCategoryTruncatedInDegree( 2 ) );[127X[104X
+    [4X[25Xgap>[125X [27XC := SimplicialCategoryTruncatedInDegree( 2 );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "Delta(C0,C1,C2)[id:C1→C0,[128X[104X
+    [4X[28Xs:C0→C1,t:C0→C1,is:C2→C1,it:C2→C1,ps:C1→C2,pt:C1→C2,[128X[104X
+    [4X[28Xmu:C1→C2]" ) ) / [ s⋅id = id(C0), t⋅id = id(C0),[128X[104X
+    [4X[28Xps⋅is = id(C1), ... ][128X[104X
+    [4X[25Xgap>[125X [27XDelta2 := CategoryFromNerveData( C );[127X[104X
     [4X[28XPathCategory( FinQuiver([128X[104X
     [4X[28X  "Delta(C0,C1,C2)[id:C1→C0,s:C0→C1,t:C0→C1,[128X[104X
     [4X[28X                   is:C2→C1,it:C2→C1,[128X[104X
@@ -595,7 +613,6 @@
     [4X[28X|3| → |31|[128X[104X
     [4X[25Xgap>[125X [27XDisplay( N.id );[127X[104X
     [4X[28X{ 0, 1, 2 } ⱶ[ 0, 5, 21 ]→ { 0,..., 30 }[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   [33X[0;0YWe  compute  the  nerve  of  the full subcategory of the simplicial category
@@ -660,7 +677,7 @@
     [4X[28X{ 0,..., 6 } ⱶ[ 0, 0, 17, 17, 17, 17, 17 ]→ { 0,..., 25 }[128X[104X
     [4X[25Xgap>[125X [27XNL = LN;[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (Computing N succeeds but takes a long time in Julia (HomStructure on 31x31 morphisms where Size(SimplicialCategoryTruncatedInDegree2) = 31).)[127X[104X
   [4X[32X[104X
   
   [1X2.2-8 SievesOfPathsToTruth[101X
@@ -1002,7 +1019,7 @@
     [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(1)[a:1->1]" ) )[128X[104X
     [4X[28X/ [ a*a*a = a*a ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (manually moved)[127X[104X
   [4X[32X[104X
   
   
@@ -1106,9 +1123,9 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( iso, inv ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsEqualToIdentityMorphism( PreCompose( iso, inv ) );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XIsOne( PreCompose( inv, iso ) );[127X[104X
+    [4X[25Xgap>[125X [27XIsEqualToIdentityMorphism( PreCompose( inv, iso ) );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XcoYoG := CoYonedaLemmaOnObjects( G );[127X[104X
     [4X[28X<An object in FiniteColimitCompletionWithStrictCoproducts([128X[104X
@@ -1142,7 +1159,7 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ], SkeletalFinSets ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (manually moved)[127X[104X
   [4X[32X[104X
   
   [33X[0;0YStream-vortex-system: Study the colimit completion of a cyclic monoid[133X
@@ -1278,7 +1295,7 @@
     [4X[28XA morphism in PreSheaves( FreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
     [4X[28X/ [ x*x*x*x*x*x*x*x*x*x*x*x*x*x*x*x = x*x*x*x ], SkeletalFinSets )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (manually moved)[127X[104X
   [4X[32X[104X
   
   
@@ -1290,17 +1307,16 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "FunctorCategories", false );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27Xq := RightQuiver( "q(o)[x:o->o]" );[127X[104X
-    [4X[28Xq(o)[x:o->o][128X[104X
-    [4X[25Xgap>[125X [27XF := FreeCategory( q );[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
+    [4X[25Xgap>[125X [27Xq := FinQuiver( "q(o)[x:o->o]" );[127X[104X
+    [4X[28XFinQuiver( "q(o)[x:o→o]" )[128X[104X
+    [4X[25Xgap>[125X [27XF := PathCategory( q );[127X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o]" ) )[128X[104X
     [4X[25Xgap>[125X [27XC := F / [ [ F.x^(3+4), F.x^3 ] ];[127X[104X
-    [4X[28XFreeCategory( RightQuiver( "q(o)[x:o->o]" ) )[128X[104X
-    [4X[28X/ [ x*x*x*x*x*x*x = x*x*x ][128X[104X
+    [4X[28XPathCategory( FinQuiver( "q(o)[x:o→o]" ) ) / [ x^7 = x^3 ][128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationals( );[127X[104X
     [4X[28XQ[128X[104X
     [4X[25Xgap>[125X [27XQC := Q[C];[127X[104X
-    [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations[128X[104X
+    [4X[28XQ-LinearClosure( PathCategory( FinQuiver( "q(o)[x:o→o]" ) ) / [ x^7 = x^3 ] )[128X[104X
     [4X[25Xgap>[125X [27XQC := AlgebroidFromDataTables( QC );[127X[104X
     [4X[28XQ-algebroid( {o}[x:o→o] ) defined by 1 object and 1 generating morphism[128X[104X
     [4X[25Xgap>[125X [27Xx := QC.x;[127X[104X
@@ -1537,7 +1553,7 @@
     [4X[28X  [   0,   0,   1,   0,   0,  -5 ],[128X[104X
     [4X[28X  [   0,   0,   0,   1,   0,   0 ],[128X[104X
     [4X[28X  [   0,   0,   0,   0,   1,   3 ] ][128X[104X
-    [4X[25Xgap>[125X [27Xcmat := Q * DiagMat( [ cmat1, cmat1, cmat3 ] );[127X[104X
+    [4X[25Xgap>[125X [27Xcmat := DiagMat( Q, [ cmat1, cmat1, cmat3 ] );[127X[104X
     [4X[28X<An unevaluated 10 x 10 matrix over an internal ring>[128X[104X
     [4X[25Xgap>[125X [27Xn := NrRows( cmat );[127X[104X
     [4X[28X10[128X[104X
@@ -1617,7 +1633,8 @@
     [4X[28XAn object in PreSheaves([128X[104X
     [4X[28XAlgebra( Q, FreeCategory( RightQuiver( "q(o)[x:o->o]" ) ) ) / relations,[128X[104X
     [4X[28XRows( Q ) ) given by the above data[128X[104X
-    [4X[25Xgap>[125X [27Xcy := ProjectionOntoCoequalizer( CoYonedaLemmaCoequalizerPair( G )[2] );[127X[104X
+    [4X[25Xgap>[125X [27Xp := CoYonedaLemmaCoequalizerPair( G );;[127X[104X
+    [4X[25Xgap>[125X [27Xcy := ProjectionOntoCoequalizer( p[2] );[127X[104X
     [4X[28X<(o)->60x10>[128X[104X
     [4X[25Xgap>[125X [27Xpi := EpimorphismFromSomeProjectiveObject( G );[127X[104X
     [4X[28X<(o)->18x10>[128X[104X
@@ -1720,7 +1737,7 @@
     [4X[28Xfalse[128X[104X
     [4X[25Xgap>[125X [27XCoimageObject( pi ) = CoimageObject( co );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (manually moved)[127X[104X
   [4X[32X[104X
   
   
@@ -1774,7 +1791,6 @@
     [4X[28XAn object in FiniteStrictCoproductCompletion( PosetOfCategory( PathCategory([128X[104X
     [4X[28XFinQuiver( "q(a,l,r,i,c,b)[ac:a→c,lc:l→c,ri:r→i,ic:i→c,cb:c→b]" ) ) ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
   
@@ -1838,6 +1854,6 @@
     [4X[28XAn object in PreSheaves( Algebra( Q, FreeCategory([128X[104X
     [4X[28XRightQuiver( "q(1)[a:1->1,b:1->1]" ) ) ) / relations, Rows( Q ) )[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (requires Algebroids)[127X[104X
   [4X[32X[104X
   

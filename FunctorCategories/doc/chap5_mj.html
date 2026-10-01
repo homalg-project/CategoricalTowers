@@ -367,12 +367,9 @@ given by the above data
     3 := [ 1, 1 ], 4 := [ 1, 1 ] } )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">HomStructure( A, omega );</span>
 |5|
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">subsA := ListOfSubobjects( A );</span>
-[ &lt;A monomorphism in FinQuivers&gt;,
-  &lt;A monomorphism in FinQuivers&gt;,
-  &lt;A monomorphism in FinQuivers&gt;,
-  &lt;A monomorphism in FinQuivers&gt;,
-  &lt;A monomorphism in FinQuivers&gt; ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">subsA := ListOfSubobjects( A );;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Length( subsA );</span>
+5
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Perform( subsA, Display );</span>
 Image of &lt;(V)&gt;:
 ∅ ⱶ[  ]→ { 0, 1 }
@@ -414,7 +411,6 @@ Image of &lt;(A)&gt;:
 
 A morphism in FinQuivers
 given by the above data
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput"># @drop_example_in_Julia</span>
 </pre></div>
 
 

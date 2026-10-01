@@ -274,12 +274,9 @@
     [4X[28X    3 := [ 1, 1 ], 4 := [ 1, 1 ] } )[128X[104X
     [4X[25Xgap>[125X [27XHomStructure( A, omega );[127X[104X
     [4X[28X|5|[128X[104X
-    [4X[25Xgap>[125X [27XsubsA := ListOfSubobjects( A );[127X[104X
-    [4X[28X[ <A monomorphism in FinQuivers>,[128X[104X
-    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
-    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
-    [4X[28X  <A monomorphism in FinQuivers>,[128X[104X
-    [4X[28X  <A monomorphism in FinQuivers> ][128X[104X
+    [4X[25Xgap>[125X [27XsubsA := ListOfSubobjects( A );;[127X[104X
+    [4X[25Xgap>[125X [27XLength( subsA );[127X[104X
+    [4X[28X5[128X[104X
     [4X[25Xgap>[125X [27XPerform( subsA, Display );[127X[104X
     [4X[28XImage of <(V)>:[128X[104X
     [4X[28X∅ ⱶ[  ]→ { 0, 1 }[128X[104X
@@ -321,6 +318,5 @@
     [4X[28X[128X[104X
     [4X[28XA morphism in FinQuivers[128X[104X
     [4X[28Xgiven by the above data[128X[104X
-    [4X[25Xgap>[125X [27X# @drop_example_in_Julia[127X[104X
   [4X[32X[104X
   
