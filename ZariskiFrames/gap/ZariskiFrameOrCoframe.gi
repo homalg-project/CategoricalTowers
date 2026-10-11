@@ -193,6 +193,17 @@ InstallMethod( UnderlyingColumn,
   UnderlyingStandardColumn );
 
 ##
+InstallMethod( NumberOfRelations,
+        "for an object in a Zariski frame or coframe",
+        [ IsObjectInZariskiFrameOrCoframe ],
+        
+  function( A )
+    
+    return NumberRows( UnderlyingColumn( A ) );
+    
+end );
+
+##
 InstallMethod( UnderlyingListOfColumns,
         "for an object in a Zariski frame or coframe",
         [ IsObjectInZariskiFrameOrCoframe and HasPreUnderlyingMatrix ],

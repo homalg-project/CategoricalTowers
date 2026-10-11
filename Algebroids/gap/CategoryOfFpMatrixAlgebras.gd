@@ -185,11 +185,41 @@ DeclareAttribute( "Dimension",
 DeclareAttribute( "AmbientAlgebra",
         IsObjectInCategoryOfFpMatrixAlgebras );
 
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "Unit",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "Multiplication",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "OppositeAlgebra",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Arguments monoid
+DeclareAttribute( "UnderlyingFpMatrixAlgebra",
+        IsObjectInCategoryOfInternalMonoids );
+
+#! @Arguments fp_matrix_algebra
+DeclareAttribute( "FpMatrixAlgebraAsInternalMonoid",
+        IsObjectInCategoryOfFpMatrixAlgebras );
+
+#! @Arguments fp_algebra
+DeclareAttribute( "YonedaFpMatrixAlgebra",
+        IsObjectInCategoryOfFpAlgebras );
+
 ####################################
 ##
 #! @Section Operations
 ##
 ####################################
+
+if false then
+#! @Arguments fp_matrix_algebra, MonB
+DeclareOperation( "/",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsCategoryOfInternalMonoids ] );
+fi;
 
 #! @Arguments fp_matrix_algebra, list
 DeclareOperation( "Counit",
@@ -197,6 +227,10 @@ DeclareOperation( "Counit",
 
 #! @Arguments fp_matrix_algebra, list
 DeclareOperation( "Comultiplication",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ] );
+
+#!
+DeclareOperation( "Antipode",
         [ IsObjectInCategoryOfFpMatrixAlgebras, IsList ] );
 
 ####################################
@@ -225,3 +259,31 @@ CapJitAddTypeSignature( "CategoryOfFpMatrixAlgebras", [ IsCategoryOfFpAlgebras ]
     return CapJitDataTypeOfCategory( CategoryOfFpMatrixAlgebras( input_types[1].category ) );
     
 end );
+
+#! @Arguments FpMatAlg_R, ring_map, fp_matrix_algebra
+DeclareOperation( "Pullback",
+        [ IsCategoryOfFpMatrixAlgebras, IsHomalgRingMap, IsObjectInCategoryOfFpMatrixAlgebras ] );
+
+#! @Arguments ring_map, fp_matrix_algebra
+DeclareOperation( "Pullback",
+        [ IsHomalgRingMap, IsObjectInCategoryOfFpMatrixAlgebras ] );
+
+if false then
+#! @Arguments fp_matrix_algebra, FpMatAlg_R
+DeclareOperation( "/",
+        [ IsObjectInCategoryOfFpMatrixAlgebras, IsCategoryOfFpMatrixAlgebras ] );
+fi;
+
+#! @Arguments R, fp_matrix_algebra
+DeclareOperation( "*",
+        [ IsHomalgRing, IsObjectInCategoryOfFpMatrixAlgebras ] );
+
+#! @Arguments FpMatAlg_R, ring_map, source_R, fp_matrix_algebra_morphism, target_R
+DeclareOperation( "BaseChangeToDifferentCategoryOfFpMatrixAlgebras",
+        [ IsCategoryOfFpMatrixAlgebras, IsHomalgRingMap,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ] );
+
+#! @Arguments FpMatAlg_R, source_R, fp_matrix_algebra_morphism, target_R
+DeclareOperation( "BaseChangeToDifferentCategoryOfFpMatrixAlgebras",
+        [ IsCategoryOfFpMatrixAlgebras,
+          IsObjectInCategoryOfFpMatrixAlgebras, IsMorphismInCategoryOfFpMatrixAlgebras, IsObjectInCategoryOfFpMatrixAlgebras ] );
