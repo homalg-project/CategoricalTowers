@@ -7,3 +7,4 @@
 ReadPackage( "SubcategoriesForCAP", "gap/Subcategory.gd" );
 ReadPackage( "SubcategoriesForCAP", "gap/FullSubcategory.gd" );
 ReadPackage( "SubcategoriesForCAP", "gap/FunctorsForFullSubcategories.gd" );
+ReadPackage( "SubcategoriesForCAP", "gap/PermutationCategory.gd" );

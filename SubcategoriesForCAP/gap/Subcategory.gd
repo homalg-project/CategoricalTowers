@@ -22,7 +22,6 @@ DeclareCategory( "IsCapSubcategory",
 DeclareCategory( "IsCapSubcategoryGeneratedByFiniteNumberOfMorphisms",
         IsCapSubcategory );
 
-
 #! @Description
 #!  The &GAP; category of cells in a subcategory.
 DeclareCategory( "IsCellInASubcategory",
@@ -60,6 +59,20 @@ DeclareGlobalVariable( "CAP_INTERNAL_METHOD_NAME_LIST_FOR_SUBCATEGORY" );
 DeclareAttribute( "UnderlyingCell",
         IsCellInASubcategory );
 
+CapJitAddTypeSignature( "UnderlyingCell", [ IsObjectInASubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfObjectOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
+CapJitAddTypeSignature( "UnderlyingCell", [ IsMorphismInASubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfMorphismOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 #! @Description
 #!  The set of known objects of the subcategory <A>A</A>.
 #! @Arguments A
@@ -74,26 +87,75 @@ DeclareAttribute( "SetOfKnownObjects",
 DeclareAttribute( "AmbientCategory",
         IsCapSubcategory );
 
+CapJitAddTypeSignature( "AmbientCategory", [ IsCapSubcategory ],
+  function ( input_types )
+    
+    return CapJitDataTypeOfCategory( AmbientCategory( input_types[1].category ) );
+    
+end );
+
 ####################################
 #
 #! @Section Constructors
 #
 ####################################
 
+#! @Description
+#!  Constructs a subcategory of C with name 'name'.
+#!  It supports the following options:
+#!  * 'is_full'
+#!  * 'is_additive'
+#!  * 'additional_operations_to_install': a list of strings with names of CAP operations
+#!     supported by the ambient category to additionally install in the subcategory.
+#!  * 'only_primitively_installed_operations_of_ambient_category': either 'true' or 'false'.
+#!     Decides, whether to consider only primitive operations or all installed operations of the ambient category,
+#!     when installing additional operations via "additional_operations_to_install" in the subcategory.
+#!  * 'properties'
+#!  * 'supports_empty_limits'
+#!  * 'FinalizeCategory'
+#!  * 'category_filter'
+#!  * 'category_object_filter'
+#!  * 'category_morphism_filter'
 #! @Arguments C, name
 DeclareOperation( "Subcategory",
                   [ IsCapCategory, IsString ] );
 
-#! @Arguments D, c
+#! @Arguments D, object
+DeclareOperation( "AsSubcategoryObject",
+                  [ IsCapSubcategory, IsCapCategoryObject ] );
+
+CapJitAddTypeSignature( "AsSubcategoryObject", [ IsCapSubcategory, IsCapCategoryObject ],
+  function ( input_types )
+    
+    Assert( 0, AmbientCategory( input_types[1].category ) = input_types[2].category );
+    
+    return CapJitDataTypeOfObjectOfCategory( input_types[1].category );
+    
+end );
+
+#! @Arguments D, morphism
+DeclareOperation( "AsSubcategoryMorphism",
+                  [ IsCapSubcategory, IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
+
+CapJitAddTypeSignature( "AsSubcategoryMorphism", [ IsCapSubcategory, IsCapCategoryMorphism ],
+  function ( input_types )
+    
+    Assert( 0, AmbientCategory( input_types[1].category ) = input_types[2].category );
+    
+    return CapJitDataTypeOfMorphismOfCategory( input_types[1].category );
+    
+end );
+
+#! @Arguments D, cell
 DeclareOperation( "AsSubcategoryCell",
                   [ IsCapSubcategory, IsCapCategoryCell ] );
 
-#! @Arguments source, mor, range
+#! @Arguments source, morphism, target
 DeclareOperation( "AsSubcategoryCell",
                   [ IsObjectInASubcategory, IsCapCategoryMorphism, IsObjectInASubcategory ] );
 
 #= comment for Julia
-#! @Arguments c, D
+#! @Arguments cell, D
 DeclareOperation( "\/",
                 [ IsCapCategoryCell, IsCapSubcategory ] );
 # =#
