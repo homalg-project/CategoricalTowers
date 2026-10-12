@@ -6,10 +6,10 @@
              [1X Representations and cohomology of finite categories [101X
   
   
-                                   2026.08-02
+                                   2026.10-01
   
   
-                                 31 August 2026
+                                12 October 2026
   
   
                                 Mohamed Barakat
