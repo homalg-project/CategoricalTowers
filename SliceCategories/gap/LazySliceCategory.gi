@@ -313,45 +313,37 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     [ IsObjectInALazySliceCategory ],
   function( a )
     
-    Print( "An object in the lazy slice category given by: " );
-    
-    Perform( UnderlyingMorphismList( a ), ViewObj );
+    return Concatenation( "An object in the lazy slice category given by: ", Concatenation( List( UnderlyingMorphismList( a ), ViewString ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     [ IsMorphismInALazySliceCategory ],
   function( phi )
     
-    Print( "A morphism in the lazy slice category given by: " );
-    
-    ViewObj( UnderlyingCell( phi ) );
+    return Concatenation( "A morphism in the lazy slice category given by: ", ViewString( UnderlyingCell( phi ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
     [ IsObjectInALazySliceCategory ],
   function( a )
     
-    Display( UnderlyingMorphism( a ) );
-    
-    Display( "\nAn object in the lazy slice category given by the above data" );
+    return Concatenation( DisplayString( UnderlyingMorphism( a ) ), "\nAn object in the lazy slice category given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
     [ IsMorphismInALazySliceCategory ],
   function( phi )
     
-    Display( UnderlyingCell( phi ) );
-    
-    Display( "\nA morphism in the lazy slice category given by the above data" );
+    return Concatenation( DisplayString( UnderlyingCell( phi ) ), "\nA morphism in the lazy slice category given by the above data\n" );
     
 end );
