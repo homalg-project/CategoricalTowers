@@ -25,32 +25,32 @@ DeclareCategory( "IsCellInAnEagerSliceCategory",
 #! @Description
 #!  The &GAP; category of objects in an eager slice category.
 DeclareCategory( "IsObjectInAnEagerSliceCategory",
-        IsObjectInASliceCategory and IsCellInAnEagerSliceCategory );
+        FilterIntersection( IsObjectInASliceCategory, IsCellInAnEagerSliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in an eager slice category.
 DeclareCategory( "IsMorphismInAnEagerSliceCategory",
-        IsMorphismInASliceCategory and IsCellInAnEagerSliceCategory );
+        FilterIntersection( IsMorphismInASliceCategory, IsCellInAnEagerSliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of an eager slice category over the tensor unit.
 DeclareCategory( "IsEagerSliceCategoryOverTensorUnit",
-        IsSliceCategoryOverTensorUnit and IsEagerSliceCategory );
+        FilterIntersection( IsSliceCategoryOverTensorUnit, IsEagerSliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of cells in an eager slice category over the tensor unit.
 DeclareCategory( "IsCellInAnEagerSliceCategoryOverTensorUnit",
-        IsCellInSliceCategoryOverTensorUnit and IsCellInAnEagerSliceCategory );
+        FilterIntersection( IsCellInSliceCategoryOverTensorUnit, IsCellInAnEagerSliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of objects in an eager slice category over the tensor unit.
 DeclareCategory( "IsObjectInAnEagerSliceCategoryOverTensorUnit",
-        IsObjectInSliceCategoryOverTensorUnit and IsObjectInAnEagerSliceCategory );
+        FilterIntersection( IsObjectInSliceCategoryOverTensorUnit, IsObjectInAnEagerSliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in an eager slice category over the tensor unit.
 DeclareCategory( "IsMorphismInAnEagerSliceCategoryOverTensorUnit",
-        IsMorphismInSliceCategoryOverTensorUnit and IsMorphismInAnEagerSliceCategory );
+        FilterIntersection( IsMorphismInSliceCategoryOverTensorUnit, IsMorphismInAnEagerSliceCategory ) );
 
 ####################################
 #
