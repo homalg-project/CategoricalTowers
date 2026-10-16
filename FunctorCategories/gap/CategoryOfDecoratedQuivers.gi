@@ -12,8 +12,7 @@ InstallOtherMethodForCompilerForCAP( CreateDecoratedQuiver,
   function ( category_of_quivers,
           pair ) ## ( ( nr_vertices, nr_arrows, arrows ), ( decoration_of_vertices, decoration_of_arrows ) )
     
-    return CreateCapCategoryObjectWithAttributes( category_of_quivers,
-                   DefiningPairOfDecoratedQuiver, pair );
+    return ObjectConstructor( category_of_quivers, pair );
     
 end );
 
@@ -24,10 +23,7 @@ InstallOtherMethodForCompilerForCAP( CreateDecoratedQuiverMorphism,
         
   function ( category_of_quivers, source, images, range )
     
-    return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
-                   source,
-                   range,
-                   DefiningPairOfDecoratedQuiverMorphism, images );
+    return MorphismConstructor( category_of_quivers, source, images, range );
     
 end );
 
@@ -78,27 +74,41 @@ InstallMethodWithCache( CategoryOfDecoratedQuivers,
     object_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
               CapJitDataTypeOfNTupleOf( 3,
-                      IsInt,
-                      IsInt,
+                      IsBigInt,
+                      IsBigInt,
                       CapJitDataTypeOfListOf(
                               CapJitDataTypeOfNTupleOf( 2,
-                                      IsInt,
-                                      IsInt ) ) ),
+                                      IsBigInt,
+                                      IsBigInt ) ) ),
               CapJitDataTypeOfNTupleOf( 2,
-                      CapJitDataTypeOfListOf( IsInt ),
-                      CapJitDataTypeOfListOf( IsInt ) ) );
+                      CapJitDataTypeOfListOf( IsBigInt ),
+                      CapJitDataTypeOfListOf( IsBigInt ) ) );
     
-    object_constructor := CreateDecoratedQuiver;
+    object_constructor :=
+      function ( category_of_quivers, pair )
+        
+        return CreateCapCategoryObjectWithAttributes( category_of_quivers,
+                   DefiningPairOfDecoratedQuiver, pair );
+        
+      end;
     
     object_datum := { Quivers, o } -> DefiningPairOfDecoratedQuiver( o );
     
     ##
     morphism_datum_type :=
       CapJitDataTypeOfNTupleOf( 2,
-              CapJitDataTypeOfListOf( IsInt ),
-              CapJitDataTypeOfListOf( IsInt ) );
+              CapJitDataTypeOfListOf( IsBigInt ),
+              CapJitDataTypeOfListOf( IsBigInt ) );
     
-    morphism_constructor := CreateDecoratedQuiverMorphism;
+    morphism_constructor :=
+      function ( category_of_quivers, source, images, range )
+        
+        return CreateCapCategoryMorphismWithAttributes( category_of_quivers,
+                       source,
+                       range,
+                       DefiningPairOfDecoratedQuiverMorphism, images );
+        
+      end;
     
     morphism_datum := { Quivers, m } -> DefiningPairOfDecoratedQuiverMorphism( m );
     
@@ -225,7 +235,7 @@ InstallMethod( CreateDecoratedQuiver,
     fi;
     
     return CreateDecoratedQuiver( category_of_quivers,
-                   Pair( Triple( Length( decoration_of_vertices ), Length( arr[1] ), arr[1] ),
+                   Pair( Triple( BigInt( Length( decoration_of_vertices ) ), BigInt( Length( arr[1] ) ), arr[1] ),
                          Pair( decoration_of_vertices, arr[2] ) ) );
     
 end );
@@ -273,7 +283,7 @@ InstallMethod( Subobject,
     
     arrows_as_pairs := Arrows( decorated_quiver ){1 + arrows};
     
-    vertices := AsList( decorated_quiver.V ){1 + Set( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
+    vertices := AsList( decorated_quiver.V ){1 + DuplicateFreeList( Concatenation( images_of_vertices, Concatenation( arrows_as_pairs ) ) )};
     
     decoration_v_func := UnderlyingMorphism( ModelingObject( DecoratedQuivers, decorated_quiver ) ).V;
     decoration_a_func := UnderlyingMorphism( ModelingObject( DecoratedQuivers, decorated_quiver ) ).A;

@@ -39,10 +39,7 @@ ReadPackage( "FunctorCategories", "gap/FiniteCocompletion.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfBouquets.gi");
 ReadPackage( "FunctorCategories", "gap/CategoryOfQuivers.gi");
 
-#= comment for Julia (requires SliceCategories)
 ReadPackage( "FunctorCategories", "gap/CategoryOfDecoratedQuivers.gi");
-# =#
-
 ReadPackage( "FunctorCategories", "gap/CategoryOfReflexiveQuivers.gi");
 ReadPackage( "FunctorCategories", "gap/FiniteCompletion.gi");
 ReadPackage( "FunctorCategories", "gap/FreeDistributiveCompletion.gi");
