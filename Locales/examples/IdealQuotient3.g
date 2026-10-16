@@ -7,9 +7,9 @@ LoadPackage( "AdditiveClosuresForCAP", ">= 2025.07-02" );
 #! true
 LoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );
 #! true
-LoadPackage( "LazyCategories", ">= 2020.06.01" );
+LoadPackage( "LazyCategories", ">= 2026.10-02" );
 #! true
-LoadPackage( "SliceCategories" );
+LoadPackage( "SliceCategories", ">= 2026.10-01" );
 #! true
 Q := HomalgFieldOfRationalsInSingular( );
 #! Q

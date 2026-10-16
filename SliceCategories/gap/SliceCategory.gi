@@ -1267,45 +1267,37 @@ end );
 ##################################
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     [ IsObjectInASliceCategory ],
   function( a )
     
-    Print( "An object in the slice category given by: " );
-    
-    ViewObj( UnderlyingMorphism( a ) );
+    return Concatenation( "An object in the slice category given by: ", ViewString( UnderlyingMorphism( a ) ) );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
     [ IsMorphismInASliceCategory ],
   function( phi )
     
-    Print( "A morphism in the slice category given by: " );
-    
-    ViewObj( UnderlyingCell( phi ) );
+    return Concatenation( "A morphism in the slice category given by: ", ViewString( UnderlyingCell( phi ) ) );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
     [ IsObjectInASliceCategory ],
   function( a )
     
-    Display( UnderlyingMorphism( a ) );
-    
-    Display( "\nAn object in the slice category given by the above data" );
+    return Concatenation( DisplayString( UnderlyingMorphism( a ) ), "\nAn object in the slice category given by the above data\n" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
     [ IsMorphismInASliceCategory ],
   function( phi )
     
-    Display( UnderlyingCell( phi ) );
-    
-    Display( "\nA morphism in the slice category given by the above data" );
+    return Concatenation( DisplayString( UnderlyingCell( phi ) ), "\nA morphism in the slice category given by the above data\n" );
     
 end );
