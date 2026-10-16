@@ -16,7 +16,7 @@ InstallMethod( AsSliceCategoryCell,
     
     S := LazySliceCategory( B );
     
-    return ObjectConstructor( S, L );
+    return CallFuncListAtRuntime( ObjectConstructor, [ S, L ] );
     
 end );
 
