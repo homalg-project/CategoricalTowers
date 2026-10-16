@@ -42,11 +42,7 @@ Display( Source( poc ) );
 #! { 0,..., 3 } ⱶ[ 1, 0, 1, 1 ]→ { 0, 1 }
 #! 
 #! An object in the slice category given by the above data
-dpo := DPO( mu, lambda, rho );
-#! [ A morphism in the slice category given by: |4| → |9|,
-#!   A morphism in the slice category given by: |7| → |9|,
-#!   A morphism in the slice category given by: |4| → |8|,
-#!   A morphism in the slice category given by: |2| → |4| ]
+dpo := DPO( mu, lambda, rho );;
 Display( dpo[1] );
 #! { 0,..., 3 } ⱶ[ 0, 1, 2, 3 ]→ { 0,..., 8 }
 #! 

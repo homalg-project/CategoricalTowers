@@ -79,22 +79,24 @@ InstallMethod( SliceCategory,
         "for a CAP category object",
         [ IsCapCategoryObject ],
         
-  function( B )
-    local C, over_tensor_unit,
+  FunctionWithNamedArguments(
+  [
+    [ "over_tensor_unit", false ],
+  ],
+  function( CAP_NAMED_ARGUMENTS, B )
+    local C,
           name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, S;
     
     C := CapCategory( B );
     
-    over_tensor_unit := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "over_tensor_unit", false );
-    
-    if over_tensor_unit then
+    if CAP_NAMED_ARGUMENTS.over_tensor_unit then
         name := Concatenation( "SliceCategoryOverTensorUnit( ", Name( C ), " )" );
     else
         name := Concatenation( "A slice category of ", Name( C ) );
     fi;
     
-    if IsIdenticalObj( over_tensor_unit, true ) then
+    if CAP_NAMED_ARGUMENTS.over_tensor_unit then
         category_filter := IsEagerSliceCategoryOverTensorUnit;
         category_object_filter := IsObjectInAnEagerSliceCategoryOverTensorUnit;
         category_morphism_filter := IsMorphismInAnEagerSliceCategoryOverTensorUnit;
@@ -134,7 +136,7 @@ InstallMethod( SliceCategory,
     end;
     
     S := CAP_INTERNAL_SLICE_CATEGORY( B,
-                 over_tensor_unit,
+                 CAP_NAMED_ARGUMENTS.over_tensor_unit,
                  name,
                  category_filter,
                  category_object_filter,
@@ -225,7 +227,7 @@ InstallMethod( SliceCategory,
     
     return S;
     
-end );
+end ) );
 
 ##
 InstallMethod( SliceCategoryOverTensorUnit,

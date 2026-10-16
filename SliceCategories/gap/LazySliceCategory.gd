@@ -13,44 +13,44 @@
 ####################################
 
 #! @Description
-#!  The &GAP; category of an eager slice category.
+#!  The &GAP; category of a lazy slice category.
 DeclareCategory( "IsLazySliceCategory",
         IsSliceCategory );
 
 #! @Description
-#!  The &GAP; category of cells in an eager slice category.
+#!  The &GAP; category of cells in a lazy slice category.
 DeclareCategory( "IsCellInALazySliceCategory",
         IsCellInASliceCategory );
 
 #! @Description
-#!  The &GAP; category of objects in an eager slice category.
+#!  The &GAP; category of objects in a lazy slice category.
 DeclareCategory( "IsObjectInALazySliceCategory",
-        IsObjectInASliceCategory and IsCellInALazySliceCategory );
+        FilterIntersection( IsObjectInASliceCategory, IsCellInALazySliceCategory ) );
 
 #! @Description
-#!  The &GAP; category of morphisms in an eager slice category.
+#!  The &GAP; category of morphisms in a lazy slice category.
 DeclareCategory( "IsMorphismInALazySliceCategory",
-        IsMorphismInASliceCategory and IsCellInALazySliceCategory );
+        FilterIntersection( IsMorphismInASliceCategory, IsCellInALazySliceCategory ) );
 
 #! @Description
-#!  The &GAP; category of an eager slice category over the tensor unit.
+#!  The &GAP; category of a lazy slice category over the tensor unit.
 DeclareCategory( "IsLazySliceCategoryOverTensorUnit",
-        IsSliceCategoryOverTensorUnit and IsLazySliceCategory );
+        FilterIntersection( IsSliceCategoryOverTensorUnit, IsLazySliceCategory ) );
 
 #! @Description
-#!  The &GAP; category of cells in an eager slice category over the tensor unit.
+#!  The &GAP; category of cells in a lazy slice category over the tensor unit.
 DeclareCategory( "IsCellInALazySliceCategoryOverTensorUnit",
-        IsCellInSliceCategoryOverTensorUnit and IsCellInALazySliceCategory );
+        FilterIntersection( IsCellInSliceCategoryOverTensorUnit, IsCellInALazySliceCategory ) );
 
 #! @Description
-#!  The &GAP; category of objects in an eager slice category over the tensor unit.
+#!  The &GAP; category of objects in a lazy slice category over the tensor unit.
 DeclareCategory( "IsObjectInALazySliceCategoryOverTensorUnit",
-        IsObjectInSliceCategoryOverTensorUnit and IsObjectInALazySliceCategory );
+        FilterIntersection( IsObjectInSliceCategoryOverTensorUnit, IsObjectInALazySliceCategory ) );
 
 #! @Description
-#!  The &GAP; category of morphisms in an eager slice category over the tensor unit.
+#!  The &GAP; category of morphisms in a lazy slice category over the tensor unit.
 DeclareCategory( "IsMorphismInALazySliceCategoryOverTensorUnit",
-        IsMorphismInSliceCategoryOverTensorUnit and IsMorphismInALazySliceCategory );
+        FilterIntersection( IsMorphismInSliceCategoryOverTensorUnit, IsMorphismInALazySliceCategory ) );
 
 ####################################
 #

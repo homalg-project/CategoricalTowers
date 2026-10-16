@@ -1312,10 +1312,7 @@ end );
 ##################################
 
 ##
-InstallMethod( Display,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory and HasGenesisOfCell and HasGenesisOfCell ],
-        
+BindGlobal( "LAZY_CATEGORIES_DISPLAY_STRING_OF_GENESIS",
   function( c )
     local cell_arguments;
     
@@ -1325,58 +1322,114 @@ InstallMethod( Display,
         cell_arguments := cell_arguments{[ 2 .. Length( cell_arguments ) ]};
     fi;
     
-    Print( Concatenation( Concatenation(
-            [ GenesisOfCellOperation( c ), "( " ],
-            [ JoinStringsWithSeparator( List( cell_arguments, StringView ), ", " ) ],
-            [ " )\n" ]
-            ) ) );
+    return Concatenation(
+            GenesisOfCellOperation( c ), "( ",
+            JoinStringsWithSeparator( List( cell_arguments, StringView ), ", " ),
+            " )" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( DisplayString,
+        "for a cell in a lazy category",
+        [ IsCellInLazyCategory ],
+        
+  function( c )
+    
+    if HasGenesisOfCell( c ) then
+        
+        return LAZY_CATEGORIES_DISPLAY_STRING_OF_GENESIS( c );
+        
+    fi;
+    
+    #= comment for Julia
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<A cell in ", Name( CapCategory( c ) ), ">" );
+    
+end );
+
+##
+InstallMethod( ViewString,
         "for an object in a lazy category",
-        [ IsObjectInLazyCategory and HasEvaluatedCell ],
+        [ IsObjectInLazyCategory ],
         
   function( a )
     
-    Print( "<An evaluated object in ", Name( CapCategory( a ) ), ">" );
+    if HasEvaluatedCell( a ) then
+        return Concatenation( "<An evaluated object in ", Name( CapCategory( a ) ), ">" );
+    fi;
+    
+    #= comment for Julia
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<An object in ", Name( CapCategory( a ) ), ">" );
     
 end );
 
 ##
-InstallMethod( ViewObj,
+InstallMethod( ViewString,
         "for a morphism in a lazy category",
-        [ IsMorphismInLazyCategory and HasEvaluatedCell ],
+        [ IsMorphismInLazyCategory ],
         
   function( phi )
     
-    Print( "<An evaluated morphism in ", Name( CapCategory( phi ) ), ">" );
+    if HasEvaluatedCell( phi ) then
+        return Concatenation( "<An evaluated morphism in ", Name( CapCategory( phi ) ), ">" );
+    fi;
+    
+    #= comment for Julia
+    TryNextMethod( );
+    # =#
+    
+    return Concatenation( "<A morphism in ", Name( CapCategory( phi ) ), ">" );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for an object in a lazy category",
-        [ IsObjectInLazyCategory and HasEvaluatedCell ],
+        [ IsObjectInLazyCategory ],
         
   function( a )
     
-    Display( EvaluatedCell( a ) );
+    if HasEvaluatedCell( a ) then
+        return Concatenation( DisplayString( EvaluatedCell( a ) ), "\nAn evaluated object given by the above data" );
+    fi;
     
-    Display( "\nAn evaluated object given by the above data" );
+    if HasGenesisOfCell( a ) then
+        return LAZY_CATEGORIES_DISPLAY_STRING_OF_GENESIS( a );
+    fi;
+    
+    #= comment for Julia
+    TryNextMethod( );
+    # =#
+    
+    return ViewString( a );
     
 end );
 
 ##
-InstallMethod( Display,
+InstallMethod( DisplayString,
         "for a morphism in a lazy category",
-        [ IsMorphismInLazyCategory and HasEvaluatedCell ],
+        [ IsMorphismInLazyCategory ],
         
   function( phi )
     
-    Display( EvaluatedCell( phi ) );
+    if HasEvaluatedCell( phi ) then
+        return Concatenation( DisplayString( EvaluatedCell( phi ) ), "\nAn evaluated morphism given by the above data" );
+    fi;
     
-    Display( "\nAn evaluated morphism given by the above data" );
+    if HasGenesisOfCell( phi ) then
+        return LAZY_CATEGORIES_DISPLAY_STRING_OF_GENESIS( phi );
+    fi;
+    
+    #= comment for Julia
+    TryNextMethod( );
+    # =#
+    
+    return ViewString( phi );
     
 end );

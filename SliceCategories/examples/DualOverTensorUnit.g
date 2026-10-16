@@ -17,4 +17,5 @@ I := MorphismConstructor( T, a, "I", TensorUnit( T ) ) / L;
 #! <An evaluated morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
 DualOverTensorUnit( L, I );
 #! <A morphism in LazyCategory( TerminalCategoryWithMultipleObjects( ) )>
+# @drop_example_in_Julia (requires LazyCategories)
 #! @EndExample
