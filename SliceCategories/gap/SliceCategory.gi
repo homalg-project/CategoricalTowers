@@ -623,7 +623,8 @@ BindGlobal( "CAP_INTERNAL_SLICE_CATEGORY",
         
         SET_RANGE_CATEGORY_Of_HOMOMORPHISM_STRUCTURE( Slice_over_B, H );
         
-        if CanCompute( H, "Lift" ) then ## yes, Lift not Colift
+        ## yes, Lift not Colift
+        if CanCompute( H, "Lift" ) then
             SetIsCategoryWithDecidableColifts( Slice_over_B, true );
         fi;
         
