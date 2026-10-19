@@ -46,19 +46,13 @@
   
   [33X[0;0YThe [5XGAP[105X category of cells in a slice category over the tensor unit.[133X
   
-  [1X1.1-7 IsObjectInSliceCategoryOverTensorUnit[101X
-  
-  [33X[1;0Y[29X[2XIsObjectInSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X Category[133X
-  [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
-  
-  [33X[0;0YThe [5XGAP[105X category of objects in a slice category over the tensor unit.[133X
-  
-  [1X1.1-8 IsMorphismInSliceCategoryOverTensorUnit[101X
+  [1X1.1-7 IsMorphismInSliceCategoryOverTensorUnit[101X
   
   [33X[1;0Y[29X[2XIsMorphismInSliceCategoryOverTensorUnit[102X( [3Xarg[103X ) [32X Category[133X
   [6XReturns:[106X  [33X[0;10Y[9Xtrue[109X or [9Xfalse[109X[133X
   
-  [33X[0;0YThe [5XGAP[105X category of morphisms in a slice category over the tensor unit.[133X
+  [33X[0;0YThe  [5XGAP[105X  category  of objects in a slice category over the tensor unit. The
+  [5XGAP[105X category of morphisms in a slice category over the tensor unit.[133X
   
   
   [1X1.2 [33X[0;0YGlobal variables[133X[101X
