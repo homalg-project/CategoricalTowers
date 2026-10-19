@@ -142,9 +142,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.05.01" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2026.10-02" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories", ">= 2026.10-01" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
     [4X[28XQ[128X[104X
@@ -193,9 +193,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.05.01" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2026.10-02" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories", ">= 2026.10-01" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
     [4X[28XQ[128X[104X
@@ -244,9 +244,9 @@
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XLoadPackage( "SubcategoriesForCAP", ">= 2020.04.16" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2020.06.01" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LazyCategories", ">= 2026.10-02" );[127X[104X
     [4X[28Xtrue[128X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "SliceCategories", ">= 2026.10-01" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XQ := HomalgFieldOfRationalsInSingular( );[127X[104X
     [4X[28XQ[128X[104X
