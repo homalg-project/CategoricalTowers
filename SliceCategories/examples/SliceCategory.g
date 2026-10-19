@@ -90,7 +90,7 @@ m3 := PreCompose( m1, m2 );
 #! A morphism in the slice category given by: |3| → |3|
 IsWellDefined( m3 );
 #! true
-IsOne( m3 );
+IsEqualToIdentityMorphism( m3 );
 #! false
 m4 := Inverse( m3 );
 #! A morphism in the slice category given by: |3| → |3|
@@ -100,7 +100,7 @@ m5 := PreCompose( m2, m1 );
 #! A morphism in the slice category given by: |4| → |4|
 IsWellDefined( m5 );
 #! true
-IsOne( m5 );
+IsEqualToIdentityMorphism( m5 );
 #! false
 t := DistinguishedObjectOfHomomorphismStructure( S );
 #! |1|
@@ -111,9 +111,7 @@ h := HomStructure( o1, o2 );
 #! |8|
 HomStructure( m1, m2 );
 #! |16| → |4|
-th := MorphismsOfExternalHom( t, h );
-#! [ |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8|,
-#!   |1| → |8|, |1| → |8|, |1| → |8|, |1| → |8| ]
+th := MorphismsOfExternalHom( t, h );;
 th = List( H, InterpretMorphismAsMorphismFromDistinguishedObjectToHomomorphismStructure );
 #! true
 H = List( th, m ->

@@ -25,12 +25,12 @@ DeclareCategory( "IsCellInASliceCategory",
 #! @Description
 #!  The &GAP; category of objects in a slice category.
 DeclareCategory( "IsObjectInASliceCategory",
-        IsCellInASliceCategory and IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInASliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a slice category.
 DeclareCategory( "IsMorphismInASliceCategory",
-        IsCellInASliceCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInASliceCategory ) );
 
 #! @Description
 #!  The &GAP; category of a slice category over the tensor unit.
@@ -44,13 +44,14 @@ DeclareCategory( "IsCellInSliceCategoryOverTensorUnit",
 
 #! @Description
 #!  The &GAP; category of objects in a slice category over the tensor unit.
+
 DeclareCategory( "IsObjectInSliceCategoryOverTensorUnit",
-        IsCellInSliceCategoryOverTensorUnit and IsObjectInASliceCategory );
+        FilterIntersection( IsObjectInASliceCategory, IsCellInSliceCategoryOverTensorUnit ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a slice category over the tensor unit.
 DeclareCategory( "IsMorphismInSliceCategoryOverTensorUnit",
-        IsCellInSliceCategoryOverTensorUnit and IsMorphismInASliceCategory );
+        FilterIntersection( IsMorphismInASliceCategory, IsCellInSliceCategoryOverTensorUnit ) );
 
 ####################################
 #

@@ -20,11 +20,11 @@ gap> B := TerminalObject( T );
 gap> S := SliceCategory( B );
 A slice category of TerminalCategoryWithMultipleObjects( )
 gap> obj := IdentityMorphism( B ) / S;
-An object in the slice category given by: <A zero, identity morphism in Termin\
-alCategoryWithMultipleObjects( )>
+An object in the slice category given by:
+<A zero, identity morphism in TerminalCategoryWithMultipleObjects( )>
 gap> mor := ProjectionInFactorOfDirectProduct( [ obj, obj, obj ], 3 );
-A morphism in the slice category given by: <A zero, isomorphism in TerminalCat\
-egoryWithMultipleObjects( )>
+A morphism in the slice category given by:
+<A zero, isomorphism in TerminalCategoryWithMultipleObjects( )>
 gap> IsWellDefinedForMorphisms( mor );
 true
 gap> STOP_TEST("compatibility.tst", 1);

@@ -53,4 +53,5 @@ CapJitPrecompileCategoryAndCompareResult(
     number_of_objectified_morphisms_in_data_structure_of_morphism := 4
 );
 
+# @drop_example_in_Julia (requires CompilerForCAP)
 #! @EndExample
