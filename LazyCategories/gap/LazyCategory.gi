@@ -299,9 +299,13 @@ end );
 ##
 InstallMethod( AsObjectInLazyCategory,
         "for a lazy category, a string, and a list",
-        [ IsLazyCategory, IsString and IsStringRep, IsList ],
+        [ IsLazyCategory, IsString, IsList ],
         
   function( D, name_of_operation, list_of_arguments )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return ObjectConstructor( D, Pair( name_of_operation, list_of_arguments ) );
     
@@ -347,9 +351,13 @@ end );
 ##
 InstallOtherMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        [ IsLazyCategory, IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ],
         
   function( D, source, name_of_operation, list_of_arguments, range )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return MorphismConstructor( D,
                    source,
@@ -361,9 +369,13 @@ end );
 ##
 InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        [ IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ],
         
   function( source, name_of_operation, list_of_arguments, range )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return AsMorphismInLazyCategory( CapCategory( source ),
                    source,
