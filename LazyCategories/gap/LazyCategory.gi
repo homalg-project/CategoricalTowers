@@ -1266,20 +1266,22 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \.,
-        "for a lazy category and a positive integer",
-        [ IsLazyCategory, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a lazy category",
+        [ IsString, IsLazyCategory ],
         
-  function( lazy_cat, string_as_int )
-    local name, C;
-    
-    name := NameRNam( string_as_int );
+  function( name, lazy_cat )
+    local C;
     
     C := UnderlyingCategory( lazy_cat );
     
     return C.(name) / lazy_cat;
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsLazyCategory );
+# =#
 
 ##
 InstallMethod( EmbeddingFunctorOfUnderlyingCategory,
