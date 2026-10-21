@@ -5,7 +5,7 @@
 
 gap> START_TEST("TerminalCategoryMonoidal.tst");
 
-gap> LoadPackage("LazyCategories", false);
+gap> LoadPackage( "LazyCategories", false );
 true
 
 #

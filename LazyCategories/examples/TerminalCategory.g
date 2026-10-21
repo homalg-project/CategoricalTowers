@@ -105,4 +105,5 @@ Display( z );
 #!  LazyCategory( TerminalCategoryWithMultipleObjects( ) )> )
 id = z;
 #! true
+# @drop_example_in_Julia (was moved manually)
 #! @EndExample

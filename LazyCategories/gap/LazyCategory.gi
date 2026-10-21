@@ -17,10 +17,8 @@ InstallGlobalFunction( _EvaluationOfCell,
 end );
 
 ##
-InstallMethod( EvaluatedCell,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
-
+BindGlobal( "EVALUATED_CELL_IN_LAZY_CATEGORY",
+  
   function( c )
     local C, show, count, result;
     
@@ -51,9 +49,34 @@ InstallMethod( EvaluatedCell,
 end );
 
 ##
+InstallMethod( EvaluatedCell,
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+
+  EVALUATED_CELL_IN_LAZY_CATEGORY );
+
+##
+InstallMethod( EvaluatedCell,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
+
+  EVALUATED_CELL_IN_LAZY_CATEGORY );
+
+##
 InstallOtherMethod( EvaluatedCell,
-        "for a lazy category and a cell therein",
-        [ IsLazyCategory, IsCellInLazyCategory ],
+        "for a lazy category and an object therein",
+        [ IsLazyCategory, IsObjectInLazyCategory ],
+        
+  function( C, c )
+    
+    return EvaluatedCell( c );
+    
+end );
+
+##
+InstallOtherMethod( EvaluatedCell,
+        "for a lazy category and a morphism therein",
+        [ IsLazyCategory, IsMorphismInLazyCategory ],
         
   function( C, c )
     
@@ -92,8 +115,8 @@ InstallOtherMethod( EvaluatedCell,
 
 ##
 InstallMethod( SetLabel,
-        "for a lazy category cell and a string",
-        [ IsCellInLazyCategory, IsString ],
+        "for a lazy category object and a string",
+        [ IsObjectInLazyCategory, IsString ],
 
   function( c, str )
     
@@ -101,14 +124,14 @@ InstallMethod( SetLabel,
     
 end );
 
-## fallback method
-InstallMethod( GetLabel,
-        "for a CAP category object",
-        [ IsCapCategoryObject ],
-        
-  function( c )
+##
+InstallMethod( SetLabel,
+        "for a lazy category morphism and a string",
+        [ IsMorphismInLazyCategory, IsString ],
+
+  function( c, str )
     
-    return fail;
+    c!.Label := str;
     
 end );
 
@@ -125,7 +148,7 @@ InstallMethod( GetLabel,
     fi;
     
     if not CanCompute( CapCategory( o ), "ObjectDatum" ) then
-        TryNextMethod( );
+        return fail;
     fi;
     
     datum := ObjectDatum( o );
@@ -162,7 +185,7 @@ InstallMethod( GetLabel,
     fi;
     
     if not ( HasMorphismDatum( m ) or CanCompute( CapCategory( m ), "MorphismDatum" ) ) then
-        TryNextMethod( );
+        return fail;
     fi;
     
     datum := MorphismDatum( m );
@@ -249,7 +272,11 @@ InstallMethod( IsEqualForCells,
         "for two ring elements",
         [ IsRingElement, IsRingElement ],
         
-  \= );
+    function( a, b )
+    
+        return a = b;
+    
+end );
 
 ##
 InstallMethodWithCache( AsObjectInLazyCategory,
@@ -272,9 +299,13 @@ end );
 ##
 InstallMethod( AsObjectInLazyCategory,
         "for a lazy category, a string, and a list",
-        [ IsLazyCategory, IsString and IsStringRep, IsList ],
+        [ IsLazyCategory, IsString, IsList ],
         
   function( D, name_of_operation, list_of_arguments )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return ObjectConstructor( D, Pair( name_of_operation, list_of_arguments ) );
     
@@ -320,9 +351,13 @@ end );
 ##
 InstallOtherMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsLazyCategory, IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        [ IsLazyCategory, IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ],
         
   function( D, source, name_of_operation, list_of_arguments, range )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return MorphismConstructor( D,
                    source,
@@ -334,9 +369,13 @@ end );
 ##
 InstallMethod( AsMorphismInLazyCategory,
         "for two CAP objects in a lazy category, a string, and a list",
-        [ IsObjectInLazyCategory, IsString and IsStringRep, IsList, IsObjectInLazyCategory ],
+        [ IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ],
         
   function( source, name_of_operation, list_of_arguments, range )
+    
+    if not IsStringRep( name_of_operation ) then
+        TryNextMethod( );
+    fi;
     
     return AsMorphismInLazyCategory( CapCategory( source ),
                    source,
@@ -347,8 +386,19 @@ end );
 
 ##
 InstallMethod( GenesisOfCellOperation,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[1];
+    
+end );
+
+##
+InstallMethod( GenesisOfCellOperation,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
         
   function( c )
     
@@ -358,8 +408,19 @@ end );
 
 ##
 InstallMethod( GenesisOfCellArguments,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[2];
+    
+end );
+
+##
+InstallMethod( GenesisOfCellArguments,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
         
   function( c )
     
@@ -372,14 +433,23 @@ InstallMethod( LazyCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+    [
+        [ "optimize", 2 ],
+        [ "show_evaluation", false ],
+        [ "primitive_operations", false ],
+        [ "cache", true ],
+        [ "print", false ],
+        [ "lazify_range_of_hom_structure", false ],
+    ],
+  function ( CAP_NAMED_ARGUMENTS, C )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object,
           create_func_morphism, create_func_universal_morphism,
-          create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
+          create_func_list_of_objects, list_of_operations_to_install, skip, func, pos,
           commutative_semiring, properties, ignore, supports_empty_limits, category_constructor_options,
-          D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
+          D, list, HC;
     
     ##
     if HasName( C ) then
@@ -472,9 +542,7 @@ InstallMethod( LazyCategory,
         
     end;
     
-    primitive_operations := IsIdenticalObj( ValueOption( "primitive_operations" ), true );
-    
-    if primitive_operations then
+    if CAP_NAMED_ARGUMENTS.primitive_operations then
         list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations( C );
     else
         list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
@@ -517,7 +585,7 @@ InstallMethod( LazyCategory,
         Info( InfoLazyCategory, 2, "LazyCategory cannot deal with strictness of monoidal structures yet, ",
               "so we will be ignoring the following properties for ", C, ": ", ignore );
         
-        if primitive_operations and HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
+        if CAP_NAMED_ARGUMENTS.primitive_operations and HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
             Append( list_of_operations_to_install,
                     [ "LeftUnitorWithGivenTensorProduct",
                       "RightUnitorWithGivenTensorProduct",
@@ -525,7 +593,7 @@ InstallMethod( LazyCategory,
                       "AssociatorRightToLeftWithGivenTensorProducts",
                       ] );
             
-            Sort( list_of_operations_to_install );
+            list_of_operations_to_install := SortedList( list_of_operations_to_install );
             
         fi;
         
@@ -581,13 +649,7 @@ InstallMethod( LazyCategory,
              ],
            );
     
-    optimize := ValueOption( "optimize" );
-    
-    if not ( IsInt( optimize ) and optimize >= 0 ) then
-        optimize := 2;
-    fi;
-    
-    if optimize >= 1 then
+    if CAP_NAMED_ARGUMENTS.optimize >= 1 then
         
         AddPreCompose( D,
           function( D, phi, psi )
@@ -621,7 +683,7 @@ InstallMethod( LazyCategory,
 
     fi;
     
-    if optimize >= 2 then
+    if CAP_NAMED_ARGUMENTS.optimize >= 2 then
         
         if CanCompute( C, "DirectSum" ) then
             
@@ -745,24 +807,18 @@ InstallMethod( LazyCategory,
         
     fi;
     
-    show_evaluation := IsIdenticalObj( ValueOption( "show_evaluation" ), true );
-    
-    D!.show_evaluation := show_evaluation;
+    D!.show_evaluation := CAP_NAMED_ARGUMENTS.show_evaluation;
     
     D!.evaluations := 0;
     
     D!.shortname := name{[ Minimum( 15, Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
     D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
-    cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
-    
-    if IsIdenticalObj( cache, false ) then
+    if CAP_NAMED_ARGUMENTS.cache then
         DeactivateCachingOfCategory( C );
         DeactivateCachingOfCategory( D );
     fi;
     
-    print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
-
     if CanCompute( C, "IsWellDefinedForObjects" ) then
         
         AddIsWellDefinedForObjects( D,
@@ -937,7 +993,7 @@ InstallMethod( LazyCategory,
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             Display( "IsCongruentForMorphisms" );
         fi;
         
@@ -953,7 +1009,7 @@ InstallMethod( LazyCategory,
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             Display( "MultiplyWithElementOfCommutativeSemiringForMorphisms" );
         fi;
         
@@ -969,7 +1025,7 @@ InstallMethod( LazyCategory,
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             list := [ "BasisOfExternalHom",
                       "CoefficientsOfMorphism",
                       "DistinguishedObjectOfHomomorphismStructure",
@@ -1052,15 +1108,13 @@ InstallMethod( LazyCategory,
             
         fi;
         
-        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", false ), true );
-        
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsIdenticalObj( cache, false ) then
+        if CAP_NAMED_ARGUMENTS.cache = false then
             DeactivateCachingOfCategory( HC );
         fi;
         
-        if lazify_range_of_hom_structure and not IsLazyCategory( HC ) then
+        if CAP_NAMED_ARGUMENTS.lazify_range_of_hom_structure and (not IsLazyCategory( HC )) then
             
             HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
@@ -1168,7 +1222,7 @@ InstallMethod( LazyCategory,
     
     return D;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( \/,
@@ -1212,20 +1266,22 @@ InstallOtherMethod( \/,
 end );
 
 ##
-InstallMethod( \.,
-        "for a lazy category and a positive integer",
-        [ IsLazyCategory, IsPosInt ],
+InstallOtherMethod( \/,
+        "for a string and a lazy category",
+        [ IsString, IsLazyCategory ],
         
-  function( lazy_cat, string_as_int )
-    local name, C;
-    
-    name := NameRNam( string_as_int );
+  function( name, lazy_cat )
+    local C;
     
     C := UnderlyingCategory( lazy_cat );
     
     return C.(name) / lazy_cat;
     
 end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsLazyCategory );
+# =#
 
 ##
 InstallMethod( EmbeddingFunctorOfUnderlyingCategory,

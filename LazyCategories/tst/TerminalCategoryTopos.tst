@@ -5,9 +5,9 @@
 
 gap> START_TEST("TerminalCategoryTopos.tst");
 
-gap> LoadPackage("LazyCategories", false);
+gap> LoadPackage( "LazyCategories", false );
 true
-gap> LoadPackage("Toposes", false);
+gap> LoadPackage( "Toposes", false );
 true
 
 #

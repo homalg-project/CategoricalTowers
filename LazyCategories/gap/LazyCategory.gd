@@ -33,12 +33,12 @@ DeclareCategory( "IsCellInLazyCategory",
 #! @Description
 #!  The &GAP; category of objects in a lazy category.
 DeclareCategory( "IsObjectInLazyCategory",
-        IsCellInLazyCategory and IsCapCategoryObject );
+        FilterIntersection( IsCapCategoryObject, IsCellInLazyCategory ) );
 
 #! @Description
 #!  The &GAP; category of morphisms in a lazy category.
 DeclareCategory( "IsMorphismInLazyCategory",
-        IsCellInLazyCategory and IsCapCategoryMorphism );
+        FilterIntersection( IsCapCategoryMorphism, IsCellInLazyCategory ) );
 
 ####################################
 #
@@ -102,9 +102,11 @@ DeclareOperation( "AsMorphismInLazyCategory",
 DeclareOperation( "AsMorphismInLazyCategory",
                   [ IsObjectInLazyCategory, IsString, IsList, IsObjectInLazyCategory ] );
 
+#= comment for Julia
 #!
 DeclareOperation( "\/",
                 [ IsCapCategoryCell, IsLazyCategory ] );
+# =#
 
 #!
 DeclareOperation( "LazyCategory",
