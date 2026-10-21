@@ -386,8 +386,19 @@ end );
 
 ##
 InstallMethod( GenesisOfCellOperation,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[1];
+    
+end );
+
+##
+InstallMethod( GenesisOfCellOperation,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
         
   function( c )
     
@@ -397,8 +408,19 @@ end );
 
 ##
 InstallMethod( GenesisOfCellArguments,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+        
+  function( c )
+    
+    return GenesisOfCell( c )[2];
+    
+end );
+
+##
+InstallMethod( GenesisOfCellArguments,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
         
   function( c )
     
