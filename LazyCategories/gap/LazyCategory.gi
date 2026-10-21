@@ -115,8 +115,19 @@ InstallOtherMethod( EvaluatedCell,
 
 ##
 InstallMethod( SetLabel,
-        "for a lazy category cell and a string",
-        [ IsCellInLazyCategory, IsString ],
+        "for a lazy category object and a string",
+        [ IsObjectInLazyCategory, IsString ],
+
+  function( c, str )
+    
+    c!.Label := str;
+    
+end );
+
+##
+InstallMethod( SetLabel,
+        "for a lazy category morphism and a string",
+        [ IsMorphismInLazyCategory, IsString ],
 
   function( c, str )
     
