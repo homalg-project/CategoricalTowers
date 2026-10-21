@@ -763,5 +763,6 @@
     [4X[28X LazyCategory( TerminalCategoryWithMultipleObjects( ) )> )[128X[104X
     [4X[25Xgap>[125X [27Xid = z;[127X[104X
     [4X[28Xtrue[128X[104X
+    [4X[25Xgap>[125X [27X# @drop_example_in_Julia (was moved manually)[127X[104X
   [4X[32X[104X
   
