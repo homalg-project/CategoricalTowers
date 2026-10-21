@@ -272,7 +272,11 @@ InstallMethod( IsEqualForCells,
         "for two ring elements",
         [ IsRingElement, IsRingElement ],
         
-  \= );
+    function( a, b )
+    
+        return a = b;
+    
+end );
 
 ##
 InstallMethodWithCache( AsObjectInLazyCategory,
