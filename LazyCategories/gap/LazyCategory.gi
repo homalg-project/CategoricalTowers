@@ -17,10 +17,8 @@ InstallGlobalFunction( _EvaluationOfCell,
 end );
 
 ##
-InstallMethod( EvaluatedCell,
-        "for a cell in a lazy category",
-        [ IsCellInLazyCategory ],
-
+BindGlobal( "EVALUATED_CELL_IN_LAZY_CATEGORY",
+  
   function( c )
     local C, show, count, result;
     
@@ -51,9 +49,34 @@ InstallMethod( EvaluatedCell,
 end );
 
 ##
+InstallMethod( EvaluatedCell,
+        "for an object in a lazy category",
+        [ IsObjectInLazyCategory ],
+
+  EVALUATED_CELL_IN_LAZY_CATEGORY );
+
+##
+InstallMethod( EvaluatedCell,
+        "for a morphism in a lazy category",
+        [ IsMorphismInLazyCategory ],
+
+  EVALUATED_CELL_IN_LAZY_CATEGORY );
+
+##
 InstallOtherMethod( EvaluatedCell,
-        "for a lazy category and a cell therein",
-        [ IsLazyCategory, IsCellInLazyCategory ],
+        "for a lazy category and an object therein",
+        [ IsLazyCategory, IsObjectInLazyCategory ],
+        
+  function( C, c )
+    
+    return EvaluatedCell( c );
+    
+end );
+
+##
+InstallOtherMethod( EvaluatedCell,
+        "for a lazy category and a morphism therein",
+        [ IsLazyCategory, IsMorphismInLazyCategory ],
         
   function( C, c )
     
