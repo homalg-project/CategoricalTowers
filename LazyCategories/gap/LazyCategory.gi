@@ -135,17 +135,6 @@ InstallMethod( SetLabel,
     
 end );
 
-## fallback method
-InstallMethod( GetLabel,
-        "for a CAP category object",
-        [ IsCapCategoryObject ],
-        
-  function( c )
-    
-    return fail;
-    
-end );
-
 ##
 InstallMethod( GetLabel,
         "for a CAP category object",
@@ -159,7 +148,7 @@ InstallMethod( GetLabel,
     fi;
     
     if not CanCompute( CapCategory( o ), "ObjectDatum" ) then
-        TryNextMethod( );
+        return fail;
     fi;
     
     datum := ObjectDatum( o );
@@ -196,7 +185,7 @@ InstallMethod( GetLabel,
     fi;
     
     if not ( HasMorphismDatum( m ) or CanCompute( CapCategory( m ), "MorphismDatum" ) ) then
-        TryNextMethod( );
+        return fail;
     fi;
     
     datum := MorphismDatum( m );
