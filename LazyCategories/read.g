@@ -6,6 +6,7 @@
 
 ReadPackage( "LazyCategories", "gap/LazyCategory.gi");
 
+#= comment for Julia
 if IsPackageMarkedForLoading( "Digraphs", ">= 1.3.1" ) then
     ReadPackage( "LazyCategories", "gap/ToolsUsingDigraphs.gi");
 fi;
@@ -13,3 +14,4 @@ fi;
 if IsPackageMarkedForLoading( "JuliaInterface", ">= 0.2" ) then
     ReadPackage( "LazyCategories", "gap/Julia.gi" );
 fi;
+# =#
