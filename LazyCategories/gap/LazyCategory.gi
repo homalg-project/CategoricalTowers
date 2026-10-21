@@ -433,14 +433,23 @@ InstallMethod( LazyCategory,
         "for a CAP category",
         [ IsCapCategory ],
         
-  function( C )
+  FunctionWithNamedArguments(
+    [
+        [ "optimize", 2 ],
+        [ "show_evaluation", false ],
+        [ "primitive_operations", false ],
+        [ "cache", true ],
+        [ "print", false ],
+        [ "lazify_range_of_hom_structure", false ],
+    ],
+  function ( CAP_NAMED_ARGUMENTS, C )
     local name, category_filter, category_object_filter, category_morphism_filter,
           object_constructor, object_datum, morphism_constructor, morphism_datum,
           create_func_bool, create_func_object,
           create_func_morphism, create_func_universal_morphism,
-          create_func_list_of_objects, primitive_operations, list_of_operations_to_install, skip, func, pos,
+          create_func_list_of_objects, list_of_operations_to_install, skip, func, pos,
           commutative_semiring, properties, ignore, supports_empty_limits, category_constructor_options,
-          D, optimize, show_evaluation, cache, print, list, lazify_range_of_hom_structure, HC;
+          D, list, HC;
     
     ##
     if HasName( C ) then
@@ -533,9 +542,7 @@ InstallMethod( LazyCategory,
         
     end;
     
-    primitive_operations := IsIdenticalObj( ValueOption( "primitive_operations" ), true );
-    
-    if primitive_operations then
+    if CAP_NAMED_ARGUMENTS.primitive_operations then
         list_of_operations_to_install := ListPrimitivelyInstalledOperationsOfCategoryWhereMorphismOperationsAreReplacedWithCorrespondingObjectAndWithGivenOperations( C );
     else
         list_of_operations_to_install := ListInstalledOperationsOfCategory( C );
@@ -578,7 +585,7 @@ InstallMethod( LazyCategory,
         Info( InfoLazyCategory, 2, "LazyCategory cannot deal with strictness of monoidal structures yet, ",
               "so we will be ignoring the following properties for ", C, ": ", ignore );
         
-        if primitive_operations and HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
+        if CAP_NAMED_ARGUMENTS.primitive_operations and HasIsMonoidalCategory( C ) and IsMonoidalCategory( C ) then
             Append( list_of_operations_to_install,
                     [ "LeftUnitorWithGivenTensorProduct",
                       "RightUnitorWithGivenTensorProduct",
@@ -586,7 +593,7 @@ InstallMethod( LazyCategory,
                       "AssociatorRightToLeftWithGivenTensorProducts",
                       ] );
             
-            Sort( list_of_operations_to_install );
+            list_of_operations_to_install := SortedList( list_of_operations_to_install );
             
         fi;
         
@@ -642,13 +649,7 @@ InstallMethod( LazyCategory,
              ],
            );
     
-    optimize := ValueOption( "optimize" );
-    
-    if not ( IsInt( optimize ) and optimize >= 0 ) then
-        optimize := 2;
-    fi;
-    
-    if optimize >= 1 then
+    if CAP_NAMED_ARGUMENTS.optimize >= 1 then
         
         AddPreCompose( D,
           function( D, phi, psi )
@@ -682,7 +683,7 @@ InstallMethod( LazyCategory,
 
     fi;
     
-    if optimize >= 2 then
+    if CAP_NAMED_ARGUMENTS.optimize >= 2 then
         
         if CanCompute( C, "DirectSum" ) then
             
@@ -806,24 +807,18 @@ InstallMethod( LazyCategory,
         
     fi;
     
-    show_evaluation := IsIdenticalObj( ValueOption( "show_evaluation" ), true );
-    
-    D!.show_evaluation := show_evaluation;
+    D!.show_evaluation := CAP_NAMED_ARGUMENTS.show_evaluation;
     
     D!.evaluations := 0;
     
     D!.shortname := name{[ Minimum( 15, Length( name ) ) .. Minimum( Length( name ) - 2, 50 ) ]};
     D!.shortname := Concatenation( D!.shortname, ListWithIdenticalEntries( 39 - Length( D!.shortname ), '.' ) );
     
-    cache := CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "cache", true );
-    
-    if IsIdenticalObj( cache, false ) then
+    if CAP_NAMED_ARGUMENTS.cache then
         DeactivateCachingOfCategory( C );
         DeactivateCachingOfCategory( D );
     fi;
     
-    print := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "print", false ), true );
-
     if CanCompute( C, "IsWellDefinedForObjects" ) then
         
         AddIsWellDefinedForObjects( D,
@@ -998,7 +993,7 @@ InstallMethod( LazyCategory,
     
     if CanCompute( C, "IsCongruentForMorphisms" ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             Display( "IsCongruentForMorphisms" );
         fi;
         
@@ -1014,7 +1009,7 @@ InstallMethod( LazyCategory,
     
     if CanCompute( C, "MultiplyWithElementOfCommutativeSemiringForMorphisms" ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             Display( "MultiplyWithElementOfCommutativeSemiringForMorphisms" );
         fi;
         
@@ -1030,7 +1025,7 @@ InstallMethod( LazyCategory,
     
     if HasRangeCategoryOfHomomorphismStructure( C ) then
         
-        if print then
+        if CAP_NAMED_ARGUMENTS.print then
             list := [ "BasisOfExternalHom",
                       "CoefficientsOfMorphism",
                       "DistinguishedObjectOfHomomorphismStructure",
@@ -1113,15 +1108,13 @@ InstallMethod( LazyCategory,
             
         fi;
         
-        lazify_range_of_hom_structure := IsIdenticalObj( CAP_INTERNAL_RETURN_OPTION_OR_DEFAULT( "lazify_range_of_hom_structure", false ), true );
-        
         HC := RangeCategoryOfHomomorphismStructure( C );
         
-        if IsIdenticalObj( cache, false ) then
+        if CAP_NAMED_ARGUMENTS.cache = false then
             DeactivateCachingOfCategory( HC );
         fi;
         
-        if lazify_range_of_hom_structure and not IsLazyCategory( HC ) then
+        if CAP_NAMED_ARGUMENTS.lazify_range_of_hom_structure and (not IsLazyCategory( HC )) then
             
             HC := LazyCategory( HC : lazify_range_of_hom_structure := false );
             
@@ -1229,7 +1222,7 @@ InstallMethod( LazyCategory,
     
     return D;
     
-end );
+end ) );
 
 ##
 InstallOtherMethod( \/,
