@@ -5,24 +5,26 @@
 #
 BindGlobal( "PARSE_CAP_QUIVER_DATUM_FROM_STRING",
   function ( data_string )
-    local data, p, name, objs, min, max, mors, q_datum, g, s, t, mor;
+    local data, p, q, name, objs, min, max, mors, q_datum, g, s, t, mor;
     
-    data := data_string;
+    # unicode string, so that positions are character positions and not byte positions
+    data := Unicode( ReplacedString( data_string, "→", "->" ) );
     
-    data := ReplacedString( data, "→", "->" );
-    
-    p := PositionSublist( data, "(" );
+    p := Position( data, Unicode( "(" )[1] );
     
     if p <> fail and p > 1 then
-        name := data{ [ 1 .. p-1 ] };
+        name := Encode( data{ [ 1 .. p-1 ] } );
     else
         Error( "please use the format \"q(A,B)[x:A->B,y:B->A]\"\n" );
     fi;
     
-    data := data{ [ p + 1 .. Length( data ) - 1 ] };
+    q := PositionSublist( data, Unicode( ")[" ) );
     
-    data := ReplacedString( data, ")[", "|" );
-    data := SplitString( data, "|" );
+    if q = fail then
+        data := [ Encode( data{ [ p + 1 .. Length( data ) - 1 ] } ) ];
+    else
+        data := [ Encode( data{ [ p + 1 .. q - 1 ] } ), Encode( data{ [ q + 2 .. Length( data ) - 1 ] } ) ];
+    fi;
     
     if Int( data[1] ) <> fail then
         objs := List( [ 1 .. Int( data[1] ) ], String );
