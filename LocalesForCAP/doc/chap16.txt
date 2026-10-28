@@ -1,8 +1,8 @@
   
-  [1X16 [33X[0;0YLocales automatic generated documentation[133X[101X
+  [1X16 [33X[0;0YLocalesForCAP automatic generated documentation[133X[101X
   
   
-  [1X16.1 [33X[0;0YLocales automatic generated documentation of methods[133X[101X
+  [1X16.1 [33X[0;0YLocalesForCAP automatic generated documentation of methods[133X[101X
   
   [1X16.1-1 DigraphOfPoset[101X
   

@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Locales: Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
+# LocalesForCAP: Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
 #
 # This file contains package meta data. For additional information on
 # the meaning and correct usage of these fields, please consult the
@@ -8,11 +8,11 @@
 #
 SetPackageInfo( rec(
 
-PackageName := "Locales",
+PackageName := "LocalesForCAP",
 Subtitle := "Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets",
-Version := "2026.10-04",
-Date := "2026-10-27",
-Date := "2026-10-27",
+Version := "2026.10-05",
+Date := "2026-10-29",
+Date := "2026-10-29",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -68,10 +68,10 @@ SourceRepository := rec(
     URL := "https://github.com/homalg-project/CategoricalTowers",
 ),
 IssueTrackerURL := Concatenation( ~.SourceRepository.URL, "/issues" ),
-PackageWWWHome  := "https://homalg-project.github.io/pkg/Locales",
-PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/Locales/PackageInfo.g",
-README_URL      := "https://homalg-project.github.io/CategoricalTowers/Locales/README.md",
-ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/Locales-", ~.Version, "/Locales-", ~.Version ),
+PackageWWWHome  := "https://homalg-project.github.io/pkg/LocalesForCAP",
+PackageInfoURL  := "https://homalg-project.github.io/CategoricalTowers/LocalesForCAP/PackageInfo.g",
+README_URL      := "https://homalg-project.github.io/CategoricalTowers/LocalesForCAP/README.md",
+ArchiveURL      := Concatenation( "https://github.com/homalg-project/CategoricalTowers/releases/download/LocalesForCAP-", ~.Version, "/LocalesForCAP-", ~.Version ),
 # END URLS
 
 ArchiveFormats := ".tar.gz .zip",
@@ -89,7 +89,7 @@ Status := "dev",
 AbstractHTML   :=  "",
 
 PackageDoc := rec(
-  BookName  := "Locales",
+  BookName  := "LocalesForCAP",
   ArchiveURLSubset := ["doc"],
   HTMLStart := "doc/chap0.html",
   PDFFile   := "doc/manual.pdf",

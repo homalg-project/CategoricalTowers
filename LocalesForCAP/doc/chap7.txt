@@ -52,7 +52,7 @@
         underlying objects.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LocalesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XD := SkeletalDiscreteCategory( "IsPosInt" );[127X[104X
     [4X[28XSkeletalDiscreteCategory( "IsPosInt" )[128X[104X
@@ -108,7 +108,7 @@
   [30X    [33X[0;6Ythe total order function on the underlying objects.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage( "Locales" );[127X[104X
+    [4X[25Xgap>[125X [27XLoadPackage( "LocalesForCAP" );[127X[104X
     [4X[28Xtrue[128X[104X
     [4X[25Xgap>[125X [27XD := TotalOrderAsCategory( "IsInt", {a,b} -> a <= b );[127X[104X
     [4X[28XTotalOrderAsCategory( "IsInt" )[128X[104X

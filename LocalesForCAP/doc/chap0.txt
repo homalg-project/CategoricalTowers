@@ -1,16 +1,16 @@
   
   
-                                   [1X Locales [101X
+                                [1X LocalesForCAP [101X
   
   
    [1X Locales, frames, coframes, meet semi-lattices of locally closed subsets,
                   and Boolean algebras of constructible sets [101X
   
   
-                                   2026.10-04
+                                   2026.10-05
   
   
-                                27 October 2026
+                                29 October 2026
   
   
                                 Mohamed Barakat
@@ -51,7 +51,7 @@
   -------------------------------------------------------
   
   
-  [1XContents (Locales)[101X
+  [1XContents (LocalesForCAP)[101X
   
   1 [33X[0;0YProsets (preordered sets)[133X
     1.1 [33X[0;0YInfo Class[133X
@@ -327,8 +327,8 @@
   15 [33X[0;0YTests[133X
     15.1 [33X[0;0YPrecompilation[133X
       15.1-1 [33X[0;0YPrecompilation of stable poset[133X
-  16 [33X[0;0YLocales automatic generated documentation[133X
-    16.1 [33X[0;0YLocales automatic generated documentation of methods[133X
+  16 [33X[0;0YLocalesForCAP automatic generated documentation[133X
+    16.1 [33X[0;0YLocalesForCAP automatic generated documentation of methods[133X
       16.1-1 DigraphOfPoset
   
   
