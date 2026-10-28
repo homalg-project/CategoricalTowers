@@ -17,7 +17,7 @@ gap> LoadPackage( "GRAPE", false );
 true
 gap> LoadPackage( "Digraphs", false );
 true
-gap> LoadPackage( "Locales", false );
+gap> LoadPackage( "LocalesForCAP", false );
 true
 gap> LoadPackage( "SubcategoriesForCAP", false );
 true
@@ -34,7 +34,7 @@ gap> LoadPackage( "GRAPE" );
 true
 gap> LoadPackage( "Digraphs" );
 true
-gap> LoadPackage( "Locales" );
+gap> LoadPackage( "LocalesForCAP" );
 true
 gap> LoadPackage( "SubcategoriesForCAP" );
 true

@@ -1,0 +1,101 @@
+# SPDX-License-Identifier: GPL-2.0-or-later
+# LocalesForCAP: Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets
+#
+# Implementations
+#
+
+SetInfoLevel( InfoLocales, 1 );
+
+InstallTrueMethod( IsThinCategory, IsDiscreteCategory );
+
+#= comment for Julia
+InstallTrueMethod( IsFiniteCategory, IsThinCategory and IsObjectFiniteCategory );
+# =#
+
+#= comment for Julia
+InstallTrueMethod( IsMonoidalProset, IsThinCategory and IsMonoidalCategory );
+# =#
+InstallTrueMethod( IsThinCategory, IsMonoidalProset );
+InstallTrueMethod( IsMonoidalCategory, IsMonoidalProset );
+
+#= comment for Julia
+InstallTrueMethod( IsClosedMonoidalProset, IsMonoidalProset and IsClosedMonoidalCategory );
+# =#
+InstallTrueMethod( IsMonoidalProset, IsClosedMonoidalProset );
+InstallTrueMethod( IsClosedMonoidalCategory, IsClosedMonoidalProset );
+
+#= comment for Julia
+InstallTrueMethod( IsCoclosedMonoidalProset, IsMonoidalProset and IsCoclosedMonoidalCategory );
+# =#
+InstallTrueMethod( IsMonoidalProset, IsCoclosedMonoidalProset );
+InstallTrueMethod( IsCoclosedMonoidalCategory, IsCoclosedMonoidalProset );
+
+#= comment for Julia
+InstallTrueMethod( IsSymmetricMonoidalProset, IsThinCategory and IsSymmetricMonoidalCategory );
+# =#
+InstallTrueMethod( IsThinCategory, IsSymmetricMonoidalProset );
+InstallTrueMethod( IsSymmetricMonoidalCategory, IsSymmetricMonoidalProset );
+
+#= comment for Julia
+InstallTrueMethod( IsSymmetricClosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricClosedMonoidalCategory );
+# =#
+InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricClosedMonoidalProset );
+InstallTrueMethod( IsSymmetricClosedMonoidalCategory, IsSymmetricClosedMonoidalProset );
+
+#= comment for Julia
+InstallTrueMethod( IsSymmetricCoclosedMonoidalProset, IsSymmetricMonoidalProset and IsSymmetricCoclosedMonoidalCategory );
+# =#
+InstallTrueMethod( IsSymmetricMonoidalProset, IsSymmetricCoclosedMonoidalProset );
+InstallTrueMethod( IsSymmetricCoclosedMonoidalCategory, IsSymmetricCoclosedMonoidalProset );
+
+##
+InstallGlobalFunction( ADD_COMMON_METHODS_FOR_PREORDERED_SETS,
+  function( preordered_set )
+    
+    ADD_COMMON_METHODS_FOR_ENRICHMENT_OVER_INTERVAL_CATEGORY( preordered_set );
+    
+end );
+
+##
+InstallOtherMethod( CreateFunctor,
+        "for a thin category, two lists, and the interval category",
+        [ FilterIntersection(IsCapCategory, IsThinCategory, IsFiniteCategory), IsList, IsList, IsIntervalCategory ],
+        
+  function( P, imgs_of_objs, imgs_of_gmors, interval_category )
+    local F;
+    
+    F := CapFunctor( Concatenation( "Functor from ", Name( P ), " -> ", Name( interval_category ) ), P, interval_category );
+    
+    AddObjectFunction( F,
+      function ( obj )
+        
+        return imgs_of_objs[SafeUniquePositionProperty( SetOfObjects( P ), o -> IsEqualForObjects( P, o, obj ) )];
+        
+    end );
+    
+    AddMorphismFunction( F,
+      function ( F_s, mor, F_t )
+        
+        return UniqueMorphism( interval_category,
+                       F_s,
+                       F_t );
+        
+    end );
+    
+    return F;
+    
+end );
+
+##
+InstallMethod( DisplayString,
+        "for a morphism in a proset",
+        [ IsMorphismInThinCategory ],
+
+  function( u )
+    
+    return Concatenation(
+              DisplayString( Target( u ) ),
+              " ^\n |\n |\n",
+              DisplayString( Source( u ) ) );
+    
+end );

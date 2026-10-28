@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "GradedCategories",
 Subtitle := "Graded closures of categories",
-Version := "2026.06-01",
+Version := "2026.10-01",
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
 License := "GPL-2.0-or-later",
 
@@ -87,8 +87,8 @@ Dependencies := rec(
                    [ "ToolsForHomalg", ">= 2023.02-01" ],
                    [ "CAP", ">= 2023.12-11" ],
                    [ "GroupRepresentationsForCAP", ">=2017.01.11" ],
+                   [ "LocalesForCAP", ">= 2026.10-05" ],
                    [ "PresheafCategories", ">= 2026.05-01" ],
-                   [ "Locales", ">= 2023.08-04" ],
                    ],
   SuggestedOtherPackages := [
                    ],

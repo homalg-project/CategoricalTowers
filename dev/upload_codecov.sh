@@ -60,7 +60,7 @@ for pkg in \
   IntrinsicGradedModules \
   IntrinsicModules \
   LazyCategories \
-  Locales \
+  LocalesForCAP \
   PresheafCategories \
   QuotientCategories \
   SliceCategories \
