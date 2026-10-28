@@ -10,10 +10,10 @@ SetPackageInfo( rec(
 
 PackageName := "FunctorCategories",
 Subtitle := "Categories of functors",
-Version := "2026.10-04",
+Version := "2026.10-05",
 
-Date := "2026-10-27",
-Date := "2026-10-27",
+Date := "2026-10-29",
+Date := "2026-10-29",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -99,7 +99,7 @@ Dependencies := rec(
                    [ "Toposes", ">= 2025.12-02" ],
                    [ "FinSetsForCAP", ">= 2025.12-08" ],
                    [ "FpCategories", ">= 2026.09-03" ],
-                   [ "Locales", ">= 2025.02-04" ],
+                   [ "LocalesForCAP", ">= 2026.10-05" ],
                    [ "PresheafCategories", ">= 2026.09-02" ],
                    [ "FiniteCocompletions", ">= 2026.09-01" ],
                    [ "Algebroids", ">= 2026.09-02" ],
