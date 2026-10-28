@@ -100,11 +100,11 @@ git subtree split --prefix=LazyCategories -b LazyCategories-split
 git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/LazyCategories LazyCategories-split:master
 echo ""
 
-# Locales
-echo "Release Locales"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/Locales" --webdir "$PWD/gh-pages/Locales" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
-git subtree split --prefix=Locales -b Locales-split
-git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/Locales Locales-split:master
+# LocalesForCAP
+echo "Release LocalesForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --skip-existing-release --srcdir "$PWD/LocalesForCAP" --webdir "$PWD/gh-pages/LocalesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release"
+git subtree split --prefix=LocalesForCAP -b LocalesForCAP-split
+git push https://homalg-project:$SUBSPLIT_PUSH_SECRET@github.com/homalg-project/LocalesForCAP LocalesForCAP-split:master
 echo ""
 
 # PresheafCategories

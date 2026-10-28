@@ -100,11 +100,11 @@ GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/LazyCat
 #git subtree split --prefix=LazyCategories -b LazyCategories-split
 echo ""
 
-# Locales
-echo "Simulate release of Locales"
-GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/Locales" --webdir "$PWD/gh-pages/Locales" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
+# LocalesForCAP
+echo "Simulate release of LocalesForCAP"
+GAP_PKG_RELEASE_DATE=$(date -I) ./dev/release-gap-package --srcdir "$PWD/LocalesForCAP" --webdir "$PWD/gh-pages/LocalesForCAP" --update-script "$PWD/gh-pages/update.g" --release-script "$PWD/dev/.release" --only-tarball
 # creating subsplits is slow and should only rarely result in errors -> do not simulate to keep testing PRs as fast as possible
-#git subtree split --prefix=Locales -b Locales-split
+#git subtree split --prefix=LocalesForCAP -b LocalesForCAP-split
 echo ""
 
 # PresheafCategories

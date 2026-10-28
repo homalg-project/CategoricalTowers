@@ -26,7 +26,7 @@
 | [IntrinsicGradedModules](IntrinsicGradedModules#readme) | Finitely presented graded modules over computable graded rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicGradedModules-img]][html-IntrinsicGradedModules-url] [![PDF stable documentation][pdf-IntrinsicGradedModules-img]][pdf-IntrinsicGradedModules-url] |
 | [IntrinsicModules](IntrinsicModules#readme) | Finitely presented modules over computable rings allowing multiple presentations and the notion of elements | [![HTML stable documentation][html-IntrinsicModules-img]][html-IntrinsicModules-url] [![PDF stable documentation][pdf-IntrinsicModules-img]][pdf-IntrinsicModules-url] |
 | [LazyCategories](LazyCategories#readme) | Construct an equivalent lazy category out of a CAP category | [![HTML stable documentation][html-LazyCategories-img]][html-LazyCategories-url] [![PDF stable documentation][pdf-LazyCategories-img]][pdf-LazyCategories-url] |
-| [Locales](Locales#readme) | Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets | [![HTML stable documentation][html-Locales-img]][html-Locales-url] [![PDF stable documentation][pdf-Locales-img]][pdf-Locales-url] |
+| [LocalesForCAP](LocalesForCAP#readme) | Locales, frames, coframes, meet semi-lattices of locally closed subsets, and Boolean algebras of constructible sets | [![HTML stable documentation][html-LocalesForCAP-img]][html-LocalesForCAP-url] [![PDF stable documentation][pdf-LocalesForCAP-img]][pdf-LocalesForCAP-url] |
 | [PresheafCategories](PresheafCategories#readme) | Categories of (co)presheaves | [![HTML stable documentation][html-PresheafCategories-img]][html-PresheafCategories-url] [![PDF stable documentation][pdf-PresheafCategories-img]][pdf-PresheafCategories-url] |
 | [QuotientCategories](QuotientCategories#readme) | Quotient categories | [![HTML stable documentation][html-QuotientCategories-img]][html-QuotientCategories-url] [![PDF stable documentation][pdf-QuotientCategories-img]][pdf-QuotientCategories-url] |
 | [SliceCategories](SliceCategories#readme) | Slice categories | [![HTML stable documentation][html-SliceCategories-img]][html-SliceCategories-url] [![PDF stable documentation][pdf-SliceCategories-img]][pdf-SliceCategories-url] |
@@ -133,11 +133,11 @@
 [pdf-LazyCategories-url]: https://homalg-project.github.io/CategoricalTowers/LazyCategories/download_pdf.html
 
 
-[html-Locales-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
-[html-Locales-url]: https://homalg-project.github.io/CategoricalTowers/Locales/doc/chap0_mj.html
+[html-LocalesForCAP-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg
+[html-LocalesForCAP-url]: https://homalg-project.github.io/CategoricalTowers/LocalesForCAP/doc/chap0_mj.html
 
-[pdf-Locales-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
-[pdf-Locales-url]: https://homalg-project.github.io/CategoricalTowers/Locales/download_pdf.html
+[pdf-LocalesForCAP-img]: https://img.shields.io/badge/🔗%20PDF-stable-blue.svg
+[pdf-LocalesForCAP-url]: https://homalg-project.github.io/CategoricalTowers/LocalesForCAP/download_pdf.html
 
 
 [html-PresheafCategories-img]: https://img.shields.io/badge/🔗%20HTML-stable-blue.svg

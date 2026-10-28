@@ -46,9 +46,9 @@ flags:
   LazyCategories:
     paths:
       - "LazyCategories/"
-  Locales:
+  LocalesForCAP:
     paths:
-      - "Locales/"
+      - "LocalesForCAP/"
   PresheafCategories:
     paths:
       - "PresheafCategories/"
