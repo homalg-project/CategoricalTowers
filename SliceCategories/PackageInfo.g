@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "SliceCategories",
 Subtitle := "Slice categories",
-Version := "2026.10-01",
-Date := "2026-10-19",
+Version := "2026.10-02",
+Date := "2026-10-30",
 License := "GPL-2.0-or-later",
 
 Persons := [
@@ -89,7 +89,7 @@ Dependencies := rec(
                    [ "CartesianCategories", ">= 2026.05-01" ],
                    [ "ToolsForCategoricalTowers", ">= 2025.03-02" ],
                    [ "Toposes", ">= 2025.08-03" ],
-                   [ "Locales", ">= 2024.02-21" ],
+                   [ "LocalesForCAP", ">= 2026.10-05" ],
                    [ "FpCategories", ">= 2023.11-02" ],
                    [ "FreydCategoriesForCAP", ">= 2025.06-02" ],
                   ],
