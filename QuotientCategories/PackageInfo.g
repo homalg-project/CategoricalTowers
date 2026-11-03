@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "QuotientCategories",
 Subtitle := "Quotient categories",
-Version := "2026.07-02",
-Date := "2026-07-16",
+Version := "2026.11-01",
+Date := "2026-11-03",
 License := "GPL-2.0-or-later",
 
 Persons := [
