@@ -471,28 +471,51 @@ InstallMethodForCompilerForCAP( SetOfObjects,
     
 end );
 
-#= comment for Julia
 ##
-InstallMethod( \.,
-        [ IsQuotientCategory, IsPosInt ],
+InstallOtherMethod( \/,
+            [ IsCapCategoryObject, IsQuotientCategory ],
   
-  { quotient_cat, string_as_int } -> AmbientCategory( quotient_cat ).( NameRNam( string_as_int ) ) / quotient_cat
-);
-# =#
+  function( o, quotient_cat )
+    
+    return ObjectConstructor( quotient_cat, o );
+    
+end );
 
 ##
 InstallOtherMethod( \/,
             [ IsCapCategoryMorphism, IsQuotientCategory ],
-  
-  { alpha, quotient_cat } -> MorphismConstructor( quotient_cat, Source( alpha ) / quotient_cat, alpha, Target( alpha ) / quotient_cat )
-);
+            
+  function( alpha, quotient_cat )
+    
+    return MorphismConstructor( quotient_cat,
+                ObjectConstructor( quotient_cat, Source( alpha ) ),
+                alpha,
+                ObjectConstructor( quotient_cat, Target( alpha ) ) );
+    
+end );
 
 ##
 InstallOtherMethod( \/,
             [ IsString, IsQuotientCategory ],
   
-  { str, quotient_cat } -> (str / AmbientCategory( quotient_cat )) / quotient_cat
-);
+  function( name, quotient_cat )
+    local ambient_cat, cell;
+    
+    ambient_cat := AmbientCategory( quotient_cat );
+    
+    cell := name / ambient_cat;
+    
+    if IsCapCategoryObject( cell ) or IsCapCategoryMorphism( cell ) then
+        return cell / quotient_cat;
+    else
+        Error( "The name does not correspond to an object or morphism in the ambient category." );
+    fi;
+    
+end );
+
+#= comment for Julia
+INSTALL_DOT_METHOD( IsQuotientCategory );
+# =#
 
 ##
 InstallMethodForCompilerForCAP( ExtendFunctorToQuotientCategoryData,
