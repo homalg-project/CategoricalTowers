@@ -6,10 +6,10 @@
                         [1X Modules over internal algebras [101X
   
   
-                                   2026.10-03
+                                   2026.11-01
   
   
-                                27 October 2026
+                                20 November 2026
   
   
                                 Mohamed Barakat
