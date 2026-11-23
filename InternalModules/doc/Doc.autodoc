@@ -33,6 +33,24 @@ The following examples demonstrate the internalization of the exterior algera an
 @Subsection The tensor category of finite dimensional Q-vector spaces
 @InsertChunk QvecInternalExteriorAlgebraModules
 
+@Chapter Internal monoids
+
+@Section Constructors
+@Section Attributes
+@Section GAP Categories
+
+@Chapter Internal bimonoids
+
+@Section Constructors
+@Section Attributes
+@Section GAP Categories
+
+@Chapter Internal Hopf monoids
+
+@Section Constructors
+@Section Attributes
+@Section GAP Categories
+
 @Chapter Internal algebra elements
 
 @Section Constructors
