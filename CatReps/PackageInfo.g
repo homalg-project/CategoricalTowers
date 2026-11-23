@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "CatReps",
 Subtitle := "Representations and cohomology of finite categories",
-Version := "2026.11-01",
+Version := "2026.11-02",
 
 Date := ~.Version{[ 1 .. 10 ]},
 Date := (function ( ) if IsBound( GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE ) then return GAPInfo.SystemEnvironment.GAP_PKG_RELEASE_DATE; else return Concatenation( ~.Version{[ 1 .. 4 ]}, "-", ~.Version{[ 6, 7 ]}, "-01" ); fi; end)( ),
@@ -109,7 +109,7 @@ Dependencies := rec(
                    [ "FinSetsForCAP", ">= 2022.05-07" ],
                    [ "SubcategoriesForCAP", ">= 2026.04-03" ],
                    [ "Algebroids", ">= 2026.07-01" ],
-                   [ "FunctorCategories", ">= 2026.07-01" ],
+                   [ "FunctorCategories", ">= 2026.11-02" ],
                    ],
   SuggestedOtherPackages := [ ],
   ExternalConditions := [ ],

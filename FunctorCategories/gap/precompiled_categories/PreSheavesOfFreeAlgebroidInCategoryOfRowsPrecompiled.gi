@@ -1421,19 +1421,6 @@ end
     , 201 : IsPrecompiledDerivation := true );
     
     ##
-    AddIsColiftableAlongEpimorphism( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjectsAsUnresolvableAttribute( Source( cat_1 ) ), function ( object_2 )
-            return IsZero( DecideZeroColumns( UnderlyingMatrix( arg3_1( object_2 ) ), UnderlyingMatrix( arg2_1( object_2 ) ) ) );
-        end );
-end
-########
-        
-    , 100 );
-    
-    ##
     AddIsCongruentForMorphisms( cat,
         
 ########
@@ -1458,19 +1445,6 @@ function ( cat_1, arg2_1, arg3_1 )
           end ) and ForAll( SetOfGeneratingMorphismsAsUnresolvableAttribute( deduped_1_1 ), function ( m_2 )
               return UnderlyingMatrix( arg2_1( m_2 ) ) = UnderlyingMatrix( arg3_1( m_2 ) );
           end );
-end
-########
-        
-    , 100 );
-    
-    ##
-    AddIsLiftableAlongMonomorphism( cat,
-        
-########
-function ( cat_1, arg2_1, arg3_1 )
-    return ForAll( SetOfObjectsAsUnresolvableAttribute( Source( cat_1 ) ), function ( object_2 )
-            return IsZero( DecideZeroRows( UnderlyingMatrix( arg3_1( object_2 ) ), UnderlyingMatrix( arg2_1( object_2 ) ) ) );
-        end );
 end
 ########
         
