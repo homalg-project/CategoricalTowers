@@ -329,36 +329,6 @@ InstallGlobalFunction( ADD_BASIC_OPERATIONS_TO_PRESHEAF_CATEGORY,
         
     end );
     
-    if CanCompute( D, "IsLiftableAlongMonomorphism" ) then
-        
-        ##
-        AddIsLiftableAlongMonomorphism( PSh,
-          function ( PSh, eta, rho )
-            local D;
-            
-            D := Target( PSh );
-            
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsLiftableAlongMonomorphism( D, eta( object ), rho( object ) ) );
-            
-        end );
-        
-    fi;
-    
-    if CanCompute( D, "IsColiftableAlongEpimorphism" ) then
-        
-        ##
-        AddIsColiftableAlongEpimorphism( PSh,
-          function ( PSh, eta, rho )
-            local D;
-            
-            D := Target( PSh );
-            
-            return ForAll( SetOfObjects( Source( PSh ) ), object -> IsColiftableAlongEpimorphism( D, eta( object ), rho( object ) ) );
-            
-        end );
-        
-    fi;
-    
     ## this code should become obsolete with following feature request:
     ## https://github.com/homalg-project/CAP_project/issues/801
     if CanCompute( D, "MorphismBetweenDirectSumsWithGivenDirectSums" ) then

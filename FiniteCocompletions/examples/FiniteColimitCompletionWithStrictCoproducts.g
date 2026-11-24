@@ -1,14 +1,14 @@
 #! @BeginChunk FiniteColimitCompletionWithStrictCoproducts
 
 #! @Example
-LoadPackage( "FunctorCategories", ">= 2025.08-03", false );
+LoadPackage( "FunctorCategories", ">= 2026.11-02", false );
 #! true
 FinBouquets;
 #! FinBouquets
 Display( FinBouquets );
 #! A CAP category with name FinBouquets:
 #! 
-#! 52 primitive operations were used to derive 377 operations for this category \
+#! 50 primitive operations were used to derive 377 operations for this category \
 #! which algorithmically
 #! * IsCategoryWithDecidableColifts
 #! * IsCategoryWithDecidableLifts
