@@ -1208,6 +1208,26 @@ fi; # IsPackageMarkedForLoading( "Algebroids", ">= 2026.07-04" )
 # =#
 
 ##
+InstallMethod( AddAdditionalPrecompiledFunctionsToPreSheafCategory,
+    "for an algebroid defined by data tables, a category, and a presheaf category",
+    [ IsFpAlgebroidFromDataTables, IsCapCategory, IsPreSheafCategory ],
+    
+  function ( B, D, PSh )
+    local commutative_semiring;
+    
+    commutative_semiring := CommutativeSemiringOfLinearCategory( D );
+    
+    if IsCategoryOfRows( D ) and
+       IsHomalgRing( commutative_semiring ) and
+       HasIsFieldForHomalg( commutative_semiring ) and IsFieldForHomalg( commutative_semiring ) then
+        
+        ADD_FUNCTIONS_FOR_PreSheavesOfAlgebroidFromDataTablesInCategoryOfRowsPrecompiled( PSh );
+        
+    fi;
+    
+end );
+
+##
 InstallGlobalFunction( ADD_ADMISSIBLE_ALGEBROID_STRUCTURE_TO_PRESHEAF_CATEGORY,
   function ( PSh )
     local B, auxiliary_indices;
